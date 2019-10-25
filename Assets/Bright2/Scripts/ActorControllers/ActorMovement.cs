@@ -18,6 +18,18 @@ namespace HK.Bright2.ActorControllers
         private Vector2 shrinkHorizontalRaycastBoxSize = default;
 
         [SerializeField]
+        private float snapGroundCheckThreshold = default;
+
+        [SerializeField]
+        private float snapGroundDistance = default;
+
+        [SerializeField]
+        private Vector2 snapGroundOffsetOrigin = default;
+
+        [SerializeField]
+        private Vector2 snapGroundOffsetSize = default;
+
+        [SerializeField]
         private float gravity = default;
 
         private Actor actor;
@@ -104,6 +116,25 @@ namespace HK.Bright2.ActorControllers
             var angle = t.localRotation.eulerAngles.z;
             var direction = Vector2.down;
             var distance = Mathf.Abs(this.velocity.y);
+            var snapDistance = this.snapGroundDistance;
+
+            // 落下中はスナップするか確認する
+            if(this.velocity.y < this.snapGroundCheckThreshold)
+            {
+                var snapHit = Physics2D.BoxCast(origin + this.snapGroundOffsetOrigin, size + this.snapGroundOffsetSize, angle, direction, snapDistance, raycastIncludeLayerMask.value);
+                if(snapHit.transform != null)
+                {
+                    var point = snapHit.point;
+#if UNITY_EDITOR
+                    this.lastHitVerticalPoint = point;
+#endif
+                    var v = this.velocity;
+                    this.currentGravity = 0.0f;
+                    t.localPosition = new Vector3(pos.x, point.y, pos.z);
+                    v.y = 0.0f;
+                    this.velocity = v;
+                }
+            }
             var hit = Physics2D.BoxCast(origin, size, angle, direction, distance, raycastIncludeLayerMask.value);
             if(hit.transform != null)
             {
