@@ -15,10 +15,18 @@ namespace HK.Bright2.InputSystems
         [SerializeField]
         private float speed = default;
 
+        [SerializeField]
+        private float jumpPower = default;
+
         void Update()
         {
             var velocity = new Vector2(Input.GetAxis("Horizontal") * this.speed * Time.deltaTime, 0.0f);
             this.actor.Movement.AddMove(velocity);
+
+            if(Input.GetButtonDown("Jump"))
+            {
+                this.actor.Movement.SetGravity(-this.jumpPower);
+            }
         }
     }
 }
