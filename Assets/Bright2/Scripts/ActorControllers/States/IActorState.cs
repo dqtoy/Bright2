@@ -13,7 +13,7 @@ namespace HK.Bright2.ActorControllers.States
 
         CompositeDisposable Events { get; }
 
-        void Enter();
+        void Enter(IActorStateContext context);
 
         void Exit();
     }

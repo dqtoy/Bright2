@@ -19,8 +19,10 @@ namespace HK.Bright2.ActorControllers.States
         {
         }
 
-        public override void Enter()
+        public override void Enter(IActorStateContext context)
         {
+            base.Enter(context);
+            
             this.nextStateDelaySeconds = 0.0f;
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Attack);
 

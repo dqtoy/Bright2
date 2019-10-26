@@ -25,6 +25,8 @@ namespace HK.Bright2.ActorControllers.States
 
         protected readonly CompositeDisposable events = new CompositeDisposable();
 
+        protected IActorStateContext context;
+
         Actor IActorState.Owner => this.owner;
 
         CompositeDisposable IActorState.Events => this.events;
@@ -34,7 +36,10 @@ namespace HK.Bright2.ActorControllers.States
             this.owner = owner;
         }
 
-        public abstract void Enter();
+        public virtual void Enter(IActorStateContext context)
+        {
+            this.context = context;
+        }
 
         public virtual void Exit()
         {

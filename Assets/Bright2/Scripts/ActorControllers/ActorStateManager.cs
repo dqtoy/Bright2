@@ -27,16 +27,21 @@ namespace HK.Bright2.ActorControllers
             this.states.Add(ActorState.Name.Attack, new Attack(this.owner));
 
             this.currentState = ActorState.Name.Idle;
-            this.states[this.currentState].Enter();
+            this.states[this.currentState].Enter(null);
         }
 
-        public void Change(ActorState.Name nextState)
+        public void Change(ActorState.Name nextState, IActorStateContext context)
         {
             Assert.IsTrue(this.states.ContainsKey(nextState), $"{nextState}に対応した{typeof(IActorState)}が存在しません");
 
             this.states[this.currentState].Exit();
             this.currentState = nextState;
-            this.states[this.currentState].Enter();
+            this.states[this.currentState].Enter(context);
+        }
+
+        public void Change(ActorState.Name nextState)
+        {
+            this.Change(nextState, null);
         }
     }
 }
