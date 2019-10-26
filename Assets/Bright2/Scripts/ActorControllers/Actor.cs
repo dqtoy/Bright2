@@ -12,7 +12,9 @@ namespace HK.Bright2.ActorControllers
 
         public ActorMovement Movement { get; private set; }
 
-        public ActorStateManager StateManager{ get; private set; }
+        public ActorStateManager StateManager { get; private set; }
+
+        public ActorModelSwitcher ModelSwitcher { get; private set; }
 
         void Awake()
         {
@@ -21,6 +23,9 @@ namespace HK.Bright2.ActorControllers
 
             this.Movement = this.GetComponent<ActorMovement>();
             Assert.IsNotNull(this.Movement);
+
+            this.ModelSwitcher = this.GetComponent<ActorModelSwitcher>();
+            Assert.IsNotNull(this.ModelSwitcher);
 
             this.StateManager = new ActorStateManager(this);
         }
