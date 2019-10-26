@@ -40,6 +40,13 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private float jumpPower = default;
             public float JumpPower => this.jumpPower;
+
+            [SerializeField]
+            private int limitJumpCount = default;
+            /// <summary>
+            /// 連続でジャンプできる回数
+            /// </summary>
+            public int LimitJumpCount => this.limitJumpCount;
         }
     }
 }

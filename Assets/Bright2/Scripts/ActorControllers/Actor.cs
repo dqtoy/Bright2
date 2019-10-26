@@ -24,6 +24,8 @@ namespace HK.Bright2.ActorControllers
 
         public ActorAnimationController AnimationController { get; private set; }
 
+        public ActorInstanceStatusController StatusController { get; private set; }
+
         public readonly IMessageBroker Broker = new MessageBroker();
 
         void Awake()
@@ -38,6 +40,8 @@ namespace HK.Bright2.ActorControllers
             Assert.IsNotNull(this.ModelController);
 
             this.AnimationController = new ActorAnimationController(this);
+
+            this.StatusController = new ActorInstanceStatusController(this.context);
 
             this.StateManager = new ActorStateManager(this);
         }

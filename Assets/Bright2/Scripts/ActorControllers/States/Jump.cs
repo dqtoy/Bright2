@@ -17,8 +17,14 @@ namespace HK.Bright2.ActorControllers.States
         public override void Enter()
         {
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Jump);
-            
-            this.owner.Movement.SetGravity(-this.owner.Context.BasicStatus.JumpPower);
+            this.InvokeJump();
+
+            this.owner.Broker.Receive<RequestJump>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.InvokeJump();
+                })
+                .AddTo(this.events);
 
             this.owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
@@ -26,6 +32,23 @@ namespace HK.Bright2.ActorControllers.States
                     _this.owner.StateManager.Change(ActorState.Name.Idle);
                 })
                 .AddTo(this.events);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            this.owner.StatusController.ResetJumpCount();
+        }
+
+        private void InvokeJump()
+        {
+            if(!this.owner.StatusController.CanJump)
+            {
+                return;
+            }
+
+            this.owner.StatusController.AddJumpCount();
+            this.owner.Movement.SetGravity(-this.owner.Context.BasicStatus.JumpPower);
         }
     }
 }
