@@ -21,7 +21,7 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// 装備中の装備品
         /// </summary>
-        public EquipmentRecord equipmentRecord { get; set; }
+        public EquippedEquipment EquippedEquipment { get; set; }
 
         /// <summary>
         /// 現在向いている方向

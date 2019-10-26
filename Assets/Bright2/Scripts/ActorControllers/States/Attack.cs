@@ -25,18 +25,18 @@ namespace HK.Bright2.ActorControllers.States
 
             this.nextStateDelaySeconds = 0.0f;
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Attack);
-
-            var gimmick = this.owner.StatusController.Equipment.Gimmick.Rent();
+            var equipmentRecord = this.owner.StatusController.EquippedEquipment.EquipmentRecord;
+            var gimmick = equipmentRecord.Gimmick.Rent();
             var parent = this.owner.TransformHolder.GetEquipmentOrigin(this.owner.StatusController.Direction);
             gimmick.transform.position = parent.position;
             gimmick.transform.rotation = parent.rotation;
             gimmick.Activate(this.owner);
 
             this.owner.UpdateAsObservable()
-                .SubscribeWithState(this, (_, _this) =>
+                .SubscribeWithState2(this, equipmentRecord, (_, _this, _equipmentRecord) =>
                 {
                     _this.nextStateDelaySeconds += Time.deltaTime;
-                    if (_this.nextStateDelaySeconds >= _this.owner.StatusController.Equipment.NextStateDelaySeconds)
+                    if (_this.nextStateDelaySeconds >= _equipmentRecord.NextStateDelaySeconds)
                     {
                         _this.owner.StateManager.Change(ActorState.Name.Idle);
                     }
@@ -44,7 +44,7 @@ namespace HK.Bright2.ActorControllers.States
                 .AddTo(this.events);
 
             var moveSpeed = this.owner.Context.BasicStatus.MoveSpeed;
-            moveSpeed -= moveSpeed * this.owner.StatusController.Equipment.MoveSpeedAttenuationRate;
+            moveSpeed -= moveSpeed * equipmentRecord.MoveSpeedAttenuationRate;
             this.ReceiveRequestMoveOnMove(moveSpeed);
         }
     }

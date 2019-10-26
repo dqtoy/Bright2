@@ -24,6 +24,7 @@ namespace HK.Bright2.ActorControllers
             this.context = context;
             this.status = new ActorInstanceStatus(context);
             this.status.Direction = Constants.Direction.Right;
+            this.status.EquippedEquipment = new EquippedEquipment(this.owner.gameObject);
 
             owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
@@ -35,7 +36,7 @@ namespace HK.Bright2.ActorControllers
 
         public int JumpCount => this.status.JumpCount;
 
-        public EquipmentRecord Equipment => this.status.equipmentRecord;
+        public EquippedEquipment EquippedEquipment => this.status.EquippedEquipment;
 
         public Constants.Direction Direction => this.status.Direction;
 
@@ -59,7 +60,7 @@ namespace HK.Bright2.ActorControllers
 
         public void SetEquipment(EquipmentRecord equipment)
         {
-            this.status.equipmentRecord = equipment;
+            this.status.EquippedEquipment.Change(equipment);
         }
 
         public void SetDirection(Constants.Direction direction)
