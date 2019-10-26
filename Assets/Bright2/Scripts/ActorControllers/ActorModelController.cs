@@ -80,10 +80,15 @@ namespace HK.Bright2.ActorControllers
                 return;
             }
 
+            this.direction = direction;
+
             var rotation = this.modelParent.localRotation.eulerAngles;
             rotation.y = this.GetDirectionRotation(direction);
             this.modelParent.localRotation = Quaternion.Euler(rotation);
-            this.direction = direction;
+
+            var scale = this.modelParent.localScale;
+            scale.x = this.GetDirectionScale(direction);
+            this.modelParent.localScale = scale;
         }
 
         private float GetDirectionRotation(Direction direction)
@@ -91,6 +96,13 @@ namespace HK.Bright2.ActorControllers
             Assert.AreNotEqual(direction, Direction.None);
 
             return direction == Direction.Left ? this.leftDirection : this.rightDirection;
+        }
+
+        private float GetDirectionScale(Direction direction)
+        {
+            Assert.AreNotEqual(direction, Direction.None);
+
+            return direction == Direction.Left ? -1.0f : 1.0f;
         }
     }
 }
