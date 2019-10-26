@@ -23,7 +23,7 @@ namespace HK.Bright2
             this.owner.UpdateAsObservable()
                 .SubscribeWithState(this, (_, _this) =>
                 {
-                    _this.coolTimeSeconds = Time.deltaTime;
+                    _this.coolTimeSeconds += Time.deltaTime;
                 });
         }
 
@@ -31,6 +31,11 @@ namespace HK.Bright2
         {
             this.EquipmentRecord = equipmentRecord;
             this.coolTimeSeconds = equipmentRecord.CoolTimeSeconds;
+        }
+
+        public void ResetCoolTime()
+        {
+            this.coolTimeSeconds = 0.0f;
         }
 
         public bool CanFire

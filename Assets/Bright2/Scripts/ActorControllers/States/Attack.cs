@@ -31,6 +31,7 @@ namespace HK.Bright2.ActorControllers.States
             gimmick.transform.position = parent.position;
             gimmick.transform.rotation = parent.rotation;
             gimmick.Activate(this.owner);
+            this.owner.StatusController.EquippedEquipment.ResetCoolTime();
 
             this.owner.UpdateAsObservable()
                 .SubscribeWithState2(this, equipmentRecord, (_, _this, _equipmentRecord) =>
