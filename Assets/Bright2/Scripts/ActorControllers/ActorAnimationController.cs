@@ -58,7 +58,7 @@ namespace HK.Bright2.ActorControllers
                 this.index = 0;
             }
 
-            this.owner.ModelSwitcher.Change(this.sequence.Elements[this.index].AnimationName);
+            this.owner.ModelController.Change(this.sequence.Elements[this.index].AnimationName);
             this.duration = 0.0f;
         }
     }

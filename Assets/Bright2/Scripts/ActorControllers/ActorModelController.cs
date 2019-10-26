@@ -7,7 +7,7 @@ namespace HK.Bright2.ActorControllers
     /// <summary>
     /// <see cref="Actor"/>が管理するモデルを切り替えるクラス
     /// </summary>
-    public sealed class ActorModelSwitcher : MonoBehaviour
+    public sealed class ActorModelController : MonoBehaviour
     {
         [SerializeField]
         private Transform modelParent = default;
