@@ -23,9 +23,9 @@ namespace HK.Bright2.ActorControllers.States
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Run);
             
             var stateRunContext = (StateRunContext)context;
-            this.AddMove(stateRunContext.Direction);
+            this.AddMove(stateRunContext.Direction, this.owner.Context.BasicStatus.MoveSpeed);
 
-            this.ReceiveRequestMoveOnMove();
+            this.ReceiveRequestMoveOnMove(this.owner.Context.BasicStatus.MoveSpeed);
 
             this.owner.Broker.Receive<Messages.Idle>()
                 .SubscribeWithState(this, (_, _this) =>
