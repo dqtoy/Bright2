@@ -1,6 +1,7 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Extensions;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -22,6 +23,17 @@ namespace HK.Bright2.ActorControllers.States
         {
             this.nextStateDelaySeconds = 0.0f;
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Attack);
+
+            this.owner.UpdateAsObservable()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.nextStateDelaySeconds += Time.deltaTime;
+                    if (_this.nextStateDelaySeconds >= _this.owner.StatusController.Equipment.NextStateDelaySeconds)
+                    {
+                        _this.owner.StateManager.Change(ActorState.Name.Idle);
+                    }
+                })
+                .AddTo(this.events);
         }
     }
 }

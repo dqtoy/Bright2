@@ -23,7 +23,17 @@ namespace HK.Bright2.Database
         public Gimmick Gimmick => this.gimmick;
 
         [SerializeField]
-        private float coolTime = default;
-        public float CoolTime => this.coolTime;
+        private float nextStateDelaySeconds = default;
+        /// <summary>
+        /// 攻撃状態から次の状態へ移動するまでの遅延時間（秒）
+        /// </summary>
+        public float NextStateDelaySeconds => this.nextStateDelaySeconds;
+
+        [SerializeField]
+        private float coolTimeSeconds = default;
+        /// <summary>
+        /// 攻撃出来るまでのクールタイム（秒）
+        /// </summary>
+        public float CoolTimeSeconds => this.coolTimeSeconds;
     }
 }
