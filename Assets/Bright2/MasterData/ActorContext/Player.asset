@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342be30bc72244c6eb1f555d8ea331a2, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  idle: {fileID: 0}
+  idle: {fileID: 11400000, guid: f8612d90025244c82a5096dcf97b0a5e, type: 2}
+  run: {fileID: 11400000, guid: b40ddf2ca289942b38199ffde81da980, type: 2}

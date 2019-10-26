@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1626d36fddab94cb3a7017fc8b0df045, type: 3}
   m_Name: Run
   m_EditorClassIdentifier: 
-  elements: []
+  elements:
+  - animationName: Run0
+    waitSeconds: 0.2
+  - animationName: Run1
+    waitSeconds: 0.1
+  - animationName: Run2
+    waitSeconds: 0.2
+  - animationName: Run1
+    waitSeconds: 0.1
