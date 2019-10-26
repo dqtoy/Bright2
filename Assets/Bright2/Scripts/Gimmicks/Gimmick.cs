@@ -14,7 +14,9 @@ namespace HK.Bright2.GimmickControllers
     public sealed class Gimmick : MonoBehaviour
     {
         public readonly IMessageBroker Broker = new MessageBroker();
-        
+
+        public Constants.Direction Direction { get; private set; }
+
         private readonly static ObjectPoolBundle<Gimmick> pools = new ObjectPoolBundle<Gimmick>();
 
         private ObjectPool<Gimmick> pool;
@@ -38,6 +40,7 @@ namespace HK.Bright2.GimmickControllers
 
         public void Activate(Actor owner)
         {
+            this.Direction = owner.StatusController.Direction;
             this.decotators = this.decotators ?? this.GetComponentsInChildren<IGimmickDecorator>();
             foreach(var d in this.decotators)
             {
