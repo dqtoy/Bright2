@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.ActorControllers
 {
     /// <summary>
-    /// <see cref="Actor"/>が管理するモデルを切り替えるクラス
+    /// <see cref="Actor"/>のモデルを制御するクラス
     /// </summary>
     public sealed class ActorModelController : MonoBehaviour
     {
