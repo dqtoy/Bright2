@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers.Messages;
+using UniRx;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers.States
@@ -16,6 +18,13 @@ namespace HK.Bright2.ActorControllers.States
         public override void Enter()
         {
             this.owner.AnimationController.StartSequence(this.owner.Context.Idle);
+
+            this.owner.Broker.Receive<Move>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.owner.StateManager.Change(ActorState.Name.Run);
+                })
+                .AddTo(this.events);
         }
 
         public override void Exit()

@@ -162,6 +162,7 @@ namespace HK.Bright2.ActorControllers
         {
             if(this.velocity.x == 0.0f)
             {
+                this.actor.Broker.Publish(Idle.Get());
                 return;
             }
 

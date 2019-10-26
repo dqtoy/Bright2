@@ -12,5 +12,9 @@ namespace HK.Bright2.ActorControllers
         [SerializeField]
         private ActorAnimationSequence idle = default;
         public ActorAnimationSequence Idle => this.idle;
+
+        [SerializeField]
+        private ActorAnimationSequence run = default;
+        public ActorAnimationSequence Run => this.run;
     }
 }
