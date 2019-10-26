@@ -39,6 +39,8 @@ namespace HK.Bright2.ActorControllers
 
         private float currentGravity = 0.0f;
 
+        private bool isLanding = false;
+
         void Awake()
         {
             this.actor = this.GetComponent<Actor>();
@@ -109,6 +111,14 @@ namespace HK.Bright2.ActorControllers
 
         private void CheckVertical()
         {
+            var v = this.velocity;
+
+            // 上方向の移動量かつ着地中の場合は空中にいる状態にする
+            if(v.y > 0.0f && this.isLanding)
+            {
+                this.isLanding = false;
+            }
+            
             var t = this.actor.CachedTransform;
             var pos = t.localPosition;
             var origin = new Vector2(pos.x, pos.y) + this.boxCollider2D.offset;
@@ -120,7 +130,7 @@ namespace HK.Bright2.ActorControllers
             var snapDistance = this.snapGroundDistance;
 
             // 落下中はスナップするか確認する
-            if(this.velocity.y < this.snapGroundCheckThreshold)
+            if(this.velocity.y < this.snapGroundCheckThreshold && !this.isLanding)
             {
                 var snapHit = Physics2D.BoxCast(origin + this.snapGroundOffsetOrigin, size + this.snapGroundOffsetSize, angle, direction, snapDistance, raycastIncludeLayerMask.value);
                 if(snapHit.transform != null)
@@ -129,11 +139,12 @@ namespace HK.Bright2.ActorControllers
 #if UNITY_EDITOR
                     this.lastHitVerticalPoint = point;
 #endif
-                    var v = this.velocity;
                     this.currentGravity = 0.0f;
                     t.localPosition = new Vector3(pos.x, point.y, pos.z);
                     v.y = 0.0f;
                     this.velocity = v;
+                    this.isLanding = true;
+                    this.actor.Broker.Publish(Landed.Get());
                 }
             }
             var hit = Physics2D.BoxCast(origin, size, angle, direction, distance, raycastIncludeLayerMask.value);
@@ -148,7 +159,6 @@ namespace HK.Bright2.ActorControllers
 #if UNITY_EDITOR
                     this.lastHitVerticalPoint = point;
 #endif
-                    var v = this.velocity;
                     this.currentGravity = 0.0f;
                     var newY = v.y < 0.0f ? point.y : point.y - size.y;
                     t.localPosition = new Vector3(pos.x, newY, pos.z);

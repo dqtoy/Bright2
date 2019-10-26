@@ -25,4 +25,11 @@ namespace HK.Bright2.ActorControllers.Messages
     public sealed class RequestJump : Message<RequestJump>
     {
     }
+
+    /// <summary>
+    /// <see cref="Actor"/>が地面に着地した際のメッセージ
+    /// </summary>
+    public sealed class Landed : Message<Landed>
+    {
+    }
 }
