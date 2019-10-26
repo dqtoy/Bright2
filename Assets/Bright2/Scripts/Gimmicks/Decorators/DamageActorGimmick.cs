@@ -7,7 +7,7 @@ namespace HK.Bright2.GimmickControllers.Decorators
     /// <summary>
     /// <see cref="Actor"/>にダメージを与えるギミックデコレーター
     /// </summary>
-    public sealed class DamageActor : MonoBehaviour, IGimmickDecorator, IActorReactionOnTriggerEnter2D
+    public sealed class DamageActorGimmick : MonoBehaviour, IGimmickDecorator, IActorReactionOnTriggerEnter2D
     {
         [SerializeField]
         private int damagePower = default;
