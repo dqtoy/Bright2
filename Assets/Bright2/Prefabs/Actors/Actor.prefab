@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5132196eed35245e19ff2cf8ff123795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlledTransform: {fileID: 3702472882505496169}
   boxCollider2D: {fileID: 8267512877853937779}
   raycastIncludeLayerMask:
     serializedVersion: 2
