@@ -28,15 +28,6 @@ namespace HK.Bright2.ActorControllers
                     _this.ResetJumpCount();
                 })
                 .AddTo(owner);
-
-            owner.Broker.Receive<Move>()
-                .SubscribeWithState(this, (x, _this) =>
-                {
-                    var direction = x.Velocity.GetHorizontalDirection();
-                    Assert.AreNotEqual(direction, Constants.Direction.None);
-                    _this.status.Direction = direction;
-                })
-                .AddTo(owner);
         }
 
         public int JumpCount => this.status.JumpCount;
@@ -66,6 +57,11 @@ namespace HK.Bright2.ActorControllers
         public void SetEquipment(EquipmentRecord equipment)
         {
             this.status.equipmentRecord = equipment;
+        }
+
+        public void SetDirection(Constants.Direction direction)
+        {
+            this.status.Direction = direction;
         }
     }
 }

@@ -37,5 +37,21 @@ namespace HK.Bright2.Extensions
 
             self.Owner.Movement.AddMove(velocity * Time.deltaTime);
         }
+
+        /// <summary>
+        /// <see cref="Actor"/>の向きを移動方向と同期を取る
+        /// </summary>
+        public static void SyncActorDirection(this IActorState self)
+        {
+            self.Owner.Broker.Receive<Move>()
+                .SubscribeWithState(self, (x, _this) =>
+                {
+                    var direction = x.Velocity.GetHorizontalDirection();
+                    Assert.AreNotEqual(direction, Constants.Direction.None);
+                    _this.Owner.StatusController.SetDirection(direction);
+                    _this.Owner.ModelController.Turn(x.Velocity.GetHorizontalDirection());
+                })
+                .AddTo(self.Events);
+        }
     }
 }

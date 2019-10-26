@@ -45,13 +45,6 @@ namespace HK.Bright2.ActorControllers
 
             this.currentModelId = ActorModelNames.Idle0;
             this.Change(this.currentModelId);
-
-            this.owner.Broker.Receive<Move>()
-                .SubscribeWithState(this, (x, _this) =>
-                {
-                    _this.Turn(x.Velocity.GetHorizontalDirection());
-                })
-                .AddTo(this);
         }
 
         public void Change(int nextModelId)
@@ -64,7 +57,7 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// モデルを<paramref name="direction"/>方向へ向かせる
         /// </summary>
-        private void Turn(Constants.Direction direction)
+        public void Turn(Constants.Direction direction)
         {
             Assert.AreNotEqual(direction, Constants.Direction.None);
 

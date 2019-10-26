@@ -44,6 +44,8 @@ namespace HK.Bright2.ActorControllers.States
                     _this.owner.StateManager.Change(ActorState.Name.Attack);
                 })
                 .AddTo(this.events);
+
+            this.SyncActorDirection();
         }
     }
 }

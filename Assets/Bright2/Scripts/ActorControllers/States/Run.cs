@@ -56,11 +56,8 @@ namespace HK.Bright2.ActorControllers.States
                     _this.owner.StateManager.Change(ActorState.Name.Attack);
                 })
                 .AddTo(this.events);
-        }
 
-        public override void Exit()
-        {
-            base.Exit();
+            this.SyncActorDirection();
         }
     }
 }
