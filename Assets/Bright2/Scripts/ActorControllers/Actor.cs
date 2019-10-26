@@ -28,6 +28,8 @@ namespace HK.Bright2.ActorControllers
 
         public ActorTransformHolder TransformHolder { get; private set; }
 
+        public ActorLifeCycleController LifeCycleController { get; private set; }
+
         public readonly IMessageBroker Broker = new MessageBroker();
 
         void Awake()
@@ -47,6 +49,8 @@ namespace HK.Bright2.ActorControllers
             this.AnimationController = new ActorAnimationController(this);
 
             this.StatusController = new ActorInstanceStatusController(this, this.context);
+
+            this.LifeCycleController = new ActorLifeCycleController(this);
 
             this.StateManager = new ActorStateManager(this);
         }
