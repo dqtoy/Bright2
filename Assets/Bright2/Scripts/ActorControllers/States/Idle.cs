@@ -15,6 +15,7 @@ namespace HK.Bright2.ActorControllers.States
 
         public override void Enter()
         {
+            this.owner.AnimationController.StartSequence(this.owner.Context.Idle);
         }
 
         public override void Exit()

@@ -8,6 +8,11 @@ namespace HK.Bright2.ActorControllers
     /// </summary>
     public sealed class Actor : MonoBehaviour
     {
+        [SerializeField]
+        private ActorContext context;
+
+        public ActorContext Context => this.context;
+        
         public Transform CachedTransform { get; private set; }
 
         public ActorMovement Movement { get; private set; }
@@ -15,6 +20,8 @@ namespace HK.Bright2.ActorControllers
         public ActorStateManager StateManager { get; private set; }
 
         public ActorModelSwitcher ModelSwitcher { get; private set; }
+
+        public ActorAnimationController AnimationController { get; private set; }
 
         void Awake()
         {
@@ -26,6 +33,8 @@ namespace HK.Bright2.ActorControllers
 
             this.ModelSwitcher = this.GetComponent<ActorModelSwitcher>();
             Assert.IsNotNull(this.ModelSwitcher);
+
+            this.AnimationController = new ActorAnimationController(this);
 
             this.StateManager = new ActorStateManager(this);
         }
