@@ -33,6 +33,7 @@ namespace HK.Bright2.GimmickControllers
         public void Return()
         {
             this.pool.Return(this);
+            this.transform.SetParent(null);
         }
 
         public void Activate(Actor owner)
