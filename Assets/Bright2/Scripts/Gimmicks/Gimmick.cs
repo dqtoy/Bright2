@@ -21,5 +21,10 @@ namespace HK.Bright2.GimmickControllers
 
             return clone;
         }
+
+        public void Return()
+        {
+            this.pool.Return(this);
+        }
     }
 }
