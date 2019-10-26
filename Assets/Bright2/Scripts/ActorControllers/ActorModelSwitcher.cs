@@ -10,7 +10,7 @@ namespace HK.Bright2.ActorControllers
     public sealed class ActorModelSwitcher : MonoBehaviour
     {
         [SerializeField]
-        private Transform modelParent;
+        private Transform modelParent = default;
 
         private readonly Dictionary<int, Renderer> dictionary = new Dictionary<int, Renderer>();
 
