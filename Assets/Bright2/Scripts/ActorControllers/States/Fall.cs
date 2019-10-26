@@ -18,7 +18,7 @@ namespace HK.Bright2.ActorControllers.States
         public override void Enter(IActorStateContext context)
         {
             base.Enter(context);
-            
+
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Fall);
 
             this.ReceiveRequestMoveOnMove();
@@ -35,6 +35,13 @@ namespace HK.Bright2.ActorControllers.States
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.owner.StateManager.Change(ActorState.Name.Jump);
+                })
+                .AddTo(this.events);
+
+            this.owner.Broker.Receive<RequestFire>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.owner.StateManager.Change(ActorState.Name.Attack);
                 })
                 .AddTo(this.events);
         }

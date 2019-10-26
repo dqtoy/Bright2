@@ -49,6 +49,13 @@ namespace HK.Bright2.ActorControllers.States
                     _this.owner.StateManager.Change(ActorState.Name.Fall);
                 })
                 .AddTo(this.events);
+
+            this.owner.Broker.Receive<RequestFire>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.owner.StateManager.Change(ActorState.Name.Attack);
+                })
+                .AddTo(this.events);
         }
 
         public override void Exit()
