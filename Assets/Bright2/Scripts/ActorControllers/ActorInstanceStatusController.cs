@@ -16,8 +16,11 @@ namespace HK.Bright2.ActorControllers
 
         private readonly ActorInstanceStatus status;
 
+        private readonly Actor owner;
+
         public ActorInstanceStatusController(Actor owner, ActorContext context)
         {
+            this.owner = owner;
             this.context = context;
             this.status = new ActorInstanceStatus(context);
             this.status.Direction = Constants.Direction.Right;
@@ -62,6 +65,17 @@ namespace HK.Bright2.ActorControllers
         public void SetDirection(Constants.Direction direction)
         {
             this.status.Direction = direction;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            if(this.status.HitPoint <= 0)
+            {
+                return;
+            }
+            
+            this.status.HitPoint -= damage;
+            this.owner.Broker.Publish(Died.Get());
         }
     }
 }

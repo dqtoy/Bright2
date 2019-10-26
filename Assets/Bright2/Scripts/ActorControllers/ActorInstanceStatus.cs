@@ -9,6 +9,10 @@ namespace HK.Bright2.ActorControllers
     /// </summary>
     public sealed class ActorInstanceStatus
     {
+        public int HitPoint { get; set; }
+
+        public int HitPointMax { get; set; }
+
         /// <summary>
         /// ジャンプした回数
         /// </summary>
@@ -26,6 +30,8 @@ namespace HK.Bright2.ActorControllers
 
         public ActorInstanceStatus(ActorContext context)
         {
+            this.HitPoint = context.BasicStatus.HitPoint;
+            this.HitPointMax = this.HitPoint;
         }
     }
 }
