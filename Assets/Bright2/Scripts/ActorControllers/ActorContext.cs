@@ -15,8 +15,8 @@ namespace HK.Bright2.ActorControllers
         public AnimationSequenceElements AnimationSequences => this.animationSequences;
 
         [SerializeField]
-        private float jumpPower = default;
-        public float JumpPower => this.jumpPower;
+        private BasicStatusElement basicStatus = default;
+        public BasicStatusElement BasicStatus => this.basicStatus;
 
         [Serializable]
         public class AnimationSequenceElements
@@ -32,6 +32,14 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private ActorAnimationSequence jump = default;
             public ActorAnimationSequence Jump => this.jump;
+        }
+
+        [Serializable]
+        public class BasicStatusElement
+        {
+            [SerializeField]
+            private float jumpPower = default;
+            public float JumpPower => this.jumpPower;
         }
     }
 }

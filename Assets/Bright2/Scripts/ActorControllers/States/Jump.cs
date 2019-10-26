@@ -18,7 +18,7 @@ namespace HK.Bright2.ActorControllers.States
         {
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Jump);
             
-            this.owner.Movement.SetGravity(-this.owner.Context.JumpPower);
+            this.owner.Movement.SetGravity(-this.owner.Context.BasicStatus.JumpPower);
 
             this.owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>

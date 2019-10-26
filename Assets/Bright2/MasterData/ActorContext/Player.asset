@@ -16,4 +16,5 @@ MonoBehaviour:
     idle: {fileID: 11400000, guid: f8612d90025244c82a5096dcf97b0a5e, type: 2}
     run: {fileID: 11400000, guid: b40ddf2ca289942b38199ffde81da980, type: 2}
     jump: {fileID: 11400000, guid: 7536ebdd613c641e5b983b468f539735, type: 2}
-  jumpPower: 12
+  basicStatus:
+    jumpPower: 12
