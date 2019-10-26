@@ -1,4 +1,5 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
+using HK.Bright2.Extensions;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -19,8 +20,10 @@ namespace HK.Bright2.ActorControllers.States
         {
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Idle);
 
-            this.owner.Broker.Receive<Move>()
-                .SubscribeWithState(this, (_, _this) =>
+            this.ReceiveRequestMoveOnMove();
+            
+            this.owner.Broker.Receive<RequestMove>()
+                .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.owner.StateManager.Change(ActorState.Name.Run);
                 })

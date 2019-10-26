@@ -25,6 +25,10 @@ namespace HK.Bright2.ActorControllers.States
 
         protected readonly CompositeDisposable events = new CompositeDisposable();
 
+        Actor IActorState.Owner => this.owner;
+
+        CompositeDisposable IActorState.Events => this.events;
+
         public ActorState(Actor owner)
         {
             this.owner = owner;

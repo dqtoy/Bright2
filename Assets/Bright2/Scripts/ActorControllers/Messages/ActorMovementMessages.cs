@@ -20,6 +20,17 @@ namespace HK.Bright2.ActorControllers.Messages
     }
 
     /// <summary>
+    /// <see cref="Actor"/>に対して移動をリクエストするメッセージ
+    /// </summary>
+    public sealed class RequestMove : Message<RequestMove, Vector2>
+    {
+        /// <summary>
+        /// 移動方向
+        /// </summary>
+        public Vector2 Direction => this.param1;
+    }
+
+    /// <summary>
     /// <see cref="Actor"/>に対してジャンプをリクエストするメッセージ
     /// </summary>
     public sealed class RequestJump : Message<RequestJump>

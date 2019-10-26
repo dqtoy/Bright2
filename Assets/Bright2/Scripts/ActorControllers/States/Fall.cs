@@ -1,4 +1,5 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
+using HK.Bright2.Extensions;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -18,6 +19,8 @@ namespace HK.Bright2.ActorControllers.States
         {
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Fall);
 
+            this.ReceiveRequestMoveOnMove();
+            
             this.owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
                 {

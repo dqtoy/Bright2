@@ -15,8 +15,11 @@ namespace HK.Bright2.InputSystems
 
         void Update()
         {
-            var velocity = new Vector2(Input.GetAxis("Horizontal") * this.actor.Context.BasicStatus.MoveSpeed * Time.deltaTime, 0.0f);
-            this.actor.Movement.AddMove(velocity);
+            var velocity = new Vector2(Input.GetAxis("Horizontal"), 0.0f);
+            if(velocity.sqrMagnitude > 0.0f)
+            {
+                this.actor.Broker.Publish(RequestMove.Get(velocity));
+            }
 
             if(Input.GetButtonDown("Jump"))
             {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers.States
@@ -8,6 +9,10 @@ namespace HK.Bright2.ActorControllers.States
     /// </summary>
     public interface IActorState
     {
+        Actor Owner { get; }
+
+        CompositeDisposable Events { get; }
+
         void Enter();
 
         void Exit();
