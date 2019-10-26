@@ -25,6 +25,9 @@ namespace HK.Bright2.Extensions
                 .AddTo(self.Events);
         }
 
+        /// <summary>
+        /// <see cref="Actor"/>を移動させる
+        /// </summary>
         public static void AddMove(this IActorState self, Vector2 direction)
         {
             var velocity = Vector2.zero;
@@ -32,6 +35,19 @@ namespace HK.Bright2.Extensions
             velocity.x = direction.x > 0.0f ? moveSpeed : -moveSpeed;
 
             self.Owner.Movement.AddMove(velocity * Time.deltaTime);
+        }
+
+        /// <summary>
+        /// メッセージを受信したらステートを切り替える
+        /// </summary>
+        public static void ReceiveToChangeState<T>(this IActorState self, ActorState.Name nextStateName)
+        {
+            self.Owner.Broker.Receive<T>()
+                .SubscribeWithState(self, (_, _this) =>
+                {
+                    _this.Owner.StateManager.Change(nextStateName);
+                })
+                .AddTo(self.Events);
         }
     }
 }
