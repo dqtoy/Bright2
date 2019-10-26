@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.GimmickControllers.Decorators
 {
     /// <summary>
-    /// <see cref="IGimmickDecorator.OnActivate(Gimmick, ActorControllers.Actor)"/>のタイミングで一定間隔で別のギミックを生成するデコレーター
+    /// 一定間隔で別のギミックを生成するギミックデコレーター
     /// </summary>
     public sealed class CreateGimmickInterval : MonoBehaviour, IGimmickDecorator
     {
