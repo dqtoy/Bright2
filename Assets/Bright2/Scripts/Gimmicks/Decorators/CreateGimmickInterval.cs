@@ -1,6 +1,7 @@
 ﻿using System;
 using HK.Bright2.ActorControllers;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -26,16 +27,30 @@ namespace HK.Bright2.GimmickControllers.Decorators
         [SerializeField]
         private float interval = default;
 
+        [SerializeField]
+        private float initialDuration = default;
+
+        private float duration;
+
+        private int count;
+
         void IGimmickDecorator.OnActivate(Gimmick owner, Actor gimmickOwner)
         {
-            Observable.Interval(TimeSpan.FromSeconds(this.interval))
-                .Take(this.limit)
+            this.duration = this.initialDuration;
+            this.count = 0;
+            owner.UpdateAsObservable()
                 .TakeUntilDisable(owner)
+                .Where(_ => this.count < this.limit)
                 .SubscribeWithState2(this, gimmickOwner, (_, _this, _gimmickOwner) =>
                 {
-                    _this.CreateOtherGimmick(_gimmickOwner);
-                })
-                .AddTo(owner);
+                    _this.duration += Time.deltaTime;
+                    if (_this.duration >= _this.interval)
+                    {
+                        _this.duration = 0.0f;
+                        _this.count++;
+                        _this.CreateOtherGimmick(_gimmickOwner);
+                    }
+                });
         }
 
         private void CreateOtherGimmick(Actor gimmickOwner)
