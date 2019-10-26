@@ -22,6 +22,7 @@ namespace HK.Bright2.ActorControllers
 
             this.states.Add(ActorState.Name.Idle, new Idle(this.owner));
             this.states.Add(ActorState.Name.Run, new Run(this.owner));
+            this.states.Add(ActorState.Name.Jump, new Jump(this.owner));
 
             this.currentState = ActorState.Name.Idle;
             this.states[this.currentState].Enter();

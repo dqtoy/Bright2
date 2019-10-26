@@ -18,4 +18,11 @@ namespace HK.Bright2.ActorControllers.Messages
     public sealed class Idle : Message<Idle>
     {
     }
+
+    /// <summary>
+    /// <see cref="Actor"/>に対してジャンプをリクエストするメッセージ
+    /// </summary>
+    public sealed class RequestJump : Message<RequestJump>
+    {
+    }
 }

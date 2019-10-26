@@ -16,5 +16,9 @@ namespace HK.Bright2.ActorControllers
         [SerializeField]
         private ActorAnimationSequence run = default;
         public ActorAnimationSequence Run => this.run;
+
+        [SerializeField]
+        private float jumpPower = default;
+        public float JumpPower => this.jumpPower;
     }
 }

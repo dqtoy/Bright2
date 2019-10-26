@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 using HK.Bright2.ActorControllers;
+using HK.Bright2.ActorControllers.Messages;
 
 namespace HK.Bright2.InputSystems
 {
@@ -15,9 +16,6 @@ namespace HK.Bright2.InputSystems
         [SerializeField]
         private float speed = default;
 
-        [SerializeField]
-        private float jumpPower = default;
-
         void Update()
         {
             var velocity = new Vector2(Input.GetAxis("Horizontal") * this.speed * Time.deltaTime, 0.0f);
@@ -25,7 +23,7 @@ namespace HK.Bright2.InputSystems
 
             if(Input.GetButtonDown("Jump"))
             {
-                this.actor.Movement.SetGravity(-this.jumpPower);
+                this.actor.Broker.Publish(RequestJump.Get());
             }
         }
     }
