@@ -27,7 +27,9 @@ namespace HK.Bright2.ActorControllers.States
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Attack);
 
             var gimmick = this.owner.StatusController.Equipment.Gimmick.Rent();
-            // gimmick.transform.position = 
+            var parent = this.owner.TransformHolder.GetEquipmentOrigin(this.owner.StatusController.Direction);
+            gimmick.transform.position = parent.position;
+            gimmick.transform.rotation = parent.rotation;
 
             this.owner.UpdateAsObservable()
                 .SubscribeWithState(this, (_, _this) =>
