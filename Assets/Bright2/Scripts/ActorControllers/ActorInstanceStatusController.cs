@@ -69,13 +69,19 @@ namespace HK.Bright2.ActorControllers
 
         public void TakeDamage(int damage)
         {
+            // すでに死亡していたら何もしない
             if(this.status.HitPoint <= 0)
             {
                 return;
             }
-            
+
             this.status.HitPoint -= damage;
-            this.owner.Broker.Publish(Died.Get());
+
+            // 死亡したら通知する
+            if(this.status.HitPoint <= 0)
+            {
+                this.owner.Broker.Publish(Died.Get());
+            }
         }
     }
 }
