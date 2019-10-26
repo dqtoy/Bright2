@@ -9,6 +9,9 @@ namespace HK.Bright2
     /// </summary>
     public sealed class PoolableEffect : MonoBehaviour
     {
+        [SerializeField]
+        private float delayReturnToPoolSeconds = default;
+
         private readonly static ObjectPoolBundle<PoolableEffect> pools = new ObjectPoolBundle<PoolableEffect>();
 
         private ObjectPool<PoolableEffect> pool;
@@ -25,12 +28,12 @@ namespace HK.Bright2
             }
         }
 
-        public PoolableEffect Rent(float delayReturnToPoolSeconds)
+        public PoolableEffect Rent()
         {
             var pool = pools.Get(this);
             var clone = pool.Rent();
             clone.pool = pool;
-            clone.duration = delayReturnToPoolSeconds;
+            clone.duration = this.delayReturnToPoolSeconds;
 
             return clone;
         }
