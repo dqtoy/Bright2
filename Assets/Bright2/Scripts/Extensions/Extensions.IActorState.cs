@@ -20,13 +20,18 @@ namespace HK.Bright2.Extensions
             return self.Owner.Broker.Receive<RequestMove>()
                 .SubscribeWithState(self, (x, _this) =>
                 {
-                    var velocity = Vector2.zero;
-                    var moveSpeed = _this.Owner.Context.BasicStatus.MoveSpeed;
-                    velocity.x = x.Direction.x > 0.0f ? moveSpeed : -moveSpeed;
-
-                    _this.Owner.Movement.AddMove(velocity * Time.deltaTime);
+                    _this.AddMove(x.Direction);
                 })
                 .AddTo(self.Events);
+        }
+
+        public static void AddMove(this IActorState self, Vector2 direction)
+        {
+            var velocity = Vector2.zero;
+            var moveSpeed = self.Owner.Context.BasicStatus.MoveSpeed;
+            velocity.x = direction.x > 0.0f ? moveSpeed : -moveSpeed;
+
+            self.Owner.Movement.AddMove(velocity * Time.deltaTime);
         }
     }
 }

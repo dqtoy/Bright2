@@ -19,8 +19,11 @@ namespace HK.Bright2.ActorControllers.States
         public override void Enter(IActorStateContext context)
         {
             base.Enter(context);
-            
+
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Run);
+            
+            var stateRunContext = (StateRunContext)context;
+            this.AddMove(stateRunContext.Direction);
 
             this.ReceiveRequestMoveOnMove();
 
