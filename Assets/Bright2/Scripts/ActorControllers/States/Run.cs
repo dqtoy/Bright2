@@ -17,7 +17,7 @@ namespace HK.Bright2.ActorControllers.States
 
         public override void Enter()
         {
-            this.owner.AnimationController.StartSequence(this.owner.Context.Run);
+            this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Run);
 
             this.owner.Broker.Receive<Messages.Idle>()
                 .SubscribeWithState(this, (_, _this) =>
@@ -25,7 +25,7 @@ namespace HK.Bright2.ActorControllers.States
                     _this.owner.StateManager.Change(ActorState.Name.Idle);
                 })
                 .AddTo(this.events);
-                
+
             this.owner.Broker.Receive<RequestJump>()
                 .SubscribeWithState(this, (_, _this) =>
                 {

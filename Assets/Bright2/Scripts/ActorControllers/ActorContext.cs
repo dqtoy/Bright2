@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers
@@ -10,15 +11,27 @@ namespace HK.Bright2.ActorControllers
     public sealed class ActorContext : ScriptableObject
     {
         [SerializeField]
-        private ActorAnimationSequence idle = default;
-        public ActorAnimationSequence Idle => this.idle;
-
-        [SerializeField]
-        private ActorAnimationSequence run = default;
-        public ActorAnimationSequence Run => this.run;
+        private AnimationSequenceElements animationSequences = default;
+        public AnimationSequenceElements AnimationSequences => this.animationSequences;
 
         [SerializeField]
         private float jumpPower = default;
         public float JumpPower => this.jumpPower;
+
+        [Serializable]
+        public class AnimationSequenceElements
+        {
+            [SerializeField]
+            private ActorAnimationSequence idle = default;
+            public ActorAnimationSequence Idle => this.idle;
+
+            [SerializeField]
+            private ActorAnimationSequence run = default;
+            public ActorAnimationSequence Run => this.run;
+
+            [SerializeField]
+            private ActorAnimationSequence jump = default;
+            public ActorAnimationSequence Jump => this.jump;
+        }
     }
 }
