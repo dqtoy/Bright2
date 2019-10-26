@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.ActorControllers.States
 {
     /// <summary>
-    /// ジャンプステージを制御するクラス
+    /// ジャンプステートを制御するクラス
     /// </summary>
     public sealed class Jump : ActorState
     {
