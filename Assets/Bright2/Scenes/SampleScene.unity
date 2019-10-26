@@ -423,8 +423,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 2095344786}
-  speed: 6
-  jumpPower: 12
 --- !u!4 &628932142
 Transform:
   m_ObjectHideFlags: 0
@@ -1497,46 +1495,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3702472881573482586, guid: b67c74c6a136f4fd6a0171c72f109bc6,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.9659258
-      objectReference: {fileID: 0}
-    - target: {fileID: 3702472881573482586, guid: b67c74c6a136f4fd6a0171c72f109bc6,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.2588191
-      objectReference: {fileID: 0}
-    - target: {fileID: 3702472881573482586, guid: b67c74c6a136f4fd6a0171c72f109bc6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 3702472881573482586, guid: b67c74c6a136f4fd6a0171c72f109bc6,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095344786, guid: b67c74c6a136f4fd6a0171c72f109bc6, type: 3}
-      propertyPath: context
-      value: 
-      objectReference: {fileID: 11400000, guid: 02078647db3744b4aa03b462239a44e6,
-        type: 2}
-    - target: {fileID: 8979543355813408528, guid: b67c74c6a136f4fd6a0171c72f109bc6,
-        type: 3}
-      propertyPath: shrinkHorizontalRaycastBoxSize.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1155398558062161361, guid: b67c74c6a136f4fd6a0171c72f109bc6,
-        type: 3}
-      propertyPath: rightDirection
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1155398558062161361, guid: b67c74c6a136f4fd6a0171c72f109bc6,
-        type: 3}
-      propertyPath: leftDirection
-      value: 210
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b67c74c6a136f4fd6a0171c72f109bc6, type: 3}

@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166bacf5a1cc04c05be430107a1aba05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  context: {fileID: 11400000, guid: 02078647db3744b4aa03b462239a44e6, type: 2}
 --- !u!114 &8979543355813408528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +181,7 @@ MonoBehaviour:
   raycastIncludeLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  shrinkHorizontalRaycastBoxSize: {x: 0.05, y: 0.2}
+  shrinkHorizontalRaycastBoxSize: {x: 0.05, y: 0.5}
   snapGroundCheckThreshold: 0
   snapGroundDistance: 0.3
   snapGroundOffsetOrigin: {x: 0, y: -0.2}
@@ -199,6 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelParent: {fileID: 3702472881573482586}
+  leftDirection: 210
+  rightDirection: 150
 --- !u!1001 &32536018674119993
 PrefabInstance:
   m_ObjectHideFlags: 0

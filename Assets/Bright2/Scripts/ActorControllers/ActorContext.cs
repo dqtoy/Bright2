@@ -42,6 +42,10 @@ namespace HK.Bright2.ActorControllers
         public class BasicStatusElement
         {
             [SerializeField]
+            private float moveSpeed = default;
+            public float MoveSpeed => this.moveSpeed;
+            
+            [SerializeField]
             private float jumpPower = default;
             public float JumpPower => this.jumpPower;
 

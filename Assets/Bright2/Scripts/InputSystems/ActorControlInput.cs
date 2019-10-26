@@ -13,12 +13,9 @@ namespace HK.Bright2.InputSystems
         [SerializeField]
         private Actor actor = default;
 
-        [SerializeField]
-        private float speed = default;
-
         void Update()
         {
-            var velocity = new Vector2(Input.GetAxis("Horizontal") * this.speed * Time.deltaTime, 0.0f);
+            var velocity = new Vector2(Input.GetAxis("Horizontal") * this.actor.Context.BasicStatus.MoveSpeed * Time.deltaTime, 0.0f);
             this.actor.Movement.AddMove(velocity);
 
             if(Input.GetButtonDown("Jump"))
