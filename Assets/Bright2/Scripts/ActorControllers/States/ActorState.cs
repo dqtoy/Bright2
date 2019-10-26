@@ -18,6 +18,7 @@ namespace HK.Bright2.ActorControllers.States
             Run,
             Attack,
             Jump,
+            Fall,
         }
 
         protected readonly Actor owner;

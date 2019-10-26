@@ -32,4 +32,11 @@ namespace HK.Bright2.ActorControllers.Messages
     public sealed class Landed : Message<Landed>
     {
     }
+
+    /// <summary>
+    /// <see cref="Actor"/>が落下中のメッセージ
+    /// </summary>
+    public sealed class Fall : Message<Fall>
+    {
+    }
 }

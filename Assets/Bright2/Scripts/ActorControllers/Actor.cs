@@ -41,7 +41,7 @@ namespace HK.Bright2.ActorControllers
 
             this.AnimationController = new ActorAnimationController(this);
 
-            this.StatusController = new ActorInstanceStatusController(this.context);
+            this.StatusController = new ActorInstanceStatusController(this, this.context);
 
             this.StateManager = new ActorStateManager(this);
         }

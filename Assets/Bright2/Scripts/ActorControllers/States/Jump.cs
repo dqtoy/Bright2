@@ -32,12 +32,13 @@ namespace HK.Bright2.ActorControllers.States
                     _this.owner.StateManager.Change(ActorState.Name.Idle);
                 })
                 .AddTo(this.events);
-        }
 
-        public override void Exit()
-        {
-            base.Exit();
-            this.owner.StatusController.ResetJumpCount();
+            this.owner.Broker.Receive<Messages.Fall>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.owner.StateManager.Change(ActorState.Name.Fall);
+                })
+                .AddTo(this.events);
         }
 
         private void InvokeJump()

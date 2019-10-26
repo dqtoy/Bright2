@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers.Messages;
+using UniRx;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers
@@ -12,10 +14,17 @@ namespace HK.Bright2.ActorControllers
 
         private readonly ActorInstanceStatus status;
 
-        public ActorInstanceStatusController(ActorContext context)
+        public ActorInstanceStatusController(Actor owner, ActorContext context)
         {
             this.context = context;
             this.status = new ActorInstanceStatus(context);
+
+            owner.Broker.Receive<Landed>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.ResetJumpCount();
+                })
+                .AddTo(owner);
         }
 
         public int JumpCount => this.status.JumpCount;

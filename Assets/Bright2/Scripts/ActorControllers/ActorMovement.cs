@@ -112,13 +112,6 @@ namespace HK.Bright2.ActorControllers
         private void CheckVertical()
         {
             var v = this.velocity;
-
-            // 上方向の移動量かつ着地中の場合は空中にいる状態にする
-            if(v.y > 0.0f && this.isLanding)
-            {
-                this.isLanding = false;
-            }
-            
             var t = this.actor.CachedTransform;
             var pos = t.localPosition;
             var origin = new Vector2(pos.x, pos.y) + this.boxCollider2D.offset;
@@ -130,7 +123,7 @@ namespace HK.Bright2.ActorControllers
             var snapDistance = this.snapGroundDistance;
 
             // 落下中はスナップするか確認する
-            if(this.velocity.y < this.snapGroundCheckThreshold && !this.isLanding)
+            if(this.velocity.y < this.snapGroundCheckThreshold)
             {
                 var snapHit = Physics2D.BoxCast(origin + this.snapGroundOffsetOrigin, size + this.snapGroundOffsetSize, angle, direction, snapDistance, raycastIncludeLayerMask.value);
                 if(snapHit.transform != null)
@@ -165,6 +158,15 @@ namespace HK.Bright2.ActorControllers
                     v.y = 0.0f;
                     this.velocity = v;
                 }
+            }
+            else
+            {
+                this.isLanding = false;
+            }
+
+            if (!this.isLanding && v.y < 0.0f)
+            {
+                this.actor.Broker.Publish(Fall.Get());
             }
         }
 

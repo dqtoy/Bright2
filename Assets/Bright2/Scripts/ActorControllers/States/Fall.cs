@@ -6,20 +6,19 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.ActorControllers.States
 {
     /// <summary>
-    /// ラン状態を制御するクラス
+    /// 落下ステートを制御するクラス
     /// </summary>
-    public sealed class Run : ActorState
+    public sealed class Fall : ActorState
     {
-        public Run(Actor owner)
-            :base(owner)
+        public Fall(Actor owner) : base(owner)
         {
         }
 
         public override void Enter()
         {
-            this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Run);
+            this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Fall);
 
-            this.owner.Broker.Receive<Messages.Idle>()
+            this.owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.owner.StateManager.Change(ActorState.Name.Idle);
@@ -33,19 +32,6 @@ namespace HK.Bright2.ActorControllers.States
                     _this.owner.StateManager.Change(ActorState.Name.Jump);
                 })
                 .AddTo(this.events);
-
-            this.owner.Broker.Receive<Messages.Fall>()
-                .SubscribeWithState(this, (_, _this) =>
-                {
-                    _this.owner.StatusController.AddJumpCount();
-                    _this.owner.StateManager.Change(ActorState.Name.Fall);
-                })
-                .AddTo(this.events);
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
         }
     }
 }

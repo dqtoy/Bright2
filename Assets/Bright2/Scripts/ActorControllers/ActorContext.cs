@@ -32,6 +32,10 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private ActorAnimationSequence jump = default;
             public ActorAnimationSequence Jump => this.jump;
+
+            [SerializeField]
+            private ActorAnimationSequence fall = default;
+            public ActorAnimationSequence Fall => this.fall;
         }
 
         [Serializable]
