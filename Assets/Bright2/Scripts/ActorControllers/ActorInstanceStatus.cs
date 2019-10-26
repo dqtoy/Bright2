@@ -19,6 +19,11 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public EquipmentRecord equipmentRecord { get; set; }
 
+        /// <summary>
+        /// 現在向いている方向
+        /// </summary>
+        public Constants.Direction Direction { get; set; }
+
         public ActorInstanceStatus(ActorContext context)
         {
         }

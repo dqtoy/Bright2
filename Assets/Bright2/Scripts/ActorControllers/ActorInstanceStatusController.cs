@@ -1,5 +1,6 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
+using HK.Bright2.Extensions;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -19,6 +20,7 @@ namespace HK.Bright2.ActorControllers
         {
             this.context = context;
             this.status = new ActorInstanceStatus(context);
+            this.status.Direction = Constants.Direction.Right;
 
             owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
@@ -26,11 +28,22 @@ namespace HK.Bright2.ActorControllers
                     _this.ResetJumpCount();
                 })
                 .AddTo(owner);
+
+            owner.Broker.Receive<Move>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    var direction = x.Velocity.GetHorizontalDirection();
+                    Assert.AreNotEqual(direction, Constants.Direction.None);
+                    _this.status.Direction = direction;
+                })
+                .AddTo(owner);
         }
 
         public int JumpCount => this.status.JumpCount;
 
         public EquipmentRecord Equipment => this.status.equipmentRecord;
+
+        public Constants.Direction Direction => this.status.Direction;
 
         public void AddJumpCount()
         {

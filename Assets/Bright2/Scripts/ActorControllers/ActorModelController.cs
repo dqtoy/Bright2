@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.ActorControllers.Messages;
+using HK.Bright2.Extensions;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -11,13 +12,6 @@ namespace HK.Bright2.ActorControllers
     /// </summary>
     public sealed class ActorModelController : MonoBehaviour
     {
-        public enum Direction
-        {
-            None,
-            Left,
-            Right
-        }
-
         [SerializeField]
         private Transform modelParent = default;
 
@@ -33,7 +27,7 @@ namespace HK.Bright2.ActorControllers
 
         private int currentModelId = 0;
 
-        private Direction direction = Direction.None;
+        private Constants.Direction direction = Constants.Direction.None;
 
         void Awake()
         {
@@ -55,8 +49,7 @@ namespace HK.Bright2.ActorControllers
             this.owner.Broker.Receive<Move>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    var direction = x.Velocity.x > 0.0f ? Direction.Right : Direction.Left;
-                    _this.Turn(direction);
+                    _this.Turn(x.Velocity.GetHorizontalDirection());
                 })
                 .AddTo(this);
         }
@@ -71,9 +64,9 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// モデルを<paramref name="direction"/>方向へ向かせる
         /// </summary>
-        private void Turn(Direction direction)
+        private void Turn(Constants.Direction direction)
         {
-            Assert.AreNotEqual(direction, Direction.None);
+            Assert.AreNotEqual(direction, Constants.Direction.None);
 
             if(this.direction == direction)
             {
@@ -91,18 +84,18 @@ namespace HK.Bright2.ActorControllers
             this.modelParent.localScale = scale;
         }
 
-        private float GetDirectionRotation(Direction direction)
+        private float GetDirectionRotation(Constants.Direction direction)
         {
-            Assert.AreNotEqual(direction, Direction.None);
+            Assert.AreNotEqual(direction, Constants.Direction.None);
 
-            return direction == Direction.Left ? this.leftDirection : this.rightDirection;
+            return direction == Constants.Direction.Left ? this.leftDirection : this.rightDirection;
         }
 
-        private float GetDirectionScale(Direction direction)
+        private float GetDirectionScale(Constants.Direction direction)
         {
-            Assert.AreNotEqual(direction, Direction.None);
+            Assert.AreNotEqual(direction, Constants.Direction.None);
 
-            return direction == Direction.Left ? -1.0f : 1.0f;
+            return direction == Constants.Direction.Left ? -1.0f : 1.0f;
         }
     }
 }

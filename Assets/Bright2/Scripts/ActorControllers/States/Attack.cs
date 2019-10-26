@@ -22,9 +22,12 @@ namespace HK.Bright2.ActorControllers.States
         public override void Enter(IActorStateContext context)
         {
             base.Enter(context);
-            
+
             this.nextStateDelaySeconds = 0.0f;
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Attack);
+
+            var gimmick = this.owner.StatusController.Equipment.Gimmick.Rent();
+            // gimmick.transform.position = 
 
             this.owner.UpdateAsObservable()
                 .SubscribeWithState(this, (_, _this) =>

@@ -10,7 +10,7 @@ namespace HK.Bright2.Extensions
     /// <summary>
     /// <see cref="IActorState"/>に関する拡張関数
     /// </summary>
-    public static class Extensions
+    public static partial class Extensions
     {
         /// <summary>
         /// <see cref="RequestMove"/>メッセージを受信して移動を行う
