@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Equipment
   m_EditorClassIdentifier: 
   records:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
