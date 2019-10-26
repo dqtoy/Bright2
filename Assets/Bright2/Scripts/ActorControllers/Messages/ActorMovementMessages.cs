@@ -7,8 +7,9 @@ namespace HK.Bright2.ActorControllers.Messages
     /// <summary>
     /// <see cref="Actor"/>が移動したことを通知するメッセージ
     /// </summary>
-    public sealed class Move : Message<Move>
+    public sealed class Move : Message<Move, Vector2>
     {
+        public Vector2 Velocity => this.param1;
     }
 
     /// <summary>

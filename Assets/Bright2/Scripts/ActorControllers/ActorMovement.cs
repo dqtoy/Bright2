@@ -166,6 +166,8 @@ namespace HK.Bright2.ActorControllers
                 return;
             }
 
+            var v = this.velocity;
+            var tempVelocity = v;
             var t = this.actor.CachedTransform;
             var pos = t.localPosition;
             var origin = new Vector2(pos.x, pos.y) + this.boxCollider2D.offset;
@@ -180,14 +182,13 @@ namespace HK.Bright2.ActorControllers
                 var point = hit.point;
                 var diff = point.x - pos.x;
 
-                if((diff > 0.0f && this.velocity.x > 0.0f) || (diff < 0.0f && this.velocity.x < 0.0f))
+                if((diff > 0.0f && v.x > 0.0f) || (diff < 0.0f && v.x < 0.0f))
                 {
 #if UNITY_EDITOR
                     this.lastHitHorizontalPoint = point;
 #endif
 
-                    var v = this.velocity;
-                    var offset = this.velocity.x > 0.0f ? -size.x * 0.5f : size.x * 0.5f;
+                    var offset = v.x > 0.0f ? -size.x * 0.5f : size.x * 0.5f;
                     t.localPosition = new Vector3(point.x + offset, pos.y, pos.z);
 
                     v.x = 0.0f;
@@ -195,7 +196,7 @@ namespace HK.Bright2.ActorControllers
                 }
             }
 
-            this.actor.Broker.Publish(Move.Get());
+            this.actor.Broker.Publish(Move.Get(tempVelocity));
         }
     }
 }
