@@ -14,6 +14,8 @@ namespace HK.Bright2.ActorControllers.States
 
         public override void Enter()
         {
+            this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Jump);
+            
             this.owner.Movement.SetGravity(-this.owner.Context.JumpPower);
         }
     }

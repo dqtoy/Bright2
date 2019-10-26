@@ -25,9 +25,11 @@ namespace HK.Bright2.ActorControllers
             {
                 get
                 {
+                    Debug.Log(animationName);
                     if(this.cachedAnimationId == 0)
                     {
                         this.cachedAnimationId = Animator.StringToHash(this.animationName);
+                        Debug.Log(this.cachedAnimationId);
                     }
 
                     return this.cachedAnimationId;

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Jump
   m_EditorClassIdentifier: 
   elements:
-  - animationName: Jump
+  - animationName: Jump0
     waitSeconds: 9999
