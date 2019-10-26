@@ -16,7 +16,7 @@ namespace HK.Bright2.ActorControllers
 
         public Transform CachedTransform { get; private set; }
 
-        public ActorMovement Movement { get; private set; }
+        public TransformMovement Movement { get; private set; }
 
         public ActorStateManager StateManager { get; private set; }
 
@@ -39,7 +39,7 @@ namespace HK.Bright2.ActorControllers
             this.CachedTransform = this.transform;
             Assert.IsNotNull(this.CachedTransform);
 
-            this.Movement = this.GetComponent<ActorMovement>();
+            this.Movement = this.GetComponent<TransformMovement>();
             Assert.IsNotNull(this.Movement);
 
             this.ModelController = this.GetComponent<ActorModelController>();

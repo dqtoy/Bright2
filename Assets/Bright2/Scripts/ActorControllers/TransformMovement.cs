@@ -5,10 +5,13 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.ActorControllers
 {
     /// <summary>
-    /// <see cref="Actor"/>の移動処理を制御するクラス
+    /// <see cref="Transform"/>の物理移動処理を制御するクラス
     /// </summary>
-    public sealed class ActorMovement : MonoBehaviour
+    public sealed class TransformMovement : MonoBehaviour
     {
+        [SerializeField]
+        private Transform controlledTransform = default;
+
         [SerializeField]
         private BoxCollider2D boxCollider2D = default;
 
@@ -33,7 +36,7 @@ namespace HK.Bright2.ActorControllers
         [SerializeField]
         private Vector2 gravity = default;
 
-        private Actor actor;
+        private IBroker brokableObject;
 
         private Vector2 velocity;
 
@@ -43,9 +46,9 @@ namespace HK.Bright2.ActorControllers
 
         void Awake()
         {
-            this.actor = this.GetComponent<Actor>();
+            this.brokableObject = this.GetComponent<IBroker>();
 
-            Assert.IsNotNull(this.actor);
+            Assert.IsNotNull(this.controlledTransform);
             Assert.IsNotNull(this.boxCollider2D);
         }
 
@@ -53,7 +56,7 @@ namespace HK.Bright2.ActorControllers
         {
             this.AddGravity();
 
-            var t = this.actor.CachedTransform;
+            var t = this.controlledTransform;
             this.CheckHorizontal();
             this.CheckVertical();
             t.localPosition += new Vector3(this.velocity.x, this.velocity.y, 0.0f);
@@ -75,12 +78,12 @@ namespace HK.Bright2.ActorControllers
 
         void OnDrawGizmosSelected()
         {
-            if(this.actor == null)
+            if(this.controlledTransform == null)
             {
                 return;
             }
 
-            var from = this.actor.CachedTransform.position;
+            var from = this.controlledTransform.position;
             var to = from + new Vector3(this.lastVelocity.x, this.lastVelocity.y, 0.0f);
             Gizmos.color = Color.red;
             Gizmos.DrawLine(from, to);
@@ -112,7 +115,7 @@ namespace HK.Bright2.ActorControllers
         private void CheckVertical()
         {
             var v = this.velocity;
-            var t = this.actor.CachedTransform;
+            var t = this.controlledTransform;
             var pos = t.localPosition;
             var origin = new Vector2(pos.x, pos.y) + this.boxCollider2D.offset;
             var size = this.boxCollider2D.size;
@@ -137,7 +140,7 @@ namespace HK.Bright2.ActorControllers
                     v.y = 0.0f;
                     this.velocity = v;
                     this.isLanding = true;
-                    this.actor.Broker.Publish(Landed.Get());
+                    this.brokableObject?.Broker.Publish(Landed.Get());
                 }
             }
             var hit = Physics2D.BoxCast(origin, size, angle, direction, distance, raycastIncludeLayerMask.value);
@@ -166,7 +169,7 @@ namespace HK.Bright2.ActorControllers
 
             if (!this.isLanding && v.y < 0.0f)
             {
-                this.actor.Broker.Publish(Fall.Get());
+                this.brokableObject?.Broker.Publish(Fall.Get());
             }
         }
 
@@ -174,13 +177,13 @@ namespace HK.Bright2.ActorControllers
         {
             if(this.velocity.x == 0.0f)
             {
-                this.actor.Broker.Publish(Idle.Get());
+                this.brokableObject?.Broker.Publish(Idle.Get());
                 return;
             }
 
             var v = this.velocity;
             var tempVelocity = v;
-            var t = this.actor.CachedTransform;
+            var t = this.controlledTransform;
             var pos = t.localPosition;
             var origin = new Vector2(pos.x, pos.y) + this.boxCollider2D.offset;
             var size = this.boxCollider2D.size;
@@ -208,7 +211,7 @@ namespace HK.Bright2.ActorControllers
                 }
             }
 
-            this.actor.Broker.Publish(Move.Get(tempVelocity));
+            this.brokableObject?.Broker.Publish(Move.Get(tempVelocity));
         }
     }
 }
