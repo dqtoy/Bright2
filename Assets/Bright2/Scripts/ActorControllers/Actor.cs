@@ -7,7 +7,7 @@ namespace HK.Bright2.ActorControllers
     /// <summary>
     /// ゲーム中に何かしらのアクションを起こすオブジェクトの中核クラス
     /// </summary>
-    public sealed class Actor : MonoBehaviour
+    public sealed class Actor : MonoBehaviour, IBroker
     {
         [SerializeField]
         private ActorContext context = default;
@@ -31,6 +31,8 @@ namespace HK.Bright2.ActorControllers
         public ActorLifeCycleController LifeCycleController { get; private set; }
 
         public readonly IMessageBroker Broker = new MessageBroker();
+
+        IMessageBroker IBroker.Broker => this.Broker;
 
         void Awake()
         {
