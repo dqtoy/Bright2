@@ -42,6 +42,10 @@ namespace HK.Bright2.ActorControllers.States
                     }
                 })
                 .AddTo(this.events);
+
+            var moveSpeed = this.owner.Context.BasicStatus.MoveSpeed;
+            moveSpeed -= moveSpeed * this.owner.StatusController.Equipment.MoveSpeedAttenuationRate;
+            this.ReceiveRequestMoveOnMove(moveSpeed);
         }
     }
 }

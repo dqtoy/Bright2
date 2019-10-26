@@ -35,5 +35,14 @@ namespace HK.Bright2.Database
         /// 攻撃出来るまでのクールタイム（秒）
         /// </summary>
         public float CoolTimeSeconds => this.coolTimeSeconds;
+
+        [SerializeField][Range(0.0f, 1.0f)]
+        private float moveSpeedAttenuationRate = default;
+        /// <summary>
+        /// 攻撃時の移動速度減衰率
+        /// 0 = 減衰しない
+        /// 1 = 移動しなくなる
+        /// </summary>
+        public float MoveSpeedAttenuationRate => this.moveSpeedAttenuationRate;
     }
 }
