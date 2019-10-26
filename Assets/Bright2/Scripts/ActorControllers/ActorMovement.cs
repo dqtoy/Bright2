@@ -31,13 +31,13 @@ namespace HK.Bright2.ActorControllers
         private Vector2 snapGroundOffsetSize = default;
 
         [SerializeField]
-        private float gravity = default;
+        private Vector2 gravity = default;
 
         private Actor actor;
 
         private Vector2 velocity;
 
-        private float currentGravity = 0.0f;
+        private Vector2 currentGravity;
 
         private bool isLanding = false;
 
@@ -98,7 +98,7 @@ namespace HK.Bright2.ActorControllers
             this.velocity += velocity;
         }
 
-        public void SetGravity(float gravity)
+        public void SetGravity(Vector2 gravity)
         {
             this.currentGravity = gravity;
         }
@@ -106,7 +106,7 @@ namespace HK.Bright2.ActorControllers
         private void AddGravity()
         {
             this.currentGravity += this.gravity * Time.deltaTime;
-            this.velocity += Vector2.down * this.currentGravity * Time.deltaTime;
+            this.velocity += this.currentGravity * Time.deltaTime;
         }
 
         private void CheckVertical()
@@ -132,7 +132,7 @@ namespace HK.Bright2.ActorControllers
 #if UNITY_EDITOR
                     this.lastHitVerticalPoint = point;
 #endif
-                    this.currentGravity = 0.0f;
+                    this.currentGravity = Vector2.zero;
                     t.localPosition = new Vector3(pos.x, point.y, pos.z);
                     v.y = 0.0f;
                     this.velocity = v;
@@ -152,7 +152,7 @@ namespace HK.Bright2.ActorControllers
 #if UNITY_EDITOR
                     this.lastHitVerticalPoint = point;
 #endif
-                    this.currentGravity = 0.0f;
+                    this.currentGravity = Vector2.zero;
                     var newY = v.y < 0.0f ? point.y : point.y - size.y;
                     t.localPosition = new Vector3(pos.x, newY, pos.z);
                     v.y = 0.0f;

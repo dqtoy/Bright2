@@ -242,7 +242,7 @@ MonoBehaviour:
   snapGroundDistance: 0.3
   snapGroundOffsetOrigin: {x: 0, y: -0.2}
   snapGroundOffsetSize: {x: 0, y: -0.4}
-  gravity: 28
+  gravity: {x: 0, y: -28}
 --- !u!114 &1155398558062161361
 MonoBehaviour:
   m_ObjectHideFlags: 0

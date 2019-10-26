@@ -63,7 +63,7 @@ namespace HK.Bright2.ActorControllers.States
             }
 
             this.owner.StatusController.AddJumpCount();
-            this.owner.Movement.SetGravity(-this.owner.Context.BasicStatus.JumpPower);
+            this.owner.Movement.SetGravity(Vector2.up * this.owner.Context.BasicStatus.JumpPower);
         }
     }
 }
