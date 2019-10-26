@@ -50,4 +50,11 @@ namespace HK.Bright2.ActorControllers.Messages
     public sealed class Fall : Message<Fall>
     {
     }
+
+    /// <summary>
+    /// <see cref="Actor"/>に対して攻撃をリクエストするメッセージ
+    /// </summary>
+    public sealed class RequestFire : Message<RequestFire>
+    {
+    }
 }

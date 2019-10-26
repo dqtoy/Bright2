@@ -2,6 +2,7 @@
 using UnityEngine.Assertions;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.ActorControllers.Messages;
+using HK.Bright2.Database;
 
 namespace HK.Bright2.InputSystems
 {
@@ -12,6 +13,14 @@ namespace HK.Bright2.InputSystems
     {
         [SerializeField]
         private Actor actor = default;
+
+        [SerializeField]
+        private EquipmentRecord equipmentRecord = default;
+
+        void Start()
+        {
+            this.actor.StatusController.SetEquipment(this.equipmentRecord);
+        }
 
         void Update()
         {
@@ -24,6 +33,11 @@ namespace HK.Bright2.InputSystems
             if(Input.GetButtonDown("Jump"))
             {
                 this.actor.Broker.Publish(RequestJump.Get());
+            }
+
+            if(Input.GetButtonDown("Fire1"))
+            {
+                this.actor.Broker.Publish(RequestFire.Get());
             }
         }
     }

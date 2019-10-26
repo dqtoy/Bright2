@@ -24,6 +24,7 @@ namespace HK.Bright2.ActorControllers
             this.states.Add(ActorState.Name.Run, new Run(this.owner));
             this.states.Add(ActorState.Name.Jump, new Jump(this.owner));
             this.states.Add(ActorState.Name.Fall, new Fall(this.owner));
+            this.states.Add(ActorState.Name.Attack, new Attack(this.owner));
 
             this.currentState = ActorState.Name.Idle;
             this.states[this.currentState].Enter();
@@ -31,7 +32,7 @@ namespace HK.Bright2.ActorControllers
 
         public void Change(ActorState.Name nextState)
         {
-            Assert.IsTrue(this.states.ContainsKey(nextState));
+            Assert.IsTrue(this.states.ContainsKey(nextState), $"{nextState}に対応した{typeof(IActorState)}が存在しません");
 
             this.states[this.currentState].Exit();
             this.currentState = nextState;

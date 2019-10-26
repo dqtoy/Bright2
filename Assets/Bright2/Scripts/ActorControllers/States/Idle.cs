@@ -21,7 +21,7 @@ namespace HK.Bright2.ActorControllers.States
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Idle);
 
             this.ReceiveRequestMoveOnMove();
-            
+
             this.owner.Broker.Receive<RequestMove>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
@@ -42,6 +42,13 @@ namespace HK.Bright2.ActorControllers.States
                 {
                     _this.owner.StatusController.AddJumpCount();
                     _this.owner.StateManager.Change(ActorState.Name.Fall);
+                })
+                .AddTo(this.events);
+
+            this.owner.Broker.Receive<RequestFire>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.owner.StateManager.Change(ActorState.Name.Attack);
                 })
                 .AddTo(this.events);
         }

@@ -1,4 +1,5 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
+using HK.Bright2.Database;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -29,6 +30,8 @@ namespace HK.Bright2.ActorControllers
 
         public int JumpCount => this.status.JumpCount;
 
+        public EquipmentRecord Equipment => this.status.equipmentRecord;
+
         public void AddJumpCount()
         {
             this.status.JumpCount++;
@@ -45,6 +48,11 @@ namespace HK.Bright2.ActorControllers
             {
                 return this.JumpCount < this.context.BasicStatus.LimitJumpCount;
             }
+        }
+
+        public void SetEquipment(EquipmentRecord equipment)
+        {
+            this.status.equipmentRecord = equipment;
         }
     }
 }

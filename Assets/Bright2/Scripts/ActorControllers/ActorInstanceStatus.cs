@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.Database;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers
@@ -12,6 +13,11 @@ namespace HK.Bright2.ActorControllers
         /// ジャンプした回数
         /// </summary>
         public int JumpCount { get; set; }
+
+        /// <summary>
+        /// 装備中の装備品
+        /// </summary>
+        public EquipmentRecord equipmentRecord { get; set; }
 
         public ActorInstanceStatus(ActorContext context)
         {
