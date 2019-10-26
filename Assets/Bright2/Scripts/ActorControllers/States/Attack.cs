@@ -30,6 +30,7 @@ namespace HK.Bright2.ActorControllers.States
             var parent = this.owner.TransformHolder.GetEquipmentOrigin(this.owner.StatusController.Direction);
             gimmick.transform.position = parent.position;
             gimmick.transform.rotation = parent.rotation;
+            gimmick.Activate(this.owner);
 
             this.owner.UpdateAsObservable()
                 .SubscribeWithState(this, (_, _this) =>

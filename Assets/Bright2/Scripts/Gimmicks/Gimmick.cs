@@ -1,4 +1,5 @@
 ﻿using HK.Bright2.ActorControllers;
+using HK.Bright2.GimmickControllers.Decorators;
 using HK.Bright2.GimmickControllers.Messages;
 using HK.Framework;
 using UniRx;
@@ -37,8 +38,10 @@ namespace HK.Bright2.GimmickControllers
         public void Activate(Actor owner)
         {
             this.decotators = this.decotators ?? this.GetComponentsInChildren<IGimmickDecorator>();
-
-            this.Broker.Publish(ActivateGimmick.Get(owner));
+            foreach(var d in this.decotators)
+            {
+                d.OnActivate(this, owner);
+            }
         }
     }
 }
