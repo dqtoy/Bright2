@@ -25,11 +25,12 @@ namespace HK.Bright2.ActorControllers
             {
                 get
                 {
-                    Debug.Log(animationName);
+// Unity上ではシーン再生終了後もキャッシュされるようになったので、開発中は都度取得する
+#if !UNITY_EDITOR
                     if(this.cachedAnimationId == 0)
+#endif
                     {
                         this.cachedAnimationId = Animator.StringToHash(this.animationName);
-                        Debug.Log(this.cachedAnimationId);
                     }
 
                     return this.cachedAnimationId;
