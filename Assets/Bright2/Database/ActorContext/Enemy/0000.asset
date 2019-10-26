@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342be30bc72244c6eb1f555d8ea331a2, type: 3}
+  m_Name: 0000
+  m_EditorClassIdentifier: 
+  animationSequences:
+    idle: {fileID: 11400000, guid: 238bc4b21e0ba489fb27825954e858a0, type: 2}
+    run: {fileID: 11400000, guid: 0aee7b11fa7f5454c851f8c1191f8dae, type: 2}
+    jump: {fileID: 11400000, guid: bc4f6732c476b4e859ea0458c3d9240d, type: 2}
+    fall: {fileID: 11400000, guid: 9b8264f6cd95d4b88b9b1bd3895be2e5, type: 2}
+    attack: {fileID: 11400000, guid: 905c51a71046c4ace9c174ac65d61988, type: 2}
+  basicStatus:
+    moveSpeed: 3
+    jumpPower: 12
+    limitJumpCount: 1
