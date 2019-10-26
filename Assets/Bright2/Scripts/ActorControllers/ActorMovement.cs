@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers.Messages;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers
@@ -192,6 +193,8 @@ namespace HK.Bright2.ActorControllers
                     this.velocity = v;
                 }
             }
+
+            this.actor.Broker.Publish(Move.Get());
         }
     }
 }

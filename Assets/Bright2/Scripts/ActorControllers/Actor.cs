@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers
@@ -9,10 +10,10 @@ namespace HK.Bright2.ActorControllers
     public sealed class Actor : MonoBehaviour
     {
         [SerializeField]
-        private ActorContext context;
+        private ActorContext context = default;
 
         public ActorContext Context => this.context;
-        
+
         public Transform CachedTransform { get; private set; }
 
         public ActorMovement Movement { get; private set; }
@@ -22,6 +23,8 @@ namespace HK.Bright2.ActorControllers
         public ActorModelSwitcher ModelSwitcher { get; private set; }
 
         public ActorAnimationController AnimationController { get; private set; }
+
+        public readonly IMessageBroker Broker = new MessageBroker();
 
         void Awake()
         {
