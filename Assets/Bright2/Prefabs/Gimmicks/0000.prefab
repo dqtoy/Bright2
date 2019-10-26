@@ -211,4 +211,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePower: 10
-  knockbackPower: 10
+  knockbackPower: 7
