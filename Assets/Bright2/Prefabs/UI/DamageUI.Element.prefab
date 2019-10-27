@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 3674993847810836655}
-  visibleSeconds: 1
+  visibleSeconds: 2
   randomPosition: 0.1
 --- !u!1 &6059577343651022597
 GameObject:
