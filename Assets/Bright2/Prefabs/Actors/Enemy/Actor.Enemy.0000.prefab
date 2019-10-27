@@ -214,7 +214,7 @@ PrefabInstance:
     - target: {fileID: 3702472882505496168, guid: 962ca94802f2149c7b071d3ab447c8f5,
         type: 3}
       propertyPath: m_Name
-      value: 0000
+      value: Actor.Enemy.0000
       objectReference: {fileID: 0}
     - target: {fileID: 3702472882505496168, guid: 962ca94802f2149c7b071d3ab447c8f5,
         type: 3}
@@ -289,17 +289,17 @@ PrefabInstance:
     - target: {fileID: 8267512877853937779, guid: 962ca94802f2149c7b071d3ab447c8f5,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.8
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8267512877853937779, guid: 962ca94802f2149c7b071d3ab447c8f5,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8267512877853937779, guid: 962ca94802f2149c7b071d3ab447c8f5,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.25
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 962ca94802f2149c7b071d3ab447c8f5, type: 3}
