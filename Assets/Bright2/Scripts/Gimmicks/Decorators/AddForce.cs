@@ -16,12 +16,17 @@ namespace HK.Bright2.GimmickControllers.Decorators
         private float force = default;
 
         [SerializeField]
+        private float offsetAngle = default;
+
+        [SerializeField]
         private float randomAngle = default;
 
         void IGimmickDecorator.OnActivate(Gimmick owner, Actor gimmickOwner)
         {
-            var random = Random.Range(0.0f, this.randomAngle);
-            this.transform.rotation *= Quaternion.AngleAxis(random, this.transform.forward);
+            var halfRandomAngle = randomAngle * 0.5f;
+            var random = Random.Range(-halfRandomAngle, halfRandomAngle);
+            this.transform.rotation *= Quaternion.AngleAxis(this.offsetAngle, Vector3.forward);
+            this.transform.rotation *= Quaternion.AngleAxis(random, Vector3.forward);
             this.controlledRigidbody2D.AddForce(this.transform.right * this.force);
         }
     }
