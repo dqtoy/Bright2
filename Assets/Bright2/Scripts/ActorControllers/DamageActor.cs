@@ -19,12 +19,17 @@ namespace HK.Bright2.ActorControllers
         [SerializeField]
         private float knockbackPower = default;
 
+        private Collider2D controlledCollider;
+
         private Actor owner;
 
         void Awake()
         {
             this.owner = this.GetComponentInParent<Actor>();
             Assert.IsNotNull(this.owner);
+
+            this.controlledCollider = this.GetComponentInChildren<Collider2D>();
+            Assert.IsNotNull(this.controlledCollider);
         }
 
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
@@ -40,7 +45,9 @@ namespace HK.Bright2.ActorControllers
                 return;
             }
 
-            actor.StatusController.TakeDamage(this.damagePower);
+            var generationSource = this.controlledCollider.ClosestPoint(actor.CachedTransform.position);
+
+            actor.StatusController.TakeDamage(this.damagePower, generationSource);
             actor.Movement.SetGravity(this.GetKnockbackDirection(actor) * this.knockbackPower);
         }
 

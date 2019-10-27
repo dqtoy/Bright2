@@ -19,6 +19,13 @@ namespace HK.Bright2.GimmickControllers.Decorators
 
         private Actor gimmickOwner;
 
+        private Collider2D controlledCollider;
+
+        void Awake()
+        {
+            this.controlledCollider = this.GetComponentInChildren<Collider2D>();
+        }
+
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
             // オーナーと衝突した場合は何もしない
@@ -27,7 +34,9 @@ namespace HK.Bright2.GimmickControllers.Decorators
                 return;
             }
 
-            actor.StatusController.TakeDamage(this.damagePower);
+            var generationSource = this.controlledCollider.ClosestPoint(actor.CachedTransform.position);
+
+            actor.StatusController.TakeDamage(this.damagePower, generationSource);
             actor.Movement.SetGravity(this.GetKnockbackDirection() * this.knockbackPower);
         }
 

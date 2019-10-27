@@ -72,7 +72,10 @@ namespace HK.Bright2.ActorControllers
             this.status.Direction = direction;
         }
 
-        public void TakeDamage(int damage)
+        /// <summary>
+        /// ダメージを受ける
+        /// </summary>
+        public void TakeDamage(int damage, Vector3 generationSource)
         {
             // すでに死亡していたら何もしない
             if(this.status.HitPoint.Value <= 0)
