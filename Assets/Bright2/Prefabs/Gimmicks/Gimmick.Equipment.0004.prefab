@@ -303,8 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63205bb744d8d404b87b6f45bd71b58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePower: 10
-  knockbackPower: 7
+  damagePower: 30
+  knockbackPower: 15
 --- !u!1 &8096089980199602236
 GameObject:
   m_ObjectHideFlags: 0
