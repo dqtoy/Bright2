@@ -24,3 +24,6 @@ MonoBehaviour:
     jumpPower: 12
     limitJumpCount: 1
     money: 123
+    dropEquipments:
+    - record: {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
+      winningRate: 1
