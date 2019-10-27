@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.GameSystems
@@ -11,14 +12,14 @@ namespace HK.Bright2.GameSystems
         private static GameSystem instance;
         public static GameSystem Instance => instance;
 
-        public PlayerManager PlayerManager { get; private set; }
+        public ActorManager ActorManager { get; private set; }
 
         void Awake()
         {
             Assert.IsNull(instance);
             instance = this;
 
-            this.PlayerManager = new PlayerManager();
+            this.ActorManager = new ActorManager();
         }
 
         void OnDestroy()
