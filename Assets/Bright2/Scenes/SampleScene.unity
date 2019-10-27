@@ -426,7 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
   equipmentRecords:
-  - {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
+  - {fileID: 11400000, guid: 670c5765ffd004955b8eaa0e0b6cdf05, type: 2}
   - {fileID: 11400000, guid: 893b19f17d1bc44d2af06531b9069b4c, type: 2}
   - {fileID: 11400000, guid: 767a9a4e45e25410da6ff5351804c5f8, type: 2}
 --- !u!4 &628932142
@@ -1483,7 +1483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7550151298698405770, guid: 2b7334e990bc94be7a1458a568f7af5c, type: 3}
   limit: -1
-  interval: 0.3
+  interval: 1
 --- !u!4 &1914141062
 Transform:
   m_ObjectHideFlags: 0
@@ -1492,7 +1492,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914141060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.07, y: 4.29, z: 0}
+  m_LocalPosition: {x: 18.96, y: 8.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
