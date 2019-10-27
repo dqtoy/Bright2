@@ -23,15 +23,22 @@ namespace HK.Bright2.ActorControllers.States
         {
             base.Enter(context);
 
+            var stateAttackContext = (StateAttackContext)context;
+            Assert.IsNotNull(stateAttackContext);
+
+            var equippedEquipment = this.owner.StatusController.EquippedEquipments[stateAttackContext.EquippedEquipmentIndex];
+            Assert.IsTrue(equippedEquipment.CanFire, "攻撃不可能な状態なのに攻撃しようとしました");
+
             this.nextStateDelaySeconds = 0.0f;
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Attack);
-            var equipmentRecord = this.owner.StatusController.EquippedEquipments[0].EquipmentRecord;
+
+            var equipmentRecord = equippedEquipment.EquipmentRecord;
             var gimmick = equipmentRecord.Gimmick.Rent();
             var parent = this.owner.TransformHolder.GetEquipmentOrigin(this.owner.StatusController.Direction);
             gimmick.transform.position = parent.position;
             gimmick.transform.rotation = parent.rotation;
             gimmick.Activate(this.owner);
-            this.owner.StatusController.EquippedEquipments[0].ResetCoolTime();
+            equippedEquipment.ResetCoolTime();
 
             this.owner.UpdateAsObservable()
                 .SubscribeWithState2(this, equipmentRecord, (_, _this, _equipmentRecord) =>

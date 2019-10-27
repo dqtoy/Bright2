@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 342be30bc72244c6eb1f555d8ea331a2, type: 3}
-  m_Name: 0000
+  m_Name: ActorContext.Enemy.0000
   m_EditorClassIdentifier: 
   animationSequences:
     idle: {fileID: 11400000, guid: 238bc4b21e0ba489fb27825954e858a0, type: 2}

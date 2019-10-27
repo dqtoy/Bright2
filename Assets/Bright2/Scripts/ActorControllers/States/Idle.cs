@@ -45,7 +45,7 @@ namespace HK.Bright2.ActorControllers.States
                 })
                 .AddTo(this.events);
 
-            this.ReceiveRequestFireOnChangeAttackState(0);
+            this.ReceiveRequestFireOnChangeAttackState();
         }
 
         public override void Exit()

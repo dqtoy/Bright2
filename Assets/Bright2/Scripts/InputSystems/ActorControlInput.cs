@@ -18,7 +18,7 @@ namespace HK.Bright2.InputSystems
         private Actor actor = default;
 
         [SerializeField]
-        private EquipmentRecord equipmentRecord = default;
+        private EquipmentRecord[] equipmentRecords = default;
 
         void Awake()
         {
@@ -27,7 +27,10 @@ namespace HK.Bright2.InputSystems
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.actor = x.Actor;
-                    this.actor.StatusController.SetEquipment(0, this.equipmentRecord);
+                    for (var i = 0; i < _this.equipmentRecords.Length; i++)
+                    {
+                        this.actor.StatusController.SetEquipment(i, this.equipmentRecords[i]);
+                    }
                 })
                 .AddTo(this);
         }
@@ -50,9 +53,19 @@ namespace HK.Bright2.InputSystems
                 this.actor.Broker.Publish(RequestJump.Get());
             }
 
-            if(Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1"))
             {
-                this.actor.Broker.Publish(RequestFire.Get());
+                this.actor.Broker.Publish(RequestFire.Get(0));
+            }
+
+            if (Input.GetButtonDown("Fire2"))
+            {
+                this.actor.Broker.Publish(RequestFire.Get(1));
+            }
+
+            if (Input.GetButtonDown("Fire3"))
+            {
+                this.actor.Broker.Publish(RequestFire.Get(2));
             }
         }
     }

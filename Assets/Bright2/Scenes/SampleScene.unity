@@ -424,7 +424,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
-  equipmentRecord: {fileID: 11400000, guid: 767a9a4e45e25410da6ff5351804c5f8, type: 2}
+  equipmentRecords:
+  - {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
+  - {fileID: 11400000, guid: 893b19f17d1bc44d2af06531b9069b4c, type: 2}
+  - {fileID: 11400000, guid: 767a9a4e45e25410da6ff5351804c5f8, type: 2}
 --- !u!4 &628932142
 Transform:
   m_ObjectHideFlags: 0
