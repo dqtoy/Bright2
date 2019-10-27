@@ -36,6 +36,9 @@ namespace HK.Bright2.ActorControllers
         [SerializeField]
         private Vector2 gravity = default;
 
+        [SerializeField]
+        private float ignoreHorizontalHeight = default;
+
         private IBroker brokableObject;
 
         private Vector2 velocity;
@@ -195,19 +198,24 @@ namespace HK.Bright2.ActorControllers
             if(hit.transform != null)
             {
                 var point = hit.point;
-                var diff = point.x - pos.x;
+                var diff = point - new Vector2(pos.x, pos.y);
 
-                if((diff > 0.0f && v.x > 0.0f) || (diff < 0.0f && v.x < 0.0f))
+                // 移動方向と衝突方向が一緒なら判定可能
+                if((diff.x > 0.0f && v.x > 0.0f) || (diff.x < 0.0f && v.x < 0.0f))
                 {
+                    // 段差判定でなければ判定可能
+                    if(this.ignoreHorizontalHeight < diff.y)
+                    {
 #if UNITY_EDITOR
-                    this.lastHitHorizontalPoint = point;
+                        this.lastHitHorizontalPoint = point;
 #endif
 
-                    var offset = v.x > 0.0f ? -size.x * 0.5f : size.x * 0.5f;
-                    t.localPosition = new Vector3(point.x + offset, pos.y, pos.z);
+                        var offset = v.x > 0.0f ? -size.x * 0.5f : size.x * 0.5f;
+                        t.localPosition = new Vector3(point.x + offset, pos.y, pos.z);
 
-                    v.x = 0.0f;
-                    this.velocity = v;
+                        v.x = 0.0f;
+                        this.velocity = v;
+                    }
                 }
             }
 

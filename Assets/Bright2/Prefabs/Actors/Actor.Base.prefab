@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 494612852}
   - component: {fileID: 7136903976370705971}
   m_Layer: 8
-  m_Name: Actor
+  m_Name: Actor.Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,6 +244,7 @@ MonoBehaviour:
   snapGroundOffsetOrigin: {x: 0, y: -0.2}
   snapGroundOffsetSize: {x: 0, y: -0.4}
   gravity: {x: 0, y: -28}
+  ignoreHorizontalHeight: 0.3
 --- !u!114 &1155398558062161361
 MonoBehaviour:
   m_ObjectHideFlags: 0
