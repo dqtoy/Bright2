@@ -1,4 +1,6 @@
 ﻿using HK.Bright2.StageControllers;
+using HK.Bright2.StageControllers.Messages;
+using HK.Framework.EventSystems;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -14,7 +16,7 @@ namespace HK.Bright2.GameSystems
         
         void Start()
         {
-            Instantiate(this.prefab);
+            Broker.Global.Publish(RequestChangeStage.Get(this.prefab));
         }
     }
 }

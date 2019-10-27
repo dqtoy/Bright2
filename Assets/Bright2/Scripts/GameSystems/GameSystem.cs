@@ -1,5 +1,6 @@
 ﻿using HK.Bright2.ActorControllers;
 using HK.Bright2.CameraControllers;
+using HK.Bright2.StageControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -18,6 +19,8 @@ namespace HK.Bright2.GameSystems
         public Cameraman Cameraman => this.cameraman;
 
         public ActorManager ActorManager { get; private set; }
+
+        public readonly StageManager StageManager = new StageManager();
 
         void Awake()
         {
