@@ -56,10 +56,10 @@ namespace HK.Bright2.Extensions
         /// <summary>
         /// <see cref="RequestFire"/>メッセージを受信して<see cref="ActorState.Name.Attack"/>ステートへ遷移する
         /// </summary>
-        public static void ReceiveRequestFireOnChangeAttackState(this IActorState self)
+        public static void ReceiveRequestFireOnChangeAttackState(this IActorState self, int index)
         {
             self.Owner.Broker.Receive<RequestFire>()
-                .Where(_ => self.Owner.StatusController.EquippedEquipment.CanFire)
+                .Where(_ => self.Owner.StatusController.EquippedEquipments[index].CanFire)
                 .SubscribeWithState(self, (_, _this) =>
                 {
                     _this.Owner.StateManager.Change(ActorState.Name.Attack);

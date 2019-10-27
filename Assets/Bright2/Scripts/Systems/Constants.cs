@@ -20,5 +20,10 @@ namespace HK.Bright2
 
             Down,
         }
+
+        /// <summary>
+        /// 装備可能な装備品の最大値
+        /// </summary>
+        public const int EquippedEquipmentMax = 3;
     }
 }

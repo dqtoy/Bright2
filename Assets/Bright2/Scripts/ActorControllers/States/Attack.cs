@@ -25,13 +25,13 @@ namespace HK.Bright2.ActorControllers.States
 
             this.nextStateDelaySeconds = 0.0f;
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Attack);
-            var equipmentRecord = this.owner.StatusController.EquippedEquipment.EquipmentRecord;
+            var equipmentRecord = this.owner.StatusController.EquippedEquipments[0].EquipmentRecord;
             var gimmick = equipmentRecord.Gimmick.Rent();
             var parent = this.owner.TransformHolder.GetEquipmentOrigin(this.owner.StatusController.Direction);
             gimmick.transform.position = parent.position;
             gimmick.transform.rotation = parent.rotation;
             gimmick.Activate(this.owner);
-            this.owner.StatusController.EquippedEquipment.ResetCoolTime();
+            this.owner.StatusController.EquippedEquipments[0].ResetCoolTime();
 
             this.owner.UpdateAsObservable()
                 .SubscribeWithState2(this, equipmentRecord, (_, _this, _equipmentRecord) =>

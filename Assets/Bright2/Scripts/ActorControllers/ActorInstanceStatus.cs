@@ -1,4 +1,5 @@
-﻿using HK.Bright2.Database;
+﻿using System.Collections.Generic;
+using HK.Bright2.Database;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -21,17 +22,23 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// 装備中の装備品
         /// </summary>
-        public EquippedEquipment EquippedEquipment { get; set; }
+        public List<EquippedEquipment> EquippedEquipments { get; private set; }
 
         /// <summary>
         /// 現在向いている方向
         /// </summary>
         public Constants.Direction Direction { get; set; }
 
-        public ActorInstanceStatus(ActorContext context)
+        public ActorInstanceStatus(Actor owner, ActorContext context)
         {
             this.HitPoint = context.BasicStatus.HitPoint;
             this.HitPointMax = this.HitPoint;
+
+            this.EquippedEquipments = new List<EquippedEquipment>();
+            for (var i = 0; i < Constants.EquippedEquipmentMax; i++)
+            {
+                this.EquippedEquipments.Add(new EquippedEquipment(owner.gameObject));
+            }
         }
     }
 }

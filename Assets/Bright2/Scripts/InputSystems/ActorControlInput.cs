@@ -27,7 +27,7 @@ namespace HK.Bright2.InputSystems
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.actor = x.Actor;
-                    this.actor.StatusController.SetEquipment(this.equipmentRecord);
+                    this.actor.StatusController.SetEquipment(0, this.equipmentRecord);
                 })
                 .AddTo(this);
         }

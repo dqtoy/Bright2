@@ -1,4 +1,5 @@
-﻿using HK.Bright2.ActorControllers.Messages;
+﻿using System.Collections.Generic;
+using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
 using HK.Bright2.Extensions;
 using UniRx;
@@ -22,9 +23,8 @@ namespace HK.Bright2.ActorControllers
         {
             this.owner = owner;
             this.context = context;
-            this.status = new ActorInstanceStatus(context);
+            this.status = new ActorInstanceStatus(owner, context);
             this.status.Direction = Constants.Direction.Right;
-            this.status.EquippedEquipment = new EquippedEquipment(this.owner.gameObject);
 
             owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
@@ -36,7 +36,7 @@ namespace HK.Bright2.ActorControllers
 
         public int JumpCount => this.status.JumpCount;
 
-        public EquippedEquipment EquippedEquipment => this.status.EquippedEquipment;
+        public List<EquippedEquipment> EquippedEquipments => this.status.EquippedEquipments;
 
         public Constants.Direction Direction => this.status.Direction;
 
@@ -58,9 +58,9 @@ namespace HK.Bright2.ActorControllers
             }
         }
 
-        public void SetEquipment(EquipmentRecord equipment)
+        public void SetEquipment(int index, EquipmentRecord equipment)
         {
-            this.status.EquippedEquipment.Change(equipment);
+            this.status.EquippedEquipments[index].Change(equipment);
         }
 
         public void SetDirection(Constants.Direction direction)
