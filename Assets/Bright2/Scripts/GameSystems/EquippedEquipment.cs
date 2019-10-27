@@ -16,6 +16,7 @@ namespace HK.Bright2
         public EquipmentRecord EquipmentRecord { get; private set; }
 
         private readonly ReactiveProperty<float> coolTimeSeconds = new ReactiveProperty<float>();
+        public IReactiveProperty<float> CoolTimeSeconds => this.coolTimeSeconds;
 
         public EquippedEquipment(GameObject owner)
         {
@@ -23,7 +24,13 @@ namespace HK.Bright2
             this.owner.UpdateAsObservable()
                 .SubscribeWithState(this, (_, _this) =>
                 {
-                    _this.coolTimeSeconds.Value += Time.deltaTime;
+                    if(_this.EquipmentRecord != null)
+                    {
+                        if(_this.coolTimeSeconds.Value < _this.EquipmentRecord.CoolTimeSeconds)
+                        {
+                            _this.coolTimeSeconds.Value += Time.deltaTime;
+                        }
+                    }
                 });
         }
 
@@ -36,6 +43,25 @@ namespace HK.Bright2
         public void ResetCoolTime()
         {
             this.coolTimeSeconds.Value = 0.0f;
+        }
+
+        /// <summary>
+        /// クールタイムの割合を返す
+        /// </summary>
+        /// <remarks>
+        /// 何も装備していない場合は常に<c>1</c>を返す
+        /// </remarks>
+        public float CoolTimeRate
+        {
+            get
+            {
+                if(this.EquipmentRecord == null)
+                {
+                    return 1.0f;
+                }
+
+                return Mathf.Clamp01(this.coolTimeSeconds.Value / this.EquipmentRecord.CoolTimeSeconds);
+            }
         }
 
         public bool CanFire
