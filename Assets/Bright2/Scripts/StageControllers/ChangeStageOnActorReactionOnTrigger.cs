@@ -16,6 +16,12 @@ namespace HK.Bright2.StageControllers
         [SerializeField]
         private Stage prefab = default;
 
+        /// <summary>
+        /// ステージ切り替えた後の<see cref="Actor"/>の座標
+        /// </summary>
+        [SerializeField]
+        private Vector2 actorPosition = default;
+
         [SerializeField]
         private List<string> includeTags = default;
 
@@ -42,6 +48,8 @@ namespace HK.Bright2.StageControllers
         void IGameEvent.Invoke(Actor invokedActor)
         {
             Broker.Global.Publish(RequestChangeStage.Get(this.prefab));
+            invokedActor.Movement.Warp(this.actorPosition);
+            
             this.ClearGameEvent(invokedActor);
         }
 

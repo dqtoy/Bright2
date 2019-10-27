@@ -993,6 +993,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8491219769089868142, guid: 535a9d44f7d264911b8b25ff915a55d4,
         type: 3}
+    - target: {fileID: 2093156365157048981, guid: 89a7a197ba58640d39e7b3a13d68cb11,
+        type: 3}
+      propertyPath: actorPosition.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093156365157048981, guid: 89a7a197ba58640d39e7b3a13d68cb11,
+        type: 3}
+      propertyPath: actorPosition.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89a7a197ba58640d39e7b3a13d68cb11, type: 3}
 --- !u!4 &8295886006056288001 stripped

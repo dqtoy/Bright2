@@ -109,6 +109,13 @@ namespace HK.Bright2.ActorControllers
             this.currentGravity = gravity;
         }
 
+        public void Warp(Vector2 position)
+        {
+            this.velocity = Vector2.zero;
+            this.currentGravity = Vector2.zero;
+            this.controlledTransform.position = position;
+        }
+
         private void AddGravity()
         {
             this.currentGravity += this.gravity * Time.deltaTime;
