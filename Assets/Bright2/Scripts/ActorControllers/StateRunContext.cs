@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
+using HK.Bright2.ActorControllers.States;
 
 namespace HK.Bright2.ActorControllers
 {
     /// <summary>
-    /// <see cref="Run"/>ステートで必要なデータを持つクラス
+    /// <see cref="ActorState.Name.Run"/>ステートで必要なデータを持つクラス
     /// </summary>
     public sealed class StateRunContext : IActorStateContext
     {
