@@ -100,5 +100,11 @@ namespace HK.Bright2.ActorControllers
         {
             this.status.Money += value;
         }
+
+        public void AddEquipment(EquipmentRecord equipment)
+        {
+            this.status.PossessionEquipments = this.status.PossessionEquipments ?? new List<EquipmentRecord>();
+            this.status.PossessionEquipments.Add(equipment);
+        }
     }
 }

@@ -35,6 +35,11 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public int Money { get; set; }
 
+        /// <summary>
+        /// 所持している装備品
+        /// </summary>
+        public List<EquipmentRecord> PossessionEquipments { get; set; }
+
         public ActorInstanceStatus(Actor owner, ActorContext context)
         {
             this.HitPoint = new ReactiveProperty<int>(context.BasicStatus.HitPoint);
