@@ -3,6 +3,9 @@ using UnityEngine.Assertions;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
+using HK.Framework.EventSystems;
+using HK.Bright2.GameSystems.Messages;
+using UniRx;
 
 namespace HK.Bright2.InputSystems
 {
@@ -17,13 +20,25 @@ namespace HK.Bright2.InputSystems
         [SerializeField]
         private EquipmentRecord equipmentRecord = default;
 
-        void Start()
+        void Awake()
         {
-            this.actor.StatusController.SetEquipment(this.equipmentRecord);
+            Broker.Global.Receive<SpawnedActor>()
+                .Where(x => x.Actor.tag == Tags.Name.Player)
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.actor = x.Actor;
+                    this.actor.StatusController.SetEquipment(this.equipmentRecord);
+                })
+                .AddTo(this);
         }
 
         void Update()
         {
+            if(this.actor == null)
+            {
+                return;
+            }
+            
             var velocity = new Vector2(Input.GetAxis("Horizontal"), 0.0f);
             if(velocity.sqrMagnitude > 0.0f)
             {
