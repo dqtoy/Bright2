@@ -17,6 +17,6 @@ MonoBehaviour:
     value: "\u7206\u5F3E\u30BB\u30C3\u30C8"
     guid: d02ba36c-9578-45d8-a4ea-6672cec4afa6
   gimmick: {fileID: 4760945173984106893, guid: f7bb9bf41cab74e3c8a9279fe98a06e7, type: 3}
-  nextStateDelaySeconds: 0.6
+  nextStateDelaySeconds: 0.3
   coolTimeSeconds: 3
   moveSpeedAttenuationRate: 0.85
