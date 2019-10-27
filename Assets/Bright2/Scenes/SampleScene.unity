@@ -469,9 +469,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefabs:
-  - {fileID: 4760945173984106893, guid: 4dcdf39333b0b433e825dbf74c94b170, type: 3}
-  - {fileID: 4760945173984106893, guid: 089fb9702046d41899ff8d8f7bc8b36b, type: 3}
-  - {fileID: 4760945173984106893, guid: 38bfc60df4ff94feba119bf5b8c6dd97, type: 3}
+  - {fileID: 6005806599017480186, guid: b7518a050a998401881d0523004ebb2f, type: 3}
+  - {fileID: 6005806599017480186, guid: 3777f85501976454eb87e5e5fb6836dd, type: 3}
+  - {fileID: 6005806599017480186, guid: 44e78188447854a72ad2776048658a2d, type: 3}
+  offset: {x: 0, y: 0.3, z: 0}
+  random: {x: 1, y: 0.1, z: 0}
 --- !u!1 &770415527
 GameObject:
   m_ObjectHideFlags: 0

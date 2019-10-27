@@ -95,5 +95,10 @@ namespace HK.Bright2.ActorControllers
                 this.owner.Broker.Publish(Died.Get());
             }
         }
+
+        public void AddMoney(int value)
+        {
+            this.status.Money += value;
+        }
     }
 }

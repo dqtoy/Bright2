@@ -19,8 +19,8 @@ MonoBehaviour:
     fall: {fileID: 11400000, guid: 9b8264f6cd95d4b88b9b1bd3895be2e5, type: 2}
     attack: {fileID: 11400000, guid: 905c51a71046c4ace9c174ac65d61988, type: 2}
   basicStatus:
-    hitPoint: 50
+    hitPoint: 1
     moveSpeed: 1
     jumpPower: 12
     limitJumpCount: 1
-    money: 10
+    money: 123
