@@ -15,7 +15,7 @@ namespace HK.Bright2
 
         public EquipmentRecord EquipmentRecord { get; private set; }
 
-        private float coolTimeSeconds;
+        private readonly ReactiveProperty<float> coolTimeSeconds = new ReactiveProperty<float>();
 
         public EquippedEquipment(GameObject owner)
         {
@@ -23,19 +23,19 @@ namespace HK.Bright2
             this.owner.UpdateAsObservable()
                 .SubscribeWithState(this, (_, _this) =>
                 {
-                    _this.coolTimeSeconds += Time.deltaTime;
+                    _this.coolTimeSeconds.Value += Time.deltaTime;
                 });
         }
 
         public void Change(EquipmentRecord equipmentRecord)
         {
             this.EquipmentRecord = equipmentRecord;
-            this.coolTimeSeconds = equipmentRecord.CoolTimeSeconds;
+            this.coolTimeSeconds.Value = equipmentRecord.CoolTimeSeconds;
         }
 
         public void ResetCoolTime()
         {
-            this.coolTimeSeconds = 0.0f;
+            this.coolTimeSeconds.Value = 0.0f;
         }
 
         public bool CanFire
@@ -48,7 +48,7 @@ namespace HK.Bright2
                     return false;
                 }
                 
-                return this.coolTimeSeconds >= this.EquipmentRecord.CoolTimeSeconds;
+                return this.coolTimeSeconds.Value >= this.EquipmentRecord.CoolTimeSeconds;
             }
         }
     }
