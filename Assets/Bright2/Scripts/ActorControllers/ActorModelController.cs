@@ -23,7 +23,7 @@ namespace HK.Bright2.ActorControllers
 
         private Actor owner;
 
-        private readonly Dictionary<int, Renderer> dictionary = new Dictionary<int, Renderer>();
+        private Dictionary<int, Renderer> models = null;
 
         private int currentModelId = 0;
 
@@ -33,25 +33,19 @@ namespace HK.Bright2.ActorControllers
         {
             this.owner = this.GetComponent<Actor>();
             Assert.IsNotNull(this.owner);
-
-            for (var i = 0; i < this.modelParent.childCount; i++)
-            {
-                var child = this.modelParent.GetChild(i);
-                var model = child.GetComponentInChildren<Renderer>();
-                Assert.IsNotNull(model);
-                this.dictionary.Add(Animator.StringToHash(child.name), model);
-                model.enabled = false;
-            }
-
-            this.currentModelId = ActorModelNames.Idle0;
-            this.Change(this.currentModelId);
         }
 
         public void Change(int nextModelId)
         {
-            this.dictionary[this.currentModelId].enabled = false;
+            this.SetupModels();
+
+            if(this.currentModelId != 0)
+            {
+                this.models[this.currentModelId].enabled = false;
+            }
+
             this.currentModelId = nextModelId;
-            this.dictionary[this.currentModelId].enabled = true;
+            this.models[this.currentModelId].enabled = true;
         }
 
         /// <summary>
@@ -89,6 +83,24 @@ namespace HK.Bright2.ActorControllers
             Assert.AreNotEqual(direction, Constants.Direction.None);
 
             return direction == Constants.Direction.Left ? -1.0f : 1.0f;
+        }
+
+        private void SetupModels()
+        {
+            if(this.models != null)
+            {
+                return;
+            }
+
+            this.models = new Dictionary<int, Renderer>();
+            for (var i = 0; i < this.modelParent.childCount; i++)
+            {
+                var child = this.modelParent.GetChild(i);
+                var model = child.GetComponentInChildren<Renderer>();
+                Assert.IsNotNull(model);
+                this.models.Add(Animator.StringToHash(child.name), model);
+                model.enabled = false;
+            }
         }
     }
 }
