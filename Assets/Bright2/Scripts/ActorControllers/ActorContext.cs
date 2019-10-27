@@ -63,6 +63,10 @@ namespace HK.Bright2.ActorControllers
             /// 連続でジャンプできる回数
             /// </summary>
             public int LimitJumpCount => this.limitJumpCount;
+
+            [SerializeField]
+            private int money = default;
+            public int Money => this.money;
         }
     }
 }

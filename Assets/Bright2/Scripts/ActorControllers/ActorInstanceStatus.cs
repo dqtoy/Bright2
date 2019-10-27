@@ -30,10 +30,16 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public Constants.Direction Direction { get; set; }
 
+        /// <summary>
+        /// 所持金
+        /// </summary>
+        public int Money { get; set; }
+
         public ActorInstanceStatus(Actor owner, ActorContext context)
         {
             this.HitPoint = new ReactiveProperty<int>(context.BasicStatus.HitPoint);
             this.HitPointMax = new ReactiveProperty<int>(this.HitPoint.Value);
+            this.Money = context.BasicStatus.Money;
 
             this.EquippedEquipments = new List<EquippedEquipment>();
             for (var i = 0; i < Constants.EquippedEquipmentMax; i++)
