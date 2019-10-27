@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -67,6 +68,10 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private int money = default;
             public int Money => this.money;
+
+            [SerializeField]
+            private List<DropEquipment> dropEquipments = default;
+            public List<DropEquipment> DropEquipments => this.dropEquipments;
         }
     }
 }
