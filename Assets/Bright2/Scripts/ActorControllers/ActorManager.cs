@@ -12,9 +12,9 @@ namespace HK.Bright2.ActorControllers
     /// </summary>
     public sealed class ActorManager
     {
-        private readonly List<Actor> players = new List<Actor>();
+        public readonly List<Actor> Players = new List<Actor>();
 
-        private readonly List<Actor> enemies = new List<Actor>();
+        public readonly List<Actor> Enemies = new List<Actor>();
         
         private readonly CompositeDisposable streams = new CompositeDisposable();
 
@@ -27,11 +27,11 @@ namespace HK.Bright2.ActorControllers
                     var tag = actor.tag;
                     if(tag == Tags.Name.Player)
                     {
-                        _this.players.Add(actor);
+                        _this.Players.Add(actor);
                     }
                     else if(tag == Tags.Name.Enemy)
                     {
-                        _this.enemies.Add(actor);
+                        _this.Enemies.Add(actor);
                     }
                     else
                     {
