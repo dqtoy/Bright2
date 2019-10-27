@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.Database;
+using HK.Bright2.GameSystems;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -39,6 +40,11 @@ namespace HK.Bright2.ActorControllers
         /// 所持している装備品
         /// </summary>
         public List<EquipmentRecord> PossessionEquipments { get; set; }
+
+        /// <summary>
+        /// 実行可能なゲームイベント
+        /// </summary>
+        public IGameEvent GameEvent { get; set; }
 
         public ActorInstanceStatus(Actor owner, ActorContext context)
         {

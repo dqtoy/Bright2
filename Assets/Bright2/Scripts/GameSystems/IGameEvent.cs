@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.GameSystems
@@ -11,6 +12,6 @@ namespace HK.Bright2.GameSystems
         /// <summary>
         /// ゲームイベントを実行する
         /// </summary>
-        void Invoke();
+        void Invoke(Actor invokedActor);
     }
 }

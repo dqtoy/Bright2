@@ -2,6 +2,7 @@
 using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
 using HK.Bright2.Extensions;
+using HK.Bright2.GameSystems;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -45,6 +46,8 @@ namespace HK.Bright2.ActorControllers
         public Constants.Direction Direction => this.status.Direction;
 
         public int Money => this.status.Money;
+
+        public IGameEvent GameEvent => this.status.GameEvent;
 
         public void AddJumpCount()
         {
@@ -105,6 +108,11 @@ namespace HK.Bright2.ActorControllers
         {
             this.status.PossessionEquipments = this.status.PossessionEquipments ?? new List<EquipmentRecord>();
             this.status.PossessionEquipments.Add(equipment);
+        }
+
+        public void SetGameEvent(IGameEvent gameEvent)
+        {
+            this.status.GameEvent = gameEvent;
         }
     }
 }
