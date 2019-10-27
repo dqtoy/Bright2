@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1f242934d5c4287bc13f9d0c2d8577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraman: {fileID: 1262815811}
 --- !u!1 &770415527
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +741,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1262815811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1883264953093208295, guid: 8c945da0dae484a2ea8c1b90409b446b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1883264953134878447}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80753010031d4d059cc2299936b63f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1292684752
 GameObject:
   m_ObjectHideFlags: 0
