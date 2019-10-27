@@ -404,6 +404,7 @@ GameObject:
   - component: {fileID: 628932142}
   - component: {fileID: 628932143}
   - component: {fileID: 628932141}
+  - component: {fileID: 628932144}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -455,6 +456,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraman: {fileID: 1262815811}
+--- !u!114 &628932144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628932140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5860d5736cba14438bd8020379946af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefabs:
+  - {fileID: 4760945173984106893, guid: 4dcdf39333b0b433e825dbf74c94b170, type: 3}
+  - {fileID: 4760945173984106893, guid: 089fb9702046d41899ff8d8f7bc8b36b, type: 3}
+  - {fileID: 4760945173984106893, guid: 38bfc60df4ff94feba119bf5b8c6dd97, type: 3}
 --- !u!1 &770415527
 GameObject:
   m_ObjectHideFlags: 0

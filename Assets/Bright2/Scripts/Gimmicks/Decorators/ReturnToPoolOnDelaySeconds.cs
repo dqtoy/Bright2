@@ -17,6 +17,7 @@ namespace HK.Bright2.GimmickControllers.Decorators
         void IGimmickDecorator.OnActivate(Gimmick owner, Actor gimmickOwner)
         {
             Observable.Timer(TimeSpan.FromSeconds(this.delaySeconds))
+                .TakeUntilDisable(owner)
                 .SubscribeWithState(owner, (_, _owner) =>
                 {
                     _owner.Return();

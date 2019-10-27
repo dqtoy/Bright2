@@ -44,6 +44,8 @@ namespace HK.Bright2.ActorControllers
 
         public Constants.Direction Direction => this.status.Direction;
 
+        public int Money => this.status.Money;
+
         public void AddJumpCount()
         {
             this.status.JumpCount++;
