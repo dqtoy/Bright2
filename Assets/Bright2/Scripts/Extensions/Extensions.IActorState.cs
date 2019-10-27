@@ -66,5 +66,19 @@ namespace HK.Bright2.Extensions
                 })
                 .AddTo(self.Events);
         }
+
+        /// <summary>
+        /// <see cref="RequestInvokeGameEvent"/>メッセージを受信してゲームイベントを実行する
+        /// </summary>
+        public static void ReceiveRequestInvokeGameEventOnInvokeGameEvent(this IActorState self)
+        {
+            self.Owner.Broker.Receive<RequestInvokeGameEvent>()
+                .Where(_ => self.Owner.StatusController.GameEvent != null)
+                .SubscribeWithState(self, (_, _this) =>
+                {
+                    _this.Owner.StatusController.GameEvent.Invoke(_this.Owner);
+                })
+                .AddTo(self.Events);
+        }
     }
 }

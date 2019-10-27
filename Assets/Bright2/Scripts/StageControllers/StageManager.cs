@@ -1,4 +1,5 @@
-﻿using HK.Bright2.StageControllers.Messages;
+﻿using System;
+using HK.Bright2.StageControllers.Messages;
 using HK.Framework.EventSystems;
 using UniRx;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace HK.Bright2.StageControllers
     /// <summary>
     /// <see cref="Stage"/>を管理するクラス
     /// </summary>
-    public sealed class StageManager
+    public sealed class StageManager : IDisposable
     {
         private Stage current;
 
@@ -27,17 +28,22 @@ namespace HK.Bright2.StageControllers
 
         ~StageManager()
         {
-            this.events.Dispose();
+            this.Dispose();
         }
 
         private void Change(Stage nextStagePrefab)
         {
             if(this.current != null)
             {
-                Object.Destroy(this.current.gameObject);
+                UnityEngine.Object.Destroy(this.current.gameObject);
             }
 
-            this.current = Object.Instantiate(nextStagePrefab);
+            this.current = UnityEngine.Object.Instantiate(nextStagePrefab);
+        }
+
+        public void Dispose()
+        {
+            this.events.Dispose();
         }
     }
 }

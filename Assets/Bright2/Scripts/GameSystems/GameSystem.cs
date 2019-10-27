@@ -20,7 +20,7 @@ namespace HK.Bright2.GameSystems
 
         public ActorManager ActorManager { get; private set; }
 
-        public readonly StageManager StageManager = new StageManager();
+        public StageManager StageManager { get; private set; }
 
         void Awake()
         {
@@ -28,12 +28,15 @@ namespace HK.Bright2.GameSystems
             instance = this;
 
             this.ActorManager = new ActorManager();
+            this.StageManager = new StageManager();
         }
 
         void OnDestroy()
         {
             Assert.IsNotNull(instance);
             instance = null;
+
+            this.StageManager.Dispose();
         }
     }
 }
