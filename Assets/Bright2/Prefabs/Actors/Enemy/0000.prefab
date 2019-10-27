@@ -229,7 +229,7 @@ PrefabInstance:
     - target: {fileID: 8979543355813408528, guid: 962ca94802f2149c7b071d3ab447c8f5,
         type: 3}
       propertyPath: shrinkHorizontalRaycastBoxSize.y
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3702472882505496169, guid: 962ca94802f2149c7b071d3ab447c8f5,
         type: 3}

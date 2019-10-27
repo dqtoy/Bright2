@@ -20,6 +20,6 @@ MonoBehaviour:
     attack: {fileID: 11400000, guid: 905c51a71046c4ace9c174ac65d61988, type: 2}
   basicStatus:
     hitPoint: 50
-    moveSpeed: 3
+    moveSpeed: 1
     jumpPower: 12
     limitJumpCount: 1
