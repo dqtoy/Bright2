@@ -45,5 +45,15 @@ namespace HK.Bright2.ActorControllers
         {
             this.streams.Dispose();
         }
+
+        /// <summary>
+        /// ランダムにプレイヤーを返す
+        /// </summary>
+        public Actor GetRandomPlayer()
+        {
+            Assert.AreNotEqual(this.Players.Count, 0, "プレイヤーが存在しません");
+
+            return this.Players[Random.Range(0, this.Players.Count)];
+        }
     }
 }

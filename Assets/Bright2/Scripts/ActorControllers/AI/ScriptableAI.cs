@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers.AIControllers
@@ -8,5 +9,13 @@ namespace HK.Bright2.ActorControllers.AIControllers
     /// </summary>
     public abstract class ScriptableAI : ScriptableObject, IAI
     {
+        protected readonly CompositeDisposable events = new CompositeDisposable();
+        
+        public abstract void Enter(Actor owner);
+
+        public virtual void Exit()
+        {
+            this.events.Clear();
+        }
     }
 }
