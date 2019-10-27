@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.Database;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -10,9 +11,9 @@ namespace HK.Bright2.ActorControllers
     /// </summary>
     public sealed class ActorInstanceStatus
     {
-        public int HitPoint { get; set; }
+        public ReactiveProperty<int> HitPoint { get; set; }
 
-        public int HitPointMax { get; set; }
+        public ReactiveProperty<int> HitPointMax { get; set; }
 
         /// <summary>
         /// ジャンプした回数
@@ -31,8 +32,8 @@ namespace HK.Bright2.ActorControllers
 
         public ActorInstanceStatus(Actor owner, ActorContext context)
         {
-            this.HitPoint = context.BasicStatus.HitPoint;
-            this.HitPointMax = this.HitPoint;
+            this.HitPoint = new ReactiveProperty<int>(context.BasicStatus.HitPoint);
+            this.HitPointMax = new ReactiveProperty<int>(this.HitPoint.Value);
 
             this.EquippedEquipments = new List<EquippedEquipment>();
             for (var i = 0; i < Constants.EquippedEquipmentMax; i++)

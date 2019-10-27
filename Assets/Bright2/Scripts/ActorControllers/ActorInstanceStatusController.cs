@@ -34,6 +34,10 @@ namespace HK.Bright2.ActorControllers
                 .AddTo(owner);
         }
 
+        public IReactiveProperty<int> HitPoint => this.status.HitPoint;
+
+        public IReactiveProperty<int> HitPointMax => this.status.HitPointMax;
+
         public int JumpCount => this.status.JumpCount;
 
         public List<EquippedEquipment> EquippedEquipments => this.status.EquippedEquipments;
@@ -71,15 +75,15 @@ namespace HK.Bright2.ActorControllers
         public void TakeDamage(int damage)
         {
             // すでに死亡していたら何もしない
-            if(this.status.HitPoint <= 0)
+            if(this.status.HitPoint.Value <= 0)
             {
                 return;
             }
 
-            this.status.HitPoint -= damage;
+            this.status.HitPoint.Value -= damage;
 
             // 死亡したら通知する
-            if(this.status.HitPoint <= 0)
+            if(this.status.HitPoint.Value <= 0)
             {
                 this.owner.Broker.Publish(Died.Get());
             }
