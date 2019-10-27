@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8a3d2fbdc2bf452188a0b5309d471c9, type: 3}
-  m_Name: 0000
+  m_Name: 0003
   m_EditorClassIdentifier: 
   equipmentName:
     target: {fileID: 11400000, guid: 544fb535d4b5d44e1b9a701b5c3511ec, type: 2}
-    value: "\u6728\u306E\u68D2"
-    guid: d7938af2-82b2-426b-b418-631a12bfd96f
-  gimmick: {fileID: 4760945173984106893, guid: 51cfa08c5ab4247aa8265b1030812cf4, type: 3}
-  nextStateDelaySeconds: 0.3
-  coolTimeSeconds: 0.3
-  moveSpeedAttenuationRate: 0.5
+    value: "\u6728\u306E\u69CD"
+    guid: a6398040-2b7a-4b4b-9641-84ee575ed3c5
+  gimmick: {fileID: 4760945173984106893, guid: 14c2f29ff68804f91aa006b3487efb01, type: 3}
+  nextStateDelaySeconds: 0.7
+  coolTimeSeconds: 1.3
+  moveSpeedAttenuationRate: 0.75
