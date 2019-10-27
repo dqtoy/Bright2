@@ -48,8 +48,7 @@ namespace HK.Bright2.InputSystems
                 this.actor.Broker.Publish(RequestMove.Get(velocity));
             }
 
-            var vertical = Input.GetAxis("Vertical");
-            if(vertical > 0.0f)
+            if(Input.GetButtonDown("InvokeGameEvent"))
             {
                 this.actor.Broker.Publish(RequestInvokeGameEvent.Get());
             }
