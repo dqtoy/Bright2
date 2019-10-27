@@ -19,6 +19,9 @@ namespace HK.Bright2.UIControllers
         [SerializeField]
         private float visibleSeconds = default;
 
+        [SerializeField]
+        private float randomPosition = default;
+
         private readonly static ObjectPoolBundle<DamageUIElement> pools = new ObjectPoolBundle<DamageUIElement>();
 
         private ObjectPool<DamageUIElement> pool;
@@ -63,7 +66,8 @@ namespace HK.Bright2.UIControllers
         {
             this.text.text = damage.ToString();
 
-            this.generationSource = generationSource;
+            var randomPosition = new Vector2(UnityEngine.Random.Range(-this.randomPosition, this.randomPosition), UnityEngine.Random.Range(-this.randomPosition, this.randomPosition));
+            this.generationSource = generationSource + randomPosition;
             this.canvas = canvas;
             this.canvasTransform = canvasTransform;
             this.worldCamera = worldCamera;
