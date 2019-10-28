@@ -42,6 +42,8 @@ namespace HK.Bright2.GameSystems
         
         public abstract Actor Owner { get; }
 
+        public abstract GameObject Root { get; }
+
         public abstract Vector2 KnockbackDirection { get; }
     }
 }

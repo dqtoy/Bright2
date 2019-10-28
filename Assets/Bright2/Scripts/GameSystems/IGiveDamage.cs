@@ -31,6 +31,11 @@ namespace HK.Bright2.GameSystems
         Actor Owner { get; }
 
         /// <summary>
+        /// このオブジェクトを持つ親オブジェクト
+        /// </summary>
+        GameObject Root { get; }
+
+        /// <summary>
         /// 実際にダメージを与える<see cref="GameObject"/>
         /// </summary>
         GameObject GiveDamageObject { get; }
