@@ -23,6 +23,13 @@ namespace HK.Bright2.GimmickControllers
 
         private IGimmickDecorator[] decotators = null;
 
+        private GimmickLifeCycleController lifeCycleController;
+
+        void Awake()
+        {
+            this.lifeCycleController = new GimmickLifeCycleController(this);
+        }
+
         public Gimmick Rent()
         {
             var pool = pools.Get(this);
