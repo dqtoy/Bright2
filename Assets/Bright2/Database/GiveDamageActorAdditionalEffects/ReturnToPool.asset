@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e433e3b40b0684245b8819a577c752b3, type: 3}
-  m_Name: ReturnToPoolGimmick
+  m_Name: ReturnToPool
   m_EditorClassIdentifier: 
