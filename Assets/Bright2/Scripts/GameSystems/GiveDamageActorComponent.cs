@@ -8,7 +8,7 @@ namespace HK.Bright2.GameSystems
     /// <summary>
     /// <see cref="Actor"/>にダメージを与えるコンポーネントの抽象クラス
     /// /// </summary>
-    public abstract class DamageActorComponent : MonoBehaviour, IGiveDamage
+    public abstract class GiveDamageActorComponent : MonoBehaviour, IGiveDamage
     {
         [SerializeField]
         private int damagePower = default;

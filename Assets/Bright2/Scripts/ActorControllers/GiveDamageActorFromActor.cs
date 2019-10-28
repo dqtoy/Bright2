@@ -10,7 +10,7 @@ namespace HK.Bright2.ActorControllers
     /// <summary>
     /// <see cref="Actor"/>が<see cref="Actor"/>に対してダメージを与えるクラス
     /// </summary>
-    public sealed class DamageActorFromActor : DamageActorComponent, IActorReactionOnTriggerEnter2D
+    public sealed class GiveDamageActorFromActor : GiveDamageActorComponent, IActorReactionOnTriggerEnter2D
     {
         private Actor owner;
 

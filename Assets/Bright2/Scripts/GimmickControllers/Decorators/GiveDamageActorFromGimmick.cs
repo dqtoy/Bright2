@@ -10,7 +10,7 @@ namespace HK.Bright2.GimmickControllers.Decorators
     /// <summary>
     /// <see cref="Gimmick"/>が<see cref="Actor"/>にダメージを与えるギミックデコレーター
     /// </summary>
-    public sealed class DamageActorFromGimmick : DamageActorComponent, IGimmickDecorator, IActorReactionOnTriggerStay2D
+    public sealed class GiveDamageActorFromGimmick : GiveDamageActorComponent, IGimmickDecorator, IActorReactionOnTriggerStay2D
     {
         private Gimmick owner;
 
