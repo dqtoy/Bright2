@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1599879848385819771}
   - component: {fileID: 4643271828095609800}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Effect.Hit.0000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4490707270642121278}
   - component: {fileID: 8566275110032003635}
   - component: {fileID: 4239139655036406944}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4867,7 +4867,7 @@ GameObject:
   - component: {fileID: 6688134297946197063}
   - component: {fileID: 3451471531975596789}
   - component: {fileID: 285725784902921371}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
