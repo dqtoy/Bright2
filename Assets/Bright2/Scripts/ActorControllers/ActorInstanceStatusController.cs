@@ -69,8 +69,10 @@ namespace HK.Bright2.ActorControllers
             }
         }
 
-        public void SetWeapon(int index, InstanceWeapon instanceWeapon)
+        public void ChangeEquippedWeapon(int index, InstanceWeapon instanceWeapon)
         {
+            Assert.IsTrue(this.status.PossessionWeapons.Contains(instanceWeapon), $"所持していない武器を装備しようとしました");
+
             this.status.EquippedWeapons[index].Change(instanceWeapon);
         }
 
