@@ -8,9 +8,9 @@ using HK.Bright2.Extensions;
 namespace HK.Bright2.GimmickControllers.Decorators
 {
     /// <summary>
-    /// <see cref="Actor"/>にダメージを与えるギミックデコレーター
+    /// <see cref="Gimmick"/>が<see cref="Actor"/>にダメージを与えるギミックデコレーター
     /// </summary>
-    public sealed class DamageActorGimmick : MonoBehaviour, IGiveDamage, IGimmickDecorator, IActorReactionOnTriggerStay2D
+    public sealed class DamageActorFromGimmick : MonoBehaviour, IGiveDamage, IGimmickDecorator, IActorReactionOnTriggerStay2D
     {
         [SerializeField]
         private int damagePower = default;
