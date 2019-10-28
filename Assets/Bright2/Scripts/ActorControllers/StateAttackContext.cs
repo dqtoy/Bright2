@@ -12,11 +12,11 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// 攻撃したい装備中の装備品のインデックス
         /// </summary>
-        public int EquippedEquipmentIndex { get; }
+        public int EquippedWeaponIndex { get; }
 
-        public StateAttackContext(int equippedEquipmentIndex)
+        public StateAttackContext(int equippedWeaponIndex)
         {
-            this.EquippedEquipmentIndex = equippedEquipmentIndex;
+            this.EquippedWeaponIndex = equippedWeaponIndex;
         }
     }
 }

@@ -7,14 +7,14 @@ namespace HK.Bright2.ActorControllers
     /// <summary>
     /// <see cref="IAddWeapon.Setup(WeaponRecord)"/>のタイミングでスプライトを設定するクラス
     /// </summary>
-    public sealed class SetSpriteOnAddEquipment : MonoBehaviour, IAddWeapon
+    public sealed class SetSpriteOnAddWeapon : MonoBehaviour, IAddWeapon
     {
         [SerializeField]
         private SpriteRenderer controlledRenderer = default;
 
-        public void Setup(WeaponRecord equipment)
+        public void Setup(WeaponRecord weapon)
         {
-            this.controlledRenderer.sprite = equipment.Icon;
+            this.controlledRenderer.sprite = weapon.Icon;
         }
     }
 }

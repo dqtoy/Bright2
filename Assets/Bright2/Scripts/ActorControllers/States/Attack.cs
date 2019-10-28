@@ -26,25 +26,25 @@ namespace HK.Bright2.ActorControllers.States
             var stateAttackContext = (StateAttackContext)context;
             Assert.IsNotNull(stateAttackContext);
 
-            var equippedEquipment = this.owner.StatusController.EquippedWeapons[stateAttackContext.EquippedEquipmentIndex];
-            Assert.IsTrue(equippedEquipment.CanFire, "攻撃不可能な状態なのに攻撃しようとしました");
+            var equippedWeapon = this.owner.StatusController.EquippedWeapons[stateAttackContext.EquippedWeaponIndex];
+            Assert.IsTrue(equippedWeapon.CanFire, "攻撃不可能な状態なのに攻撃しようとしました");
 
             this.nextStateDelaySeconds = 0.0f;
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Attack);
 
-            var equipmentRecord = equippedEquipment.WeaponRecord;
-            var gimmick = equipmentRecord.Gimmick.Rent();
+            var weaponRecord = equippedWeapon.WeaponRecord;
+            var gimmick = weaponRecord.Gimmick.Rent();
             var parent = this.owner.TransformHolder.GetWeaponOrigin(this.owner.StatusController.Direction);
             gimmick.transform.position = parent.position;
             gimmick.transform.rotation = parent.rotation;
             gimmick.Activate(this.owner);
-            equippedEquipment.ResetCoolTime();
+            equippedWeapon.ResetCoolTime();
 
             this.owner.UpdateAsObservable()
-                .SubscribeWithState2(this, equipmentRecord, (_, _this, _equipmentRecord) =>
+                .SubscribeWithState2(this, weaponRecord, (_, _this, _weaponRecord) =>
                 {
                     _this.nextStateDelaySeconds += Time.deltaTime;
-                    if (_this.nextStateDelaySeconds >= _equipmentRecord.NextStateDelaySeconds)
+                    if (_this.nextStateDelaySeconds >= _weaponRecord.NextStateDelaySeconds)
                     {
                         _this.owner.StateManager.Change(ActorState.Name.Idle);
                     }
@@ -52,7 +52,7 @@ namespace HK.Bright2.ActorControllers.States
                 .AddTo(this.events);
 
             var moveSpeed = this.owner.Context.BasicStatus.MoveSpeed;
-            moveSpeed -= moveSpeed * equipmentRecord.MoveSpeedAttenuationRate;
+            moveSpeed -= moveSpeed * weaponRecord.MoveSpeedAttenuationRate;
             this.ReceiveRequestMoveOnMove(moveSpeed);
         }
     }

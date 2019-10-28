@@ -9,18 +9,18 @@ namespace HK.Bright2.ActorControllers
     public sealed class ActorTransformHolder : MonoBehaviour
     {
         [SerializeField]
-        private Transform leftEquipmentOrigin = default;
+        private Transform leftWeaponOrigin = default;
         /// <summary>
         /// 左方向の装備品の原点
         /// </summary>
-        public Transform LeftEquipmentOrigin => this.leftEquipmentOrigin;
+        public Transform LeftWeaponOrigin => this.leftWeaponOrigin;
 
         [SerializeField]
-        private Transform rightEquipmentOrigin = default;
+        private Transform rightWeaponOrigin = default;
         /// <summary>
         /// 右方向の装備品の原点
         /// </summary>
-        public Transform RightEquipmentOrigin => this.rightEquipmentOrigin;
+        public Transform RightWeaponOrigin => this.rightWeaponOrigin;
 
         private Actor owner;
 
@@ -34,7 +34,7 @@ namespace HK.Bright2.ActorControllers
         {
             Assert.IsTrue(direction == Constants.Direction.Left || direction == Constants.Direction.Right);
             
-            return direction == Constants.Direction.Left ? this.leftEquipmentOrigin : this.rightEquipmentOrigin;
+            return direction == Constants.Direction.Left ? this.leftWeaponOrigin : this.rightWeaponOrigin;
         }
     }
 }

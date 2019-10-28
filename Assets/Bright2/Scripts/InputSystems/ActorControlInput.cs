@@ -18,7 +18,7 @@ namespace HK.Bright2.InputSystems
         private Actor actor = default;
 
         [SerializeField]
-        private WeaponRecord[] equipmentRecords = default;
+        private WeaponRecord[] weaponRecords = default;
 
         void Awake()
         {
@@ -27,9 +27,9 @@ namespace HK.Bright2.InputSystems
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.actor = x.Actor;
-                    for (var i = 0; i < _this.equipmentRecords.Length; i++)
+                    for (var i = 0; i < _this.weaponRecords.Length; i++)
                     {
-                        this.actor.StatusController.SetEquipment(i, this.equipmentRecords[i]);
+                        this.actor.StatusController.SetWeapon(i, this.weaponRecords[i]);
                     }
                 })
                 .AddTo(this);

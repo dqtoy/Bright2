@@ -59,6 +59,6 @@ namespace HK.Bright2.ActorControllers.Messages
         /// <summary>
         /// 攻撃したい装備中の装備品のインデックス
         /// </summary>
-        public int EquippedEquipmentIndex => this.param1;
+        public int EquippedWeaponIndex => this.param1;
     }
 }

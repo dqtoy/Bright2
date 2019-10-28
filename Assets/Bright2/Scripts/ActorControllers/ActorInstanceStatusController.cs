@@ -67,9 +67,9 @@ namespace HK.Bright2.ActorControllers
             }
         }
 
-        public void SetEquipment(int index, WeaponRecord equipment)
+        public void SetWeapon(int index, WeaponRecord weapon)
         {
-            this.status.EquippedWeapons[index].Change(equipment);
+            this.status.EquippedWeapons[index].Change(weapon);
         }
 
         public void SetDirection(Constants.Direction direction)
