@@ -11,21 +11,21 @@ namespace HK.Bright2.Extensions
         /// <summary>
         /// ダメージを与える
         /// </summary>
-        public static bool GiveDamage(this IGiveDamage self, Actor target)
+        public static void GiveDamage(this IGiveDamage self, Actor target)
         {
             if(self.Owner == target)
             {
-                return false;
+                return;
             }
 
             if(!self.IncludeTags.Contains(target.tag))
             {
-                return false;
+                return;
             }
 
             if(target.StatusController.IsInfinity(self.GiveDamageObject))
             {
-                return false;
+                return;
             }
 
             var generationSource = self.GiveDamageCollider.ClosestPoint(target.CachedTransform.position);
@@ -33,8 +33,11 @@ namespace HK.Bright2.Extensions
             target.StatusController.TakeDamage(self.DamagePower, generationSource);
             target.Movement.SetGravity(self.KnockbackDirection * self.KnockbackPower);
             target.StatusController.AddInfinityStatus(self.GiveDamageObject, self.InfinitySeconds);
-
-            return true;
+            
+            foreach(var a in self.AdditionalEffects)
+            {
+                a.Do(self);
+            }
         }
     }
 }

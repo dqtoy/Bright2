@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
+using HK.Bright2.GameSystems.GiveDamageActorAdditionalEffects;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -28,6 +29,9 @@ namespace HK.Bright2.GameSystems
         [SerializeField]
         private Collider2D controlledCollider = default;
 
+        [SerializeField]
+        private List<GiveDamageActorAdditionalEffect> additionalEffects = default;
+
         int IGiveDamage.DamagePower => this.damagePower;
 
         float IGiveDamage.KnockbackPower => this.knockbackPower;
@@ -39,7 +43,9 @@ namespace HK.Bright2.GameSystems
         Collider2D IGiveDamage.GiveDamageCollider => this.controlledCollider;
 
         List<string> IGiveDamage.IncludeTags => this.includeTags;
-        
+
+        List<GiveDamageActorAdditionalEffect> IGiveDamage.AdditionalEffects => this.additionalEffects;
+
         public abstract Actor Owner { get; }
 
         public abstract GameObject Root { get; }

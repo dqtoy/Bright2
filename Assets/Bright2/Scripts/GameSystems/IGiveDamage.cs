@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
+using HK.Bright2.GameSystems.GiveDamageActorAdditionalEffects;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -55,5 +56,10 @@ namespace HK.Bright2.GameSystems
         /// ノックバックの方向
         /// </summary>
         Vector2 KnockbackDirection { get; }
+
+        /// <summary>
+        /// 攻撃が当たった際の追加効果
+        /// </summary>
+        List<GiveDamageActorAdditionalEffect> AdditionalEffects { get; }
     }
 }
