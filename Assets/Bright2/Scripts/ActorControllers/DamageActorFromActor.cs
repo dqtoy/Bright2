@@ -8,9 +8,9 @@ using HK.Bright2.Extensions;
 namespace HK.Bright2.ActorControllers
 {
     /// <summary>
-    /// <see cref="Actor"/>にダメージを与えるギミックデコレーター
+    /// <see cref="Actor"/>が<see cref="Actor"/>に対してダメージを与えるクラス
     /// </summary>
-    public sealed class DamageActor : MonoBehaviour, IGiveDamage, IActorReactionOnTriggerEnter2D
+    public sealed class DamageActorFromActor : MonoBehaviour, IGiveDamage, IActorReactionOnTriggerEnter2D
     {
         [SerializeField]
         private int damagePower = default;
