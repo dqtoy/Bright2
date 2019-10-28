@@ -7,7 +7,7 @@ namespace HK.Bright2
     /// <summary>
     /// プール可能なエフェクト
     /// </summary>
-    public sealed class PoolableEffect : MonoBehaviour
+    public sealed class PoolableEffect : MonoBehaviour, IPoolableComponent
     {
         [SerializeField]
         private float delayReturnToPoolSeconds = default;
@@ -36,6 +36,11 @@ namespace HK.Bright2
             clone.duration = this.delayReturnToPoolSeconds;
 
             return clone;
+        }
+
+        void IPoolableComponent.Return()
+        {
+            this.pool.Return(this);
         }
     }
 }

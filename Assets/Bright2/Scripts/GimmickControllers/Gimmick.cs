@@ -11,7 +11,7 @@ namespace HK.Bright2.GimmickControllers
     /// <summary>
     /// <see cref="Actor"/>が生成するギミックの中核となるクラス
     /// </summary>
-    public sealed class Gimmick : MonoBehaviour
+    public sealed class Gimmick : MonoBehaviour, IPoolableComponent
     {
         public readonly IMessageBroker Broker = new MessageBroker();
 
