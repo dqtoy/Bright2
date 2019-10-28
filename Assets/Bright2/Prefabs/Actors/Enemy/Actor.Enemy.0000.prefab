@@ -28,10 +28,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d1644b235504a4b95573cdde6f5845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  includeTags:
-  - Player
   damagePower: 10
   knockbackPower: 10
+  infinitySeconds: 0.5
+  includeTags:
+  - Player
 --- !u!1001 &5603399944185990776
 PrefabInstance:
   m_ObjectHideFlags: 0
