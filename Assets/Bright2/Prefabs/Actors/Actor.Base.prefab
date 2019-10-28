@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479848670}
   m_Layer: 8
-  m_Name: LeftEquipmentOrigin
+  m_Name: LeftWeaponOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1609504381}
   m_Layer: 8
-  m_Name: RightEquipmentOrigin
+  m_Name: RightWeaponOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,8 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151566142ff954310ba1ba28fec55384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftEquipmentOrigin: {fileID: 1479848670}
-  rightEquipmentOrigin: {fileID: 1609504381}
+  leftWeaponOrigin: {fileID: 1479848670}
+  rightWeaponOrigin: {fileID: 1609504381}
 --- !u!114 &7136903976370705971
 MonoBehaviour:
   m_ObjectHideFlags: 0
