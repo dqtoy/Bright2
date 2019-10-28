@@ -39,6 +39,7 @@ namespace HK.Bright2.StageControllers
             }
 
             this.current = UnityEngine.Object.Instantiate(nextStagePrefab);
+            Broker.Global.Publish(ChangedStage.Get(this.current));
         }
 
         public void Dispose()
