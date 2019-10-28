@@ -8,7 +8,7 @@ namespace HK.Bright2.Extensions
     /// </summary>
     public static partial class Extensions
     {
-        public static void TakeDamage(this IGiveDamage self, Actor target)
+        public static void GiveDamage(this IGiveDamage self, Actor target)
         {
             if(self.Owner == target)
             {
