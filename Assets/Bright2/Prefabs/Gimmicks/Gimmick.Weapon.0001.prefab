@@ -111,6 +111,9 @@ MonoBehaviour:
   damagePower: 50
   knockbackPower: 15
   infinitySeconds: 1
+  includeTags:
+  - Enemy
+  controlledCollider: {fileID: 3250911897351986412}
 --- !u!114 &2474317480548139688
 MonoBehaviour:
   m_ObjectHideFlags: 0

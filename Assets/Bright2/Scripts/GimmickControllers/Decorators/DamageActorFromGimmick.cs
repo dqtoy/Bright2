@@ -10,44 +10,15 @@ namespace HK.Bright2.GimmickControllers.Decorators
     /// <summary>
     /// <see cref="Gimmick"/>が<see cref="Actor"/>にダメージを与えるギミックデコレーター
     /// </summary>
-    public sealed class DamageActorFromGimmick : MonoBehaviour, IGiveDamage, IGimmickDecorator, IActorReactionOnTriggerStay2D
+    public sealed class DamageActorFromGimmick : DamageActorComponent, IGimmickDecorator, IActorReactionOnTriggerStay2D
     {
-        [SerializeField]
-        private int damagePower = default;
-
-        [SerializeField]
-        private float knockbackPower = default;
-
-        /// <summary>
-        /// 攻撃が当たった際に相手に付与する無敵時間
-        /// </summary>
-        [SerializeField]
-        private float infinitySeconds = default;
-
-        [SerializeField]
-        private List<string> includeTags = default;
-
         private Gimmick owner;
 
         private Actor gimmickOwner;
 
-        private Collider2D controlledCollider;
+        public override Actor Owner => this.gimmickOwner;
 
-        int IGiveDamage.DamagePower => this.damagePower;
-
-        float IGiveDamage.KnockbackPower => this.knockbackPower;
-
-        float IGiveDamage.InfinitySeconds => this.infinitySeconds;
-
-        Actor IGiveDamage.Owner => this.gimmickOwner;
-
-        GameObject IGiveDamage.GiveDamageObject => this.gameObject;
-
-        Collider2D IGiveDamage.GiveDamageCollider => this.controlledCollider;
-
-        List<string> IGiveDamage.IncludeTags => this.includeTags;
-
-        Vector2 IGiveDamage.KnockbackDirection
+        public override Vector2 KnockbackDirection
         {
             get
             {
@@ -56,12 +27,6 @@ namespace HK.Bright2.GimmickControllers.Decorators
 
                 return result.normalized;
             }
-        }
-
-        void Awake()
-        {
-            this.controlledCollider = this.GetComponentInChildren<Collider2D>();
-            Assert.IsNotNull(this.controlledCollider);
         }
 
         void IActorReactionOnTriggerStay2D.Do(Actor actor)
