@@ -34,7 +34,7 @@ namespace HK.Bright2.ActorControllers.States
 
             var equipmentRecord = equippedEquipment.WeaponRecord;
             var gimmick = equipmentRecord.Gimmick.Rent();
-            var parent = this.owner.TransformHolder.GetEquipmentOrigin(this.owner.StatusController.Direction);
+            var parent = this.owner.TransformHolder.GetWeaponOrigin(this.owner.StatusController.Direction);
             gimmick.transform.position = parent.position;
             gimmick.transform.rotation = parent.rotation;
             gimmick.Activate(this.owner);

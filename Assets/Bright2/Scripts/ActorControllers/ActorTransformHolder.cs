@@ -30,7 +30,7 @@ namespace HK.Bright2.ActorControllers
             Assert.IsNotNull(this.owner);
         }
 
-        public Transform GetEquipmentOrigin(Constants.Direction direction)
+        public Transform GetWeaponOrigin(Constants.Direction direction)
         {
             Assert.IsTrue(direction == Constants.Direction.Left || direction == Constants.Direction.Right);
             
