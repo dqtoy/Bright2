@@ -27,3 +27,6 @@ MonoBehaviour:
     dropWeapons:
     - record: {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
       winningRate: 1
+  effects:
+    takedDamage: {fileID: 4643271828095609800, guid: 85f1ea8a894ce4dab95f7869ae3bf07a,
+      type: 3}
