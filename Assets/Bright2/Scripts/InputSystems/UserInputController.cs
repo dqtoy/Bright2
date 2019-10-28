@@ -30,11 +30,19 @@ namespace HK.Bright2.InputSystems
                     _this.controllers.Push(new ActorControlOnUserInput(_this.actor));
                 })
                 .AddTo(this);
-                
+
             Broker.Global.Receive<ShowWeaponGridUI>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.controllers.Push(x.Controller);
+                })
+                .AddTo(this);
+
+            Broker.Global.Receive<HideWeaponGridUI>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    Assert.AreEqual(_this.controllers.Peek(), x.Controller);
+                    _this.controllers.Pop();
                 })
                 .AddTo(this);
 

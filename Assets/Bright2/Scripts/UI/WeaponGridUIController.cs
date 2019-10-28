@@ -32,12 +32,18 @@ namespace HK.Bright2.UIControllers
                     Broker.Global.Publish(ShowWeaponGridUI.Get(_this));
                 })
                 .AddTo(this);
+            Broker.Global.Receive<HideWeaponGridUI>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.canvasGroup.alpha = 0.0f;
+                })
+                .AddTo(this);
         }
 
         private List<WeaponGridScrollViewItemData> CreateItems(IReadOnlyList<WeaponRecord> weaponRecords)
         {
             var result = new List<WeaponGridScrollViewItemData>();
-            
+
             if(weaponRecords == null)
             {
                 return result;
@@ -77,6 +83,10 @@ namespace HK.Bright2.UIControllers
             if (Input.GetButtonDown(InputName.Down))
             {
                 Debug.Log("Down");
+            }
+            if(Input.GetButtonDown(InputName.Cancel))
+            {
+                Broker.Global.Publish(HideWeaponGridUI.Get(this));
             }
         }
     }
