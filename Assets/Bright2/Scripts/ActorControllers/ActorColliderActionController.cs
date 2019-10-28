@@ -33,5 +33,14 @@ namespace HK.Bright2.ActorControllers
                 r.Do(this.owner);
             }
         }
+
+        void OnTriggerStay2D(Collider2D other)
+        {
+            var reactionObjects = other.GetComponentsInChildren<IActorReactionOnTriggerStay2D>();
+            foreach (var r in reactionObjects)
+            {
+                r.Do(this.owner);
+            }
+        }
     }
 }

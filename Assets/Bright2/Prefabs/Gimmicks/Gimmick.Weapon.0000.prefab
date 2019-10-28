@@ -209,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePower: 10
   knockbackPower: 7
+  infinitySeconds: 0.1
 --- !u!1 &8096089980199602236
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +527,7 @@ PrefabInstance:
     - target: {fileID: 3676271735749863795, guid: 5d415cff8e67540258c5ab5571c8a945,
         type: 3}
       propertyPath: m_Name
-      value: Gimmick.Equipment.0000
+      value: Gimmick.Weapon.0000
       objectReference: {fileID: 0}
     - target: {fileID: 7549750287441385577, guid: 5d415cff8e67540258c5ab5571c8a945,
         type: 3}

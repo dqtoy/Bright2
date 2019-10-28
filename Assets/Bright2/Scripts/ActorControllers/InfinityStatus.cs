@@ -39,5 +39,7 @@ namespace HK.Bright2.ActorControllers
         {
             this.InfinitySeconds = infinitySeconds;
         }
+
+        public bool IsInfinity => this.InfinitySeconds > 0.0f;
     }
 }

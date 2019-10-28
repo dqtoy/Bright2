@@ -114,5 +114,37 @@ namespace HK.Bright2.ActorControllers
         {
             this.status.GameEvent = gameEvent;
         }
+
+        public void AddInfinityStatus(GameObject attackedObject, float infinitySeconds)
+        {
+            var instanceId = attackedObject.GetInstanceID();
+
+            if(!this.status.InfinityStatuses.ContainsKey(instanceId))
+            {
+                this.status.InfinityStatuses.Add(instanceId, new InfinityStatus(this.owner, instanceId, infinitySeconds));
+            }
+            else
+            {
+                var infinityStatus = this.status.InfinityStatuses[instanceId];
+                if(infinityStatus.IsInfinity)
+                {
+                    Debug.Assert(false, $"無敵中なのに{attackedObject.name}の攻撃が通りました", attackedObject);
+                }
+
+                infinityStatus.SetInfinitySeconds(infinitySeconds);
+            }
+        }
+
+        public bool IsInfinity(GameObject attackedObject)
+        {
+            var instanceId = attackedObject.GetInstanceID();
+
+            if(!this.status.InfinityStatuses.ContainsKey(instanceId))
+            {
+                return false;
+            }
+
+            return this.status.InfinityStatuses[instanceId].IsInfinity;
+        }
     }
 }

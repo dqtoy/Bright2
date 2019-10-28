@@ -46,6 +46,8 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public IGameEvent GameEvent { get; set; }
 
+        public readonly Dictionary<int, InfinityStatus> InfinityStatuses = new Dictionary<int, InfinityStatus>();
+
         public ActorInstanceStatus(Actor owner, ActorContext context)
         {
             this.HitPoint = new ReactiveProperty<int>(context.BasicStatus.HitPoint);
