@@ -44,5 +44,9 @@ namespace HK.Bright2.Database
         /// 1 = 移動しなくなる
         /// </summary>
         public float MoveSpeedAttenuationRate => this.moveSpeedAttenuationRate;
+
+        [SerializeField]
+        private Sprite icon = default;
+        public Sprite Icon => this.icon;
     }
 }
