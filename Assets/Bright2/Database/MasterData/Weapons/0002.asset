@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a3d2fbdc2bf452188a0b5309d471c9, type: 3}
   m_Name: 0002
   m_EditorClassIdentifier: 
-  equipmentName:
+  weaponName:
     target: {fileID: 11400000, guid: 544fb535d4b5d44e1b9a701b5c3511ec, type: 2}
     value: "\u7206\u5F3E\u30BB\u30C3\u30C8"
     guid: d02ba36c-9578-45d8-a4ea-6672cec4afa6

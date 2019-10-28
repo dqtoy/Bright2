@@ -160,6 +160,11 @@ PrefabInstance:
       propertyPath: observeEquippedEquipmentIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3205076732254199229, guid: 0e874afd0a0c04363b0eb159c1181b5f,
+        type: 3}
+      propertyPath: observeEquippedWeaponIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5058273626512218683, guid: 0e874afd0a0c04363b0eb159c1181b5f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -303,6 +308,11 @@ PrefabInstance:
     - target: {fileID: 3205076732254199229, guid: 0e874afd0a0c04363b0eb159c1181b5f,
         type: 3}
       propertyPath: observeEquippedEquipmentIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205076732254199229, guid: 0e874afd0a0c04363b0eb159c1181b5f,
+        type: 3}
+      propertyPath: observeEquippedWeaponIndex
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5058273626512218683, guid: 0e874afd0a0c04363b0eb159c1181b5f,

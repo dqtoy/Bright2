@@ -24,7 +24,7 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// 装備中の武器
         /// </summary>
-        public List<EquippedEquipment> EquippedWeapons { get; private set; }
+        public List<EquippedWeapon> EquippedWeapons { get; private set; }
 
         /// <summary>
         /// 現在向いている方向
@@ -52,10 +52,10 @@ namespace HK.Bright2.ActorControllers
             this.HitPointMax = new ReactiveProperty<int>(this.HitPoint.Value);
             this.Money = context.BasicStatus.Money;
 
-            this.EquippedWeapons = new List<EquippedEquipment>();
+            this.EquippedWeapons = new List<EquippedWeapon>();
             for (var i = 0; i < Constants.EquippedWeaponMax; i++)
             {
-                this.EquippedWeapons.Add(new EquippedEquipment(owner.gameObject));
+                this.EquippedWeapons.Add(new EquippedWeapon(owner.gameObject));
             }
         }
     }

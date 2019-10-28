@@ -32,7 +32,7 @@ namespace HK.Bright2.ActorControllers.States
             this.nextStateDelaySeconds = 0.0f;
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Attack);
 
-            var equipmentRecord = equippedEquipment.EquipmentRecord;
+            var equipmentRecord = equippedEquipment.WeaponRecord;
             var gimmick = equipmentRecord.Gimmick.Rent();
             var parent = this.owner.TransformHolder.GetEquipmentOrigin(this.owner.StatusController.Direction);
             gimmick.transform.position = parent.position;

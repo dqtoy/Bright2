@@ -41,7 +41,7 @@ namespace HK.Bright2.ActorControllers
 
         public int JumpCount => this.status.JumpCount;
 
-        public List<EquippedEquipment> EquippedWeapons => this.status.EquippedWeapons;
+        public List<EquippedWeapon> EquippedWeapons => this.status.EquippedWeapons;
 
         public Constants.Direction Direction => this.status.Direction;
 

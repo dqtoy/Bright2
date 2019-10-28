@@ -9,15 +9,15 @@ using UnityEngine.UI;
 namespace HK.Bright2.UIControllers
 {
     /// <summary>
-    /// 装備中の装備品のアイコンUIを制御するクラス
+    /// 装備中の武器のアイコンUIを制御するクラス
     /// </summary>
-    public sealed class EquippedEquipmentIconController : MonoBehaviour
+    public sealed class EquippedWeaponIconController : MonoBehaviour
     {
         /// <summary>
-        /// 監視する装備品のインデックス
+        /// 監視する武器のインデックス
         /// </summary>
         [SerializeField]
-        private int observeEquippedEquipmentIndex = default;
+        private int observeEquippedWeaponIndex = default;
 
         [SerializeField]
         private Slider coolTimeSlider = default;
@@ -28,16 +28,16 @@ namespace HK.Bright2.UIControllers
                 .Where(x => x.Actor.tag == Tags.Name.Player)
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    var equippedEquipment = x.Actor.StatusController.EquippedWeapons[_this.observeEquippedEquipmentIndex];
-                    _this.ObserveCoolTime(equippedEquipment);
+                    var equippedWeapon = x.Actor.StatusController.EquippedWeapons[_this.observeEquippedWeaponIndex];
+                    _this.ObserveCoolTime(equippedWeapon);
                 })
                 .AddTo(this);
         }
 
-        private void ObserveCoolTime(EquippedEquipment equippedEquipment)
+        private void ObserveCoolTime(EquippedWeapon equippedWeapon)
         {
-            equippedEquipment.CoolTimeSeconds
-                .SubscribeWithState2(this, equippedEquipment, (_, _this, e) =>
+            equippedWeapon.CoolTimeSeconds
+                .SubscribeWithState2(this, equippedWeapon, (_, _this, e) =>
                 {
                     _this.UpdateCoolTimeSlider(e.CoolTimeRate);
                 })

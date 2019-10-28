@@ -7,26 +7,26 @@ using UnityEngine.Assertions;
 namespace HK.Bright2
 {
     /// <summary>
-    /// 装備中の装備品を管理するクラス
+    /// 装備中の武器を管理するクラス
     /// </summary>
-    public sealed class EquippedEquipment
+    public sealed class EquippedWeapon
     {
         private GameObject owner;
 
-        public WeaponRecord EquipmentRecord { get; private set; }
+        public WeaponRecord WeaponRecord { get; private set; }
 
         private readonly ReactiveProperty<float> coolTimeSeconds = new ReactiveProperty<float>();
         public IReactiveProperty<float> CoolTimeSeconds => this.coolTimeSeconds;
 
-        public EquippedEquipment(GameObject owner)
+        public EquippedWeapon(GameObject owner)
         {
             this.owner = owner;
             this.owner.UpdateAsObservable()
                 .SubscribeWithState(this, (_, _this) =>
                 {
-                    if(_this.EquipmentRecord != null)
+                    if(_this.WeaponRecord != null)
                     {
-                        if(_this.coolTimeSeconds.Value < _this.EquipmentRecord.CoolTimeSeconds)
+                        if(_this.coolTimeSeconds.Value < _this.WeaponRecord.CoolTimeSeconds)
                         {
                             _this.coolTimeSeconds.Value += Time.deltaTime;
                         }
@@ -34,10 +34,10 @@ namespace HK.Bright2
                 });
         }
 
-        public void Change(WeaponRecord equipmentRecord)
+        public void Change(WeaponRecord weaponRecord)
         {
-            this.EquipmentRecord = equipmentRecord;
-            this.coolTimeSeconds.Value = equipmentRecord.CoolTimeSeconds;
+            this.WeaponRecord = weaponRecord;
+            this.coolTimeSeconds.Value = weaponRecord.CoolTimeSeconds;
         }
 
         public void ResetCoolTime()
@@ -55,12 +55,12 @@ namespace HK.Bright2
         {
             get
             {
-                if(this.EquipmentRecord == null)
+                if(this.WeaponRecord == null)
                 {
                     return 1.0f;
                 }
 
-                return Mathf.Clamp01(this.coolTimeSeconds.Value / this.EquipmentRecord.CoolTimeSeconds);
+                return Mathf.Clamp01(this.coolTimeSeconds.Value / this.WeaponRecord.CoolTimeSeconds);
             }
         }
 
@@ -69,12 +69,12 @@ namespace HK.Bright2
             get
             {
                 // 装備していない場合は攻撃出来ない
-                if(this.EquipmentRecord == null)
+                if(this.WeaponRecord == null)
                 {
                     return false;
                 }
                 
-                return this.coolTimeSeconds.Value >= this.EquipmentRecord.CoolTimeSeconds;
+                return this.coolTimeSeconds.Value >= this.WeaponRecord.CoolTimeSeconds;
             }
         }
     }
