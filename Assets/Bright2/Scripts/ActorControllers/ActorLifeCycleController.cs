@@ -27,7 +27,7 @@ namespace HK.Bright2.ActorControllers
 
             if(this.owner.tag == Tags.Name.Enemy)
             {
-                Broker.Global.Receive<RequestChangeStage>()
+                Broker.Global.Receive<ChangedStage>()
                     .SubscribeWithState(this, (_, _this) =>
                     {
                         Object.Destroy(_this.owner.gameObject);

@@ -17,7 +17,7 @@ namespace HK.Bright2.GimmickControllers
         {
             this.owner = owner;
             
-            Broker.Global.Receive<RequestChangeStage>()
+            Broker.Global.Receive<ChangedStage>()
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.owner.Return();
