@@ -40,8 +40,8 @@ MonoBehaviour:
   otherGimmick: {fileID: 4760945173984106893, guid: 26aec20ac27ea4a1ab89597fda0d60b1,
     type: 3}
   syncTransform: {fileID: 7346383222632335383}
-  limit: 5
-  interval: 0.05
+  limit: 1
+  interval: 0
   initialDuration: 0
 --- !u!1 &1697355114042389820
 GameObject:

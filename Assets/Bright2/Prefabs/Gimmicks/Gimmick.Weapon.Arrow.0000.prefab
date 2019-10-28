@@ -153,11 +153,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63205bb744d8d404b87b6f45bd71b58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePower: 0
-  knockbackPower: 0
-  infinitySeconds: 0
-  includeTags: []
-  controlledCollider: {fileID: 0}
+  damagePower: 5
+  knockbackPower: 5
+  infinitySeconds: 0.1
+  includeTags:
+  - Enemy
+  controlledCollider: {fileID: 563017635811150891}
+  additionalEffects:
+  - {fileID: 11400000, guid: f3b13d7dde0f34d32ac36e193517b1f2, type: 2}
 --- !u!1 &4815301237477120724
 GameObject:
   m_ObjectHideFlags: 0
