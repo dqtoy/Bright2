@@ -10,41 +10,15 @@ namespace HK.Bright2.ActorControllers
     /// <summary>
     /// <see cref="Actor"/>が<see cref="Actor"/>に対してダメージを与えるクラス
     /// </summary>
-    public sealed class DamageActorFromActor : MonoBehaviour, IGiveDamage, IActorReactionOnTriggerEnter2D
+    public sealed class DamageActorFromActor : DamageActorComponent, IActorReactionOnTriggerEnter2D
     {
-        [SerializeField]
-        private int damagePower = default;
-
-        [SerializeField]
-        private float knockbackPower = default;
-
-        [SerializeField]
-        private float infinitySeconds = default;
-
-        [SerializeField]
-        private List<string> includeTags = default;
-
-        private Collider2D controlledCollider;
-
         private Actor owner;
 
         private Actor target;
 
-        int IGiveDamage.DamagePower => this.damagePower;
+        public override Actor Owner => this.owner;
 
-        float IGiveDamage.KnockbackPower => this.knockbackPower;
-
-        float IGiveDamage.InfinitySeconds => this.infinitySeconds;
-
-        Actor IGiveDamage.Owner => this.owner;
-
-        GameObject IGiveDamage.GiveDamageObject => this.gameObject;
-
-        Collider2D IGiveDamage.GiveDamageCollider => this.controlledCollider;
-
-        List<string> IGiveDamage.IncludeTags => this.includeTags;
-
-        Vector2 IGiveDamage.KnockbackDirection
+        public override Vector2 KnockbackDirection
         {
             get
             {
@@ -61,9 +35,6 @@ namespace HK.Bright2.ActorControllers
         {
             this.owner = this.GetComponentInParent<Actor>();
             Assert.IsNotNull(this.owner);
-
-            this.controlledCollider = this.GetComponentInChildren<Collider2D>();
-            Assert.IsNotNull(this.controlledCollider);
         }
 
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
