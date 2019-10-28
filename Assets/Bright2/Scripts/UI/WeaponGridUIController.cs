@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.Database;
+using HK.Bright2.GameSystems;
 using HK.Bright2.InputSystems;
 using HK.Bright2.UIControllers.Messages;
 using HK.Framework.EventSystems;
@@ -40,17 +41,17 @@ namespace HK.Bright2.UIControllers
                 .AddTo(this);
         }
 
-        private List<WeaponGridScrollViewItemData> CreateItems(IReadOnlyList<WeaponRecord> weaponRecords)
+        private List<WeaponGridScrollViewItemData> CreateItems(IReadOnlyList<InstanceWeapon> instanceWeapons)
         {
             var result = new List<WeaponGridScrollViewItemData>();
 
-            if(weaponRecords == null)
+            if(instanceWeapons == null)
             {
                 return result;
             }
 
             var itemData = new WeaponGridScrollViewItemData();
-            for (var i = 0; i < weaponRecords.Count; i++)
+            for (var i = 0; i < instanceWeapons.Count; i++)
             {
                 if (!itemData.CanAddRecord)
                 {
@@ -58,7 +59,7 @@ namespace HK.Bright2.UIControllers
                     itemData = new WeaponGridScrollViewItemData();
                 }
 
-                itemData.Records.Add(weaponRecords[i]);
+                itemData.Records.Add(instanceWeapons[i].WeaponRecord);
             }
 
             result.Add(itemData);

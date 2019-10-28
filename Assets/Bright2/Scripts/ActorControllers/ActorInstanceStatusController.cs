@@ -49,7 +49,7 @@ namespace HK.Bright2.ActorControllers
 
         public IGameEvent GameEvent => this.status.GameEvent;
 
-        public IReadOnlyList<WeaponRecord> PossessionWeapons => this.status.PossessionWeapons;
+        public IReadOnlyList<InstanceWeapon> PossessionWeapons => this.status.PossessionWeapons;
 
         public void AddJumpCount()
         {
@@ -108,8 +108,8 @@ namespace HK.Bright2.ActorControllers
 
         public void AddWeapon(WeaponRecord weapon)
         {
-            this.status.PossessionWeapons = this.status.PossessionWeapons ?? new List<WeaponRecord>();
-            this.status.PossessionWeapons.Add(weapon);
+            this.status.PossessionWeapons = this.status.PossessionWeapons ?? new List<InstanceWeapon>();
+            this.status.PossessionWeapons.Add(new InstanceWeapon(weapon));
         }
 
         public void SetGameEvent(IGameEvent gameEvent)
