@@ -30,6 +30,8 @@ namespace HK.Bright2.ActorControllers
 
         public ActorLifeCycleController LifeCycleController { get; private set; }
 
+        public ActorEffectController EffectController { get; private set; }
+
         public readonly IMessageBroker Broker = new MessageBroker();
 
         IMessageBroker IBroker.Broker => this.Broker;
@@ -55,6 +57,8 @@ namespace HK.Bright2.ActorControllers
             this.LifeCycleController = new ActorLifeCycleController(this);
 
             this.StateManager = new ActorStateManager(this);
+
+            this.EffectController = new ActorEffectController(this);
         }
     }
 }

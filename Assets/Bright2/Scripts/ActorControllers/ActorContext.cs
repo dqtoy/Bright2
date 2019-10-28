@@ -19,6 +19,10 @@ namespace HK.Bright2.ActorControllers
         private BasicStatusElement basicStatus = default;
         public BasicStatusElement BasicStatus => this.basicStatus;
 
+        [SerializeField]
+        private EffectElements effects = default;
+        public EffectElements Effects => this.effects;
+
         [Serializable]
         public class AnimationSequenceElements
         {
@@ -72,6 +76,14 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private List<DropWeapon> dropWeapons = default;
             public List<DropWeapon> DropWeapons => this.dropWeapons;
+        }
+
+        [Serializable]
+        public class EffectElements
+        {
+            [SerializeField]
+            private PoolableEffect takedDamage = default;
+            public PoolableEffect TakedDamage => this.takedDamage;
         }
     }
 }
