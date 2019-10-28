@@ -1,4 +1,5 @@
-﻿using HK.Bright2.GameSystems.Messages;
+﻿using HK.Bright2.ActorControllers;
+using HK.Bright2.GameSystems.Messages;
 using HK.Bright2.UIControllers.Messages;
 using HK.Framework.EventSystems;
 using UniRx;
@@ -17,7 +18,20 @@ namespace HK.Bright2.GameSystems
             Broker.Global.Receive<RequestChangeWeaponSequenceFromUserInput>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    Broker.Global.Publish(RequestShowWeaponGridUI.Get(x.Actor.StatusController.PossessionWeapons));
+                    _this.StartSequence(x.Actor);
+                })
+                .AddTo(this);
+        }
+
+        private void StartSequence(Actor actor)
+        {
+            Broker.Global.Publish(RequestShowWeaponGridUI.Get(actor.StatusController.PossessionWeapons));
+
+            Broker.Global.Receive<SelectInstanceWeaponIndex>()
+                .TakeUntil(Broker.Global.Receive<HideWeaponGridUI>())
+                .SubscribeWithState(actor, (x, _actor) =>
+                {
+                    Debug.Log($"SelectIndex = {x.Index}");
                 })
                 .AddTo(this);
         }

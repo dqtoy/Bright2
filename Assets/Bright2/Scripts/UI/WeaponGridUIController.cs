@@ -34,6 +34,8 @@ namespace HK.Bright2.UIControllers
             Broker.Global.Receive<RequestShowWeaponGridUI>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
+                    _this.horizontalIndex = 0;
+                    _this.verticalIndex = 0;
                     _this.canvasGroup.alpha = 1.0f;
                     _this.scrollView.UpdateData(_this.CreateItems(x.Records));
                     Broker.Global.Publish(ShowWeaponGridUI.Get(_this));
@@ -101,6 +103,10 @@ namespace HK.Bright2.UIControllers
                 this.verticalIndex++;
                 this.ClampVerticalIndex();
                 this.scrollView.UpdateSelectIndex(this.SelectIndex);
+            }
+            if(Input.GetButtonDown(InputName.Decide))
+            {
+                Broker.Global.Publish(SelectInstanceWeaponIndex.Get(this.SelectIndex));
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {
