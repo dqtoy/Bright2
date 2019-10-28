@@ -1,4 +1,5 @@
-﻿using HK.Bright2.ActorControllers;
+﻿using System.Collections.Generic;
+using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems;
 using HK.Bright2.GameSystems.Messages;
 using HK.Framework.EventSystems;
@@ -14,7 +15,7 @@ namespace HK.Bright2.InputSystems
     /// </summary>
     public sealed class UserInputController : MonoBehaviour
     {
-        private IControllableUserInput current;
+        private readonly Stack<IControllableUserInput> controllers = new Stack<IControllableUserInput>();
 
         private Actor actor;
 
@@ -25,15 +26,15 @@ namespace HK.Bright2.InputSystems
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.actor = x.Actor;
-                    _this.current = new ActorControlOnUserInput(_this.actor);
+                    _this.controllers.Push(new ActorControlOnUserInput(_this.actor));
                 })
                 .AddTo(this);
 
             this.UpdateAsObservable()
-                .Where(_ => this.current != null)
+                .Where(_ => this.controllers.Count > 0)
                 .SubscribeWithState(this, (_, _this) =>
                 {
-                    _this.current.UpdateInput();
+                    _this.controllers.Peek().UpdateInput();
                 });
         }
     }
