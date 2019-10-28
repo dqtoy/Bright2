@@ -1,4 +1,6 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
+using HK.Bright2.StageControllers.Messages;
+using HK.Framework.EventSystems;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -22,6 +24,16 @@ namespace HK.Bright2.ActorControllers
                     Object.Destroy(_this.owner.gameObject);
                 })
                 .AddTo(this.owner);
+
+            if(this.owner.tag == Tags.Name.Enemy)
+            {
+                Broker.Global.Receive<RequestChangeStage>()
+                    .SubscribeWithState(this, (_, _this) =>
+                    {
+                        Object.Destroy(_this.owner.gameObject);
+                    })
+                    .AddTo(this.owner);
+            }
         }
     }
 }
