@@ -69,9 +69,9 @@ namespace HK.Bright2.ActorControllers
             }
         }
 
-        public void SetWeapon(int index, WeaponRecord weapon)
+        public void SetWeapon(int index, InstanceWeapon instanceWeapon)
         {
-            this.status.EquippedWeapons[index].Change(weapon);
+            this.status.EquippedWeapons[index].Change(instanceWeapon);
         }
 
         public void SetDirection(Constants.Direction direction)
@@ -109,7 +109,17 @@ namespace HK.Bright2.ActorControllers
         public void AddWeapon(WeaponRecord weapon)
         {
             this.status.PossessionWeapons = this.status.PossessionWeapons ?? new List<InstanceWeapon>();
-            this.status.PossessionWeapons.Add(new InstanceWeapon(weapon));
+            var instanceWeapon = new InstanceWeapon(weapon);
+            this.status.PossessionWeapons.Add(instanceWeapon);
+
+            foreach(var e in this.status.EquippedWeapons)
+            {
+                if(!e.IsEquipped)
+                {
+                    e.Change(instanceWeapon);
+                    break;
+                }
+            }
         }
 
         public void SetGameEvent(IGameEvent gameEvent)

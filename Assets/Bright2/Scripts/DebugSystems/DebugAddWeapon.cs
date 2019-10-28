@@ -14,9 +14,6 @@ namespace HK.Bright2.DebugSystems
     public sealed class DebugAddWeapon : MonoBehaviour
     {
         [SerializeField]
-        private List<WeaponRecord> equippedWeapons = default;
-
-        [SerializeField]
         private List<WeaponRecord> possessionWeapons = default;
 
         void Awake()
@@ -24,10 +21,6 @@ namespace HK.Bright2.DebugSystems
             Broker.Global.Receive<SpawnedActor>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    for (var i = 0; i < _this.equippedWeapons.Count; i++)
-                    {
-                        x.Actor.StatusController.SetWeapon(i, _this.equippedWeapons[i]);
-                    }
                     foreach(var w in _this.possessionWeapons)
                     {
                         x.Actor.StatusController.AddWeapon(w);

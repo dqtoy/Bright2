@@ -349,10 +349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c82671c4b4a14d0f93b3d93a93f1eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeapons:
-  - {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
-  - {fileID: 11400000, guid: e05e2f0d5e2d84d2cac38ba725ae4ad0, type: 2}
-  - {fileID: 11400000, guid: 670c5765ffd004955b8eaa0e0b6cdf05, type: 2}
   possessionWeapons:
   - {fileID: 11400000, guid: dcf10285f713b4744b43b4bb49a7aa10, type: 2}
   - {fileID: 11400000, guid: 8397b3a005b324650868da39ba1d3f30, type: 2}
