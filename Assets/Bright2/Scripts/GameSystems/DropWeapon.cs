@@ -7,18 +7,18 @@ using UnityEngine.Assertions;
 namespace HK.Bright2
 {
     /// <summary>
-    /// 装備品のドロップデータ
+    /// 武器のドロップデータ
     /// </summary>
     [Serializable]
-    public sealed class DropEquipment : IDropItem<EquipmentRecord>
+    public sealed class DropWeapon : IDropItem<WeaponRecord>
     {
         [SerializeField]
-        private EquipmentRecord record = default;
+        private WeaponRecord record = default;
 
         [SerializeField][Range(0.0f, 1.0f)]
         private float winningRate = default;
 
-        public EquipmentRecord Get => this.record;
+        public WeaponRecord Get => this.record;
 
         public float WinningRate => this.winningRate;
 

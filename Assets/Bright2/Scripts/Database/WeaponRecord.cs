@@ -7,16 +7,16 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.Database
 {
     /// <summary>
-    /// 装備品マスターデータのレコード
+    /// 武器マスターデータのレコード
     /// </summary>
-    [CreateAssetMenu(menuName = "Bright2/MasterData/Equipment/Record")]
-    public sealed class EquipmentRecord : ScriptableObject, IMasterDataRecordId
+    [CreateAssetMenu(menuName = "Bright2/MasterData/Weapon/Record")]
+    public sealed class WeaponRecord : ScriptableObject, IMasterDataRecordId
     {
         public string Id => this.name;
 
         [SerializeField]
-        private StringAsset.Finder equipmentName = default;
-        public string EquipmentName => this.equipmentName.Get;
+        private StringAsset.Finder weaponName = default;
+        public string WeaponName => this.weaponName.Get;
 
         [SerializeField]
         private Gimmick gimmick = default;

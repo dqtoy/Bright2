@@ -28,7 +28,7 @@ namespace HK.Bright2.UIControllers
                 .Where(x => x.Actor.tag == Tags.Name.Player)
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    var equippedEquipment = x.Actor.StatusController.EquippedEquipments[_this.observeEquippedEquipmentIndex];
+                    var equippedEquipment = x.Actor.StatusController.EquippedWeapons[_this.observeEquippedEquipmentIndex];
                     _this.ObserveCoolTime(equippedEquipment);
                 })
                 .AddTo(this);

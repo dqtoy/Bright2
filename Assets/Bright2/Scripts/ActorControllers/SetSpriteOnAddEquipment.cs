@@ -5,14 +5,14 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.ActorControllers
 {
     /// <summary>
-    /// <see cref="IAddEquipment.Setup(EquipmentRecord)"/>のタイミングでスプライトを設定するクラス
+    /// <see cref="IAddWeapon.Setup(WeaponRecord)"/>のタイミングでスプライトを設定するクラス
     /// </summary>
-    public sealed class SetSpriteOnAddEquipment : MonoBehaviour, IAddEquipment
+    public sealed class SetSpriteOnAddEquipment : MonoBehaviour, IAddWeapon
     {
         [SerializeField]
         private SpriteRenderer controlledRenderer = default;
 
-        public void Setup(EquipmentRecord equipment)
+        public void Setup(WeaponRecord equipment)
         {
             this.controlledRenderer.sprite = equipment.Icon;
         }

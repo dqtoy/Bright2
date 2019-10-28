@@ -70,8 +70,8 @@ namespace HK.Bright2.ActorControllers
             public int Money => this.money;
 
             [SerializeField]
-            private List<DropEquipment> dropEquipments = default;
-            public List<DropEquipment> DropEquipments => this.dropEquipments;
+            private List<DropWeapon> dropWeapons = default;
+            public List<DropWeapon> DropWeapons => this.dropWeapons;
         }
     }
 }

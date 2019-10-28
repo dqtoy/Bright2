@@ -7,14 +7,14 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.ActorControllers
 {
     /// <summary>
-    /// 衝突した<see cref="Actor"/>に対して装備品を追加するクラス
+    /// 衝突した<see cref="Actor"/>に対して武器を追加するクラス
     /// </summary>
-    public sealed class AddEquipmentOnActorReactionOnTriggerEnter2D : MonoBehaviour, IActorReactionOnTriggerEnter2D, IAddEquipment
+    public sealed class AddWeaponOnActorReactionOnTriggerEnter2D : MonoBehaviour, IActorReactionOnTriggerEnter2D, IAddWeapon
     {
         [SerializeField]
         private List<string> includeTags = new List<string>();
 
-        private EquipmentRecord equipment;
+        private WeaponRecord weapon;
 
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
@@ -23,13 +23,13 @@ namespace HK.Bright2.ActorControllers
                 return;
             }
 
-            Assert.IsNotNull(this.equipment);
-            actor.StatusController.AddEquipment(this.equipment);
+            Assert.IsNotNull(this.weapon);
+            actor.StatusController.AddWeapon(this.weapon);
         }
 
-        void IAddEquipment.Setup(EquipmentRecord equipment)
+        void IAddWeapon.Setup(WeaponRecord weapon)
         {
-            this.equipment = equipment;
+            this.weapon = weapon;
         }
     }
 }

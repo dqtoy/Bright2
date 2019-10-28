@@ -18,7 +18,7 @@ namespace HK.Bright2.InputSystems
         private Actor actor = default;
 
         [SerializeField]
-        private EquipmentRecord[] equipmentRecords = default;
+        private WeaponRecord[] equipmentRecords = default;
 
         void Awake()
         {

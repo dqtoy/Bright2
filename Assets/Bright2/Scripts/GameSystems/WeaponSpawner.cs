@@ -12,9 +12,9 @@ using UnityEngine.Assertions;
 namespace HK.Bright2
 {
     /// <summary>
-    /// 装備品を生成するクラス
+    /// 武器を生成するクラス
     /// </summary>
-    public sealed class EquipmentSpawner : MonoBehaviour
+    public sealed class WeaponSpawner : MonoBehaviour
     {
         [SerializeField]
         private Gimmick prefab = default;
@@ -37,7 +37,7 @@ namespace HK.Bright2
             actor.Broker.Receive<Died>()
                 .SubscribeWithState2(this, actor, (x, _this, a) =>
                 {
-                    foreach(var d in a.Context.BasicStatus.DropEquipments)
+                    foreach(var d in a.Context.BasicStatus.DropWeapons)
                     {
                         if(!d.Lottery())
                         {
@@ -50,15 +50,15 @@ namespace HK.Bright2
                 .AddTo(actor);
         }
 
-        private void CreateGimmick(Actor actor, EquipmentRecord equipment)
+        private void CreateGimmick(Actor actor, WeaponRecord weapon)
         {
             var gimmick = this.prefab.Rent();
             gimmick.transform.position = actor.CachedTransform.position + this.offset;
             gimmick.Activate(actor);
             
-            foreach(var i in gimmick.GetComponentsInChildren<IAddEquipment>())
+            foreach(var i in gimmick.GetComponentsInChildren<IAddWeapon>())
             {
-                i.Setup(equipment);
+                i.Setup(weapon);
             }
         }
     }

@@ -13,7 +13,7 @@ namespace HK.Bright2
     {
         private GameObject owner;
 
-        public EquipmentRecord EquipmentRecord { get; private set; }
+        public WeaponRecord EquipmentRecord { get; private set; }
 
         private readonly ReactiveProperty<float> coolTimeSeconds = new ReactiveProperty<float>();
         public IReactiveProperty<float> CoolTimeSeconds => this.coolTimeSeconds;
@@ -34,7 +34,7 @@ namespace HK.Bright2
                 });
         }
 
-        public void Change(EquipmentRecord equipmentRecord)
+        public void Change(WeaponRecord equipmentRecord)
         {
             this.EquipmentRecord = equipmentRecord;
             this.coolTimeSeconds.Value = equipmentRecord.CoolTimeSeconds;

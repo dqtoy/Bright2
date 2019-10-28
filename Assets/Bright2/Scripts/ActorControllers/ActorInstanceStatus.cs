@@ -22,9 +22,9 @@ namespace HK.Bright2.ActorControllers
         public int JumpCount { get; set; }
 
         /// <summary>
-        /// 装備中の装備品
+        /// 装備中の武器
         /// </summary>
-        public List<EquippedEquipment> EquippedEquipments { get; private set; }
+        public List<EquippedEquipment> EquippedWeapons { get; private set; }
 
         /// <summary>
         /// 現在向いている方向
@@ -37,9 +37,9 @@ namespace HK.Bright2.ActorControllers
         public int Money { get; set; }
 
         /// <summary>
-        /// 所持している装備品
+        /// 所持している武器
         /// </summary>
-        public List<EquipmentRecord> PossessionEquipments { get; set; }
+        public List<WeaponRecord> PossessionWeapons { get; set; }
 
         /// <summary>
         /// 実行可能なゲームイベント
@@ -52,10 +52,10 @@ namespace HK.Bright2.ActorControllers
             this.HitPointMax = new ReactiveProperty<int>(this.HitPoint.Value);
             this.Money = context.BasicStatus.Money;
 
-            this.EquippedEquipments = new List<EquippedEquipment>();
-            for (var i = 0; i < Constants.EquippedEquipmentMax; i++)
+            this.EquippedWeapons = new List<EquippedEquipment>();
+            for (var i = 0; i < Constants.EquippedWeaponMax; i++)
             {
-                this.EquippedEquipments.Add(new EquippedEquipment(owner.gameObject));
+                this.EquippedWeapons.Add(new EquippedEquipment(owner.gameObject));
             }
         }
     }

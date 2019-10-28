@@ -10,7 +10,7 @@ namespace HK.Bright2.Database
     public sealed class MasterData :ScriptableObject
     {
         [SerializeField]
-        private EquipmentList equipment = default;
-        public EquipmentList Equipment => this.equipment;
+        private WeaponList weapon = default;
+        public WeaponList Weapon => this.weapon;
     }
 }

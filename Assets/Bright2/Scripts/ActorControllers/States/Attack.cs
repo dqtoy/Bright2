@@ -26,7 +26,7 @@ namespace HK.Bright2.ActorControllers.States
             var stateAttackContext = (StateAttackContext)context;
             Assert.IsNotNull(stateAttackContext);
 
-            var equippedEquipment = this.owner.StatusController.EquippedEquipments[stateAttackContext.EquippedEquipmentIndex];
+            var equippedEquipment = this.owner.StatusController.EquippedWeapons[stateAttackContext.EquippedEquipmentIndex];
             Assert.IsTrue(equippedEquipment.CanFire, "攻撃不可能な状態なのに攻撃しようとしました");
 
             this.nextStateDelaySeconds = 0.0f;

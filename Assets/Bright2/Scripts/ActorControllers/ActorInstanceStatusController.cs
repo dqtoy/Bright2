@@ -41,7 +41,7 @@ namespace HK.Bright2.ActorControllers
 
         public int JumpCount => this.status.JumpCount;
 
-        public List<EquippedEquipment> EquippedEquipments => this.status.EquippedEquipments;
+        public List<EquippedEquipment> EquippedWeapons => this.status.EquippedWeapons;
 
         public Constants.Direction Direction => this.status.Direction;
 
@@ -67,9 +67,9 @@ namespace HK.Bright2.ActorControllers
             }
         }
 
-        public void SetEquipment(int index, EquipmentRecord equipment)
+        public void SetEquipment(int index, WeaponRecord equipment)
         {
-            this.status.EquippedEquipments[index].Change(equipment);
+            this.status.EquippedWeapons[index].Change(equipment);
         }
 
         public void SetDirection(Constants.Direction direction)
@@ -104,10 +104,10 @@ namespace HK.Bright2.ActorControllers
             this.status.Money += value;
         }
 
-        public void AddEquipment(EquipmentRecord equipment)
+        public void AddWeapon(WeaponRecord weapon)
         {
-            this.status.PossessionEquipments = this.status.PossessionEquipments ?? new List<EquipmentRecord>();
-            this.status.PossessionEquipments.Add(equipment);
+            this.status.PossessionWeapons = this.status.PossessionWeapons ?? new List<WeaponRecord>();
+            this.status.PossessionWeapons.Add(weapon);
         }
 
         public void SetGameEvent(IGameEvent gameEvent)
