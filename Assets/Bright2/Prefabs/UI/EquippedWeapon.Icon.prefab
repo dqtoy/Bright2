@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4504010635875338980}
   - component: {fileID: 3205076732254199229}
   m_Layer: 5
-  m_Name: EquippedEquipmentIcon
+  m_Name: EquippedWeapon.Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fc78fc31aaa4873ba5b520113284fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  observeEquippedEquipmentIndex: 0
+  observeEquippedWeaponIndex: 0
+  icon: {fileID: 3880440994980375736}
   coolTimeSlider: {fileID: 2533835296662334752}
 --- !u!1 &3152852003377129779
 GameObject:

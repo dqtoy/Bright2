@@ -74,6 +74,7 @@ namespace HK.Bright2.ActorControllers
             Assert.IsTrue(this.status.PossessionWeapons.Contains(instanceWeapon), $"所持していない武器を装備しようとしました");
 
             this.status.EquippedWeapons[index].Change(instanceWeapon);
+            this.owner.Broker.Publish(ChangedEquippedWeapon.Get(index));
         }
 
         public void SetDirection(Constants.Direction direction)
@@ -114,11 +115,13 @@ namespace HK.Bright2.ActorControllers
             var instanceWeapon = new InstanceWeapon(weapon);
             this.status.PossessionWeapons.Add(instanceWeapon);
 
-            foreach(var e in this.status.EquippedWeapons)
+            // 装備していない箇所があったら自動的に装備する
+            for (var i = 0; i < this.status.EquippedWeapons.Count; i++)
             {
-                if(!e.IsEquipped)
+                var e = this.status.EquippedWeapons[i];
+                if (!e.IsEquipped)
                 {
-                    e.Change(instanceWeapon);
+                    this.ChangeEquippedWeapon(i, instanceWeapon);
                     break;
                 }
             }

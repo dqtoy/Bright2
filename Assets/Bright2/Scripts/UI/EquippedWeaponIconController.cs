@@ -1,4 +1,5 @@
 ﻿using HK.Bright2.ActorControllers;
+using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.GameSystems.Messages;
 using HK.Framework.EventSystems;
 using UniRx;
@@ -20,6 +21,9 @@ namespace HK.Bright2.UIControllers
         private int observeEquippedWeaponIndex = default;
 
         [SerializeField]
+        private Image icon = default;
+
+        [SerializeField]
         private Slider coolTimeSlider = default;
 
         void Awake()
@@ -28,8 +32,28 @@ namespace HK.Bright2.UIControllers
                 .Where(x => x.Actor.tag == Tags.Name.Player)
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    var equippedWeapon = x.Actor.StatusController.EquippedWeapons[_this.observeEquippedWeaponIndex];
-                    _this.ObserveCoolTime(equippedWeapon);
+                    var actor = x.Actor;
+                    _this.ApplyIcon(actor);
+                    _this.ObserveActor(actor);
+                })
+                .AddTo(this);
+        }
+
+        private void ObserveActor(Actor actor)
+        {
+            this.ObserveChangedEquippedWeapon(actor);
+
+            var equippedWeapon = actor.StatusController.EquippedWeapons[this.observeEquippedWeaponIndex];
+            this.ObserveCoolTime(equippedWeapon);
+        }
+
+        private void ObserveChangedEquippedWeapon(Actor actor)
+        {
+            actor.Broker.Receive<ChangedEquippedWeapon>()
+                .Where(x => x.Index == this.observeEquippedWeaponIndex)
+                .SubscribeWithState2(this, actor, (x, _this, a) =>
+                {
+                    _this.ApplyIcon(a);
                 })
                 .AddTo(this);
         }
@@ -42,6 +66,19 @@ namespace HK.Bright2.UIControllers
                     _this.UpdateCoolTimeSlider(e.CoolTimeRate);
                 })
                 .AddTo(this);
+        }
+
+        private void ApplyIcon(Actor actor)
+        {
+            var equippedWeapon = actor.StatusController.EquippedWeapons[this.observeEquippedWeaponIndex];
+            if(!equippedWeapon.IsEquipped)
+            {
+                this.icon.sprite = null;
+                return;
+            }
+
+            var weaponRecord = equippedWeapon.InstanceWeapon.WeaponRecord;
+            this.icon.sprite = weaponRecord.Icon;
         }
 
         private void UpdateCoolTimeSlider(float value)
