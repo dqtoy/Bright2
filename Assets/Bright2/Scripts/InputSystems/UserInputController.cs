@@ -2,6 +2,7 @@
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems;
 using HK.Bright2.GameSystems.Messages;
+using HK.Bright2.UIControllers.Messages;
 using HK.Framework.EventSystems;
 using UniRx;
 using UniRx.Triggers;
@@ -27,6 +28,13 @@ namespace HK.Bright2.InputSystems
                 {
                     _this.actor = x.Actor;
                     _this.controllers.Push(new ActorControlOnUserInput(_this.actor));
+                })
+                .AddTo(this);
+                
+            Broker.Global.Receive<ShowWeaponGridUI>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.controllers.Push(x.Controller);
                 })
                 .AddTo(this);
 
