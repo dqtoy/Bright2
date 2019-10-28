@@ -31,6 +31,7 @@ namespace HK.Bright2.GimmickControllers.Decorators
             var force = Random.Range(this.forceMin, this.forceMax);
             this.transform.rotation *= Quaternion.AngleAxis(this.offsetAngle, Vector3.forward);
             this.transform.rotation *= Quaternion.AngleAxis(random, Vector3.forward);
+            this.controlledRigidbody2D.velocity = Vector2.zero;
             this.controlledRigidbody2D.AddForce(this.transform.right * force);
         }
     }

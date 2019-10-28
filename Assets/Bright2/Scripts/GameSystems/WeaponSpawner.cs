@@ -54,6 +54,7 @@ namespace HK.Bright2
         {
             var gimmick = this.prefab.Rent();
             gimmick.transform.position = actor.CachedTransform.position + this.offset;
+            gimmick.transform.rotation = Quaternion.identity;
             gimmick.Activate(actor);
             
             foreach(var i in gimmick.GetComponentsInChildren<IAddWeapon>())
