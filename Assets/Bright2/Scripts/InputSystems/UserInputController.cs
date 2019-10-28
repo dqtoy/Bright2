@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems;
 using HK.Bright2.GameSystems.Messages;
@@ -31,20 +32,11 @@ namespace HK.Bright2.InputSystems
                 })
                 .AddTo(this);
 
-            Broker.Global.Receive<ShowWeaponGridUI>()
-                .SubscribeWithState(this, (x, _this) =>
-                {
-                    _this.controllers.Push(x.Controller);
-                })
-                .AddTo(this);
+            this.PushController<ShowWeaponGridUI>(x => x.Controller);
+            this.PopController<HideWeaponGridUI>(x => x.Controller);
 
-            Broker.Global.Receive<HideWeaponGridUI>()
-                .SubscribeWithState(this, (x, _this) =>
-                {
-                    Assert.AreEqual(_this.controllers.Peek(), x.Controller);
-                    _this.controllers.Pop();
-                })
-                .AddTo(this);
+            this.PushController<BeginControlUserInputEquippedWeaponUI>(x => x.Controller);
+            this.PopController<EndControlUserInputEquippedWeaponUI>(x => x.Controller);
 
             this.UpdateAsObservable()
                 .Where(_ => this.controllers.Count > 0)
@@ -52,6 +44,28 @@ namespace HK.Bright2.InputSystems
                 {
                     _this.controllers.Peek().UpdateInput();
                 });
+        }
+
+        private void PushController<T>(Func<T, IControllableUserInput> func)
+        {
+            Broker.Global.Receive<T>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.controllers.Push(func(x));
+                })
+                .AddTo(this);
+        }
+
+        private void PopController<T>(Func<T, IControllableUserInput> func)
+        {
+            Broker.Global.Receive<T>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    var controller = func(x);
+                    Assert.AreEqual(_this.controllers.Peek(), controller);
+                    _this.controllers.Pop();
+                })
+                .AddTo(this);
         }
     }
 }
