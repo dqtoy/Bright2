@@ -10,50 +10,36 @@ using UniRx;
 namespace HK.Bright2.InputSystems
 {
     /// <summary>
-    /// <see cref="Actor"/>を操作する入力を制御するクラス
+    /// <see cref="Actor"/>をユーザーの入力によって制御するクラス
     /// </summary>
-    public sealed class ActorControlInput : MonoBehaviour
+    public sealed class ActorControlOnUserInput : IControllableUserInput
     {
-        [SerializeField]
-        private Actor actor = default;
+        private readonly Actor actor;
 
-        [SerializeField]
-        private WeaponRecord[] weaponRecords = default;
-
-        void Awake()
+        public ActorControlOnUserInput(Actor actor)
         {
-            Broker.Global.Receive<SpawnedActor>()
-                .Where(x => x.Actor.tag == Tags.Name.Player)
-                .SubscribeWithState(this, (x, _this) =>
-                {
-                    _this.actor = x.Actor;
-                    for (var i = 0; i < _this.weaponRecords.Length; i++)
-                    {
-                        this.actor.StatusController.SetWeapon(i, this.weaponRecords[i]);
-                    }
-                })
-                .AddTo(this);
+            this.actor = actor;
         }
 
-        void Update()
+        void IControllableUserInput.UpdateInput()
         {
-            if(this.actor == null)
+            if (this.actor == null)
             {
                 return;
             }
-            
+
             var velocity = new Vector2(Input.GetAxis("Horizontal"), 0.0f);
-            if(velocity.sqrMagnitude > 0.0f)
+            if (velocity.sqrMagnitude > 0.0f)
             {
                 this.actor.Broker.Publish(RequestMove.Get(velocity));
             }
 
-            if(Input.GetButtonDown("InvokeGameEvent"))
+            if (Input.GetButtonDown("InvokeGameEvent"))
             {
                 this.actor.Broker.Publish(RequestInvokeGameEvent.Get());
             }
 
-            if(Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 this.actor.Broker.Publish(RequestJump.Get());
             }

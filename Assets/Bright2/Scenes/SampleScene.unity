@@ -130,10 +130,10 @@ GameObject:
   m_Component:
   - component: {fileID: 628932142}
   - component: {fileID: 628932143}
-  - component: {fileID: 628932141}
   - component: {fileID: 628932144}
   - component: {fileID: 628932145}
   - component: {fileID: 628932146}
+  - component: {fileID: 628932141}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -150,14 +150,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 628932140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f402e0f6596e145e7aa42bcc53f84cf8, type: 3}
+  m_Script: {fileID: 11500000, guid: e5251c74938214894904f8a1a67b3425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actor: {fileID: 0}
-  weaponRecords:
-  - {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
-  - {fileID: 11400000, guid: 893b19f17d1bc44d2af06531b9069b4c, type: 2}
-  - {fileID: 11400000, guid: 767a9a4e45e25410da6ff5351804c5f8, type: 2}
 --- !u!4 &628932142
 Transform:
   m_ObjectHideFlags: 0
