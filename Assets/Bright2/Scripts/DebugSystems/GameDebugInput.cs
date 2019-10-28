@@ -1,6 +1,7 @@
 ﻿using HK.Bright2.ActorControllers;
 using HK.Bright2.Database;
 using HK.Bright2.GameSystems.Messages;
+using HK.Bright2.UIControllers.Messages;
 using HK.Framework.EventSystems;
 using UniRx;
 using UnityEngine;
@@ -33,6 +34,10 @@ namespace HK.Bright2.DebugSystems
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {
                 this.player.StatusController.AddWeapon(this.weapon);
+            }
+            if(Input.GetKeyDown(KeyCode.Q))
+            {
+                Broker.Global.Publish(RequestShowWeaponGridUI.Get(this.player.StatusController.PossessionWeapons));
             }
         }
     }

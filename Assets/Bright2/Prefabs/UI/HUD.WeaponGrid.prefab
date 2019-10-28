@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8750337841630948912}
   - component: {fileID: 6074386343325419813}
   - component: {fileID: 790120833276490436}
+  - component: {fileID: 2885378248147527562}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -75,6 +76,31 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2885378248147527562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570780990278060845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0e995f494626a4f878eedbded37c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewport: {fileID: 8750337841630948912}
+  directionOfRecognize: 0
+  movementType: 1
+  elasticity: 0.1
+  scrollSensitivity: 1
+  inertia: 1
+  decelerationRate: 0.03
+  snap:
+    Enable: 1
+    VelocityThreshold: 0.5
+    Duration: 0.3
+    Easing: 24
+  draggable: 1
 --- !u!1 &2096870147754154669
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +159,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5130010745901667466}
   - component: {fileID: 1077233051533380410}
+  - component: {fileID: 7130203696078052160}
+  - component: {fileID: 2818112576000307003}
   - component: {fileID: 1558128657757957837}
   m_Layer: 5
   m_Name: HUD.WeaponGrid
@@ -182,6 +210,32 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &7130203696078052160
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061667869429325962}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2818112576000307003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061667869429325962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e4cc79ceb154f71bfdea31d363539d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 7130203696078052160}
+  scrollView: {fileID: 1558128657757957837}
 --- !u!114 &1558128657757957837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,9 +248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ed33d8628ba49c2ae7186342a8ce29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellInterval: 0.2
-  scrollOffset: 0.5
+  cellInterval: 0.21
+  scrollOffset: 0
   loop: 0
   cellContainer: {fileID: 2004418051480165557}
+  scroller: {fileID: 2885378248147527562}
   cellPrefab: {fileID: 8091902695816545776, guid: a2ae8d2352bbe414689134d6cbaa1c45,
     type: 3}

@@ -8,7 +8,7 @@ namespace HK.Bright2.UIControllers
     /// <summary>
     /// 
     /// </summary>
-    public sealed class HUDWeaponGridScrollViewCellElement : MonoBehaviour
+    public sealed class WeaponGridScrollViewCellElement : MonoBehaviour
     {
         [SerializeField]
         private CanvasGroup canvasGroup = default;

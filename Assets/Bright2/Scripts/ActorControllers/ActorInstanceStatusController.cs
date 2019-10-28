@@ -49,6 +49,8 @@ namespace HK.Bright2.ActorControllers
 
         public IGameEvent GameEvent => this.status.GameEvent;
 
+        public IReadOnlyList<WeaponRecord> PossessionWeapons => this.status.PossessionWeapons;
+
         public void AddJumpCount()
         {
             this.status.JumpCount++;
