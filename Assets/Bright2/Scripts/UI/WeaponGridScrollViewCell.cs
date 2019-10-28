@@ -8,7 +8,7 @@ namespace HK.Bright2.UIControllers
     /// <summary>
     /// 
     /// </summary>
-    public sealed class WeaponGridScrollViewCell : FancyScrollViewCell<WeaponGridScrollViewItemData>
+    public sealed class WeaponGridScrollViewCell : FancyScrollViewCell<WeaponGridScrollViewItemData, WeaponGridScrollViewContext>
     {
         [SerializeField]
         private List<WeaponGridScrollViewCellElement> elements = default;
@@ -33,7 +33,8 @@ namespace HK.Bright2.UIControllers
         {
             for (var i = 0; i < itemData.Records.Count; i++)
             {
-                elements[i].Setup(itemData.Records[i]);
+                var isSelect = ((itemData.VerticalIndex * WeaponGridScrollViewCell.ElementMax) + i) == this.Context.SelectIndex;
+                elements[i].Setup(itemData.Records[i], isSelect);
             }
             for (var i = this.elements.Count - (this.elements.Count - itemData.Records.Count); i < this.elements.Count; i++)
             {

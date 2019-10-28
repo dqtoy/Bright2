@@ -17,7 +17,7 @@ namespace HK.Bright2.DebugSystems
         [SerializeField]
         private WeaponRecord weapon = default;
 
-        private Actor player;
+        private Actor actor;
 
         void Awake()
         {
@@ -25,7 +25,7 @@ namespace HK.Bright2.DebugSystems
                 .Where(x => x.Actor.tag == Tags.Name.Player)
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    _this.player = x.Actor;
+                    _this.actor = x.Actor;
                 })
                 .AddTo(this);
         }
@@ -34,11 +34,11 @@ namespace HK.Bright2.DebugSystems
         {
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {
-                this.player.StatusController.AddWeapon(this.weapon);
+                this.actor.StatusController.AddWeapon(this.weapon);
             }
             if(Input.GetKeyDown(KeyCode.Q))
             {
-                Broker.Global.Publish(RequestShowWeaponGridUI.Get(this.player.StatusController.PossessionWeapons));
+                Broker.Global.Publish(RequestChangeWeaponSequenceFromUserInput.Get(this.actor));
             }
         }
     }

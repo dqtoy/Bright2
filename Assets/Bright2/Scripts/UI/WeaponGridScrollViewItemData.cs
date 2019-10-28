@@ -12,9 +12,12 @@ namespace HK.Bright2.UIControllers
     {
         public List<WeaponRecord> Records { get; }
 
-        public WeaponGridScrollViewItemData()
+        public int VerticalIndex { get; }
+
+        public WeaponGridScrollViewItemData(int verticalIndex)
         {
             this.Records = new List<WeaponRecord>();
+            this.VerticalIndex = verticalIndex;
         }
 
         public bool CanAddRecord => this.Records.Count < WeaponGridScrollViewCell.ElementMax;

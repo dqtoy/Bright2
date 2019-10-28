@@ -21,6 +21,12 @@ namespace HK.Bright2.UIControllers
         [SerializeField]
         private WeaponGridScrollView scrollView = default;
 
+        private int horizontalIndex = 0;
+
+        private int verticalIndex = 0;
+
+        private IReadOnlyList<InstanceWeapon> instanceWeapons;
+
         void Awake()
         {
             this.canvasGroup.alpha = 0.0f;
@@ -43,6 +49,7 @@ namespace HK.Bright2.UIControllers
 
         private List<WeaponGridScrollViewItemData> CreateItems(IReadOnlyList<InstanceWeapon> instanceWeapons)
         {
+            this.instanceWeapons = instanceWeapons;
             var result = new List<WeaponGridScrollViewItemData>();
 
             if(instanceWeapons == null)
@@ -50,13 +57,15 @@ namespace HK.Bright2.UIControllers
                 return result;
             }
 
-            var itemData = new WeaponGridScrollViewItemData();
+            var verticalIndex = 0;
+            var itemData = new WeaponGridScrollViewItemData(verticalIndex);
             for (var i = 0; i < instanceWeapons.Count; i++)
             {
                 if (!itemData.CanAddRecord)
                 {
                     result.Add(itemData);
-                    itemData = new WeaponGridScrollViewItemData();
+                    verticalIndex++;
+                    itemData = new WeaponGridScrollViewItemData(verticalIndex);
                 }
 
                 itemData.Records.Add(instanceWeapons[i].WeaponRecord);
@@ -71,24 +80,78 @@ namespace HK.Bright2.UIControllers
         {
             if (Input.GetButtonDown(InputName.Left))
             {
-                Debug.Log("Left");
+                this.horizontalIndex--;
+                this.ClampHorizontalIndex();
+                this.scrollView.UpdateSelectIndex(this.SelectIndex);
             }
             if (Input.GetButtonDown(InputName.Right))
             {
-                Debug.Log("Right");
+                this.horizontalIndex++;
+                this.ClampHorizontalIndex();
+                this.scrollView.UpdateSelectIndex(this.SelectIndex);
             }
             if (Input.GetButtonDown(InputName.Up))
             {
-                Debug.Log("Up");
+                this.verticalIndex--;
+                this.ClampVerticalIndex();
+                this.scrollView.UpdateSelectIndex(this.SelectIndex);
             }
             if (Input.GetButtonDown(InputName.Down))
             {
-                Debug.Log("Down");
+                this.verticalIndex++;
+                this.ClampVerticalIndex();
+                this.scrollView.UpdateSelectIndex(this.SelectIndex);
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {
                 Broker.Global.Publish(HideWeaponGridUI.Get(this));
             }
         }
+
+        private void ClampHorizontalIndex()
+        {
+            if(this.horizontalIndex < 0)
+            {
+                this.horizontalIndex = WeaponGridScrollViewCell.ElementMax - 1;
+                this.DecreateHorizontalIndex();
+            }
+            else if(
+                this.horizontalIndex >= WeaponGridScrollViewCell.ElementMax ||
+                this.horizontalIndex >= this.instanceWeapons.Count ||
+                this.SelectIndex >= this.instanceWeapons.Count
+                )
+            {
+                this.horizontalIndex = 0;
+            }
+        }
+
+        /// <summary>
+        /// <see cref="horizontalIndex"/>が配列外に存在する場合は減算を行う
+        /// </summary>
+        private void DecreateHorizontalIndex()
+        {
+            var max = this.instanceWeapons.Count - 1;
+            while (max < this.SelectIndex)
+            {
+                this.horizontalIndex--;
+            }
+        }
+
+        private void ClampVerticalIndex()
+        {
+            var verticalMax = this.instanceWeapons.Count / WeaponGridScrollViewCell.ElementMax;
+            if(this.verticalIndex < 0)
+            {
+                this.verticalIndex = 0;
+            }
+            else if(this.verticalIndex > verticalMax)
+            {
+                this.verticalIndex = verticalMax;
+            }
+
+            this.DecreateHorizontalIndex();
+        }
+
+        private int SelectIndex => (this.verticalIndex * WeaponGridScrollViewCell.ElementMax) + this.horizontalIndex;
     }
 }

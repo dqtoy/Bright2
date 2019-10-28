@@ -8,7 +8,7 @@ namespace HK.Bright2.UIControllers
     /// <summary>
     /// 
     /// </summary>
-    public sealed class WeaponGridScrollView : FancyScrollView.FancyScrollView<WeaponGridScrollViewItemData>
+    public sealed class WeaponGridScrollView : FancyScrollView<WeaponGridScrollViewItemData, WeaponGridScrollViewContext>
     {
         [SerializeField]
         private Scroller scroller = default;
@@ -20,9 +20,16 @@ namespace HK.Bright2.UIControllers
 
         public void UpdateData(IList<WeaponGridScrollViewItemData> items)
         {
+            this.Context.SelectIndex = 0;
             base.UpdateContents(items);
             this.scroller.SetTotalCount(items.Count);
             this.UpdateCellInterval();
+        }
+
+        public void UpdateSelectIndex(int selectIndex)
+        {
+            this.Context.SelectIndex = selectIndex;
+            this.Refresh();
         }
 
         private void UpdateCellInterval()
