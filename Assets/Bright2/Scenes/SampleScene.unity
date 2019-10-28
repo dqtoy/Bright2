@@ -156,7 +156,7 @@ MonoBehaviour:
   actor: {fileID: 0}
   weaponRecords:
   - {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
-  - {fileID: 11400000, guid: 893b19f17d1bc44d2af06531b9069b4c, type: 2}
+  - {fileID: 11400000, guid: dcf10285f713b4744b43b4bb49a7aa10, type: 2}
   - {fileID: 11400000, guid: e05e2f0d5e2d84d2cac38ba725ae4ad0, type: 2}
 --- !u!4 &628932142
 Transform:
