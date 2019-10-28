@@ -19,12 +19,16 @@ namespace HK.Bright2.UIControllers
         /// </summary>
         [SerializeField]
         private int observeEquippedWeaponIndex = default;
+        public int ObserveEquippedWeaponIndex => this.observeEquippedWeaponIndex;
 
         [SerializeField]
         private Image icon = default;
 
         [SerializeField]
         private Slider coolTimeSlider = default;
+
+        [SerializeField]
+        private CanvasGroup focusEffectCanvasGroup = default;
 
         void Awake()
         {
@@ -37,6 +41,13 @@ namespace HK.Bright2.UIControllers
                     _this.ObserveActor(actor);
                 })
                 .AddTo(this);
+
+            this.SetIsFocus(false);
+        }
+
+        public void SetIsFocus(bool isFocus)
+        {
+            this.focusEffectCanvasGroup.alpha = isFocus ? 1.0f : 0.0f;
         }
 
         private void ObserveActor(Actor actor)
