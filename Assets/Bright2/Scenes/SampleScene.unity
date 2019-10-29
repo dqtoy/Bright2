@@ -370,6 +370,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 670c5765ffd004955b8eaa0e0b6cdf05, type: 2}
   - {fileID: 11400000, guid: dcf10285f713b4744b43b4bb49a7aa10, type: 2}
   - {fileID: 11400000, guid: 8397b3a005b324650868da39ba1d3f30, type: 2}
+  - {fileID: 11400000, guid: 1d39292761a3147e292aabc8b9dcbc17, type: 2}
 --- !u!114 &1262815811 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1883264953093208295, guid: 8c945da0dae484a2ea8c1b90409b446b,
