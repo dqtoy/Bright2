@@ -25,6 +25,8 @@ namespace HK.Bright2.GimmickControllers
 
         private GimmickLifeCycleController lifeCycleController;
 
+        private bool isPooled = true;
+
         void Awake()
         {
             this.lifeCycleController = new GimmickLifeCycleController(this);
@@ -34,15 +36,25 @@ namespace HK.Bright2.GimmickControllers
         {
             var pool = pools.Get(this);
             var clone = pool.Rent();
+
+            Assert.IsTrue(clone.isPooled, $"{clone.name}はプールされていないのにRentされました");
             clone.pool = pool;
+            clone.isPooled = false;
 
             return clone;
         }
 
         public void Return()
         {
+            if(this.isPooled)
+            {
+                return;
+            }
             this.pool.Return(this);
             this.transform.SetParent(null);
+
+            Assert.IsFalse(this.isPooled, $"{this.name}はプールされているのにReturnされました");
+            this.isPooled = true;
         }
 
         public void Activate(Actor owner)
