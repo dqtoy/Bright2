@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4a319217272794c0a86261bcec03c99d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_PersistentViewDataDictionary: {instanceID: 0}
+  - undoImage: {fileID: 2800000, guid: 728d77a5c63314157bfbee9e9807a1e1, type: 3}
+  - redoImage: {fileID: 2800000, guid: d88dfa4a9787249ea914882beb77f8e6, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
