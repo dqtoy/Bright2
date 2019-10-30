@@ -23,6 +23,10 @@ namespace HK.Bright2.ActorControllers
         private EffectElements effects = default;
         public EffectElements Effects => this.effects;
 
+        [SerializeField]
+        private AbnormalConditionParameters abnormalCondition = default;
+        public AbnormalConditionParameters AbnormalCondition => this.abnormalCondition;
+
         [Serializable]
         public class AnimationSequenceElements
         {
@@ -84,6 +88,35 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private PoolableEffect takedDamage = default;
             public PoolableEffect TakedDamage => this.takedDamage;
+        }
+
+        [Serializable]
+        public class AbnormalConditionParameters
+        {
+            [SerializeField]
+            private PoisonParameter poison = default;
+            /// <summary>
+            /// 毒に関するパラメータ
+            /// </summary>
+            public PoisonParameter Poison => this.poison;
+
+            [Serializable]
+            public class PoisonParameter
+            {
+                [SerializeField]
+                private float duration = default;
+                /// <summary>
+                /// 毒にかかる時間（秒）
+                /// </summary>
+                public float Duration => this.duration;
+
+                [SerializeField][Range(0.0f, 1.0f)]
+                private float damageRate = default;
+                /// <summary>
+                /// トータルで受けるダメージ
+                /// </summary>
+                public float DamageRate => this.damageRate;
+            }
         }
     }
 }
