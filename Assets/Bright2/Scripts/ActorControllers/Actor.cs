@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using HK.Bright2.ActorControllers.AbnormalConditionControllers;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -32,6 +33,8 @@ namespace HK.Bright2.ActorControllers
 
         public ActorEffectController EffectController { get; private set; }
 
+        public AbnormalConditionController AbnormalConditionController { get; private set; }
+
         public readonly IMessageBroker Broker = new MessageBroker();
 
         IMessageBroker IBroker.Broker => this.Broker;
@@ -59,6 +62,8 @@ namespace HK.Bright2.ActorControllers
             this.StateManager = new ActorStateManager(this);
 
             this.EffectController = new ActorEffectController(this);
+
+            this.AbnormalConditionController = new AbnormalConditionController(this);
         }
     }
 }
