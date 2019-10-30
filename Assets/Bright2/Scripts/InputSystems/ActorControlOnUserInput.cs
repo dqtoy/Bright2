@@ -44,19 +44,28 @@ namespace HK.Bright2.InputSystems
                 this.actor.Broker.Publish(RequestJump.Get());
             }
 
-            if (Input.GetButtonDown("Fire1"))
-            {
-                this.actor.Broker.Publish(RequestFire.Get(0));
-            }
+            this.PublishRequestFire(InputName.Fire1, 0);
+            this.PublishRequestFire(InputName.Fire2, 1);
+            this.PublishRequestFire(InputName.Fire3, 2);
 
-            if (Input.GetButtonDown("Fire2"))
-            {
-                this.actor.Broker.Publish(RequestFire.Get(1));
-            }
+            this.PublishRequestTerminationFire(InputName.Fire1, 0);
+            this.PublishRequestTerminationFire(InputName.Fire2, 1);
+            this.PublishRequestTerminationFire(InputName.Fire3, 2);
+        }
 
-            if (Input.GetButtonDown("Fire3"))
+        private void PublishRequestFire(string buttonName, int equippedWeaponIndex)
+        {
+            if (Input.GetButtonDown(buttonName))
             {
-                this.actor.Broker.Publish(RequestFire.Get(2));
+                this.actor.Broker.Publish(RequestFire.Get(equippedWeaponIndex));
+            }
+        }
+
+        private void PublishRequestTerminationFire(string buttonName, int equippedWeaponIndex)
+        {
+            if (Input.GetButtonUp(buttonName))
+            {
+                this.actor.Broker.Publish(RequestTerminationFire.Get(equippedWeaponIndex));
             }
         }
     }

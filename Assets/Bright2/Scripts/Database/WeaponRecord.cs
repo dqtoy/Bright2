@@ -45,6 +45,13 @@ namespace HK.Bright2.Database
         /// </summary>
         public float MoveSpeedAttenuationRate => this.moveSpeedAttenuationRate;
 
+        /// <summary>
+        /// 長押しによる自動攻撃が可能か
+        /// </summary>
+        [SerializeField]
+        private bool canAutoAttack = default;
+        public bool CanAutoAttack => this.canAutoAttack;
+
         [SerializeField]
         private Sprite icon = default;
         public Sprite Icon => this.icon;
