@@ -38,3 +38,6 @@ MonoBehaviour:
       duration: 3
     fear:
       duration: 3
+    deadlyPoison:
+      duration: 10
+      damageRate: 0.25

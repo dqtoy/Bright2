@@ -128,6 +128,13 @@ namespace HK.Bright2.ActorControllers
             /// </summary>
             public PoisonParameter DeadlyPoison => this.deadlyPoison;
 
+            [SerializeField]
+            private PoisonParameter fireSpread = default;
+            /// <summary>
+            /// 延焼に関するパラメータ
+            /// </summary>
+            public PoisonParameter FireSpread => this.fireSpread;
+
             [Serializable]
             public class PoisonParameter
             {

@@ -30,7 +30,7 @@ namespace HK.Bright2.Extensions
 
             var generationSource = self.GiveDamageCollider.ClosestPoint(target.CachedTransform.position);
 
-            target.StatusController.TakeDamage(self.DamagePower, generationSource);
+            target.StatusController.TakeDamage(Calculator.GetDamage(self.Owner, target, self.DamagePower), generationSource);
             target.Movement.SetGravity(self.KnockbackDirection * self.KnockbackPower);
             target.StatusController.AddInfinityStatus(self.GiveDamageObject, self.InfinitySeconds);
             

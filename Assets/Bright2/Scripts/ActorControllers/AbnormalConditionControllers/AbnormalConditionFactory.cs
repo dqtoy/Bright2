@@ -23,6 +23,8 @@ namespace HK.Bright2.ActorControllers.AbnormalConditionControllers
                     return new Fear();
                 case Constants.AbnormalStatus.DeadlyPoison:
                     return new DeadlyPoison();
+                case Constants.AbnormalStatus.FireSpread:
+                    return new FireSpread();
                 default:
                     Assert.IsTrue(false, $"{type}は未対応です");
                     return null;

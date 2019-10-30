@@ -47,6 +47,11 @@ namespace HK.Bright2
             /// 数秒間超ダメージを受ける
             /// </summary>
             DeadlyPoison,
+
+            /// <summary>
+            /// 数秒間ダメージを受けて与えるダメージも減る
+            /// </summary>
+            FireSpread,
         }
 
         /// <summary>
