@@ -49,6 +49,15 @@ namespace HK.Bright2.ActorControllers.States
                     .AddTo(this.events);
             }
 
+            // 恐怖の状態異常にかかったらオート攻撃を終了する
+            this.owner.Broker.Receive<AttachedAbnormalCondition>()
+                .Where(x => x.Type == Constants.AbnormalStatus.Fear)
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.canNextFire = false;
+                })
+                .AddTo(this.events);
+
             this.owner.UpdateAsObservable()
                 .SubscribeWithState3(this, weaponRecord, equippedWeapon, (_, _this, _weaponRecord, _equippedWeapon) =>
                 {

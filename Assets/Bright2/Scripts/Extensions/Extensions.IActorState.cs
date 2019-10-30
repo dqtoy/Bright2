@@ -59,6 +59,7 @@ namespace HK.Bright2.Extensions
         public static void ReceiveRequestFireOnChangeAttackState(this IActorState self)
         {
             self.Owner.Broker.Receive<RequestFire>()
+                .Where(x => !self.Owner.AbnormalConditionController.Contains(Constants.AbnormalStatus.Fear))
                 .Where(x => self.Owner.StatusController.EquippedWeapons[x.EquippedWeaponIndex].CanFire)
                 .SubscribeWithState(self, (x, _this) =>
                 {

@@ -35,7 +35,7 @@ MonoBehaviour:
   - Player
   controlledCollider: {fileID: 1908292255887170411}
   additionalEffects:
-  - {fileID: 11400000, guid: 1c7ab3ac9a01a4ce1bb1597e9d0b8293, type: 2}
+  - {fileID: 11400000, guid: 92dabeb0f70194286aca3d2051dda22e, type: 2}
 --- !u!1001 &5603399944185990776
 PrefabInstance:
   m_ObjectHideFlags: 0

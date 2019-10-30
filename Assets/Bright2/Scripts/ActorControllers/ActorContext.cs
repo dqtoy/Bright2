@@ -114,6 +114,13 @@ namespace HK.Bright2.ActorControllers
             /// </summary>
             public ConfuseParameter Confuse => this.confuse;
 
+            [SerializeField]
+            private FearParameter fear = default;
+            /// <summary>
+            /// 恐怖に関するパラメータ
+            /// </summary>
+            public FearParameter Fear => this.fear;
+
             [Serializable]
             public class PoisonParameter
             {
@@ -150,6 +157,17 @@ namespace HK.Bright2.ActorControllers
                 private float duration = default;
                 /// <summary>
                 /// 移動が逆転してしまう時間（秒）
+                /// </summary>
+                public float Duration => this.duration;
+            }
+
+            [Serializable]
+            public class FearParameter
+            {
+                [SerializeField]
+                private float duration = default;
+                /// <summary>
+                /// 攻撃が出来なくなる時間（秒）
                 /// </summary>
                 public float Duration => this.duration;
             }

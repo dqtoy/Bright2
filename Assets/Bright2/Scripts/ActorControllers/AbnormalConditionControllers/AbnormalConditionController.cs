@@ -24,7 +24,7 @@ namespace HK.Bright2.ActorControllers.AbnormalConditionControllers
         public void Attach(Constants.AbnormalStatus type)
         {
             // すでに状態異常にかかっている場合はなにもしない
-            if(this.elements.FindIndex(e => e.Type == type) != -1)
+            if(this.Contains(type))
             {
                 return;
             }
@@ -45,6 +45,12 @@ namespace HK.Bright2.ActorControllers.AbnormalConditionControllers
                 .AddTo(this.owner);
         }
 
-
+        /// <summary>
+        /// <paramref name="type"/>を所持しているか返す
+        /// </summary>
+        public bool Contains(Constants.AbnormalStatus type)
+        {
+            return this.elements.FindIndex(e => e.Type == type) >= 0;
+        }
     }
 }

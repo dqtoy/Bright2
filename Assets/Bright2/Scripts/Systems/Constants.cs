@@ -37,6 +37,11 @@ namespace HK.Bright2
             /// 数秒間移動方向が逆になる
             /// </summary>
             Confuse,
+
+            /// <summary>
+            /// 数秒間攻撃出来なくなる
+            /// </summary>
+            Fear,
         }
 
         /// <summary>
