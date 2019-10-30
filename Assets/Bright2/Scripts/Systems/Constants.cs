@@ -24,7 +24,7 @@ namespace HK.Bright2
         public enum AbnormalStatus
         {
             /// <summary>
-            /// 数秒間ダメージを与える
+            /// 数秒間ダメージを受ける
             /// </summary>
             Poison,
 
@@ -42,6 +42,11 @@ namespace HK.Bright2
             /// 数秒間攻撃出来なくなる
             /// </summary>
             Fear,
+
+            /// <summary>
+            /// 数秒間超ダメージを受ける
+            /// </summary>
+            DeadlyPoison,
         }
 
         /// <summary>

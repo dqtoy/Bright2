@@ -121,6 +121,13 @@ namespace HK.Bright2.ActorControllers
             /// </summary>
             public FearParameter Fear => this.fear;
 
+            [SerializeField]
+            private PoisonParameter deadlyPoison = default;
+            /// <summary>
+            /// 猛毒に関するパラメータ
+            /// </summary>
+            public PoisonParameter DeadlyPoison => this.deadlyPoison;
+
             [Serializable]
             public class PoisonParameter
             {

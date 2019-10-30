@@ -36,3 +36,5 @@ MonoBehaviour:
       duration: 3
     confuse:
       duration: 3
+    fear:
+      duration: 3

@@ -7,17 +7,17 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.ActorControllers.AbnormalConditionControllers.Elements
 {
     /// <summary>
-    /// 状態異常の毒を制御するクラス
+    /// 状態異常の猛毒を制御するクラス
     /// </summary>
-    public sealed class Poison : PoisonBase
+    public sealed class DeadlyPoison : PoisonBase
     {
         public override Constants.AbnormalStatus Type => Constants.AbnormalStatus.Poison;
 
-        protected override int DamageSplitCount => 5;
+        protected override int DamageSplitCount => 10;
 
         protected override ActorContext.AbnormalConditionParameters.PoisonParameter GetParameter(Actor owner)
         {
-            return owner.Context.AbnormalCondition.Poison;
+            return owner.Context.AbnormalCondition.DeadlyPoison;
         }
     }
 }

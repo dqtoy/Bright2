@@ -214,7 +214,7 @@ MonoBehaviour:
   - Enemy
   controlledCollider: {fileID: 3913024621209231262}
   additionalEffects:
-  - {fileID: 11400000, guid: 339ac0ae8e6344978b5d78afcb5bdec6, type: 2}
+  - {fileID: 11400000, guid: f73d4f4953b744011b9c2b47c8e0f682, type: 2}
 --- !u!1 &8096089980199602236
 GameObject:
   m_ObjectHideFlags: 0
