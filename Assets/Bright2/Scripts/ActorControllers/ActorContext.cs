@@ -100,6 +100,13 @@ namespace HK.Bright2.ActorControllers
             /// </summary>
             public PoisonParameter Poison => this.poison;
 
+            [SerializeField]
+            private ParalysisParameter paralysis = default;
+            /// <summary>
+            /// 麻痺に関するパラメータ
+            /// </summary>
+            public ParalysisParameter Paralysis => this.paralysis;
+
             [Serializable]
             public class PoisonParameter
             {
@@ -116,6 +123,17 @@ namespace HK.Bright2.ActorControllers
                 /// トータルで受けるダメージ
                 /// </summary>
                 public float DamageRate => this.damageRate;
+            }
+
+            [Serializable]
+            public class ParalysisParameter
+            {
+                [SerializeField]
+                private float duration = default;
+                /// <summary>
+                /// 行動が出来ない時間（秒）
+                /// </summary>
+                public float Duration => this.duration;
             }
         }
     }

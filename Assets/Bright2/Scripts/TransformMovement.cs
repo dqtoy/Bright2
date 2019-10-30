@@ -1,4 +1,5 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -47,12 +48,33 @@ namespace HK.Bright2.ActorControllers
 
         private bool isLanding = false;
 
+        /// <summary>
+        /// 麻痺中であるか
+        /// </summary>
+        private bool isParalysis = false;
+
         void Awake()
         {
             this.brokableObject = this.GetComponent<IBroker>();
 
             Assert.IsNotNull(this.controlledTransform);
             Assert.IsNotNull(this.boxCollider2D);
+
+            this.brokableObject?.Broker.Receive<AttachedAbnormalCondition>()
+                .Where(x => x.Type == Constants.AbnormalStatus.Paralysis)
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.isParalysis = true;
+                })
+                .AddTo(this);
+
+            this.brokableObject?.Broker.Receive<DetachedAbnormalCondition>()
+                .Where(x => x.Type == Constants.AbnormalStatus.Paralysis)
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.isParalysis = false;
+                })
+                .AddTo(this);
         }
 
         void Update()
@@ -101,6 +123,11 @@ namespace HK.Bright2.ActorControllers
 
         public void AddMove(Vector2 velocity)
         {
+            if(this.isParalysis)
+            {
+                return;
+            }
+
             this.velocity += velocity;
         }
 
