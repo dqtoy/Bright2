@@ -53,6 +53,11 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         private bool isParalysis = false;
 
+        /// <summary>
+        /// 混乱中であるか
+        /// </summary>
+        private bool isConfuse = false;
+
         void Awake()
         {
             this.brokableObject = this.GetComponent<IBroker>();
@@ -73,6 +78,22 @@ namespace HK.Bright2.ActorControllers
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.isParalysis = false;
+                })
+                .AddTo(this);
+
+            this.brokableObject?.Broker.Receive<AttachedAbnormalCondition>()
+                .Where(x => x.Type == Constants.AbnormalStatus.Confuse)
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.isConfuse = true;
+                })
+                .AddTo(this);
+
+            this.brokableObject?.Broker.Receive<DetachedAbnormalCondition>()
+                .Where(x => x.Type == Constants.AbnormalStatus.Confuse)
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.isConfuse = false;
                 })
                 .AddTo(this);
         }
@@ -126,6 +147,11 @@ namespace HK.Bright2.ActorControllers
             if(this.isParalysis)
             {
                 return;
+            }
+
+            if(this.isConfuse)
+            {
+                velocity.x *= -1.0f;
             }
 
             this.velocity += velocity;

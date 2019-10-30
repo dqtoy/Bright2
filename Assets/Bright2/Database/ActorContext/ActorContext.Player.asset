@@ -34,3 +34,5 @@ MonoBehaviour:
       damageRate: 0.1
     paralysis:
       duration: 3
+    confuse:
+      duration: 3

@@ -32,6 +32,11 @@ namespace HK.Bright2
             /// 数秒間移動出来ない
             /// </summary>
             Paralysis,
+
+            /// <summary>
+            /// 数秒間移動方向が逆になる
+            /// </summary>
+            Confuse,
         }
 
         /// <summary>

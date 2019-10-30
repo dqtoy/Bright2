@@ -17,6 +17,8 @@ namespace HK.Bright2.ActorControllers.AbnormalConditionControllers
                     return new Poison();
                 case Constants.AbnormalStatus.Paralysis:
                     return new Paralysis();
+                case Constants.AbnormalStatus.Confuse:
+                    return new Confuse();
                 default:
                     Assert.IsTrue(false, $"{type}は未対応です");
                     return null;
