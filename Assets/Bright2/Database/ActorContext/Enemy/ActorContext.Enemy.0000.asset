@@ -30,3 +30,7 @@ MonoBehaviour:
   effects:
     takedDamage: {fileID: 4643271828095609800, guid: 85f1ea8a894ce4dab95f7869ae3bf07a,
       type: 3}
+  abnormalCondition:
+    poison:
+      duration: 3
+      damageRate: 0.6
