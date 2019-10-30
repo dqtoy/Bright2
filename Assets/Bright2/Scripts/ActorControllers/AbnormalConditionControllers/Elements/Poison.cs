@@ -29,7 +29,7 @@ namespace HK.Bright2.ActorControllers.AbnormalConditionControllers.Elements
                     .Take(DamageSplitCount)
                     .SubscribeWithState(owner, (_, _owner) =>
                     {
-                        var damage = (poisonContext.DamageRate / owner.StatusController.HitPointMax.Value) / DamageSplitCount;
+                        var damage = (poisonContext.DamageRate * owner.StatusController.HitPointMax.Value) / DamageSplitCount;
                         owner.StatusController.TakeDamage((int)damage, owner.CachedTransform.position);
                     })
                     .AddTo(owner);

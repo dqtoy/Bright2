@@ -16,7 +16,11 @@ namespace HK.Bright2.GimmickControllers.Decorators
 
         private Actor gimmickOwner;
 
+        private Actor target;
+
         public override Actor Owner => this.gimmickOwner;
+
+        public override Actor Damager => this.target;
 
         public override GameObject Root => this.owner.gameObject;
 
@@ -33,6 +37,7 @@ namespace HK.Bright2.GimmickControllers.Decorators
 
         void IActorReactionOnTriggerStay2D.Do(Actor actor)
         {
+            this.target = actor;
             this.GiveDamage(actor);
         }
 

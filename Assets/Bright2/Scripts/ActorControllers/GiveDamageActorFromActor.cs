@@ -18,6 +18,8 @@ namespace HK.Bright2.ActorControllers
 
         public override Actor Owner => this.owner;
 
+        public override Actor Damager => this.target;
+
         public override GameObject Root => this.owner.gameObject;
 
         public override Vector2 KnockbackDirection
