@@ -21,6 +21,19 @@ namespace HK.Bright2
             Down,
         }
 
+        public enum AbnormalStatus
+        {
+            /// <summary>
+            /// 数秒間ダメージを与える
+            /// </summary>
+            Poison,
+
+            /// <summary>
+            /// 数秒間移動出来ない
+            /// </summary>
+            Paralysis,
+        }
+
         /// <summary>
         /// 装備可能な武器の最大値
         /// </summary>
