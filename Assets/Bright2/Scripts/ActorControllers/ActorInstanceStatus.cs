@@ -56,6 +56,11 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public bool IsEnterUnderWater => this.EnterUnderWaterSeconds > 0.0f;
 
+        /// <summary>
+        /// 酸欠中であるか返す
+        /// </summary>
+        public bool IsLackOfOxygen => this.EnterUnderWaterSeconds >= Constants.LackOfOxygenSeconds;
+
         public readonly Dictionary<int, InfinityStatus> InfinityStatuses = new Dictionary<int, InfinityStatus>();
 
         public ActorInstanceStatus(Actor owner, ActorContext context)

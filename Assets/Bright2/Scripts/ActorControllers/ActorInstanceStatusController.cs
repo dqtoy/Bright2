@@ -23,6 +23,24 @@ namespace HK.Bright2.ActorControllers
 
         private readonly Actor owner;
 
+        private IDisposable lackOfOxygenDamageStream;
+
+        public IReactiveProperty<int> HitPoint => this.status.HitPoint;
+
+        public IReactiveProperty<int> HitPointMax => this.status.HitPointMax;
+
+        public int JumpCount => this.status.JumpCount;
+
+        public List<EquippedWeapon> EquippedWeapons => this.status.EquippedWeapons;
+
+        public Constants.Direction Direction => this.status.Direction;
+
+        public int Money => this.status.Money;
+
+        public IGameEvent GameEvent => this.status.GameEvent;
+
+        public IReadOnlyList<InstanceWeapon> PossessionWeapons => this.status.PossessionWeapons;
+
         public ActorInstanceStatusController(Actor owner, ActorContext context)
         {
             this.owner = owner;
@@ -48,25 +66,14 @@ namespace HK.Bright2.ActorControllers
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.status.EnterUnderWaterSeconds = 0.0f;
+                    if(_this.lackOfOxygenDamageStream != null)
+                    {
+                        _this.lackOfOxygenDamageStream.Dispose();
+                        _this.lackOfOxygenDamageStream = null;
+                    }
                 })
                 .AddTo(owner);
         }
-
-        public IReactiveProperty<int> HitPoint => this.status.HitPoint;
-
-        public IReactiveProperty<int> HitPointMax => this.status.HitPointMax;
-
-        public int JumpCount => this.status.JumpCount;
-
-        public List<EquippedWeapon> EquippedWeapons => this.status.EquippedWeapons;
-
-        public Constants.Direction Direction => this.status.Direction;
-
-        public int Money => this.status.Money;
-
-        public IGameEvent GameEvent => this.status.GameEvent;
-
-        public IReadOnlyList<InstanceWeapon> PossessionWeapons => this.status.PossessionWeapons;
 
         public void AddJumpCount()
         {
@@ -194,6 +201,23 @@ namespace HK.Bright2.ActorControllers
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.status.EnterUnderWaterSeconds += Time.deltaTime;
+
+                    if(_this.status.IsLackOfOxygen && _this.lackOfOxygenDamageStream == null)
+                    {
+                        _this.lackOfOxygenDamageStream = _this.RegisterLackOfOxygenDamageStream();
+                    }
+                })
+                .AddTo(this.owner);
+        }
+
+        private IDisposable RegisterLackOfOxygenDamageStream()
+        {
+            return Observable.Interval(TimeSpan.FromSeconds(Constants.LackOfOxygenDamageSeconds))
+                .TakeUntil(this.owner.Broker.Receive<ExitUnderWater>())
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    var damage = Mathf.FloorToInt(_this.HitPointMax.Value * Constants.LackOfOxygenDamageRate);
+                    _this.TakeDamage(damage, _this.owner.CachedTransform.position, Constants.DamageSource.LackOfOxygen);
                 })
                 .AddTo(this.owner);
         }

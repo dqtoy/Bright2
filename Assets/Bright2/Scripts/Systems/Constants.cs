@@ -68,6 +68,11 @@ namespace HK.Bright2
             /// 状態異常によるダメージ
             /// </summary>
             AbnormalStatus,
+
+            /// <summary>
+            /// 酸欠によるダメージ
+            /// </summary>
+            LackOfOxygen,
         }
 
         /// <summary>
@@ -79,5 +84,20 @@ namespace HK.Bright2
         /// ノックバックする時間（秒）
         /// </summary>
         public const float KnockbackDuration = 0.5f;
+
+        /// <summary>
+        /// 酸欠になるまでの時間（秒）
+        /// </summary>
+        public const float LackOfOxygenSeconds = 10.0f;
+
+        /// <summary>
+        /// 酸欠によるダメージを受けるまでの時間（秒）
+        /// </summary>
+        public const float LackOfOxygenDamageSeconds = 0.333f;
+
+        /// <summary>
+        /// 酸欠によるダメージの割合
+        /// </summary>
+        public const float LackOfOxygenDamageRate = 0.1f;
     }
 }
