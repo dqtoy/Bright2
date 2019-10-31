@@ -46,6 +46,11 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public IGameEvent GameEvent { get; set; }
 
+        /// <summary>
+        /// 水中にいるか
+        /// </summary>
+        public bool IsEnterUnderWater { get; set; }
+
         public readonly Dictionary<int, InfinityStatus> InfinityStatuses = new Dictionary<int, InfinityStatus>();
 
         public ActorInstanceStatus(Actor owner, ActorContext context)
