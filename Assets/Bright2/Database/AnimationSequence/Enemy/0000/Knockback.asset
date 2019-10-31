@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1626d36fddab94cb3a7017fc8b0df045, type: 3}
-  m_Name: Fall
+  m_Name: Knockback
   m_EditorClassIdentifier: 
   elements:
   - animationName: Idle0
