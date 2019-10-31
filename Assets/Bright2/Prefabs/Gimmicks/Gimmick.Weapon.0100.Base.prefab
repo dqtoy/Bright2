@@ -289,8 +289,7 @@ MonoBehaviour:
   includeTags:
   - Enemy
   controlledCollider: {fileID: 3913024621209231262}
-  additionalEffects:
-  - {fileID: 11400000, guid: f73d4f4953b744011b9c2b47c8e0f682, type: 2}
+  additionalEffects: []
 --- !u!1001 &951809268405440638
 PrefabInstance:
   m_ObjectHideFlags: 0
