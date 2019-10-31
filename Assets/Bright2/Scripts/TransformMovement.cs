@@ -1,4 +1,5 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
+using HK.Bright2.StageControllers.Messages;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -58,6 +59,11 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         private bool isConfuse = false;
 
+        /// <summary>
+        /// 水中に入っているか
+        /// </summary>
+        private bool isEnterUnderWater = false;
+
         void Awake()
         {
             this.brokableObject = this.GetComponent<IBroker>();
@@ -96,12 +102,27 @@ namespace HK.Bright2.ActorControllers
                     _this.isConfuse = false;
                 })
                 .AddTo(this);
+
+            this.brokableObject?.Broker.Receive<EnterUnderWater>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.isEnterUnderWater = true;
+                })
+                .AddTo(this);
+
+            this.brokableObject?.Broker.Receive<ExitUnderWater>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.isEnterUnderWater = false;
+                })
+                .AddTo(this);
         }
 
         void Update()
         {
             this.AddGravity();
-
+            this.UnderWaterProccess();
+            
             var t = this.controlledTransform;
             this.CheckHorizontal();
             this.CheckVertical();
@@ -173,6 +194,16 @@ namespace HK.Bright2.ActorControllers
         {
             this.currentGravity += this.gravity * Time.deltaTime;
             this.velocity += this.currentGravity * Time.deltaTime;
+        }
+
+        private void UnderWaterProccess()
+        {
+            if(!this.isEnterUnderWater)
+            {
+                return;
+            }
+
+            this.velocity *= 0.5f;
         }
 
         private void CheckVertical()
