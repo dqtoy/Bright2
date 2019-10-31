@@ -11,7 +11,7 @@ namespace HK.Bright2.ActorControllers.AbnormalConditionControllers.Elements
     /// </summary>
     public sealed class DeadlyPoison : PoisonBase
     {
-        public override Constants.AbnormalStatus Type => Constants.AbnormalStatus.Poison;
+        public override Constants.AbnormalStatus Type => Constants.AbnormalStatus.DeadlyPoison;
 
         protected override int DamageSplitCount => 10;
 
