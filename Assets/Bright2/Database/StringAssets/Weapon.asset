@@ -57,3 +57,11 @@ MonoBehaviour:
       ja: "\u5305\u4E01"
       en: 
     guid: bb7ab891-1955-4d16-9efd-556f40391f35
+  - value:
+      ja: "\u9285\u306E\u5263"
+      en: 
+    guid: 11df5607-475d-4c71-920f-7d6d30fec1d6
+  - value:
+      ja: "\u9244\u306E\u5263"
+      en: 
+    guid: 9af5ceef-d897-4e46-9f21-1008eea6b40f
