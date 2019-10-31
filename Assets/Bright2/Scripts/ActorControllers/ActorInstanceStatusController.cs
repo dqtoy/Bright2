@@ -3,6 +3,7 @@ using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
 using HK.Bright2.Extensions;
 using HK.Bright2.GameSystems;
+using HK.Bright2.StageControllers.Messages;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -31,6 +32,20 @@ namespace HK.Bright2.ActorControllers
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.ResetJumpCount();
+                })
+                .AddTo(owner);
+
+            owner.Broker.Receive<EnterUnderWater>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.status.IsEnterUnderWater = true;
+                })
+                .AddTo(owner);
+
+            owner.Broker.Receive<ExitUnderWater>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.status.IsEnterUnderWater = false;
                 })
                 .AddTo(owner);
         }
@@ -65,6 +80,12 @@ namespace HK.Bright2.ActorControllers
         {
             get
             {
+                // 水中にいたら何度でもジャンプ出来る
+                if(this.status.IsEnterUnderWater)
+                {
+                    return true;
+                }
+
                 return this.JumpCount < this.context.BasicStatus.LimitJumpCount;
             }
         }
