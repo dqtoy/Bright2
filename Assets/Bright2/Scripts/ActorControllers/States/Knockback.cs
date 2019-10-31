@@ -27,6 +27,7 @@ namespace HK.Bright2.ActorControllers.States
                 this.owner.Broker.Receive<Landed>().AsUnitObservable(),
                 Observable.Timer(TimeSpan.FromSeconds(Constants.KnockbackDuration)).AsUnitObservable()
             )
+                .TakeUntilDestroy(this.owner)
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.owner.StateManager.Change(ActorState.Name.Idle);
