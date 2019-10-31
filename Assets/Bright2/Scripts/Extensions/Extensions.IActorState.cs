@@ -81,5 +81,32 @@ namespace HK.Bright2.Extensions
                 })
                 .AddTo(self.Events);
         }
+
+        /// <summary>
+        /// <see cref="RequestJump"/>を受信したらジャンプを行う
+        /// </summary>
+        public static void ReceiveRequestJumpOnJump(this IActorState self)
+        {
+            self.Owner.Broker.Receive<RequestJump>()
+                .SubscribeWithState(self, (_, _this) =>
+                {
+                    _this.InvokeJump();
+                })
+                .AddTo(self.Events);
+        }
+
+        /// <summary>
+        /// ジャンプを実行する
+        /// </summary>
+        public static void InvokeJump(this IActorState self)
+        {
+            if (!self.Owner.StatusController.CanJump)
+            {
+                return;
+            }
+
+            self.Owner.StatusController.AddJumpCount();
+            self.Owner.Movement.SetGravity(Vector2.up * self.Owner.Context.BasicStatus.JumpPower);
+        }
     }
 }

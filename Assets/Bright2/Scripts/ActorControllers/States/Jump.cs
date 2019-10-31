@@ -24,12 +24,7 @@ namespace HK.Bright2.ActorControllers.States
 
             this.ReceiveRequestMoveOnMove(this.owner.Context.BasicStatus.MoveSpeed);
 
-            this.owner.Broker.Receive<RequestJump>()
-                .SubscribeWithState(this, (_, _this) =>
-                {
-                    _this.InvokeJump();
-                })
-                .AddTo(this.events);
+            this.ReceiveRequestJumpOnJump();
 
             this.owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
@@ -47,17 +42,6 @@ namespace HK.Bright2.ActorControllers.States
 
             this.ReceiveRequestFireOnChangeAttackState();
             this.SyncActorDirection();
-        }
-
-        private void InvokeJump()
-        {
-            if(!this.owner.StatusController.CanJump)
-            {
-                return;
-            }
-
-            this.owner.StatusController.AddJumpCount();
-            this.owner.Movement.SetGravity(Vector2.up * this.owner.Context.BasicStatus.JumpPower);
         }
     }
 }
