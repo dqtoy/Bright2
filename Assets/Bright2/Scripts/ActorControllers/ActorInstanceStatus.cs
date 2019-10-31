@@ -47,9 +47,14 @@ namespace HK.Bright2.ActorControllers
         public IGameEvent GameEvent { get; set; }
 
         /// <summary>
-        /// 水中にいるか
+        /// 水中にいる時間（秒）
         /// </summary>
-        public bool IsEnterUnderWater { get; set; }
+        public float EnterUnderWaterSeconds { get; set; }
+
+        /// <summary>
+        /// 水中にいるか返す
+        /// </summary>
+        public bool IsEnterUnderWater => this.EnterUnderWaterSeconds > 0.0f;
 
         public readonly Dictionary<int, InfinityStatus> InfinityStatuses = new Dictionary<int, InfinityStatus>();
 

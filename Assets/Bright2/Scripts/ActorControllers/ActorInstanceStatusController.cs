@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
 using HK.Bright2.Extensions;
 using HK.Bright2.GameSystems;
 using HK.Bright2.StageControllers.Messages;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -38,14 +40,14 @@ namespace HK.Bright2.ActorControllers
             owner.Broker.Receive<EnterUnderWater>()
                 .SubscribeWithState(this, (_, _this) =>
                 {
-                    _this.status.IsEnterUnderWater = true;
+                    _this.RegisterUpdateUnderWaterSecondsStream();
                 })
                 .AddTo(owner);
 
             owner.Broker.Receive<ExitUnderWater>()
                 .SubscribeWithState(this, (_, _this) =>
                 {
-                    _this.status.IsEnterUnderWater = false;
+                    _this.status.EnterUnderWaterSeconds = 0.0f;
                 })
                 .AddTo(owner);
         }
@@ -183,6 +185,17 @@ namespace HK.Bright2.ActorControllers
             }
 
             return this.status.InfinityStatuses[instanceId].IsInfinity;
+        }
+
+        private void RegisterUpdateUnderWaterSecondsStream()
+        {
+            this.owner.UpdateAsObservable()
+                .TakeUntil(this.owner.Broker.Receive<ExitUnderWater>())
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.status.EnterUnderWaterSeconds += Time.deltaTime;
+                })
+                .AddTo(this.owner);
         }
     }
 }
