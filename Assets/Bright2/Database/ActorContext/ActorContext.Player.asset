@@ -18,6 +18,7 @@ MonoBehaviour:
     jump: {fileID: 11400000, guid: 7536ebdd613c641e5b983b468f539735, type: 2}
     fall: {fileID: 11400000, guid: 6b4eedb1ec0754dcfa6e97a0b343dc7a, type: 2}
     attack: {fileID: 11400000, guid: 26dedd9dc7b3b4a8fbafca0aec73769a, type: 2}
+    knockback: {fileID: 11400000, guid: aa206482e4467469db497384ed782af2, type: 2}
   basicStatus:
     hitPoint: 100
     moveSpeed: 6
@@ -41,3 +42,6 @@ MonoBehaviour:
     deadlyPoison:
       duration: 10
       damageRate: 0.25
+    fireSpread:
+      duration: 7
+      damageRate: 0.1

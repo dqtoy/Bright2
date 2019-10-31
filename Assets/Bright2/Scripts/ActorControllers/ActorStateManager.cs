@@ -2,6 +2,8 @@
 using UnityEngine.Assertions;
 using HK.Bright2.ActorControllers.States;
 using System.Collections.Generic;
+using HK.Bright2.ActorControllers.Messages;
+using UniRx;
 
 namespace HK.Bright2.ActorControllers
 {
@@ -20,14 +22,17 @@ namespace HK.Bright2.ActorControllers
         {
             this.owner = owner;
 
-            this.states.Add(ActorState.Name.Idle, new Idle(this.owner));
+            this.states.Add(ActorState.Name.Idle, new States.Idle(this.owner));
             this.states.Add(ActorState.Name.Run, new Run(this.owner));
             this.states.Add(ActorState.Name.Jump, new Jump(this.owner));
-            this.states.Add(ActorState.Name.Fall, new Fall(this.owner));
+            this.states.Add(ActorState.Name.Fall, new States.Fall(this.owner));
             this.states.Add(ActorState.Name.Attack, new Attack(this.owner));
+            this.states.Add(ActorState.Name.Knockback, new Knockback(this.owner));
 
             this.currentState = ActorState.Name.Idle;
             this.states[this.currentState].Enter(null);
+
+            this.AnyEnterState();
         }
 
         public void Change(ActorState.Name nextState, IActorStateContext context)
@@ -42,6 +47,21 @@ namespace HK.Bright2.ActorControllers
         public void Change(ActorState.Name nextState)
         {
             this.Change(nextState, null);
+        }
+
+        /// <summary>
+        /// 全てのステート共通で遷移するステート処理
+        /// </summary>
+        public void AnyEnterState()
+        {
+            // ダメージを受けたら強制でノックバックステートへ遷移
+            this.owner.Broker.Receive<TakedDamage>()
+                .Where(x => x.DamageSource == Constants.DamageSource.Actor)
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    _this.Change(ActorState.Name.Knockback);
+                })
+                .AddTo(this.owner);
         }
     }
 }

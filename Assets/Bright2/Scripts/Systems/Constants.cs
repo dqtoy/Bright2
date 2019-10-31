@@ -55,8 +55,29 @@ namespace HK.Bright2
         }
 
         /// <summary>
+        /// ダメージの発生源
+        /// </summary>
+        public enum DamageSource
+        {
+            /// <summary>
+            /// <see cref="Actor"/>によるダメージ
+            /// </summary>
+            Actor,
+
+            /// <summary>
+            /// 状態異常によるダメージ
+            /// </summary>
+            AbnormalStatus,
+        }
+
+        /// <summary>
         /// 装備可能な武器の最大値
         /// </summary>
         public const int EquippedWeaponMax = 3;
+
+        /// <summary>
+        /// ノックバックする時間（秒）
+        /// </summary>
+        public const float KnockbackDuration = 0.5f;
     }
 }

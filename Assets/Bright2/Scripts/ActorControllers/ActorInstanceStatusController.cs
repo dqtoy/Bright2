@@ -85,7 +85,7 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// ダメージを受ける
         /// </summary>
-        public void TakeDamage(int damage, Vector3 generationSource)
+        public void TakeDamage(int damage, Vector3 generationSource, Constants.DamageSource damageSource)
         {
             // すでに死亡していたら何もしない
             if(this.status.HitPoint.Value <= 0)
@@ -95,7 +95,7 @@ namespace HK.Bright2.ActorControllers
 
             this.status.HitPoint.Value -= damage;
 
-            this.owner.Broker.Publish(TakedDamage.Get(damage, generationSource));
+            this.owner.Broker.Publish(TakedDamage.Get(damage, generationSource, damageSource));
 
             // 死亡したら通知する
             if(this.status.HitPoint.Value <= 0)

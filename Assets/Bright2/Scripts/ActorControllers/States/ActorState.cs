@@ -19,6 +19,7 @@ namespace HK.Bright2.ActorControllers.States
             Attack,
             Jump,
             Fall,
+            Knockback,
         }
 
         protected readonly Actor owner;
