@@ -65,3 +65,7 @@ MonoBehaviour:
       ja: "\u9244\u306E\u5263"
       en: 
     guid: 9af5ceef-d897-4e46-9f21-1008eea6b40f
+  - value:
+      ja: "\u97CB\u99C4\u5929\u306E\u5263"
+      en: 
+    guid: b6442aba-d0ae-489f-a5b5-05f907554197

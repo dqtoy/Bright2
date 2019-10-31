@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8a3d2fbdc2bf452188a0b5309d471c9, type: 3}
-  m_Name: 0104
+  m_Name: 0105
   m_EditorClassIdentifier: 
   weaponName:
     target: {fileID: 11400000, guid: 544fb535d4b5d44e1b9a701b5c3511ec, type: 2}
-    value: "\u9285\u306E\u5263"
-    guid: 11df5607-475d-4c71-920f-7d6d30fec1d6
-  gimmick: {fileID: 3931262568683313117, guid: ceeadee65f3204851948ea06a8648384, type: 3}
-  nextStateDelaySeconds: 0.3
-  coolTimeSeconds: 0.3
-  moveSpeedAttenuationRate: 0.5
-  canAutoAttack: 0
-  icon: {fileID: 21300000, guid: 7924fc6f5fa78452e9732f621e4284e5, type: 3}
+    value: "\u97CB\u99C4\u5929\u306E\u5263"
+    guid: b6442aba-d0ae-489f-a5b5-05f907554197
+  gimmick: {fileID: 3931262568683313117, guid: ea5834bedd3cc432788c7c1398d3ee06, type: 3}
+  nextStateDelaySeconds: 0.2
+  coolTimeSeconds: 0.2
+  moveSpeedAttenuationRate: 0.7
+  canAutoAttack: 1
+  icon: {fileID: 21300000, guid: 230c67898af664a8e8fd4f8d900fc80b, type: 3}
