@@ -64,6 +64,11 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         private bool isEnterUnderWater = false;
 
+        /// <summary>
+        /// Yの重力の最大値
+        /// </summary>
+        private const float GravityYMax = -16.0f;
+
         void Awake()
         {
             this.brokableObject = this.GetComponent<IBroker>();
@@ -122,7 +127,7 @@ namespace HK.Bright2.ActorControllers
         {
             this.AddGravity();
             this.UnderWaterProccess();
-            
+
             var t = this.controlledTransform;
             this.CheckHorizontal();
             this.CheckVertical();
@@ -192,7 +197,14 @@ namespace HK.Bright2.ActorControllers
 
         private void AddGravity()
         {
-            this.currentGravity += this.gravity * Time.deltaTime;
+            var gravity = this.gravity;
+            if(this.isEnterUnderWater)
+            {
+                gravity *= 0.5f;
+            }
+            
+            this.currentGravity += gravity * Time.deltaTime;
+            this.currentGravity.y = Mathf.Max(this.currentGravity.y, GravityYMax);
             this.velocity += this.currentGravity * Time.deltaTime;
         }
 
