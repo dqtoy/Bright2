@@ -17,6 +17,11 @@ namespace HK.Bright2.GameSystems
         int DamagePower { get; }
 
         /// <summary>
+        /// クリティカル確率
+        /// </summary>
+        float CriticalRate { get; }
+
+        /// <summary>
         /// ノックバック
         /// </summary>
         float KnockbackPower { get; }

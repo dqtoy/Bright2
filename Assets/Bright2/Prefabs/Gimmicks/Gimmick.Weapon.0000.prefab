@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePower: 10
+  criticalRate: 0.5
   knockbackPower: 7
   infinitySeconds: 0.3
   includeTags:

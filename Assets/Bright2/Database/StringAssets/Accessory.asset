@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c932cb5455f464b288e33eb7fa54f213, type: 3}
   m_Name: Accessory
   m_EditorClassIdentifier: 
-  database: []
+  database:
+  - value:
+      ja: "\u9285\u306E\u8155\u8F2A"
+      en: 
+    guid: acf20b30-ce48-45a2-8252-b8a54107bb37

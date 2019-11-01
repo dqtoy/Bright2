@@ -15,6 +15,10 @@ namespace HK.Bright2.GameSystems
         private int damagePower = default;
 
         [SerializeField]
+        [Range(0.0f, 1.0f)]
+        private float criticalRate = default;
+
+        [SerializeField]
         private float knockbackPower = default;
 
         /// <summary>
@@ -33,6 +37,8 @@ namespace HK.Bright2.GameSystems
         private List<GiveDamageActorAdditionalEffect> additionalEffects = default;
 
         int IGiveDamage.DamagePower => this.damagePower;
+
+        float IGiveDamage.CriticalRate => this.criticalRate;
 
         float IGiveDamage.KnockbackPower => this.knockbackPower;
 
