@@ -9,9 +9,9 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.DebugSystems
 {
     /// <summary>
-    /// デバッグで武器を追加するクラス
+    /// デバッグでアイテムを追加するクラス
     /// </summary>
-    public sealed class DebugAddWeapon : MonoBehaviour
+    public sealed class DebugAddItems : MonoBehaviour
     {
         [SerializeField]
         private List<WeaponRecord> possessionWeapons = default;
