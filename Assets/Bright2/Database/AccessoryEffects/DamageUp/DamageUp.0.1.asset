@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fca222639a9242d5be056d9d4b2c08e, type: 3}
   m_Name: DamageUp.0.1
   m_EditorClassIdentifier: 
-  rate: 0.05
+  rate: 0.1

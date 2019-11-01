@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using HK.Bright2.AccessoryControllers;
 using HK.Bright2.GimmickControllers;
 using HK.Framework.Text;
 using UnityEngine;
@@ -21,5 +23,9 @@ namespace HK.Bright2.Database
         [SerializeField]
         private Sprite icon = default;
         public Sprite Icon => this.icon;
+
+        [SerializeField]
+        private List<AccessoryEffect> effects = default;
+        public List<AccessoryEffect> Effects => this.effects;
     }
 }

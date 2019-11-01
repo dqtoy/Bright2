@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 315159c0a09a44734ac7222a00c8af13, type: 3}
-  m_Name: 0101
+  m_Name: 0102
   m_EditorClassIdentifier: 
   accessoryName:
     target: {fileID: 11400000, guid: c40f222c41f80481b814705cb01ad95c, type: 2}
-    value: "\u9285\u306E\u8155\u8F2A"
-    guid: acf20b30-ce48-45a2-8252-b8a54107bb37
-  icon: {fileID: 21300000, guid: 77b42f90e392f41bfb574a11b410577c, type: 3}
+    value: "\u9280\u306E\u8155\u8F2A"
+    guid: 64da92a4-092b-4fa5-ac98-06ac5d1e3d5b
+  icon: {fileID: 21300000, guid: fbdc3be6452464c05a3575f4b2a1315b, type: 3}
   effects:
-  - {fileID: 11400000, guid: 48d09549db3114661a2a90214818e07b, type: 2}
+  - {fileID: 11400000, guid: abd13aba2499c4b0083e7436cba02d42, type: 2}

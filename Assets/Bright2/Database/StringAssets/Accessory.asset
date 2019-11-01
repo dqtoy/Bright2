@@ -17,3 +17,11 @@ MonoBehaviour:
       ja: "\u9285\u306E\u8155\u8F2A"
       en: 
     guid: acf20b30-ce48-45a2-8252-b8a54107bb37
+  - value:
+      ja: "\u9280\u306E\u8155\u8F2A"
+      en: 
+    guid: 64da92a4-092b-4fa5-ac98-06ac5d1e3d5b
+  - value:
+      ja: "\u91D1\u306E\u8155\u8F2A"
+      en: 
+    guid: 380fe812-bfdc-4431-b2f5-4dba2834a020
