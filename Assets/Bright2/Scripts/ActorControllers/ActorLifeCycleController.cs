@@ -25,7 +25,7 @@ namespace HK.Bright2.ActorControllers
                 })
                 .AddTo(this.owner);
 
-            if(this.owner.tag == Tags.Name.Enemy)
+            if(this.owner.CompareTag(Tags.Name.Enemy))
             {
                 Broker.Global.Receive<ChangedStage>()
                     .SubscribeWithState(this, (_, _this) =>

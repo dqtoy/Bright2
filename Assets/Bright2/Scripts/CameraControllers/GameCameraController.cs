@@ -21,7 +21,7 @@ namespace HK.Bright2.CameraControllers
         void Awake()
         {
             Broker.Global.Receive<SpawnedActor>()
-                .Where(x => x.Actor.tag == Tags.Name.Player)
+                .Where(x => x.Actor.CompareTag(Tags.Name.Player))
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.target = x.Actor.CachedTransform;
