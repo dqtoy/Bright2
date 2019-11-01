@@ -1,6 +1,7 @@
 ﻿using HK.Bright2.ActorControllers;
 using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.GameSystems.Messages;
+using HK.Bright2.WeaponControllers;
 using HK.Framework.EventSystems;
 using UniRx;
 using UnityEngine;

@@ -1,5 +1,6 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Extensions;
+using HK.Bright2.WeaponControllers;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;

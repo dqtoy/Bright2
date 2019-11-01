@@ -3,6 +3,7 @@ using HK.Bright2.Database;
 using HK.Bright2.GameSystems;
 using HK.Bright2.InputSystems;
 using HK.Bright2.UIControllers.Messages;
+using HK.Bright2.WeaponControllers;
 using HK.Framework.EventSystems;
 using UniRx;
 using UnityEngine;

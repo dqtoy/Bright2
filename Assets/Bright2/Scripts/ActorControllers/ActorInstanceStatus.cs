@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.Database;
 using HK.Bright2.GameSystems;
+using HK.Bright2.WeaponControllers;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;

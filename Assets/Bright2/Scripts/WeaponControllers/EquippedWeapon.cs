@@ -5,7 +5,7 @@ using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace HK.Bright2
+namespace HK.Bright2.WeaponControllers
 {
     /// <summary>
     /// 装備中の武器を管理するクラス

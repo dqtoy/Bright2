@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace HK.Bright2.GameSystems
+namespace HK.Bright2.WeaponControllers
 {
     /// <summary>
     /// 武器のインスタンスデータ
