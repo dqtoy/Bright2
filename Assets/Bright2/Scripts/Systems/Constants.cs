@@ -99,5 +99,10 @@ namespace HK.Bright2
         /// 酸欠によるダメージの割合
         /// </summary>
         public const float LackOfOxygenDamageRate = 0.1f;
+
+        /// <summary>
+        /// アクセサリーを装備出来る最大値
+        /// </summary>
+        public const int EquippedAccessoryMax = 5;
     }
 }

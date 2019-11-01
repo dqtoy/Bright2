@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HK.Bright2.Database;
 using HK.Bright2.GameSystems;
 using HK.Bright2.WeaponControllers;
@@ -62,7 +63,28 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public bool IsLackOfOxygen => this.EnterUnderWaterSeconds >= Constants.LackOfOxygenSeconds;
 
+        /// <summary>
+        /// 無敵ステータス
+        /// </summary>
         public readonly Dictionary<int, InfinityStatus> InfinityStatuses = new Dictionary<int, InfinityStatus>();
+
+        /// <summary>
+        /// 装備中のアクセサリーのインデックスリスト
+        /// </summary>
+        /// <remarks>
+        /// <see cref="PossessionAccessories"/>の添字と紐付いています
+        /// </remarks>
+        public int[] EquippedAccessories { get; set; }
+
+        /// <summary>
+        /// 所持しているアクセサリー
+        /// </summary>
+        public List<AccessoryRecord> PossessionAccessories { get; set; }
+
+        /// <summary>
+        /// アクセサリー効果
+        /// </summary>
+        public AccessoryEffectParameter AccessoryEffect { get; set; }
 
         public ActorInstanceStatus(Actor owner, ActorContext context)
         {
@@ -75,6 +97,18 @@ namespace HK.Bright2.ActorControllers
             {
                 this.EquippedWeapons.Add(new EquippedWeapon(owner.gameObject));
             }
+        }
+
+        /// <summary>
+        /// アクセサリー効果
+        /// </summary>
+        [Serializable]
+        public class AccessoryEffectParameter
+        {
+            /// <summary>
+            /// ダメージの上昇倍率
+            /// </summary>
+            public float DamageUp;
         }
     }
 }

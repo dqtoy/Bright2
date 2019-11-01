@@ -195,6 +195,29 @@ namespace HK.Bright2.ActorControllers
             return this.status.InfinityStatuses[instanceId].IsInfinity;
         }
 
+        public void AddAccessory(AccessoryRecord accessoryRecord)
+        {
+            this.status.PossessionAccessories = this.status.PossessionAccessories ?? new List<AccessoryRecord>();
+            this.status.PossessionAccessories.Add(accessoryRecord);
+        }
+
+        public void ChangeEquippedAccessory(int equippedAccessoryIndex, int possessionAccessoryIndex)
+        {
+            Assert.IsTrue(equippedAccessoryIndex >= 0 && equippedAccessoryIndex < Constants.EquippedAccessoryMax);
+            Assert.IsTrue(possessionAccessoryIndex >= 0 && possessionAccessoryIndex < this.status.PossessionAccessories.Count);
+
+            if(this.status.EquippedAccessories == null)
+            {
+                this.status.EquippedAccessories = new int[Constants.EquippedAccessoryMax];
+                for (var i = 0; i < this.status.EquippedAccessories.Length; i++)
+                {
+                    this.status.EquippedAccessories[i] = -1;
+                }
+            }
+
+            this.status.EquippedAccessories[equippedAccessoryIndex] = possessionAccessoryIndex;
+        }
+
         private void RegisterUpdateUnderWaterSecondsStream()
         {
             this.owner.UpdateAsObservable()
