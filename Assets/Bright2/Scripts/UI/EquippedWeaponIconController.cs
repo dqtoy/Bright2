@@ -33,7 +33,7 @@ namespace HK.Bright2.UIControllers
         void Awake()
         {
             Broker.Global.Receive<SpawnedActor>()
-                .Where(x => x.Actor.tag == Tags.Name.Player)
+                .Where(x => x.Actor.CompareTag(Tags.Name.Player))
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     var actor = x.Actor;

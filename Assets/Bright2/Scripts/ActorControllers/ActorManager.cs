@@ -24,18 +24,17 @@ namespace HK.Bright2.ActorControllers
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     var actor = x.Actor;
-                    var tag = actor.tag;
-                    if(tag == Tags.Name.Player)
+                    if(actor.CompareTag(Tags.Name.Player))
                     {
                         _this.Players.Add(actor);
                     }
-                    else if(tag == Tags.Name.Enemy)
+                    else if(actor.CompareTag(Tags.Name.Enemy))
                     {
                         _this.Enemies.Add(actor);
                     }
                     else
                     {
-                        Assert.IsTrue(false, $"tag = {tag}は未定義の{typeof(Actor)}です");
+                        Assert.IsTrue(false, $"tag = {actor.tag}は未定義の{typeof(Actor)}です");
                     }
                 })
                 .AddTo(this.streams);
