@@ -25,3 +25,15 @@ MonoBehaviour:
       ja: "\u91D1\u306E\u8155\u8F2A"
       en: 
     guid: 380fe812-bfdc-4431-b2f5-4dba2834a020
+  - value:
+      ja: "\u30EB\u30D3\u30FC\u306E\u30CD\u30C3\u30AF\u30EC\u30B9"
+      en: 
+    guid: 53865ad1-0742-49e0-9978-d65cc03726c7
+  - value:
+      ja: "\u30B5\u30D5\u30A1\u30A4\u30A2\u306E\u30CD\u30C3\u30AF\u30EC\u30B9"
+      en: 
+    guid: f2424a33-8b35-442c-95b8-df28384355b3
+  - value:
+      ja: "\u30A8\u30E1\u30E9\u30EB\u30C9\u306E\u30CD\u30C3\u30AF\u30EC\u30B9"
+      en: 
+    guid: 02b1987f-09e0-407f-bf3b-7a4b1940ee78
