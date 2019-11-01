@@ -16,7 +16,7 @@ MonoBehaviour:
     target: {fileID: 11400000, guid: 544fb535d4b5d44e1b9a701b5c3511ec, type: 2}
     value: "\u6728\u306E\u68D2"
     guid: d7938af2-82b2-426b-b418-631a12bfd96f
-  gimmick: {fileID: 3931262568683313117, guid: f3d822f433bb841c2bbcec532b642c45, type: 3}
+  gimmick: {fileID: 4760945173984106893, guid: 51cfa08c5ab4247aa8265b1030812cf4, type: 3}
   nextStateDelaySeconds: 0.3
   coolTimeSeconds: 0.3
   moveSpeedAttenuationRate: 0.5
