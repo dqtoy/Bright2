@@ -106,13 +106,19 @@ namespace HK.Bright2.ActorControllers
         public class AccessoryEffectParameter
         {
             /// <summary>
-            /// ダメージの上昇倍率
+            /// 与えるダメージの上昇倍率
             /// </summary>
             public float DamageUp;
+
+            /// <summary>
+            /// 受けるダメージの減少倍率
+            /// </summary>
+            public float DamageDown;
 
             public void Reset()
             {
                 this.DamageUp = 0.0f;
+                this.DamageDown = 0.0f;
             }
         }
     }
