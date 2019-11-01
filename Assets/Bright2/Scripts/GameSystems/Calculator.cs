@@ -16,10 +16,17 @@ namespace HK.Bright2.GameSystems
         public static int GetDamage(IGiveDamage giveDamage, Actor target)
         {
             var attacker = giveDamage.Owner;
+            var attackerAccessoryEffect = attacker.StatusController.AccessoryEffect;
+            var targetAccessoryEffect = target.StatusController.AccessoryEffect;
             var damage = giveDamage.DamagePower;
 
             // アクセサリーの効果分ダメージが上昇する
-            damage += Mathf.FloorToInt(damage * attacker.StatusController.AccessoryEffect.DamageUp);
+            var damageUp = attackerAccessoryEffect == null ? 0 : Mathf.FloorToInt(damage * attackerAccessoryEffect.DamageUp);
+
+            // アクセサリーの効果分ダメージが減少する
+            var damageDown = targetAccessoryEffect == null ? 0 : Mathf.FloorToInt(damage * targetAccessoryEffect.DamageDown);
+
+            damage = damage + damageUp - damageDown;
 
             // クリティカルヒットの場合はダメージが上昇
             if(giveDamage.CriticalRate.Lottery())
