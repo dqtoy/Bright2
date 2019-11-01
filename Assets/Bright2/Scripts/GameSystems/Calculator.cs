@@ -18,16 +18,22 @@ namespace HK.Bright2.GameSystems
             var attacker = giveDamage.Owner;
             var damage = giveDamage.DamagePower;
 
+            // アクセサリーの効果分ダメージが上昇する
+            damage += Mathf.FloorToInt(damage * attacker.StatusController.AccessoryEffect.DamageUp);
+
+            // クリティカルヒットの場合はダメージが上昇
             if(giveDamage.CriticalRate.Lottery())
             {
                 damage = Mathf.FloorToInt(damage * 1.5f);
             }
 
+            // 延焼の状態異常にかかっている場合は半減する
             if(attacker.AbnormalConditionController.Contains(Constants.AbnormalStatus.FireSpread))
             {
                 damage = Mathf.FloorToInt(damage * 0.5f);
             }
 
+            // 詰み防止
             if(damage <= 0)
             {
                 damage = 1;
