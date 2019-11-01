@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.AccessoryControllers
@@ -7,10 +8,14 @@ namespace HK.Bright2.AccessoryControllers
     /// ダメージが上昇するアクセサリー効果のクラス
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/Accessory Effect/DamageUp")]
-    public sealed class DamageUp : AccessoryEffect, IDamageUp
+    public sealed class DamageUp : AccessoryEffect
     {
         [SerializeField][Range(0.0f, 1.0f)]
         private float rate = default;
-        float IDamageUp.Rate => this.rate;
+
+        public override void Give(ActorInstanceStatus.AccessoryEffectParameter parameter)
+        {
+            parameter.DamageUp += this.rate;
+        }
     }
 }

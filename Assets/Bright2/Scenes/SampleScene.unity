@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possessionWeapons:
-  - {fileID: 11400000, guid: bf7e42175c67a47b7a75c253078aced8, type: 2}
+  - {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
   - {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd, type: 2}
   - {fileID: 11400000, guid: 5d29af7598cbb4e20b147ced690cb43c, type: 2}
   - {fileID: 11400000, guid: e05e2f0d5e2d84d2cac38ba725ae4ad0, type: 2}
@@ -371,6 +371,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dcf10285f713b4744b43b4bb49a7aa10, type: 2}
   - {fileID: 11400000, guid: 8397b3a005b324650868da39ba1d3f30, type: 2}
   - {fileID: 11400000, guid: 1d39292761a3147e292aabc8b9dcbc17, type: 2}
+  possessionAccessories:
+  - {fileID: 11400000, guid: 42987be5e797b41648255f3edb8e7b78, type: 2}
+  - {fileID: 11400000, guid: bce97a502aba24b21b0c5f9771444e98, type: 2}
+  - {fileID: 11400000, guid: a25dea503bb8d4606b6b0d82e178315d, type: 2}
+  equippedAccessories: 000000000100000002000000
 --- !u!114 &1262815811 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1883264953093208295, guid: 8c945da0dae484a2ea8c1b90409b446b,

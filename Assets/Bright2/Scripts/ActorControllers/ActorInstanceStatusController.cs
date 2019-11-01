@@ -42,6 +42,8 @@ namespace HK.Bright2.ActorControllers
 
         public IReadOnlyList<InstanceWeapon> PossessionWeapons => this.status.PossessionWeapons;
 
+        public ActorInstanceStatus.AccessoryEffectParameter AccessoryEffect => this.status.AccessoryEffect;
+
         public ActorInstanceStatusController(Actor owner, ActorContext context)
         {
             this.owner = owner;
@@ -216,6 +218,22 @@ namespace HK.Bright2.ActorControllers
             }
 
             this.status.EquippedAccessories[equippedAccessoryIndex] = possessionAccessoryIndex;
+
+            this.status.AccessoryEffect = this.status.AccessoryEffect ?? new ActorInstanceStatus.AccessoryEffectParameter();
+            this.status.AccessoryEffect.Reset();
+            foreach(var i in this.status.EquippedAccessories)
+            {
+                if(i == -1)
+                {
+                    continue;
+                }
+
+                var accessoryRecord = this.status.PossessionAccessories[i];
+                foreach(var e in accessoryRecord.Effects)
+                {
+                    e.Give(this.status.AccessoryEffect);
+                }
+            }
         }
 
         private void RegisterUpdateUnderWaterSecondsStream()

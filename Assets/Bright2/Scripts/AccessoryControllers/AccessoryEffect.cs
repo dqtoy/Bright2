@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.AccessoryControllers
@@ -8,5 +9,6 @@ namespace HK.Bright2.AccessoryControllers
     /// </summary>
     public abstract class AccessoryEffect : ScriptableObject, IAccessoryEffect
     {
+        public abstract void Give(ActorInstanceStatus.AccessoryEffectParameter parameter);
     }
 }

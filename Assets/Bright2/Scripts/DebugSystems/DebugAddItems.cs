@@ -16,6 +16,12 @@ namespace HK.Bright2.DebugSystems
         [SerializeField]
         private List<WeaponRecord> possessionWeapons = default;
 
+        [SerializeField]
+        private List<AccessoryRecord> possessionAccessories = default;
+
+        [SerializeField]
+        private List<int> equippedAccessories = default;
+
         void Awake()
         {
             Broker.Global.Receive<SpawnedActor>()
@@ -25,6 +31,16 @@ namespace HK.Bright2.DebugSystems
                     foreach(var w in _this.possessionWeapons)
                     {
                         x.Actor.StatusController.AddWeapon(w);
+                    }
+
+                    foreach(var a in _this.possessionAccessories)
+                    {
+                        x.Actor.StatusController.AddAccessory(a);
+                    }
+
+                    for (var i = 0; i < _this.equippedAccessories.Count; i++)
+                    {
+                        x.Actor.StatusController.ChangeEquippedAccessory(i, _this.equippedAccessories[i]);
                     }
                 })
                 .AddTo(this);

@@ -109,6 +109,11 @@ namespace HK.Bright2.ActorControllers
             /// ダメージの上昇倍率
             /// </summary>
             public float DamageUp;
+
+            public void Reset()
+            {
+                this.DamageUp = 0.0f;
+            }
         }
     }
 }
