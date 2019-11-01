@@ -15,9 +15,7 @@ namespace HK.Bright2.Extensions
         /// </summary>
         public static bool Lottery(this ILottery self)
         {
-            var random = Random.value;
-
-            return self.WinningRate >= random;
+            return self.WinningRate.Lottery();
         }
     }
 }
