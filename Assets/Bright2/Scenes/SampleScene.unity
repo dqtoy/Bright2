@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possessionWeapons:
-  - {fileID: 11400000, guid: 0d64a193777554bb5a6a1ee5e25abf25, type: 2}
+  - {fileID: 11400000, guid: afb4af719a6b942bca614eb9b12c4b53, type: 2}
   - {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd, type: 2}
   - {fileID: 11400000, guid: 5d29af7598cbb4e20b147ced690cb43c, type: 2}
   - {fileID: 11400000, guid: e05e2f0d5e2d84d2cac38ba725ae4ad0, type: 2}
