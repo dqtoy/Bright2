@@ -32,6 +32,11 @@ namespace HK.Bright2.GameSystems
         float InfinitySeconds { get; }
 
         /// <summary>
+        /// 武器タイプ
+        /// </summary>
+        Constants.WeaponType WeaponType { get; }
+
+        /// <summary>
         /// ダメージを与える<see cref="Actor"/>
         /// </summary>
         Actor Owner { get; }

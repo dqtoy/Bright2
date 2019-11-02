@@ -83,6 +83,14 @@ namespace HK.Bright2
             Melee,
 
             /// <summary>
+            /// 遠距離武器
+            /// </summary>
+            /// <remarks>
+            /// 敵の遠距離攻撃の判定で利用します
+            /// </remarks>
+            LongRange,
+
+            /// <summary>
             /// 弓
             /// </summary>
             Bow,

@@ -29,6 +29,9 @@ namespace HK.Bright2.GameSystems
         private float infinitySeconds = default;
 
         [SerializeField]
+        private Constants.WeaponType weaponType = default;
+
+        [SerializeField]
         private List<string> includeTags = default;
 
         [SerializeField]
@@ -44,6 +47,8 @@ namespace HK.Bright2.GameSystems
         float IGiveDamage.KnockbackPower => this.knockbackPower;
 
         float IGiveDamage.InfinitySeconds => Calculator.GetFireSpeedUp(this.infinitySeconds, this.fireSpeedUpRate);
+
+        Constants.WeaponType IGiveDamage.WeaponType => this.weaponType;
 
         GameObject IGiveDamage.GiveDamageObject => this.gameObject;
 
