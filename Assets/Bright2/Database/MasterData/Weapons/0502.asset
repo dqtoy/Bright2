@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3d2fbdc2bf452188a0b5309d471c9, type: 3}
+  m_Name: 0501
+  m_EditorClassIdentifier: 
+  weaponName:
+    target: {fileID: 11400000, guid: 544fb535d4b5d44e1b9a701b5c3511ec, type: 2}
+    value: "\u30CF\u30F3\u30C9\u30AC\u30F3"
+    guid: b8e93241-a322-4898-bb5a-78f0dcb638a0
+  gimmick: {fileID: 1704799604708012423, guid: e8da44477f78f4b15b5c87b1df05cb8c, type: 3}
+  nextStateDelaySeconds: 0.2
+  coolTimeSeconds: 0.2
+  moveSpeedAttenuationRate: 0.6
+  canAutoAttack: 1
+  icon: {fileID: 21300000, guid: f30d19cc64271b54fbacfac39d57df3f, type: 3}
