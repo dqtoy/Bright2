@@ -81,3 +81,7 @@ MonoBehaviour:
       ja: "\u6728\u306E\u5F13"
       en: 
     guid: 7cfae664-59c9-4bd9-be37-515defdea51b
+  - value:
+      ja: "\u9AA8\u306E\u5F13"
+      en: 
+    guid: 49bc0cd9-0da6-41b5-abdb-33f3bf9a7916
