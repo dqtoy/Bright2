@@ -29,8 +29,10 @@ namespace HK.Bright2.Extensions
             }
 
             var generationSource = self.GiveDamageCollider.ClosestPoint(target.CachedTransform.position);
+            var isCritical = Calculator.IsCritical(self);
+            var damage = Calculator.GetDamage(self, target, isCritical);
 
-            target.StatusController.TakeDamage(Calculator.GetDamage(self, target), generationSource, Constants.DamageSource.Actor);
+            target.StatusController.TakeDamage(self.Owner, damage, generationSource, Constants.DamageSource.Actor, isCritical);
             target.Movement.SetGravity(self.KnockbackDirection * self.KnockbackPower);
             target.StatusController.AddInfinityStatus(self.GiveDamageObject, self.InfinitySeconds);
             

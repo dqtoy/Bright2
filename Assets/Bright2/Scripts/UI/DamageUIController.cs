@@ -41,7 +41,7 @@ namespace HK.Bright2.UIControllers
             actor.Broker.Receive<TakedDamage>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    _this.CreateElement(x.Damage, x.GenerationSource);
+                    _this.CreateElement(x.Result.Damage, x.Result.GenerationSource);
                 })
                 .AddTo(this);
         }

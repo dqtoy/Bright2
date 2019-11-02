@@ -118,7 +118,7 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// ダメージを受ける
         /// </summary>
-        public void TakeDamage(int damage, Vector3 generationSource, Constants.DamageSource damageSource)
+        public void TakeDamage(Actor attacker, int damage, Vector3 generationSource, Constants.DamageSource damageSource, bool isCritical)
         {
             // すでに死亡していたら何もしない
             if(this.status.HitPoint.Value <= 0)
@@ -127,8 +127,15 @@ namespace HK.Bright2.ActorControllers
             }
 
             this.status.HitPoint.Value -= damage;
-
-            this.owner.Broker.Publish(TakedDamage.Get(damage, generationSource, damageSource));
+            var damageResult = new DamageResult(
+                attacker,
+                this.owner,
+                damage,
+                generationSource,
+                damageSource,
+                isCritical
+            );
+            this.owner.Broker.Publish(TakedDamage.Get(damageResult));
 
             // 死亡したら通知する
             if(this.status.HitPoint.Value <= 0)
@@ -258,7 +265,7 @@ namespace HK.Bright2.ActorControllers
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     var damage = Mathf.FloorToInt(_this.HitPointMax.Value * Constants.LackOfOxygenDamageRate);
-                    _this.TakeDamage(damage, _this.owner.CachedTransform.position, Constants.DamageSource.LackOfOxygen);
+                    _this.TakeDamage(null, damage, _this.owner.CachedTransform.position, Constants.DamageSource.LackOfOxygen, false);
                 })
                 .AddTo(this.owner);
         }

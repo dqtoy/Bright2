@@ -20,7 +20,7 @@ namespace HK.Bright2.ActorControllers
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     var effect = _this.owner.Context.Effects.TakedDamage.Rent();
-                    effect.transform.position = x.GenerationSource;
+                    effect.transform.position = x.Result.GenerationSource;
                 })
                 .AddTo(this.owner);
         }

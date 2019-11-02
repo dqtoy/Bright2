@@ -13,7 +13,7 @@ namespace HK.Bright2.GameSystems
         /// <summary>
         /// <see cref="Actor"/>と<see cref="Actor"/>とのダメージ計算をして返す
         /// </summary>
-        public static int GetDamage(IGiveDamage giveDamage, Actor target)
+        public static int GetDamage(IGiveDamage giveDamage, Actor target, bool isCritical)
         {
             var attacker = giveDamage.Owner;
             var attackerAccessoryEffect = attacker.StatusController.AccessoryEffect;
@@ -34,7 +34,7 @@ namespace HK.Bright2.GameSystems
             damage = damage + damageUp - damageDown;
 
             // クリティカルヒットの場合はダメージが上昇
-            if(giveDamage.CriticalRate.Lottery())
+            if(isCritical)
             {
                 damage = Mathf.FloorToInt(damage * 1.5f);
             }
@@ -52,6 +52,11 @@ namespace HK.Bright2.GameSystems
             }
 
             return damage;
+        }
+
+        public static bool IsCritical(IGiveDamage giveDamage)
+        {
+            return giveDamage.CriticalRate.Lottery();
         }
 
         /// <summary>

@@ -56,7 +56,7 @@ namespace HK.Bright2.ActorControllers
         {
             // ダメージを受けたら強制でノックバックステートへ遷移
             this.owner.Broker.Receive<TakedDamage>()
-                .Where(x => x.DamageSource == Constants.DamageSource.Actor)
+                .Where(x => x.Result.DamageSource == Constants.DamageSource.Actor)
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.Change(ActorState.Name.Knockback);
