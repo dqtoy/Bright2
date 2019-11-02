@@ -84,7 +84,7 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// アクセサリー効果
         /// </summary>
-        public AccessoryEffectParameter AccessoryEffect { get; set; }
+        public AccessoryEffectParameter AccessoryEffect { get; } = new AccessoryEffectParameter();
 
         public ActorInstanceStatus(Actor owner, ActorContext context)
         {
@@ -95,7 +95,7 @@ namespace HK.Bright2.ActorControllers
             this.EquippedWeapons = new List<EquippedWeapon>();
             for (var i = 0; i < Constants.EquippedWeaponMax; i++)
             {
-                this.EquippedWeapons.Add(new EquippedWeapon(owner.gameObject));
+                this.EquippedWeapons.Add(new EquippedWeapon(owner));
             }
         }
 

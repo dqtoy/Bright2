@@ -219,7 +219,6 @@ namespace HK.Bright2.ActorControllers
 
             this.status.EquippedAccessories[equippedAccessoryIndex] = possessionAccessoryIndex;
 
-            this.status.AccessoryEffect = this.status.AccessoryEffect ?? new ActorInstanceStatus.AccessoryEffectParameter();
             this.status.AccessoryEffect.Reset();
             foreach(var i in this.status.EquippedAccessories)
             {

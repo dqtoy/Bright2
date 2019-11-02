@@ -104,5 +104,10 @@ namespace HK.Bright2
         /// アクセサリーを装備出来る最大値
         /// </summary>
         public const int EquippedAccessoryMax = 5;
+
+        /// <summary>
+        /// フレームレート
+        /// </summary>
+        public const int TargetFrameRate = 60;
     }
 }

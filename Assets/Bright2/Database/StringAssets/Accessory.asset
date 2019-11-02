@@ -37,3 +37,15 @@ MonoBehaviour:
       ja: "\u30A8\u30E1\u30E9\u30EB\u30C9\u306E\u30CD\u30C3\u30AF\u30EC\u30B9"
       en: 
     guid: 02b1987f-09e0-407f-bf3b-7a4b1940ee78
+  - value:
+      ja: "\u9769\u306E\u30B0\u30ED\u30FC\u30D6"
+      en: 
+    guid: 24e6fd69-9ff6-4f97-ba10-e3254eb15a25
+  - value:
+      ja: "\u7D14\u6B63\u9769\u306E\u30B0\u30ED\u30FC\u30D6"
+      en: 
+    guid: 6a14f306-6141-4914-9aea-a6a0405dcc94
+  - value:
+      ja: "\u9AD8\u7D1A\u9769\u306E\u30B0\u30ED\u30FC\u30D6"
+      en: 
+    guid: f412b8cf-27fe-410e-9bfd-76d40a3a852e

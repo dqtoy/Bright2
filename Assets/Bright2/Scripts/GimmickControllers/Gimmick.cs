@@ -1,4 +1,5 @@
-﻿using HK.Bright2.ActorControllers;
+﻿using System.Collections.Generic;
+using HK.Bright2.ActorControllers;
 using HK.Bright2.GimmickControllers.Decorators;
 using HK.Bright2.GimmickControllers.Messages;
 using HK.Framework;
@@ -25,11 +26,15 @@ namespace HK.Bright2.GimmickControllers
 
         private GimmickLifeCycleController lifeCycleController;
 
+        private List<IAffectedSpeedUp> affectedSpeedUps;
+
         private bool isPooled = true;
 
         void Awake()
         {
             this.lifeCycleController = new GimmickLifeCycleController(this);
+            this.affectedSpeedUps = new List<IAffectedSpeedUp>(this.GetComponentsInChildren<IAffectedSpeedUp>());
+            this.affectedSpeedUps.Add(new DOTweenAnimationSetTimeScale(this.gameObject));
         }
 
         public Gimmick Rent()
@@ -60,6 +65,11 @@ namespace HK.Bright2.GimmickControllers
         public void Activate(Actor owner)
         {
             this.Direction = owner.StatusController.Direction;
+            foreach (var a in this.affectedSpeedUps)
+            {
+                a.Affected(owner.StatusController.AccessoryEffect.FireSpeedUp);
+            }
+
             this.decotators = this.decotators ?? this.GetComponentsInChildren<IGimmickDecorator>();
             foreach(var d in this.decotators)
             {

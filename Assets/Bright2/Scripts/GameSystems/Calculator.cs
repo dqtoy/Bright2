@@ -48,5 +48,23 @@ namespace HK.Bright2.GameSystems
 
             return damage;
         }
+
+        /// <summary>
+        /// 倍率をかけた攻撃速度を返す
+        /// </summary>
+        public static float GetFireSpeedUp(float origin, float rate)
+        {
+            var result = origin;
+            result -= origin * rate;
+            var min = (float)(2.0f / Constants.TargetFrameRate);
+
+            // 秒間の更新時間より下回ったら攻撃判定が発生しないので丸め込む
+            if(result < min)
+            {
+                result = min;
+            }
+
+            return result;
+        }
     }
 }

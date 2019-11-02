@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems.GiveDamageActorAdditionalEffects;
+using HK.Bright2.GimmickControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -9,7 +10,7 @@ namespace HK.Bright2.GameSystems
     /// <summary>
     /// <see cref="Actor"/>にダメージを与えるコンポーネントの抽象クラス
     /// /// </summary>
-    public abstract class GiveDamageActorComponent : MonoBehaviour, IGiveDamage
+    public abstract class GiveDamageActorComponent : MonoBehaviour, IGiveDamage, IAffectedSpeedUp
     {
         [SerializeField]
         private int damagePower = default;
@@ -42,7 +43,7 @@ namespace HK.Bright2.GameSystems
 
         float IGiveDamage.KnockbackPower => this.knockbackPower;
 
-        float IGiveDamage.InfinitySeconds => this.infinitySeconds;
+        float IGiveDamage.InfinitySeconds => Calculator.GetFireSpeedUp(this.infinitySeconds, this.fireSpeedUpRate);
 
         GameObject IGiveDamage.GiveDamageObject => this.gameObject;
 
@@ -59,5 +60,12 @@ namespace HK.Bright2.GameSystems
         public abstract GameObject Root { get; }
 
         public abstract Vector2 KnockbackDirection { get; }
+
+        private float fireSpeedUpRate;
+
+        void IAffectedSpeedUp.Affected(float rate)
+        {
+            this.fireSpeedUpRate = rate;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using HK.Bright2.Database;
+﻿using HK.Bright2.ActorControllers;
+using HK.Bright2.Database;
 using HK.Bright2.GameSystems;
 using UniRx;
 using UniRx.Triggers;
@@ -12,14 +13,14 @@ namespace HK.Bright2.WeaponControllers
     /// </summary>
     public sealed class EquippedWeapon
     {
-        private GameObject owner;
+        private Actor owner;
 
         public InstanceWeapon InstanceWeapon { get; private set; }
 
         private readonly ReactiveProperty<float> coolTimeSeconds = new ReactiveProperty<float>();
         public IReactiveProperty<float> CoolTimeSeconds => this.coolTimeSeconds;
 
-        public EquippedWeapon(GameObject owner)
+        public EquippedWeapon(Actor owner)
         {
             this.owner = owner;
             this.owner.UpdateAsObservable()
@@ -29,7 +30,7 @@ namespace HK.Bright2.WeaponControllers
                     {
                         if(_this.coolTimeSeconds.Value < _this.InstanceWeapon.WeaponRecord.CoolTimeSeconds)
                         {
-                            _this.coolTimeSeconds.Value += Time.deltaTime;
+                            _this.coolTimeSeconds.Value += Time.deltaTime * (1.0f + _this.owner.StatusController.AccessoryEffect.FireSpeedUp);
                         }
                     }
                 });
