@@ -85,3 +85,15 @@ MonoBehaviour:
       ja: "\u9AA8\u306E\u5F13"
       en: 
     guid: 49bc0cd9-0da6-41b5-abdb-33f3bf9a7916
+  - value:
+      ja: 
+      en: 
+    guid: 2cc0420f-a530-40b8-b683-3659f2418093
+  - value:
+      ja: "\u30CF\u30F3\u30C9\u30AC\u30F3"
+      en: 
+    guid: b8e93241-a322-4898-bb5a-78f0dcb638a0
+  - value:
+      ja: "\u30B9\u30E9\u30A4\u30E0\u30AC\u30F3"
+      en: 
+    guid: 33ccc0c2-1ba6-47f7-a6f6-ba370c697392

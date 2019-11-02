@@ -24,7 +24,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06027c4bdf12b4b62b4f1d80999b1cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delaySeconds: 0.4
+  delaySeconds: 0.2
 --- !u!114 &3300309903596856323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,7 +52,7 @@ PrefabInstance:
     - target: {fileID: 3676271735749863795, guid: 5d415cff8e67540258c5ab5571c8a945,
         type: 3}
       propertyPath: m_Name
-      value: Gimmick.Weapon.0300.Base
+      value: Gimmick.Weapon.0500.Base
       objectReference: {fileID: 0}
     - target: {fileID: 7549750287441385577, guid: 5d415cff8e67540258c5ab5571c8a945,
         type: 3}
