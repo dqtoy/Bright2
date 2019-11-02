@@ -49,3 +49,7 @@ MonoBehaviour:
       ja: "\u9AD8\u7D1A\u9769\u306E\u30B0\u30ED\u30FC\u30D6"
       en: 
     guid: f412b8cf-27fe-410e-9bfd-76d40a3a852e
+  - value:
+      ja: "\u7825\u77F3"
+      en: 
+    guid: 00a793e2-622a-45fa-8f32-0f4d46047c32
