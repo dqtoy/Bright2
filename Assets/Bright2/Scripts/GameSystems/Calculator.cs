@@ -90,11 +90,16 @@ namespace HK.Bright2.GameSystems
 
         public static DamageResult GetRecoveryFromDamage(Actor target, int damage, float recoveryRate)
         {
-            var recoveryValue = -Mathf.FloorToInt((float)damage * recoveryRate);
+            var recoveryValue = Mathf.FloorToInt((float)damage * recoveryRate);
+            if(recoveryValue <= 0)
+            {
+                recoveryValue = 1;
+            }
+            
             return new DamageResult(
                 target,
                 target,
-                recoveryValue,
+                -recoveryValue,
                 target.CachedTransform.position,
                 Constants.DamageSource.Actor,
                 false

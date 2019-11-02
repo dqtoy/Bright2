@@ -128,7 +128,7 @@ namespace HK.Bright2.ActorControllers
             /// <summary>
             /// 与えたダメージから回復を行う割合
             /// </summary>
-            public float RecoveryOnGiveDamageRate;
+            public float RecoveryOnGiveDamage;
 
             public void Reset()
             {
@@ -136,7 +136,7 @@ namespace HK.Bright2.ActorControllers
                 this.DamageDown = 0.0f;
                 this.FireSpeedUp = 0.0f;
                 this.DamageUpMeleeOnly = 0.0f;
-                this.RecoveryOnGiveDamageRate = 0.0f;
+                this.RecoveryOnGiveDamage = 0.0f;
             }
         }
     }
