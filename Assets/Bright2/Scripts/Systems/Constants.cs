@@ -75,6 +75,34 @@ namespace HK.Bright2
             LackOfOxygen,
         }
 
+        public enum WeaponType
+        {
+            /// <summary>
+            /// 近接武器
+            /// </summary>
+            Melee,
+
+            /// <summary>
+            /// 弓
+            /// </summary>
+            Bow,
+
+            /// <summary>
+            /// 銃
+            /// </summary>
+            Gun,
+
+            /// <summary>
+            /// 魔法
+            /// </summary>
+            Magic,
+
+            /// <summary>
+            /// 召喚
+            /// </summary>
+            Summon,
+        }
+
         /// <summary>
         /// 装備可能な武器の最大値
         /// </summary>
