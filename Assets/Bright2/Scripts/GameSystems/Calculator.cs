@@ -13,7 +13,7 @@ namespace HK.Bright2.GameSystems
         /// <summary>
         /// <see cref="Actor"/>と<see cref="Actor"/>とのダメージ計算をして返す
         /// </summary>
-        public static int GetDamage(IGiveDamage giveDamage, Actor target, bool isCritical)
+        public static DamageResult GetDamageOnActor(IGiveDamage giveDamage, Actor target, Vector2 generationSource)
         {
             var attacker = giveDamage.Owner;
             var attackerAccessoryEffect = attacker.StatusController.AccessoryEffect;
@@ -34,6 +34,7 @@ namespace HK.Bright2.GameSystems
             damage = damage + damageUp - damageDown;
 
             // クリティカルヒットの場合はダメージが上昇
+            var isCritical = giveDamage.CriticalRate.Lottery();
             if(isCritical)
             {
                 damage = Mathf.FloorToInt(damage * 1.5f);
@@ -51,12 +52,40 @@ namespace HK.Bright2.GameSystems
                 damage = 1;
             }
 
-            return damage;
+            return new DamageResult(
+                attacker,
+                target,
+                damage,
+                generationSource,
+                Constants.DamageSource.Actor,
+                isCritical
+            );
         }
 
-        public static bool IsCritical(IGiveDamage giveDamage)
+        public static DamageResult GetDamageResultOnLackOfOxygen(Actor target)
         {
-            return giveDamage.CriticalRate.Lottery();
+            var damage = Mathf.FloorToInt(target.StatusController.HitPointMax.Value * Constants.LackOfOxygenDamageRate);
+            return new DamageResult(
+                null,
+                target,
+                damage,
+                target.CachedTransform.position,
+                Constants.DamageSource.LackOfOxygen,
+                false
+            );
+        }
+
+        public static DamageResult GetDamageResultOnPoison(Actor target, ActorContext.AbnormalConditionParameters.PoisonParameter poisonContext, int damageSplitCount)
+        {
+            var damage = Mathf.FloorToInt((poisonContext.DamageRate * target.StatusController.HitPointMax.Value) / damageSplitCount);
+            return new DamageResult(
+                null,
+                target,
+                damage,
+                target.CachedTransform.position,
+                Constants.DamageSource.AbnormalStatus,
+                false
+            );
         }
 
         /// <summary>

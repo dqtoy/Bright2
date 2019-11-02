@@ -1,4 +1,5 @@
 ﻿using System;
+using HK.Bright2.GameSystems;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -30,10 +31,9 @@ namespace HK.Bright2.ActorControllers.AbnormalConditionControllers.Elements
                 // 定期的に毒ダメージを与える
                 Observable.Interval(TimeSpan.FromSeconds(poisonContext.Duration / DamageSplitCount))
                     .Take(DamageSplitCount)
-                    .SubscribeWithState(owner, (_, _owner) =>
+                    .SubscribeWithState2(this, owner, (_, _this, _owner) =>
                     {
-                        var damage = (poisonContext.DamageRate * owner.StatusController.HitPointMax.Value) / DamageSplitCount;
-                        owner.StatusController.TakeDamage(null, (int)damage, owner.CachedTransform.position, Constants.DamageSource.AbnormalStatus, false);
+                        owner.StatusController.TakeDamage(Calculator.GetDamageResultOnPoison(_owner, _this.GetParameter(_owner), DamageSplitCount));
                     })
                     .AddTo(owner);
 
