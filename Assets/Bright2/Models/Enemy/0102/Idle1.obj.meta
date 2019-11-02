@@ -29,12 +29,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: defaultMat
-    second: {fileID: 2100000, guid: b6fb1bbfb4546d64c805d4f8808c7d9a, type: 2}
+    second: {fileID: 2100000, guid: c1b667d01bf154aed81219e863983559, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
