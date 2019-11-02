@@ -22,6 +22,12 @@ namespace HK.Bright2.UIControllers
         [SerializeField]
         private float randomPosition = default;
 
+        [SerializeField]
+        private Color damageColor = default;
+
+        [SerializeField]
+        private Color recoveryColor = default;
+
         private readonly static ObjectPoolBundle<DamageUIElement> pools = new ObjectPoolBundle<DamageUIElement>();
 
         private ObjectPool<DamageUIElement> pool;
@@ -64,7 +70,8 @@ namespace HK.Bright2.UIControllers
 
         public void Setup(int damage, Vector2 generationSource, Canvas canvas, RectTransform canvasTransform, Camera worldCamera)
         {
-            this.text.text = damage.ToString();
+            this.text.text = Mathf.Abs(damage).ToString();
+            this.text.color = damage >= 0 ? this.damageColor : this.recoveryColor;
 
             var randomPosition = new Vector2(UnityEngine.Random.Range(-this.randomPosition, this.randomPosition), UnityEngine.Random.Range(-this.randomPosition, this.randomPosition));
             this.generationSource = generationSource + randomPosition;

@@ -51,7 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 3674993847810836655}
   visibleSeconds: 2
-  randomPosition: 0.1
+  randomPosition: 0.5
+  damageColor: {r: 1, g: 0.3820755, b: 0.3820755, a: 1}
+  recoveryColor: {r: 0.15053773, g: 1, b: 0, a: 1}
 --- !u!1 &6059577343651022597
 GameObject:
   m_ObjectHideFlags: 0
