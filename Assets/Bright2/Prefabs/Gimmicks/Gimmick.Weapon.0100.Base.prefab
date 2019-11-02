@@ -240,7 +240,7 @@ Transform:
   m_GameObject: {fileID: 7320784550603051692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.65, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 0.7, z: 1}
+  m_LocalScale: {x: 1, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 4962988498451175986}
   m_RootOrder: 0
@@ -284,8 +284,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePower: 10
+  criticalRate: 0
   knockbackPower: 7
   infinitySeconds: 0.3
+  weaponType: 0
   includeTags:
   - Enemy
   controlledCollider: {fileID: 3913024621209231262}
