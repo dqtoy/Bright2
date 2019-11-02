@@ -120,11 +120,17 @@ namespace HK.Bright2.ActorControllers
             /// </summary>
             public float FireSpeedUp;
 
+            /// <summary>
+            /// 近接武器による与えるダメージの上昇倍率
+            /// </summary>
+            public float DamageUpMeleeOnly;
+
             public void Reset()
             {
                 this.DamageUp = 0.0f;
                 this.DamageDown = 0.0f;
                 this.FireSpeedUp = 0.0f;
+                this.DamageUpMeleeOnly = 0.0f;
             }
         }
     }
