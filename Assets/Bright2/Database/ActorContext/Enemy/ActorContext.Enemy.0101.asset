@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: ActorContext.Enemy.0101
   m_EditorClassIdentifier: 
   animationSequences:
-    idle: {fileID: 11400000, guid: 238bc4b21e0ba489fb27825954e858a0, type: 2}
-    run: {fileID: 11400000, guid: 0aee7b11fa7f5454c851f8c1191f8dae, type: 2}
-    jump: {fileID: 11400000, guid: bc4f6732c476b4e859ea0458c3d9240d, type: 2}
-    fall: {fileID: 11400000, guid: 9b8264f6cd95d4b88b9b1bd3895be2e5, type: 2}
-    attack: {fileID: 11400000, guid: 905c51a71046c4ace9c174ac65d61988, type: 2}
-    knockback: {fileID: 11400000, guid: f425ad9f1907241799291c1573e93346, type: 2}
+    idle: {fileID: 11400000, guid: 51114cf352310413d8fd6185092ec3a8, type: 2}
+    run: {fileID: 11400000, guid: 96b8f57ad4f874da1a3f235cc20ff2b4, type: 2}
+    jump: {fileID: 11400000, guid: 8304b9bf40a2b44c8b63554d2ccb7b76, type: 2}
+    fall: {fileID: 11400000, guid: 160f0ee6495524c8fad688ef2e82130d, type: 2}
+    attack: {fileID: 11400000, guid: 5c9f10384cb5d4966ac61016233834ad, type: 2}
+    knockback: {fileID: 11400000, guid: a772a157b2d4b40cf92959b2b1480148, type: 2}
   basicStatus:
     hitPoint: 16
     moveSpeed: 1
@@ -26,8 +26,8 @@ MonoBehaviour:
     limitJumpCount: 1
     money: 5
     dropWeapons:
-    - record: {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
-      winningRate: 1
+    - record: {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd, type: 2}
+      winningRate: 0.03
   effects:
     takedDamage: {fileID: 4643271828095609800, guid: 85f1ea8a894ce4dab95f7869ae3bf07a,
       type: 3}
