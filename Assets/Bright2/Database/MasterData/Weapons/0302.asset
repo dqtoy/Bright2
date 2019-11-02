@@ -17,8 +17,8 @@ MonoBehaviour:
     value: "\u9AA8\u306E\u5F13"
     guid: 49bc0cd9-0da6-41b5-abdb-33f3bf9a7916
   gimmick: {fileID: 210561069302985435, guid: ac9e19e74728d4fbfb4aeb16ab809a61, type: 3}
-  nextStateDelaySeconds: 0.4
-  coolTimeSeconds: 0.65
+  nextStateDelaySeconds: 0.35
+  coolTimeSeconds: 0.5
   moveSpeedAttenuationRate: 0.6
   canAutoAttack: 0
   icon: {fileID: 21300000, guid: 1958c9cf1b44ac946aa78b14de88c0b9, type: 3}
