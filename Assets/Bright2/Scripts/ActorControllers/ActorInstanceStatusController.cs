@@ -130,7 +130,7 @@ namespace HK.Bright2.ActorControllers
             this.owner.Broker.Publish(TakedDamage.Get(damageResult));
 
             // 与えた側にも通知する
-            damageResult.Attacker.Broker.Publish(GivedDamage.Get(damageResult));
+            damageResult.Attacker?.Broker.Publish(GivedDamage.Get(damageResult));
 
             // 死亡したら通知する
             if(this.status.HitPoint.Value <= 0)

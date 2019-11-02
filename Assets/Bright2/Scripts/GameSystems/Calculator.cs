@@ -88,6 +88,19 @@ namespace HK.Bright2.GameSystems
             );
         }
 
+        public static DamageResult GetRecoveryFromDamage(Actor target, int damage, float recoveryRate)
+        {
+            var recoveryValue = -Mathf.FloorToInt((float)damage * recoveryRate);
+            return new DamageResult(
+                target,
+                target,
+                recoveryValue,
+                target.CachedTransform.position,
+                Constants.DamageSource.Actor,
+                false
+            );
+        }
+
         /// <summary>
         /// 倍率をかけた攻撃速度を返す
         /// </summary>
