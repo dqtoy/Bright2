@@ -21,4 +21,4 @@ MonoBehaviour:
   coolTimeSeconds: 0.3
   moveSpeedAttenuationRate: 0.5
   canAutoAttack: 0
-  icon: {fileID: 21300000, guid: b36cfdb18aa184aaeb65eff251130bb5, type: 3}
+  icon: {fileID: 21300000, guid: 73625e67d55edd348b16e2ea4fee45ae, type: 3}
