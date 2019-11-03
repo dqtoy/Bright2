@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Stage/FrontSide
+    uniqueID: 4247481779
+    locked: 0
   - name: Stage/Background
     uniqueID: 657266525
     locked: 0
@@ -50,7 +53,4 @@ TagManager:
     locked: 0
   - name: Stage/BackSide
     uniqueID: 2971082971
-    locked: 0
-  - name: Stage/FrontSide
-    uniqueID: 4247481779
     locked: 0
