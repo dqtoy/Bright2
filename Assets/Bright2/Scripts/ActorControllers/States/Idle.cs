@@ -47,6 +47,7 @@ namespace HK.Bright2.ActorControllers.States
 
             this.ReceiveRequestFireOnChangeAttackState();
             this.ReceiveRequestInvokeGameEventOnInvokeGameEvent();
+            this.ReceiveRequestFallOneWayPlatforms();
         }
 
         public override void Exit()

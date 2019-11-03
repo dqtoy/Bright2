@@ -52,6 +52,7 @@ namespace HK.Bright2.ActorControllers.States
 
             this.ReceiveRequestFireOnChangeAttackState();
             this.SyncActorDirection();
+            this.ReceiveRequestFallOneWayPlatforms();
         }
     }
 }

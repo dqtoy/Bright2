@@ -108,5 +108,17 @@ namespace HK.Bright2.Extensions
             self.Owner.StatusController.AddJumpCount();
             self.Owner.Movement.SetGravity(Vector2.up * self.Owner.Context.BasicStatus.JumpPower);
         }
+
+        public static void ReceiveRequestFallOneWayPlatforms(this IActorState self)
+        {
+            self.Owner.Broker.Receive<RequestFallOneWayPlatforms>()
+                .Where(_ => self.Owner.Movement.IsGrounded)
+                .SubscribeWithState(self, (_, _this) =>
+                {
+                    _this.Owner.Movement.IgnoreOneWayPlatformsThisFrame = true;
+                    _this.Owner.Movement.SetGravity(Vector2.down * 5.0f);
+                })
+                .AddTo(self.Events);
+        }
     }
 }

@@ -72,6 +72,26 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         private const float GravityYMax = -16.0f;
 
+        public bool IgnoreOneWayPlatformsThisFrame
+        {
+            get
+            {
+                return this.characterController.ignoreOneWayPlatformsThisFrame;
+            }
+            set
+            {
+                this.characterController.ignoreOneWayPlatformsThisFrame = value;
+            }
+        }
+
+        public bool IsGrounded
+        {
+            get
+            {
+                return this.characterController.isGrounded;
+            }
+        }
+
         void Awake()
         {
             this.brokableObject = this.GetComponent<IBroker>();
