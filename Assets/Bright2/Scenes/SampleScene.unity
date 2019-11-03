@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b099940ad7a9f4a9e8b935ca3f081cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8491219769089868142, guid: a3681e773ae184a71a5caa95736c8964, type: 3}
-  initialPlayerPosition: {x: 2, y: 7}
+  prefab: {fileID: 8491219769089868142, guid: d0023f355f582c04199cb50fcc1f05fb, type: 3}
+  initialPlayerPosition: {x: 5.5, y: 7}
 --- !u!114 &628932147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,14 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possessionWeapons:
-  - {fileID: 11400000, guid: 8e9f150b2598346e8b406ccbe5710e76, type: 2}
-  - {fileID: 11400000, guid: 7761bd7de4eaa4cee9a4790ca37e6863, type: 2}
-  - {fileID: 11400000, guid: 5d29af7598cbb4e20b147ced690cb43c, type: 2}
-  - {fileID: 11400000, guid: e05e2f0d5e2d84d2cac38ba725ae4ad0, type: 2}
-  - {fileID: 11400000, guid: 670c5765ffd004955b8eaa0e0b6cdf05, type: 2}
-  - {fileID: 11400000, guid: dcf10285f713b4744b43b4bb49a7aa10, type: 2}
-  - {fileID: 11400000, guid: 8397b3a005b324650868da39ba1d3f30, type: 2}
-  - {fileID: 11400000, guid: 1d39292761a3147e292aabc8b9dcbc17, type: 2}
+  - {fileID: 11400000, guid: 0d64a193777554bb5a6a1ee5e25abf25, type: 2}
   possessionAccessories:
   - {fileID: 11400000, guid: 42987be5e797b41648255f3edb8e7b78, type: 2}
   - {fileID: 11400000, guid: bce97a502aba24b21b0c5f9771444e98, type: 2}
