@@ -2,11 +2,11 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-
+using UnityEngine.Assertions;
 
 namespace Prime31 {
 
-[RequireComponent( typeof( BoxCollider2D ), typeof( Rigidbody2D ) )]
+[RequireComponent( typeof( Rigidbody2D ) )]
 public class CharacterController2D : MonoBehaviour
 {
 	#region internal types
@@ -136,7 +136,7 @@ public class CharacterController2D : MonoBehaviour
 
 	[HideInInspector][NonSerialized]
 	public new Transform transform;
-	[HideInInspector][NonSerialized]
+
 	public BoxCollider2D boxCollider;
 	[HideInInspector][NonSerialized]
 	public Rigidbody2D rigidBody2D;
@@ -186,8 +186,9 @@ public class CharacterController2D : MonoBehaviour
 
 		// cache some components
 		transform = GetComponent<Transform>();
-		boxCollider = GetComponent<BoxCollider2D>();
 		rigidBody2D = GetComponent<Rigidbody2D>();
+
+        Assert.IsNotNull(this.boxCollider);
 
 		// here, we trigger our properties that have setters with bodies
 		skinWidth = _skinWidth;

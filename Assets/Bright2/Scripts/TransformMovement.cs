@@ -1,5 +1,6 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.StageControllers.Messages;
+using Prime31;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -48,6 +49,8 @@ namespace HK.Bright2.ActorControllers
         private Vector2 currentGravity;
 
         private bool isLanding = false;
+
+        private CharacterController2D characterController;
 
         /// <summary>
         /// 麻痺中であるか
@@ -121,23 +124,75 @@ namespace HK.Bright2.ActorControllers
                     _this.isEnterUnderWater = false;
                 })
                 .AddTo(this);
+
+            this.characterController = this.GetComponent<CharacterController2D>();
+            Assert.IsNotNull(this.characterController);
         }
+
+        private bool canPublishLanded = true;
 
         void Update()
         {
             this.AddGravity();
             this.UnderWaterProccess();
 
-            var t = this.controlledTransform;
-            this.CheckHorizontal();
-            this.CheckVertical();
-            t.localPosition += new Vector3(this.velocity.x, this.velocity.y, 0.0f);
+            this.characterController.move(this.velocity);
 
-#if UNITY_EDITOR
-            this.lastVelocity = this.velocity;
-#endif
+            var isGrounded = this.characterController.isGrounded;
 
+            if(!isGrounded && this.velocity.y < 0.0f)
+            {
+                this.brokableObject?.Broker.Publish(Fall.Get());
+            }
+
+            if(this.canPublishLanded)
+            {
+                if(isGrounded)
+                {
+                    this.brokableObject?.Broker.Publish(Landed.Get());
+                    this.canPublishLanded = false;
+                }
+            }
+            else
+            {
+                if(!isGrounded)
+                {
+                    this.canPublishLanded = true;
+                }
+            }
+
+            if(isGrounded)
+            {
+                this.currentGravity.y = 0.0f;
+            }
+            if(this.characterController.collisionState.above)
+            {
+                this.currentGravity.y = 0.0f;
+            }
+
+            if(this.velocity.x == 0.0f)
+            {
+                this.brokableObject?.Broker.Publish(Idle.Get());
+            }
+            else
+            {
+                this.brokableObject?.Broker.Publish(Move.Get(this.velocity));
+            }
             this.velocity = Vector2.zero;
+
+            //             this.AddGravity();
+            //             this.UnderWaterProccess();
+
+            //             var t = this.controlledTransform;
+            //             this.CheckHorizontal();
+            //             this.CheckVertical();
+            //             t.localPosition += new Vector3(this.velocity.x, this.velocity.y, 0.0f);
+
+            // #if UNITY_EDITOR
+            //             this.lastVelocity = this.velocity;
+            // #endif
+
+            //             this.velocity = Vector2.zero;
         }
 
 #if UNITY_EDITOR
