@@ -7,17 +7,27 @@ namespace HK.Bright2.GameSystems.Messages.Fade
     /// <summary>
     /// フェードインをリクエストするメッセージ
     /// </summary>
-    public sealed class RequestFadeIn : Message<RequestFadeIn, Constants.FadeType>
+    public sealed class RequestFadeIn : Message<RequestFadeIn, Constants.FadeType, float>
     {
         public Constants.FadeType FadeType => this.param1;
+
+        /// <summary>
+        /// フェードする時間
+        /// </summary>
+        public float Duration => this.param2;
     }
 
     /// <summary>
     /// フェードアウトをリクエストするメッセージ
     /// </summary>
-    public sealed class RequestFadeOut : Message<RequestFadeOut, Constants.FadeType>
+    public sealed class RequestFadeOut : Message<RequestFadeOut, Constants.FadeType, float>
     {
         public Constants.FadeType FadeType => this.param1;
+
+        /// <summary>
+        /// フェードする時間
+        /// </summary>
+        public float Duration => this.param2;
     }
 
     /// <summary>

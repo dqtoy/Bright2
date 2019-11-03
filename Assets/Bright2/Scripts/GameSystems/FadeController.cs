@@ -15,9 +15,6 @@ namespace HK.Bright2.GameSystems
         private Fade fade = default;
 
         [SerializeField]
-        private float fadeTimeSeconds = default;
-
-        [SerializeField]
         private FadeImage fadeImage = default;
 
         [SerializeField]
@@ -32,7 +29,7 @@ namespace HK.Bright2.GameSystems
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.fadeImage.UpdateMaskTexture(_this.GetTexture(x.FadeType));
-                    _this.fade.FadeIn(_this.fadeTimeSeconds, () =>
+                    _this.fade.FadeIn(x.Duration, () =>
                     {
                         Broker.Global.Publish(EndFadeIn.Get());
                     });
@@ -44,7 +41,7 @@ namespace HK.Bright2.GameSystems
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.fadeImage.UpdateMaskTexture(_this.GetTexture(x.FadeType));
-                    _this.fade.FadeOut(_this.fadeTimeSeconds, () =>
+                    _this.fade.FadeOut(x.Duration, () =>
                     {
                         Broker.Global.Publish(EndFadeOut.Get());
                     });

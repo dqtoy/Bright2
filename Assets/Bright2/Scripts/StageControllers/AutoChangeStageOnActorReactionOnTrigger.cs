@@ -33,6 +33,9 @@ namespace HK.Bright2.StageControllers
         [SerializeField]
         private Constants.Direction direction = default;
 
+        [SerializeField]
+        private float fadeTimeSeconds = default;
+
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
             if(!this.includeTags.Contains(actor.tag))
@@ -46,12 +49,12 @@ namespace HK.Bright2.StageControllers
                 {
                     Broker.Global.Publish(RequestChangeStage.Get(_this.prefab));
                     _actor.Movement.Warp(_this.actorPosition);
-                    Broker.Global.Publish(RequestFadeOut.Get(_this.direction.ToReverse().ToFadeType()));
+                    Broker.Global.Publish(RequestFadeOut.Get(_this.direction.ToReverse().ToFadeType(), _this.fadeTimeSeconds));
                     Broker.Global.Publish(EndChangeStage.Get());
                 });
 
             Broker.Global.Publish(BeginChangeStage.Get());
-            Broker.Global.Publish(RequestFadeIn.Get(this.direction.ToFadeType()));
+            Broker.Global.Publish(RequestFadeIn.Get(this.direction.ToFadeType(), this.fadeTimeSeconds));
 
             actor.UpdateAsObservable()
                 .TakeUntil(Broker.Global.Receive<EndChangeStage>())
