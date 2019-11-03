@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems;
+using HK.Bright2.GameSystems.Messages.Fade;
 using HK.Bright2.StageControllers.Messages;
 using HK.Framework.EventSystems;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -32,8 +34,16 @@ namespace HK.Bright2.StageControllers
                 return;
             }
 
-            Broker.Global.Publish(RequestChangeStage.Get(this.prefab));
-            actor.Movement.Warp(this.actorPosition);
+            Broker.Global.Receive<EndFadeIn>()
+                .Take(1)
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    Broker.Global.Publish(RequestChangeStage.Get(this.prefab));
+                    actor.Movement.Warp(this.actorPosition);
+                    Broker.Global.Publish(RequestFadeOut.Get());
+                });
+
+            Broker.Global.Publish(RequestFadeIn.Get());
         }
     }
 }
