@@ -28,6 +28,7 @@ namespace HK.Bright2.CameraControllers
                 })
                 .AddTo(this);
             this.LateUpdateAsObservable()
+                .Where(_ => this.target != null)
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.cameraman.CachedTransform.position = _this.target.position;
