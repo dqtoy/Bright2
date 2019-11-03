@@ -43,6 +43,14 @@ namespace HK.Bright2.StageControllers
                     Broker.Global.Publish(RequestFadeOut.Get());
                 });
 
+            Broker.Global.Receive<EndFadeOut>()
+                .Take(1)
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    Broker.Global.Publish(EndChangeStage.Get());
+                });
+
+            Broker.Global.Publish(BeginChangeStage.Get());
             Broker.Global.Publish(RequestFadeIn.Get());
         }
     }

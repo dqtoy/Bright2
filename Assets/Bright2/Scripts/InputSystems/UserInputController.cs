@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems;
 using HK.Bright2.GameSystems.Messages;
+using HK.Bright2.StageControllers.Messages;
 using HK.Bright2.UIControllers.Messages;
 using HK.Framework.EventSystems;
 using UniRx;
@@ -31,6 +32,9 @@ namespace HK.Bright2.InputSystems
                     _this.controllers.Push(new ActorControlOnUserInput(_this.actor));
                 })
                 .AddTo(this);
+
+            this.PushController<BeginChangeStage>(_ => NoneInput.Default);
+            this.PopController<EndChangeStage>(_ => NoneInput.Default);
 
             this.PushController<ShowWeaponGridUI>(x => x.Controller);
             this.PopController<HideWeaponGridUI>(x => x.Controller);
