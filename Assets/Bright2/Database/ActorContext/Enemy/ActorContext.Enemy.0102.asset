@@ -21,7 +21,7 @@ MonoBehaviour:
     knockback: {fileID: 11400000, guid: fbcdd6a5fd40940f790e1d7bb58ae10f, type: 2}
   basicStatus:
     hitPoint: 23
-    moveSpeed: 1.5
+    moveSpeed: 1.2
     jumpPower: 12
     limitJumpCount: 1
     money: 9
