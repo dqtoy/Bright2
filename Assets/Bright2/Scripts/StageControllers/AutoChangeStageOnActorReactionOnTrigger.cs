@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
+using HK.Bright2.ActorControllers.Messages;
+using HK.Bright2.Extensions;
 using HK.Bright2.GameSystems;
 using HK.Bright2.GameSystems.Messages.Fade;
 using HK.Bright2.StageControllers.Messages;
 using HK.Framework.EventSystems;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -27,6 +30,9 @@ namespace HK.Bright2.StageControllers
         [SerializeField]
         private List<string> includeTags = default;
 
+        [SerializeField]
+        private Constants.Direction direction = default;
+
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
             if(!this.includeTags.Contains(actor.tag))
@@ -41,17 +47,19 @@ namespace HK.Bright2.StageControllers
                     Broker.Global.Publish(RequestChangeStage.Get(this.prefab));
                     actor.Movement.Warp(this.actorPosition);
                     Broker.Global.Publish(RequestFadeOut.Get());
-                });
-
-            Broker.Global.Receive<EndFadeOut>()
-                .Take(1)
-                .SubscribeWithState(this, (_, _this) =>
-                {
                     Broker.Global.Publish(EndChangeStage.Get());
                 });
 
             Broker.Global.Publish(BeginChangeStage.Get());
             Broker.Global.Publish(RequestFadeIn.Get());
+
+            actor.UpdateAsObservable()
+                .TakeUntil(Broker.Global.Receive<EndChangeStage>())
+                .SubscribeWithState2(this, actor, (_, _this, _actor) =>
+                {
+                    _actor.Broker.Publish(RequestMove.Get(_this.direction.ToVector2()));
+                })
+                .AddTo(actor);
         }
     }
 }
