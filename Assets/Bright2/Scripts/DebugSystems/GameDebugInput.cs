@@ -1,5 +1,6 @@
 ﻿using HK.Bright2.ActorControllers;
 using HK.Bright2.Database;
+using HK.Bright2.DebugSystems.Messages;
 using HK.Bright2.GameSystems.Messages;
 using HK.Bright2.UIControllers.Messages;
 using HK.Framework.EventSystems;
@@ -14,9 +15,6 @@ namespace HK.Bright2.DebugSystems
     /// </summary>
     public sealed class GameDebugInput : MonoBehaviour
     {
-        [SerializeField]
-        private WeaponRecord weapon = default;
-
         private Actor actor;
 
         void Awake()
@@ -32,13 +30,28 @@ namespace HK.Bright2.DebugSystems
 
         void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                this.actor.StatusController.AddWeapon(this.weapon);
-            }
             if(Input.GetKeyDown(KeyCode.Q))
             {
                 Broker.Global.Publish(RequestChangeWeaponSequenceFromUserInput.Get(this.actor));
+            }
+
+            this.InputOnCtrlKey();
+        }
+
+        void InputOnCtrlKey()
+        {
+            if(!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
+            {
+                return;
+            }
+
+            for (var i = 0; i < 10; i++)
+            {
+                var keyCode = KeyCode.Alpha0 + i;
+                if(Input.GetKeyDown(keyCode))
+                {
+                    Broker.Global.Publish(RequestWarpCheckPoint.Get(this.actor, i));
+                }
             }
         }
     }
