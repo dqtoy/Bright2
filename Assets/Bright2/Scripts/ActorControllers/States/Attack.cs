@@ -82,6 +82,7 @@ namespace HK.Bright2.ActorControllers.States
             moveSpeed -= moveSpeed * weaponRecord.MoveSpeedAttenuationRate;
             this.ReceiveRequestMoveOnMove(moveSpeed);
             this.ReceiveRequestJumpOnJump();
+            this.ReceiveRequestFallOneWayPlatforms();
         }
 
         private void CreateGimmick(EquippedWeapon equippedWeapon)
