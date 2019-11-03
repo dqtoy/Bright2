@@ -31,5 +31,37 @@ namespace HK.Bright2.Extensions
                     return Vector2.zero;
             }
         }
+
+        public static Constants.FadeType ToFadeType(this Constants.Direction self)
+        {
+            switch(self)
+            {
+                case Constants.Direction.Left:
+                    return Constants.FadeType.ToLeft;
+                case Constants.Direction.Right:
+                    return Constants.FadeType.ToRight;
+                default:
+                    Assert.IsTrue(false, $"{self}は未定義です");
+                    return Constants.FadeType.ToLeft;
+            }
+        }
+
+        public static Constants.Direction ToReverse(this Constants.Direction self)
+        {
+            switch(self)
+            {
+                case Constants.Direction.Left:
+                    return Constants.Direction.Right;
+                case Constants.Direction.Right:
+                    return Constants.Direction.Left;
+                case Constants.Direction.Up:
+                    return Constants.Direction.Down;
+                case Constants.Direction.Down:
+                    return Constants.Direction.Up;
+                default:
+                    Assert.IsTrue(false, $"{self}は未定義です");
+                    return Constants.Direction.None;
+            }
+        }
     }
 }

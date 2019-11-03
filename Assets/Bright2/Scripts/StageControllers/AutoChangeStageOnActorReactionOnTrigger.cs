@@ -42,16 +42,16 @@ namespace HK.Bright2.StageControllers
 
             Broker.Global.Receive<EndFadeIn>()
                 .Take(1)
-                .SubscribeWithState(this, (_, _this) =>
+                .SubscribeWithState2(this, actor, (_, _this, _actor) =>
                 {
-                    Broker.Global.Publish(RequestChangeStage.Get(this.prefab));
-                    actor.Movement.Warp(this.actorPosition);
-                    Broker.Global.Publish(RequestFadeOut.Get());
+                    Broker.Global.Publish(RequestChangeStage.Get(_this.prefab));
+                    _actor.Movement.Warp(_this.actorPosition);
+                    Broker.Global.Publish(RequestFadeOut.Get(_this.direction.ToReverse().ToFadeType()));
                     Broker.Global.Publish(EndChangeStage.Get());
                 });
 
             Broker.Global.Publish(BeginChangeStage.Get());
-            Broker.Global.Publish(RequestFadeIn.Get());
+            Broker.Global.Publish(RequestFadeIn.Get(this.direction.ToFadeType()));
 
             actor.UpdateAsObservable()
                 .TakeUntil(Broker.Global.Receive<EndChangeStage>())

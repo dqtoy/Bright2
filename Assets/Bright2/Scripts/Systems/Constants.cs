@@ -111,6 +111,12 @@ namespace HK.Bright2
             Summon,
         }
 
+        public enum FadeType
+        {
+            ToRight,
+            ToLeft,
+        }
+
         /// <summary>
         /// 装備可能な武器の最大値
         /// </summary>
