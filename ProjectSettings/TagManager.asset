@@ -54,3 +54,6 @@ TagManager:
   - name: Stage/BackSide
     uniqueID: 2971082971
     locked: 0
+  - name: Gimmick/Weapon
+    uniqueID: 3202326475
+    locked: 0
