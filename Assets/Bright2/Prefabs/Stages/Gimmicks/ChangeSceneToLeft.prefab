@@ -106,7 +106,7 @@ MonoBehaviour:
   includeTags:
   - Player
   direction: 1
-  fadeTimeSeconds: 0.25
+  fadeTimeSeconds: 0.5
 --- !u!1 &6749042481166630230
 GameObject:
   m_ObjectHideFlags: 0
