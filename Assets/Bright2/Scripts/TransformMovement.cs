@@ -23,8 +23,6 @@ namespace HK.Bright2.ActorControllers
 
         private Vector2 currentGravity;
 
-        private bool isLanding = false;
-
         private CharacterController2D characterController;
 
         /// <summary>
