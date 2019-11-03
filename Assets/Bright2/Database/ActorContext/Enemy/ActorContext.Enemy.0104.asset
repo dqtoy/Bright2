@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 342be30bc72244c6eb1f555d8ea331a2, type: 3}
-  m_Name: ActorContext.Enemy.0103
+  m_Name: ActorContext.Enemy.0104
   m_EditorClassIdentifier: 
   animationSequences:
-    idle: {fileID: 11400000, guid: f9a12642892744248b4edb27bb633e05, type: 2}
-    run: {fileID: 11400000, guid: 317e764d4091b4067bde341719e7af09, type: 2}
-    jump: {fileID: 11400000, guid: 0e1a683ffddd74b70b9c51ebae030a37, type: 2}
-    fall: {fileID: 11400000, guid: 2e5e62757baa249dca539c9f13295852, type: 2}
-    attack: {fileID: 11400000, guid: 4d669f65d9c6c4f02ae1f72d4928dc8b, type: 2}
-    knockback: {fileID: 11400000, guid: f7da52bcc3d414d649eae04f1dc6c641, type: 2}
+    idle: {fileID: 11400000, guid: 691f9e7dbfe1741eb95f2b930b8f77be, type: 2}
+    run: {fileID: 11400000, guid: ce9ccbc7a228643c4876c56c68cfa91a, type: 2}
+    jump: {fileID: 11400000, guid: c3d8d44f397234c0ab717157d848f1d5, type: 2}
+    fall: {fileID: 11400000, guid: 599379739efc54e83834236c525beb4b, type: 2}
+    attack: {fileID: 11400000, guid: 6b06f5067d84b4caca714075c429ad9d, type: 2}
+    knockback: {fileID: 11400000, guid: 95cbd844c83fd490081e6a3caaeeead1, type: 2}
   basicStatus:
-    hitPoint: 18
-    moveSpeed: 1.5
+    hitPoint: 13
+    moveSpeed: 3
     jumpPower: 12
     limitJumpCount: 1
     money: 9
     dropWeapons:
-    - record: {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd, type: 2}
+    - record: {fileID: 11400000, guid: 99ade7fb7d6e549ee9507cfa4279fee3, type: 2}
       winningRate: 0.03
   effects:
     takedDamage: {fileID: 4643271828095609800, guid: 85f1ea8a894ce4dab95f7869ae3bf07a,
