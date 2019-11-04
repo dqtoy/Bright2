@@ -50,19 +50,6 @@ namespace HK.Bright2.InputSystems
                 });
         }
 
-        void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("===== UserInput Stack");
-                foreach(var s in this.controllers)
-                {
-                    Debug.Log(s.ToString());
-                }
-                Debug.Log("=====");
-            }
-        }
-
         private void PushController<T>(Func<T, IControllableUserInput> func)
         {
             Broker.Global.Receive<T>()
