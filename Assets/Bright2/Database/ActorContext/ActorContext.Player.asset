@@ -23,10 +23,13 @@ MonoBehaviour:
     hitPoint: 100
     moveSpeed: 6
     jumpPower: 12.5
-    limitJumpCount: 1
+    limitJumpCount: 2
     money: 0
-    dropWeapons: []
+  dropItems:
+    weapons: []
+    accessories: []
   effects:
+    spawned: {fileID: 0}
     takedDamage: {fileID: 4643271828095609800, guid: 85f1ea8a894ce4dab95f7869ae3bf07a,
       type: 3}
   abnormalCondition:
