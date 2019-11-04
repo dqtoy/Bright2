@@ -61,6 +61,7 @@ namespace HK.Bright2.GameSystems
                         Random.Range(-this.random.z, this.random.z)
                     );
                     coin.transform.position = actor.CachedTransform.position + this.offset + random;
+                    coin.transform.rotation = Quaternion.identity;
                     coin.Activate(actor);
                 }
 
