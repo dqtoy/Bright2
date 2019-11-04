@@ -15,13 +15,19 @@ namespace HK.Bright2.GameSystems
     /// <summary>
     /// 武器を生成するクラス
     /// </summary>
-    public sealed class WeaponSpawner : DiedActorGimmickSpawner<DropWeapon, WeaponRecord>
+    public sealed class WeaponSpawner : MonoBehaviour, IDiedActorGimmickSpawner<DropWeapon, WeaponRecord>
     {
-        protected override IEnumerable<DropWeapon> GetDropData(Actor actor) => actor.Context.DropItems.Weapons;
+        [SerializeField]
+        private Gimmick gimmickPrefab = default;
 
-        protected override void Awake()
+        [SerializeField]
+        private Vector2 diedSpawnOffset = default;
+
+        Gimmick IDiedActorGimmickSpawner<DropWeapon, WeaponRecord>.GimmickPrefab => this.gimmickPrefab;
+
+        void Awake()
         {
-            base.Awake();
+            this.ReceiveSpawnedActor(this.gameObject);
 
             Broker.Global.Receive<RequestSpawnWeapon>()
                 .SubscribeWithState(this, (x, _this) =>
@@ -31,9 +37,19 @@ namespace HK.Bright2.GameSystems
                 .AddTo(this);
         }
 
-        protected override void Setup(Gimmick gimmick, WeaponRecord dropData)
+        Vector3 IDiedActorGimmickSpawner<DropWeapon, WeaponRecord>.GetSpawnPoint(Actor actor)
         {
-            foreach(var i in gimmick.GetComponentsInChildren<IAddWeapon>())
+            return actor.CachedTransform.position + new Vector3(this.diedSpawnOffset.x, this.diedSpawnOffset.y, 0.0f);
+        }
+
+        public IEnumerable<DropWeapon> GetDropData(Actor actor)
+        {
+            return actor.Context.DropItems.Weapons;
+        }
+
+        public void Setup(Gimmick gimmick, WeaponRecord dropData)
+        {
+            foreach (var i in gimmick.GetComponentsInChildren<IAddWeapon>())
             {
                 i.Setup(dropData);
             }

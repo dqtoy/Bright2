@@ -80,7 +80,6 @@ namespace HK.Bright2.StageControllers
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.openEffect.SetActive(true);
-                    Debug.Log("?");
                 })
                 .AddTo(this);
         }
