@@ -142,6 +142,7 @@ namespace HK.Bright2.ActorControllers
         public void AddMoney(int value)
         {
             this.status.Money += value;
+            this.owner.Broker.Publish(AcquiredMoney.Get(value));
         }
 
         public void AddWeapon(WeaponRecord weapon)
