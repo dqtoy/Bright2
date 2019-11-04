@@ -1,4 +1,5 @@
-﻿using HK.Bright2.ActorControllers;
+﻿using System.Collections.Generic;
+using HK.Bright2.ActorControllers;
 using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
 using HK.Bright2.Extensions;
@@ -9,57 +10,20 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace HK.Bright2
+namespace HK.Bright2.GameSystems
 {
     /// <summary>
     /// 武器を生成するクラス
     /// </summary>
-    public sealed class WeaponSpawner : MonoBehaviour
+    public sealed class WeaponSpawner : DiedActorGimmickSpawner<DropWeapon, WeaponRecord>
     {
-        [SerializeField]
-        private Gimmick prefab = default;
+        protected override IEnumerable<DropWeapon> GetDropData(Actor actor) => actor.Context.BasicStatus.DropWeapons;
 
-        [SerializeField]
-        private Vector3 offset = default;
-
-        void Awake()
+        protected override void Setup(Gimmick gimmick, WeaponRecord dropData)
         {
-            Broker.Global.Receive<SpawnedActor>()
-                .SubscribeWithState(this, (x, _this) =>
-                {
-                    _this.ObserveActor(x.Actor);
-                })
-                .AddTo(this);
-        }
-
-        private void ObserveActor(Actor actor)
-        {
-            actor.Broker.Receive<Died>()
-                .SubscribeWithState2(this, actor, (x, _this, a) =>
-                {
-                    foreach(var d in a.Context.BasicStatus.DropWeapons)
-                    {
-                        if(!d.Lottery())
-                        {
-                            continue;
-                        }
-
-                        _this.CreateGimmick(a, d.Get);
-                    }
-                })
-                .AddTo(actor);
-        }
-
-        private void CreateGimmick(Actor actor, WeaponRecord weapon)
-        {
-            var gimmick = this.prefab.Rent();
-            gimmick.transform.position = actor.CachedTransform.position + this.offset;
-            gimmick.transform.rotation = Quaternion.identity;
-            gimmick.Activate(actor);
-            
             foreach(var i in gimmick.GetComponentsInChildren<IAddWeapon>())
             {
-                i.Setup(weapon);
+                i.Setup(dropData);
             }
         }
     }

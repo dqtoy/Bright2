@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b099940ad7a9f4a9e8b935ca3f081cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8491219769089868142, guid: d0023f355f582c04199cb50fcc1f05fb, type: 3}
-  initialPlayerPosition: {x: 5.5, y: 7}
+  prefab: {fileID: 8491219769089868142, guid: bcaeba8c47db4444baf0b752e578fd16, type: 3}
+  initialPlayerPosition: {x: 4, y: 7}
 --- !u!114 &628932147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,7 +380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c0cd9804786414ca8ffc6507c96bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: 670c5765ffd004955b8eaa0e0b6cdf05, type: 2}
 --- !u!114 &1047912454
 MonoBehaviour:
   m_ObjectHideFlags: 0
