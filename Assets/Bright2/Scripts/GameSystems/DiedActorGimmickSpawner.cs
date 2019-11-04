@@ -23,7 +23,7 @@ namespace HK.Bright2.GameSystems
         [SerializeField]
         private Vector3 offset = default;
 
-        void Awake()
+        protected virtual void Awake()
         {
             Broker.Global.Receive<SpawnedActor>()
                 .SubscribeWithState(this, (x, _this) =>
@@ -51,7 +51,7 @@ namespace HK.Bright2.GameSystems
                 .AddTo(actor);
         }
 
-        private Gimmick CreateGimmick(Actor actor)
+        protected Gimmick CreateGimmick(Actor actor)
         {
             var gimmick = this.prefab.Rent();
             gimmick.transform.position = actor.CachedTransform.position + this.offset;
