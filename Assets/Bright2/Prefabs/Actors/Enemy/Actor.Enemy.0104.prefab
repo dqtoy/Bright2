@@ -36,6 +36,7 @@ MonoBehaviour:
   includeTags:
   - Player
   controlledCollider: {fileID: 1908292255887170411}
+  penetrationCount: -1
   additionalEffects: []
 --- !u!1001 &2964005031401061988
 PrefabInstance:

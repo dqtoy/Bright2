@@ -73,6 +73,14 @@ namespace HK.Bright2.GameSystems
         Vector2 KnockbackDirection { get; }
 
         /// <summary>
+        /// 攻撃が貫通している回数
+        /// </summary>
+        /// <remarks>
+        /// <c>-1</c>の場合は無限に貫通する
+        /// </remarks>
+        int CurrentPenetrationCount { get; set; }
+
+        /// <summary>
         /// 攻撃が当たった際の追加効果
         /// </summary>
         List<GiveDamageActorAdditionalEffect> AdditionalEffects { get; }

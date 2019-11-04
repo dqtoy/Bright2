@@ -13,6 +13,12 @@ namespace HK.Bright2.Extensions
         /// </summary>
         public static void GiveDamage(this IGiveDamage self, Actor target)
         {
+            // 貫通できる回数が0の場合はダメージを与えられない
+            if(self.CurrentPenetrationCount == 0)
+            {
+                return;
+            }
+
             if(self.Owner == target)
             {
                 return;
@@ -34,7 +40,9 @@ namespace HK.Bright2.Extensions
             target.StatusController.TakeDamage(damageResult);
             target.Movement.SetGravity(self.KnockbackDirection * self.KnockbackPower);
             target.StatusController.AddInfinityStatus(self.GiveDamageObject, self.InfinitySeconds);
-            
+
+            self.CurrentPenetrationCount--;
+
             foreach(var a in self.AdditionalEffects)
             {
                 a.Do(self);

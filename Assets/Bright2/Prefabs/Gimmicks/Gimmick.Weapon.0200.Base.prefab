@@ -124,6 +124,7 @@ MonoBehaviour:
   includeTags:
   - Enemy
   controlledCollider: {fileID: 3913024621209231262}
+  penetrationCount: 3
   additionalEffects: []
 --- !u!1 &8423367414298487006
 GameObject:

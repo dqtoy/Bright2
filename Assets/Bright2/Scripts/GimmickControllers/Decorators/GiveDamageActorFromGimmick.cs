@@ -45,6 +45,7 @@ namespace HK.Bright2.GimmickControllers.Decorators
         {
             this.owner = owner;
             this.gimmickOwner = gimmickOwner;
+            this.currentPenetrationCount = this.penetrationCount;
         }
     }
 }

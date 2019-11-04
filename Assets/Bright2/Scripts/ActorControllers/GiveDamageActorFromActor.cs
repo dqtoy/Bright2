@@ -39,6 +39,8 @@ namespace HK.Bright2.ActorControllers
         {
             this.owner = this.GetComponentInParent<Actor>();
             Assert.IsNotNull(this.owner);
+
+            this.currentPenetrationCount = this.penetrationCount;
         }
 
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)

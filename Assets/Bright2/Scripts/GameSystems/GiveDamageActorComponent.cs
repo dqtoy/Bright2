@@ -37,8 +37,16 @@ namespace HK.Bright2.GameSystems
         [SerializeField]
         private Collider2D controlledCollider = default;
 
+        /// <summary>
+        /// 攻撃が貫通する回数
+        /// </summary>
+        [SerializeField]
+        protected int penetrationCount = default;
+
         [SerializeField]
         private List<GiveDamageActorAdditionalEffect> additionalEffects = default;
+
+        protected int currentPenetrationCount;
 
         int IGiveDamage.DamagePower => this.damagePower;
 
@@ -55,6 +63,18 @@ namespace HK.Bright2.GameSystems
         Collider2D IGiveDamage.GiveDamageCollider => this.controlledCollider;
 
         List<string> IGiveDamage.IncludeTags => this.includeTags;
+
+        int IGiveDamage.CurrentPenetrationCount
+        {
+            get
+            {
+                return this.currentPenetrationCount;
+            }
+            set
+            {
+                this.currentPenetrationCount = value;
+            }
+        }
 
         List<GiveDamageActorAdditionalEffect> IGiveDamage.AdditionalEffects => this.additionalEffects;
 
