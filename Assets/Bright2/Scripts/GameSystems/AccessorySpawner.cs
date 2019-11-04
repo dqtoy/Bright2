@@ -28,6 +28,13 @@ namespace HK.Bright2.GameSystems
         void Awake()
         {
             this.ReceiveSpawnedActor(this.gameObject);
+
+            Broker.Global.Receive<RequestSpawnAccessory>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.Setup(_this.CreateGimmick(x.Owner, x.SpawnPosition), x.AccessoryRecord);
+                })
+                .AddTo(this);
         }
 
         public IEnumerable<DropAccessory> GetDropData(Actor actor)

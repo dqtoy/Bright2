@@ -44,6 +44,9 @@ namespace HK.Bright2.StageControllers
         [SerializeField]
         private List<WeaponRecord> weapons = default;
 
+        [SerializeField]
+        private List<AccessoryRecord> accessories = default;
+
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
             if(!this.includeTags.Contains(actor.tag))
@@ -89,6 +92,11 @@ namespace HK.Bright2.StageControllers
             foreach (var w in this.weapons)
             {
                 Broker.Global.Publish(RequestSpawnWeapon.Get(invokedActor, w, this.spawnPoint.position));
+            }
+
+            foreach(var a in this.accessories)
+            {
+                Broker.Global.Publish(RequestSpawnAccessory.Get(invokedActor, a, this.spawnPoint.position));
             }
 
             Destroy(this.gameObject);
