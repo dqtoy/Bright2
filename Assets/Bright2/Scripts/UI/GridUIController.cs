@@ -40,6 +40,14 @@ namespace HK.Bright2.UIControllers
                     Broker.Global.Publish(ShowGridUI.Get(_this));
                 })
                 .AddTo(this);
+
+            Broker.Global.Receive<RequestHideGridUI>()
+                .SubscribeWithState(this, (_, _this) =>
+                {
+                    Broker.Global.Publish(HideGridUI.Get(_this));
+                })
+                .AddTo(this);
+
             Broker.Global.Receive<HideGridUI>()
                 .SubscribeWithState(this, (x, _this) =>
                 {

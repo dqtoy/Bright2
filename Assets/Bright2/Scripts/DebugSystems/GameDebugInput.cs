@@ -30,9 +30,14 @@ namespace HK.Bright2.DebugSystems
 
         void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 Broker.Global.Publish(RequestChangeWeaponSequenceFromUserInput.Get(this.actor));
+            }
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Broker.Global.Publish(RequestChangeAccessorySequenceFromUserInput.Get(this.actor));
             }
 
             this.InputOnCtrlKey();

@@ -4,8 +4,6 @@ using HK.Bright2.Database;
 using HK.Bright2.GameSystems;
 using HK.Bright2.WeaponControllers;
 using UniRx;
-using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers
 {
@@ -85,6 +83,28 @@ namespace HK.Bright2.ActorControllers
         /// アクセサリー効果
         /// </summary>
         public AccessoryEffectParameter AccessoryEffect { get; } = new AccessoryEffectParameter();
+
+        public IReadOnlyList<IIconHolder> EquippedAccessoryIcons
+        {
+            get
+            {
+                // this.EquippedAccessories = this.EquippedAccessories ?? new int[Constants.EquippedAccessoryMax];
+                var result = new IIconHolder[this.EquippedAccessories.Length];
+                for (var i = 0; i < this.EquippedAccessories.Length; i++)
+                {
+                    var a = this.EquippedAccessories[i];
+                    if(a == -1)
+                    {
+                        result[i] = EmptyIconHolder.Default;
+                        continue;
+                    }
+
+                    result[i] = this.PossessionAccessories[this.EquippedAccessories[i]];
+                }
+
+                return result;
+            }
+        }
 
         public ActorInstanceStatus(Actor owner, ActorContext context)
         {

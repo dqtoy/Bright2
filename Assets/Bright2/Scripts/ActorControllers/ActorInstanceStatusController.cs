@@ -34,6 +34,10 @@ namespace HK.Bright2.ActorControllers
 
         public List<EquippedWeapon> EquippedWeapons => this.status.EquippedWeapons;
 
+        public IReadOnlyList<int> EquippedAccessories => this.status.EquippedAccessories;
+
+        public IReadOnlyList<IIconHolder> EquippedAccessoryIcons => this.status.EquippedAccessoryIcons;
+
         public Constants.Direction Direction => this.status.Direction;
 
         public int Money => this.status.Money;
@@ -41,6 +45,8 @@ namespace HK.Bright2.ActorControllers
         public IGameEvent GameEvent => this.status.GameEvent;
 
         public IReadOnlyList<InstanceWeapon> PossessionWeapons => this.status.PossessionWeapons;
+
+        public IReadOnlyList<AccessoryRecord> PossessionAccessories => this.status.PossessionAccessories;
 
         public ActorInstanceStatus.AccessoryEffectParameter AccessoryEffect => this.status.AccessoryEffect;
 
@@ -50,6 +56,12 @@ namespace HK.Bright2.ActorControllers
             this.context = context;
             this.status = new ActorInstanceStatus(owner, context);
             this.status.Direction = Constants.Direction.Right;
+
+            this.status.EquippedAccessories = new int[Constants.EquippedAccessoryMax];
+            for (var i = 0; i < this.status.EquippedAccessories.Length; i++)
+            {
+                this.status.EquippedAccessories[i] = -1;
+            }
 
             owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
@@ -213,15 +225,6 @@ namespace HK.Bright2.ActorControllers
         {
             Assert.IsTrue(equippedAccessoryIndex >= 0 && equippedAccessoryIndex < Constants.EquippedAccessoryMax);
             Assert.IsTrue(possessionAccessoryIndex >= 0 && possessionAccessoryIndex < this.status.PossessionAccessories.Count);
-
-            if(this.status.EquippedAccessories == null)
-            {
-                this.status.EquippedAccessories = new int[Constants.EquippedAccessoryMax];
-                for (var i = 0; i < this.status.EquippedAccessories.Length; i++)
-                {
-                    this.status.EquippedAccessories[i] = -1;
-                }
-            }
 
             this.status.EquippedAccessories[equippedAccessoryIndex] = possessionAccessoryIndex;
 

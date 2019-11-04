@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HK.Bright2.AccessoryControllers;
+using HK.Bright2.GameSystems;
 using HK.Bright2.GimmickControllers;
 using HK.Framework.Text;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace HK.Bright2.Database
     /// アクセサリーマスターデータのレコード
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/MasterData/Accessory/Record")]
-    public sealed class AccessoryRecord : ScriptableObject, IMasterDataRecordId
+    public sealed class AccessoryRecord : ScriptableObject, IMasterDataRecordId, IIconHolder
     {
         public string Id => this.name;
 
