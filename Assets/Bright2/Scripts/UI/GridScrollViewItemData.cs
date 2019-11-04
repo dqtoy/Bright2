@@ -8,18 +8,18 @@ namespace HK.Bright2.UIControllers
     /// <summary>
     /// 
     /// </summary>
-    public sealed class WeaponGridScrollViewItemData
+    public sealed class GridScrollViewItemData
     {
         public List<WeaponRecord> Records { get; }
 
         public int VerticalIndex { get; }
 
-        public WeaponGridScrollViewItemData(int verticalIndex)
+        public GridScrollViewItemData(int verticalIndex)
         {
             this.Records = new List<WeaponRecord>();
             this.VerticalIndex = verticalIndex;
         }
 
-        public bool CanAddRecord => this.Records.Count < WeaponGridScrollViewCell.ElementMax;
+        public bool CanAddRecord => this.Records.Count < GridScrollViewCell.ElementMax;
     }
 }

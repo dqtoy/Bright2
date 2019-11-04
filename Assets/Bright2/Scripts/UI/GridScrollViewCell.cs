@@ -8,10 +8,10 @@ namespace HK.Bright2.UIControllers
     /// <summary>
     /// 
     /// </summary>
-    public sealed class WeaponGridScrollViewCell : FancyScrollViewCell<WeaponGridScrollViewItemData, WeaponGridScrollViewContext>
+    public sealed class GridScrollViewCell : FancyScrollViewCell<GridScrollViewItemData, GridScrollViewContext>
     {
         [SerializeField]
-        private List<WeaponGridScrollViewCellElement> elements = default;
+        private List<GridScrollViewCellElement> elements = default;
 
         private RectTransform cachedParentTransform;
         public RectTransform CachedParentTransform
@@ -29,11 +29,11 @@ namespace HK.Bright2.UIControllers
 
         public const int ElementMax = 6;
 
-        public override void UpdateContent(WeaponGridScrollViewItemData itemData)
+        public override void UpdateContent(GridScrollViewItemData itemData)
         {
             for (var i = 0; i < itemData.Records.Count; i++)
             {
-                var isSelect = ((itemData.VerticalIndex * WeaponGridScrollViewCell.ElementMax) + i) == this.Context.SelectIndex;
+                var isSelect = ((itemData.VerticalIndex * GridScrollViewCell.ElementMax) + i) == this.Context.SelectIndex;
                 elements[i].Setup(itemData.Records[i], isSelect);
             }
             for (var i = this.elements.Count - (this.elements.Count - itemData.Records.Count); i < this.elements.Count; i++)

@@ -9,7 +9,7 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.UIControllers.Messages
 {
     /// <summary>
-    /// 武器グリッドUIの表示をリクエストするメッセージ
+    /// グリッドUIの表示をリクエストするメッセージ
     /// </summary>
     public sealed class RequestShowWeaponGridUI : Message<RequestShowWeaponGridUI, IReadOnlyList<InstanceWeapon>>
     {

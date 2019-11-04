@@ -36,8 +36,8 @@ namespace HK.Bright2.InputSystems
             this.PushController<BeginChangeStage>(_ => NoneInput.Default);
             this.PopController<EndChangeStage>(_ => NoneInput.Default);
 
-            this.PushController<ShowWeaponGridUI>(x => x.Controller);
-            this.PopController<HideWeaponGridUI>(x => x.Controller);
+            this.PushController<ShowGridUI>(x => x.Controller);
+            this.PopController<HideGridUI>(x => x.Controller);
 
             this.PushController<BeginControlUserInputEquippedWeaponUI>(x => x.Controller);
             this.PopController<EndControlUserInputEquippedWeaponUI>(x => x.Controller);

@@ -6,9 +6,9 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.UIControllers
 {
     /// <summary>
-    /// 武器グリッドリストの共通で利用するデータ
+    /// グリッドリストの共通で利用するデータ
     /// </summary>
-    public sealed class WeaponGridScrollViewContext
+    public sealed class GridScrollViewContext
     {
         public int SelectIndex;
     }

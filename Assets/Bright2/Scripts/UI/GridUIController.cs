@@ -12,15 +12,15 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.UIControllers
 {
     /// <summary>
-    /// 武器グリッドUIを制御するクラス
+    /// グリッドUIを制御するクラス
     /// </summary>
-    public sealed class WeaponGridUIController : MonoBehaviour, IControllableUserInput
+    public sealed class GridUIController : MonoBehaviour, IControllableUserInput
     {
         [SerializeField]
         private CanvasGroup canvasGroup = default;
 
         [SerializeField]
-        private WeaponGridScrollView scrollView = default;
+        private GridScrollView scrollView = default;
 
         private int horizontalIndex = 0;
 
@@ -39,10 +39,10 @@ namespace HK.Bright2.UIControllers
                     _this.verticalIndex = 0;
                     _this.canvasGroup.alpha = 1.0f;
                     _this.scrollView.UpdateData(_this.CreateItems(x.Records));
-                    Broker.Global.Publish(ShowWeaponGridUI.Get(_this));
+                    Broker.Global.Publish(ShowGridUI.Get(_this));
                 })
                 .AddTo(this);
-            Broker.Global.Receive<HideWeaponGridUI>()
+            Broker.Global.Receive<HideGridUI>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.canvasGroup.alpha = 0.0f;
@@ -50,10 +50,10 @@ namespace HK.Bright2.UIControllers
                 .AddTo(this);
         }
 
-        private List<WeaponGridScrollViewItemData> CreateItems(IReadOnlyList<InstanceWeapon> instanceWeapons)
+        private List<GridScrollViewItemData> CreateItems(IReadOnlyList<InstanceWeapon> instanceWeapons)
         {
             this.instanceWeapons = instanceWeapons;
-            var result = new List<WeaponGridScrollViewItemData>();
+            var result = new List<GridScrollViewItemData>();
 
             if(instanceWeapons == null)
             {
@@ -61,14 +61,14 @@ namespace HK.Bright2.UIControllers
             }
 
             var verticalIndex = 0;
-            var itemData = new WeaponGridScrollViewItemData(verticalIndex);
+            var itemData = new GridScrollViewItemData(verticalIndex);
             for (var i = 0; i < instanceWeapons.Count; i++)
             {
                 if (!itemData.CanAddRecord)
                 {
                     result.Add(itemData);
                     verticalIndex++;
-                    itemData = new WeaponGridScrollViewItemData(verticalIndex);
+                    itemData = new GridScrollViewItemData(verticalIndex);
                 }
 
                 itemData.Records.Add(instanceWeapons[i].WeaponRecord);
@@ -111,7 +111,7 @@ namespace HK.Bright2.UIControllers
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {
-                Broker.Global.Publish(HideWeaponGridUI.Get(this));
+                Broker.Global.Publish(HideGridUI.Get(this));
             }
         }
 
@@ -119,11 +119,11 @@ namespace HK.Bright2.UIControllers
         {
             if(this.horizontalIndex < 0)
             {
-                this.horizontalIndex = WeaponGridScrollViewCell.ElementMax - 1;
+                this.horizontalIndex = GridScrollViewCell.ElementMax - 1;
                 this.DecreateHorizontalIndex();
             }
             else if(
-                this.horizontalIndex >= WeaponGridScrollViewCell.ElementMax ||
+                this.horizontalIndex >= GridScrollViewCell.ElementMax ||
                 this.horizontalIndex >= this.instanceWeapons.Count ||
                 this.SelectIndex >= this.instanceWeapons.Count
                 )
@@ -146,7 +146,7 @@ namespace HK.Bright2.UIControllers
 
         private void ClampVerticalIndex()
         {
-            var verticalMax = this.instanceWeapons.Count / WeaponGridScrollViewCell.ElementMax;
+            var verticalMax = this.instanceWeapons.Count / GridScrollViewCell.ElementMax;
             if(this.verticalIndex < 0)
             {
                 this.verticalIndex = 0;
@@ -159,6 +159,6 @@ namespace HK.Bright2.UIControllers
             this.DecreateHorizontalIndex();
         }
 
-        private int SelectIndex => (this.verticalIndex * WeaponGridScrollViewCell.ElementMax) + this.horizontalIndex;
+        private int SelectIndex => (this.verticalIndex * GridScrollViewCell.ElementMax) + this.horizontalIndex;
     }
 }

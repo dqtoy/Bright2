@@ -8,7 +8,7 @@ namespace HK.Bright2.UIControllers
     /// <summary>
     /// 
     /// </summary>
-    public sealed class WeaponGridScrollView : FancyScrollView<WeaponGridScrollViewItemData, WeaponGridScrollViewContext>
+    public sealed class GridScrollView : FancyScrollView<GridScrollViewItemData, GridScrollViewContext>
     {
         [SerializeField]
         private Scroller scroller = default;
@@ -18,7 +18,7 @@ namespace HK.Bright2.UIControllers
 
         protected override GameObject CellPrefab => this.cellPrefab;
 
-        public void UpdateData(IList<WeaponGridScrollViewItemData> items)
+        public void UpdateData(IList<GridScrollViewItemData> items)
         {
             this.Context.SelectIndex = 0;
             base.UpdateContents(items);
