@@ -1884,7 +1884,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 956970a896e8a497f832e0b06c17f0dc,
+      objectReference: {fileID: 11400000, guid: 99ade7fb7d6e549ee9507cfa4279fee3,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de970cc0db1d846ac9b5c0b6cbdb0ab5, type: 3}

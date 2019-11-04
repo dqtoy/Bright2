@@ -26,7 +26,7 @@ namespace HK.Bright2.GameSystems
             Broker.Global.Receive<RequestSpawnWeapon>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    _this.Setup(_this.CreateGimmick(x.Owner), x.WeaponRecord);
+                    _this.Setup(_this.CreateGimmick(x.Owner, x.SpawnPosition), x.WeaponRecord);
                 })
                 .AddTo(this);
         }

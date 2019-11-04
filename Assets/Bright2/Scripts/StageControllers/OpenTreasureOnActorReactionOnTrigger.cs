@@ -18,6 +18,9 @@ namespace HK.Bright2.StageControllers
         private List<string> includeTags = default;
 
         [SerializeField]
+        private Vector3 offset = default;
+
+        [SerializeField]
         private List<WeaponRecord> weapons = default;
 
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
@@ -45,7 +48,7 @@ namespace HK.Bright2.StageControllers
         {
             foreach(var w in this.weapons)
             {
-                Broker.Global.Publish(RequestSpawnWeapon.Get(invokedActor, w));
+                Broker.Global.Publish(RequestSpawnWeapon.Get(invokedActor, w, this.transform.position + this.offset));
             }
 
             Destroy(this.gameObject);

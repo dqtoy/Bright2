@@ -45,16 +45,16 @@ namespace HK.Bright2.GameSystems
                             continue;
                         }
 
-                        _this.Setup(_this.CreateGimmick(a), d.Get);
+                        _this.Setup(_this.CreateGimmick(a, a.CachedTransform.position + _this.offset), d.Get);
                     }
                 })
                 .AddTo(actor);
         }
 
-        protected Gimmick CreateGimmick(Actor actor)
+        protected Gimmick CreateGimmick(Actor actor, Vector3 position)
         {
             var gimmick = this.prefab.Rent();
-            gimmick.transform.position = actor.CachedTransform.position + this.offset;
+            gimmick.transform.position = position;
             gimmick.transform.rotation = Quaternion.identity;
             gimmick.Activate(actor);
 
