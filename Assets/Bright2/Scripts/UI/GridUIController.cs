@@ -105,7 +105,7 @@ namespace HK.Bright2.UIControllers
             }
             if(Input.GetButtonDown(InputName.Decide))
             {
-                Broker.Global.Publish(ChangedGridIndex.Get(this.SelectIndex));
+                Broker.Global.Publish(DecidedGridIndex.Get(this.SelectIndex));
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {

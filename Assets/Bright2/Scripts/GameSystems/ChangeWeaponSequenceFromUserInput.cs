@@ -32,7 +32,7 @@ namespace HK.Bright2.GameSystems
             var items = actor.StatusController.PossessionWeapons.Select(x => x.WeaponRecord);
             Broker.Global.Publish(RequestShowGridUI.Get(items));
 
-            Broker.Global.Receive<ChangedGridIndex>()
+            Broker.Global.Receive<DecidedGridIndex>()
                 .TakeUntil(Broker.Global.Receive<HideGridUI>())
                 .SubscribeWithState2(this, actor, (x, _this, _actor) =>
                 {
