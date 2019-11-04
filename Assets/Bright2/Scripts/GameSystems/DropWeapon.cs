@@ -10,20 +10,7 @@ namespace HK.Bright2
     /// 武器のドロップデータ
     /// </summary>
     [Serializable]
-    public sealed class DropWeapon : IDropItem<WeaponRecord>
+    public sealed class DropWeapon : DropItem<WeaponRecord>
     {
-        [SerializeField]
-        private WeaponRecord record = default;
-
-        [SerializeField][Range(0.0f, 1.0f)]
-        private float winningRate = default;
-
-        public WeaponRecord Get => this.record;
-
-        public float WinningRate => this.winningRate;
-
-        bool IsWinning => this.Lottery();
-
-        bool ILottery.IsWinning => this.IsWinning;
     }
 }

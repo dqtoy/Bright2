@@ -26,8 +26,8 @@ MonoBehaviour:
     limitJumpCount: 1
     money: 9
     dropWeapons:
-    - record: {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd, type: 2}
-      winningRate: 1
+    - item: {fileID: 11400000, guid: 99ade7fb7d6e549ee9507cfa4279fee3, type: 2}
+      winningRate: 0.03
   effects:
     takedDamage: {fileID: 4643271828095609800, guid: 85f1ea8a894ce4dab95f7869ae3bf07a,
       type: 3}
