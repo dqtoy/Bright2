@@ -35,10 +35,19 @@ namespace HK.Bright2.UIControllers
         private void ObserveActor(Actor actor)
         {
             this.owner = actor;
+
             this.owner.Broker.Receive<AcquiredWeapon>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.CreateElement(x.Weapon.WeaponRecord.Icon, x.Weapon.WeaponRecord.WeaponName);
+                })
+                .AddTo(this)
+                .AddTo(this.owner);
+
+            this.owner.Broker.Receive<AcquiredAccessory>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.CreateElement(x.Accessory.Icon, x.Accessory.AccessoryName);
                 })
                 .AddTo(this)
                 .AddTo(this.owner);
