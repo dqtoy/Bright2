@@ -25,10 +25,11 @@ MonoBehaviour:
     jumpPower: 12
     limitJumpCount: 1
     money: 5
-    dropWeapons:
-    - item: {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac, type: 2}
+  dropItems:
+    weapons:
+    - item: {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd, type: 2}
       winningRate: 1
-    dropAccessories:
+    accessories:
     - item: {fileID: 11400000, guid: 42987be5e797b41648255f3edb8e7b78, type: 2}
       winningRate: 1
   effects:

@@ -15,13 +15,34 @@ namespace HK.Bright2.GameSystems
     /// <summary>
     /// アクセサリーを生成するクラス
     /// </summary>
-    public sealed class AccessorySpawner : DiedActorGimmickSpawner<DropAccessory, AccessoryRecord>
+    public sealed class AccessorySpawner : MonoBehaviour, IDiedActorGimmickSpawner<DropAccessory, AccessoryRecord>
     {
-        protected override IEnumerable<DropAccessory> GetDropData(Actor actor) => actor.Context.DropItems.Accessories;
+        [SerializeField]
+        private Gimmick gimmickPrefab = default;
 
-        protected override void Setup(Gimmick gimmick, AccessoryRecord dropData)
+        [SerializeField]
+        private Vector2 diedSpawnOffset = default;
+
+        Gimmick IDiedActorGimmickSpawner<DropAccessory, AccessoryRecord>.GimmickPrefab => this.gimmickPrefab;
+
+        void Awake()
         {
-            foreach(var i in gimmick.GetComponentsInChildren<IAddAccessory>())
+            this.ReceiveSpawnedActor(this.gameObject);
+        }
+
+        public IEnumerable<DropAccessory> GetDropData(Actor actor)
+        {
+            return actor.Context.DropItems.Accessories;
+        }
+
+        Vector3 IDiedActorGimmickSpawner<DropAccessory, AccessoryRecord>.GetSpawnPoint(Actor actor)
+        {
+            return actor.CachedTransform.position + new Vector3(this.diedSpawnOffset.x, this.diedSpawnOffset.y, 0.0f);
+        }
+
+        public void Setup(Gimmick gimmick, AccessoryRecord dropData)
+        {
+            foreach (var i in gimmick.GetComponentsInChildren<IAddAccessory>())
             {
                 i.Setup(dropData);
             }

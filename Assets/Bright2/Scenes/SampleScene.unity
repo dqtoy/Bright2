@@ -215,8 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de594687a3e74a70932a0fbb045a4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1879019176659515002, guid: 40e5b18131873480c9accd9239e4899c, type: 3}
-  offset: {x: 0, y: 1, z: 0}
+  gimmickPrefab: {fileID: 1879019176659515002, guid: 40e5b18131873480c9accd9239e4899c,
+    type: 3}
+  diedSpawnOffset: {x: 0, y: 1}
 --- !u!114 &628932146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,8 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084455c6f1ebb47bb998b1396ca55955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1879019176659515002, guid: c19d9204c958f466fa4de55a19b11768, type: 3}
-  offset: {x: 0, y: 1, z: 0}
+  gimmickPrefab: {fileID: 1879019176659515002, guid: c19d9204c958f466fa4de55a19b11768,
+    type: 3}
+  diedSpawnOffset: {x: 0, y: 1}
 --- !u!1 &770415527
 GameObject:
   m_ObjectHideFlags: 0
