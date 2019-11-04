@@ -102,6 +102,10 @@ namespace HK.Bright2.ActorControllers
         public class EffectElements
         {
             [SerializeField]
+            private PoolableEffect spawned = default;
+            public PoolableEffect Spawned => this.spawned;
+            
+            [SerializeField]
             private PoolableEffect takedDamage = default;
             public PoolableEffect TakedDamage => this.takedDamage;
         }

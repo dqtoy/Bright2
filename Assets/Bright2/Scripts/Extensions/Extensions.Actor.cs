@@ -2,6 +2,7 @@
 using HK.Bright2.ActorControllers;
 using HK.Framework.EventSystems;
 using HK.Bright2.GameSystems.Messages;
+using HK.Bright2.ActorControllers.Messages;
 
 namespace HK.Bright2.Extensions
 {
@@ -18,6 +19,7 @@ namespace HK.Bright2.Extensions
             var instance = Object.Instantiate(prefab);
             instance.CachedTransform.position = position;
 
+            instance.Broker.Publish(Spawned.Get());
             Broker.Global.Publish(SpawnedActor.Get(instance));
 
             return instance;
