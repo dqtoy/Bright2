@@ -20,6 +20,10 @@ namespace HK.Bright2.ActorControllers
         public BasicStatusElement BasicStatus => this.basicStatus;
 
         [SerializeField]
+        private DropItemElements dropItems = default;
+        public DropItemElements DropItems => this.dropItems;
+
+        [SerializeField]
         private EffectElements effects = default;
         public EffectElements Effects => this.effects;
 
@@ -80,14 +84,18 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private int money = default;
             public int Money => this.money;
+        }
+
+        [Serializable]
+        public class DropItemElements
+        {
+            [SerializeField]
+            private List<DropWeapon> weapons = default;
+            public List<DropWeapon> Weapons => this.weapons;
 
             [SerializeField]
-            private List<DropWeapon> dropWeapons = default;
-            public List<DropWeapon> DropWeapons => this.dropWeapons;
-
-            [SerializeField]
-            private List<DropAccessory> dropAccessories = default;
-            public List<DropAccessory> DropAccessories => this.dropAccessories;
+            private List<DropAccessory> accessories = default;
+            public List<DropAccessory> Accessories => this.accessories;
         }
 
         [Serializable]

@@ -17,7 +17,7 @@ namespace HK.Bright2.GameSystems
     /// </summary>
     public sealed class AccessorySpawner : DiedActorGimmickSpawner<DropAccessory, AccessoryRecord>
     {
-        protected override IEnumerable<DropAccessory> GetDropData(Actor actor) => actor.Context.BasicStatus.DropAccessories;
+        protected override IEnumerable<DropAccessory> GetDropData(Actor actor) => actor.Context.DropItems.Accessories;
 
         protected override void Setup(Gimmick gimmick, AccessoryRecord dropData)
         {
