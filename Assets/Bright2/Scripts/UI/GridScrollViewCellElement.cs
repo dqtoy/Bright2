@@ -1,6 +1,5 @@
-﻿using HK.Bright2.Database;
+﻿using HK.Bright2.GameSystems;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 namespace HK.Bright2.UIControllers
@@ -19,9 +18,9 @@ namespace HK.Bright2.UIControllers
         [SerializeField]
         private CanvasGroup selectEffectCanvasGroup = default;
 
-        public void Setup(WeaponRecord weaponRecord, bool isSelect)
+        public void Setup(IIconHolder iconHolder, bool isSelect)
         {
-            this.icon.sprite = weaponRecord.Icon;
+            this.icon.sprite = iconHolder.Icon;
             this.canvasGroup.alpha = 1.0f;
             this.selectEffectCanvasGroup.alpha = isSelect ? 1.0f : 0.0f;
         }

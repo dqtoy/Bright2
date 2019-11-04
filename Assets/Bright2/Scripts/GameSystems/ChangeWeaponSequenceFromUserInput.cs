@@ -1,4 +1,5 @@
-﻿using HK.Bright2.ActorControllers;
+﻿using System.Linq;
+using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems.Messages;
 using HK.Bright2.UIControllers;
 using HK.Bright2.UIControllers.Messages;
@@ -28,9 +29,10 @@ namespace HK.Bright2.GameSystems
 
         private void StartSequence(Actor actor)
         {
-            Broker.Global.Publish(RequestShowWeaponGridUI.Get(actor.StatusController.PossessionWeapons));
+            var items = actor.StatusController.PossessionWeapons.Select(x => x.WeaponRecord);
+            Broker.Global.Publish(RequestShowGridUI.Get(items));
 
-            Broker.Global.Receive<SelectInstanceWeaponIndex>()
+            Broker.Global.Receive<ChangedGridIndex>()
                 .TakeUntil(Broker.Global.Receive<HideGridUI>())
                 .SubscribeWithState2(this, actor, (x, _this, _actor) =>
                 {

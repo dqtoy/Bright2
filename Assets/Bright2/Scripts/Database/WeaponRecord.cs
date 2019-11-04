@@ -1,4 +1,5 @@
 ﻿using System;
+using HK.Bright2.GameSystems;
 using HK.Bright2.GimmickControllers;
 using HK.Framework.Text;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace HK.Bright2.Database
     /// 武器マスターデータのレコード
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/MasterData/Weapon/Record")]
-    public sealed class WeaponRecord : ScriptableObject, IMasterDataRecordId
+    public sealed class WeaponRecord : ScriptableObject, IMasterDataRecordId, IIconHolder
     {
         public string Id => this.name;
 

@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-using HK.Bright2.Database;
+using System.Linq;
 using HK.Bright2.GameSystems;
 using HK.Bright2.InputSystems;
 using HK.Bright2.UIControllers.Messages;
-using HK.Bright2.WeaponControllers;
 using HK.Framework.EventSystems;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace HK.Bright2.UIControllers
 {
@@ -26,19 +24,19 @@ namespace HK.Bright2.UIControllers
 
         private int verticalIndex = 0;
 
-        private IReadOnlyList<InstanceWeapon> instanceWeapons;
+        private IReadOnlyList<IIconHolder> items;
 
         void Awake()
         {
             this.canvasGroup.alpha = 0.0f;
 
-            Broker.Global.Receive<RequestShowWeaponGridUI>()
+            Broker.Global.Receive<RequestShowGridUI>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.horizontalIndex = 0;
                     _this.verticalIndex = 0;
                     _this.canvasGroup.alpha = 1.0f;
-                    _this.scrollView.UpdateData(_this.CreateItems(x.Records));
+                    _this.scrollView.UpdateData(_this.CreateItems(x.Items.ToList()));
                     Broker.Global.Publish(ShowGridUI.Get(_this));
                 })
                 .AddTo(this);
@@ -50,19 +48,19 @@ namespace HK.Bright2.UIControllers
                 .AddTo(this);
         }
 
-        private List<GridScrollViewItemData> CreateItems(IReadOnlyList<InstanceWeapon> instanceWeapons)
+        private List<GridScrollViewItemData> CreateItems(IReadOnlyList<IIconHolder> icons)
         {
-            this.instanceWeapons = instanceWeapons;
+            this.items = icons;
             var result = new List<GridScrollViewItemData>();
 
-            if(instanceWeapons == null)
+            if(icons == null)
             {
                 return result;
             }
 
             var verticalIndex = 0;
             var itemData = new GridScrollViewItemData(verticalIndex);
-            for (var i = 0; i < instanceWeapons.Count; i++)
+            for (var i = 0; i < icons.Count; i++)
             {
                 if (!itemData.CanAddRecord)
                 {
@@ -71,7 +69,7 @@ namespace HK.Bright2.UIControllers
                     itemData = new GridScrollViewItemData(verticalIndex);
                 }
 
-                itemData.Records.Add(instanceWeapons[i].WeaponRecord);
+                itemData.Records.Add(icons[i]);
             }
 
             result.Add(itemData);
@@ -107,7 +105,7 @@ namespace HK.Bright2.UIControllers
             }
             if(Input.GetButtonDown(InputName.Decide))
             {
-                Broker.Global.Publish(SelectInstanceWeaponIndex.Get(this.SelectIndex));
+                Broker.Global.Publish(ChangedGridIndex.Get(this.SelectIndex));
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {
@@ -124,8 +122,8 @@ namespace HK.Bright2.UIControllers
             }
             else if(
                 this.horizontalIndex >= GridScrollViewCell.ElementMax ||
-                this.horizontalIndex >= this.instanceWeapons.Count ||
-                this.SelectIndex >= this.instanceWeapons.Count
+                this.horizontalIndex >= this.items.Count ||
+                this.SelectIndex >= this.items.Count
                 )
             {
                 this.horizontalIndex = 0;
@@ -137,7 +135,7 @@ namespace HK.Bright2.UIControllers
         /// </summary>
         private void DecreateHorizontalIndex()
         {
-            var max = this.instanceWeapons.Count - 1;
+            var max = this.items.Count - 1;
             while (max < this.SelectIndex)
             {
                 this.horizontalIndex--;
@@ -146,7 +144,7 @@ namespace HK.Bright2.UIControllers
 
         private void ClampVerticalIndex()
         {
-            var verticalMax = this.instanceWeapons.Count / GridScrollViewCell.ElementMax;
+            var verticalMax = this.items.Count / GridScrollViewCell.ElementMax;
             if(this.verticalIndex < 0)
             {
                 this.verticalIndex = 0;

@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using HK.Bright2.Database;
-using UnityEngine;
-using UnityEngine.Assertions;
+using HK.Bright2.GameSystems;
 
 namespace HK.Bright2.UIControllers
 {
@@ -10,13 +8,13 @@ namespace HK.Bright2.UIControllers
     /// </summary>
     public sealed class GridScrollViewItemData
     {
-        public List<WeaponRecord> Records { get; }
+        public List<IIconHolder> Records { get; }
 
         public int VerticalIndex { get; }
 
         public GridScrollViewItemData(int verticalIndex)
         {
-            this.Records = new List<WeaponRecord>();
+            this.Records = new List<IIconHolder>();
             this.VerticalIndex = verticalIndex;
         }
 

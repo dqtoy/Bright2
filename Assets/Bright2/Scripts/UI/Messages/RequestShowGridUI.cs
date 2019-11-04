@@ -11,8 +11,8 @@ namespace HK.Bright2.UIControllers.Messages
     /// <summary>
     /// グリッドUIの表示をリクエストするメッセージ
     /// </summary>
-    public sealed class RequestShowWeaponGridUI : Message<RequestShowWeaponGridUI, IReadOnlyList<InstanceWeapon>>
+    public sealed class RequestShowGridUI : Message<RequestShowGridUI, IEnumerable<IIconHolder>>
     {
-        public IReadOnlyList<InstanceWeapon> Records => this.param1;
+        public IEnumerable<IIconHolder> Items => this.param1;
     }
 }
