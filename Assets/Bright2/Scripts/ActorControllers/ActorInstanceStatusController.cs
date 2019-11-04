@@ -160,6 +160,8 @@ namespace HK.Bright2.ActorControllers
                     break;
                 }
             }
+
+            this.owner.Broker.Publish(AcquiredWeapon.Get(instanceWeapon));
         }
 
         public void SetGameEvent(IGameEvent gameEvent)
