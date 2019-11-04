@@ -35,6 +35,8 @@ MonoBehaviour:
       winningRate: 0.02
     accessories: []
   effects:
+    spawned: {fileID: 7094458136404933650, guid: 1cb655879a96148e78fe509daa5b4d00,
+      type: 3}
     takedDamage: {fileID: 4643271828095609800, guid: 85f1ea8a894ce4dab95f7869ae3bf07a,
       type: 3}
   abnormalCondition:
