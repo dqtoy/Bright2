@@ -226,16 +226,24 @@ namespace HK.Bright2.ActorControllers
             Assert.IsTrue(equippedAccessoryIndex >= 0 && equippedAccessoryIndex < Constants.EquippedAccessoryMax);
             Assert.IsTrue(possessionAccessoryIndex >= 0 && possessionAccessoryIndex < this.status.PossessionAccessories.Count);
 
-            // すでに同じものを装備している場合は外す
-            for (var i = 0; i < this.status.EquippedAccessories.Length; i++)
+            // 同じものを装備しようとした場合は外す
+            if(this.status.EquippedAccessories[equippedAccessoryIndex] == possessionAccessoryIndex)
             {
-                if(this.status.EquippedAccessories[i] == possessionAccessoryIndex)
-                {
-                    this.status.EquippedAccessories[i] = -1;
-                }
+                this.status.EquippedAccessories[equippedAccessoryIndex] = -1;
             }
+            else
+            {
+                // 他の箇所で同じものを装備している場合は外す
+                for (var i = 0; i < this.status.EquippedAccessories.Length; i++)
+                {
+                    if (this.status.EquippedAccessories[i] == possessionAccessoryIndex)
+                    {
+                        this.status.EquippedAccessories[i] = -1;
+                    }
+                }
 
-            this.status.EquippedAccessories[equippedAccessoryIndex] = possessionAccessoryIndex;
+                this.status.EquippedAccessories[equippedAccessoryIndex] = possessionAccessoryIndex;
+            }
 
             this.status.AccessoryEffect.Reset();
             foreach(var i in this.status.EquippedAccessories)
