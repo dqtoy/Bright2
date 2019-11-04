@@ -205,6 +205,7 @@ namespace HK.Bright2.ActorControllers
         {
             this.status.PossessionAccessories = this.status.PossessionAccessories ?? new List<AccessoryRecord>();
             this.status.PossessionAccessories.Add(accessoryRecord);
+            this.owner.Broker.Publish(AcquiredAccessory.Get(accessoryRecord));
         }
 
         public void ChangeEquippedAccessory(int equippedAccessoryIndex, int possessionAccessoryIndex)
