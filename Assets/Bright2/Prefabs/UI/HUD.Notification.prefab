@@ -73,6 +73,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 3484598252539978176, guid: 51b1469810e8b440db191343fd7cfe00, type: 3}
   viewport: {fileID: 8431967165123748550}
+  moneyIcon: {fileID: 21300000, guid: 33e47e86457364e9ca6170bf234b4127, type: 3}
+  moneyFormat:
+    target: {fileID: 11400000, guid: bfdf54c5c5af547949fea98a6555b614, type: 2}
+    value: '{0}G'
+    guid: eac8fac0-e75e-403f-afdf-b714d93aa353
 --- !u!1 &8807339972776610312
 GameObject:
   m_ObjectHideFlags: 0

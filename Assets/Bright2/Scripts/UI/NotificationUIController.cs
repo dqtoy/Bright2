@@ -2,6 +2,7 @@
 using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.GameSystems.Messages;
 using HK.Framework.EventSystems;
+using HK.Framework.Text;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -19,7 +20,17 @@ namespace HK.Bright2.UIControllers
         [SerializeField]
         private Transform viewport = default;
 
+        [SerializeField]
+        private Sprite moneyIcon = default;
+
+        [SerializeField]
+        private StringAsset.Finder moneyFormat = default;
+
         private Actor owner;
+
+        private NotificationUIElement moneyElement;
+
+        private int acquiredMoney = 0;
 
         void Awake()
         {
@@ -51,14 +62,38 @@ namespace HK.Bright2.UIControllers
                 })
                 .AddTo(this)
                 .AddTo(this.owner);
+
+            this.owner.Broker.Receive<AcquiredMoney>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.CreateMoneyElement(x.Amount);
+                })
+                .AddTo(this)
+                .AddTo(this.owner);
         }
 
-        private void CreateElement(Sprite sprite, string message)
+        private NotificationUIElement CreateElement(Sprite sprite, string message)
         {
             var element = this.element.Rent();
             element.Setup(sprite, message);
             element.transform.SetParent(this.viewport, false);
             element.transform.SetAsFirstSibling();
+
+            return element;
+        }
+
+        private void CreateMoneyElement(int value)
+        {
+            if(this.moneyElement == null || !this.moneyElement.IsVisible)
+            {
+                this.acquiredMoney = value;
+                this.moneyElement = this.CreateElement(this.moneyIcon, this.moneyFormat.Format(this.acquiredMoney));
+            }
+            else
+            {
+                this.acquiredMoney += value;
+                this.moneyElement.Setup(this.moneyIcon, this.moneyFormat.Format(this.acquiredMoney));
+            }
         }
     }
 }

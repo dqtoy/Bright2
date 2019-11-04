@@ -22,20 +22,35 @@ namespace HK.Bright2.UIControllers
         [SerializeField]
         private float visibleSeconds = default;
 
+        private float currentVisibleSeconds;
+
+        public bool IsVisible { get; private set; }
+
         private ObjectPool<NotificationUIElement> pool;
 
         private static readonly ObjectPoolBundle<NotificationUIElement> pools = new ObjectPoolBundle<NotificationUIElement>();
 
+        void Update()
+        {
+            if(!this.IsVisible)
+            {
+                return;
+            }
+
+            this.currentVisibleSeconds += Time.deltaTime;
+            if(this.currentVisibleSeconds > this.visibleSeconds)
+            {
+                this.Return();
+            }
+        }
+
         public void Setup(Sprite sprite, string message)
         {
+            this.currentVisibleSeconds = 0.0f;
             this.image.sprite = sprite;
             this.message.text = message;
-            Observable.Timer(TimeSpan.FromSeconds(this.visibleSeconds))
-                .SubscribeWithState(this, (_, _this) =>
-                {
-                    _this.Return();
-                })
-                .AddTo(this);
+            this.IsVisible = true;
+            this.currentVisibleSeconds = 0.0f;
         }
 
         public NotificationUIElement Rent()
@@ -50,6 +65,7 @@ namespace HK.Bright2.UIControllers
         public void Return()
         {
             this.pool.Return(this);
+            this.IsVisible = false;
         }
     }
 }
