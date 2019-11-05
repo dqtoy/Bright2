@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7062131857066918256}
   - component: {fileID: 3592635243688022948}
   - component: {fileID: 324614532287436557}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4774,7 +4774,7 @@ GameObject:
   - component: {fileID: 7609099810886720243}
   - component: {fileID: 4950939047940906811}
   - component: {fileID: 5703919413202805302}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9535,7 +9535,7 @@ GameObject:
   - component: {fileID: 7628886097447887931}
   - component: {fileID: 9144135091242786021}
   - component: {fileID: 7134046164871259287}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: OpenEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14415,3 +14415,5 @@ MonoBehaviour:
   openEffect: {fileID: 4473699461293630384}
   openEffectDelaySeconds: 0.5
   weapons: []
+  accessories: []
+  money: 0

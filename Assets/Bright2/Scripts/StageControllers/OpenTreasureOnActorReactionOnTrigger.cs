@@ -47,6 +47,9 @@ namespace HK.Bright2.StageControllers
         [SerializeField]
         private List<AccessoryRecord> accessories = default;
 
+        [SerializeField]
+        private int money = default;
+
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
             if(!this.includeTags.Contains(actor.tag))
@@ -97,6 +100,11 @@ namespace HK.Bright2.StageControllers
             foreach(var a in this.accessories)
             {
                 Broker.Global.Publish(RequestSpawnAccessory.Get(invokedActor, a, this.spawnPoint.position));
+            }
+
+            if(this.money > 0)
+            {
+                Broker.Global.Publish(RequestSpawnMoney.Get(invokedActor, this.money, this.spawnPoint.position));
             }
 
             Destroy(this.gameObject);
