@@ -101236,16 +101236,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 10196527685499972, guid: ddd367d0f75e84c0898206e71e8a1bc8,
+    - target: {fileID: 4380289140858924756, guid: ddd367d0f75e84c0898206e71e8a1bc8,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 10196527685499972, guid: ddd367d0f75e84c0898206e71e8a1bc8,
+      propertyPath: elementBundles.Array.data[0].elements.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 7550151298698405770, guid: 2c8f5fc2cfef9462a8e002d7bad19820,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8243946447939391918, guid: ddd367d0f75e84c0898206e71e8a1bc8,
         type: 3}
       propertyPath: elements.Array.size
@@ -101341,12 +101337,16 @@ PrefabInstance:
       propertyPath: elementBundles.Array.data[2].elements.Array.data[0].spawnPoint
       value: 
       objectReference: {fileID: 5998759200598370974}
-    - target: {fileID: 4380289140858924756, guid: ddd367d0f75e84c0898206e71e8a1bc8,
+    - target: {fileID: 10196527685499972, guid: ddd367d0f75e84c0898206e71e8a1bc8,
         type: 3}
-      propertyPath: elementBundles.Array.data[0].elements.Array.data[0].prefab
-      value: 
-      objectReference: {fileID: 7550151298698405770, guid: 2c8f5fc2cfef9462a8e002d7bad19820,
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10196527685499972, guid: ddd367d0f75e84c0898206e71e8a1bc8,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd367d0f75e84c0898206e71e8a1bc8, type: 3}
 --- !u!4 &6421949564543055437 stripped

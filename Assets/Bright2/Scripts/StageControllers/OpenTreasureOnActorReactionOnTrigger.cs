@@ -13,7 +13,7 @@ using System;
 namespace HK.Bright2.StageControllers
 {
     /// <summary>
-    /// 
+    /// 宝箱を開けるクラス
     /// </summary>
     public sealed class OpenTreasureOnActorReactionOnTrigger : MonoBehaviour, IGameEvent, IActorReactionOnTriggerEnter2D, IActorReactionOnTriggerExit2D
     {

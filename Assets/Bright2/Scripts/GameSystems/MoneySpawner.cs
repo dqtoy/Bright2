@@ -32,6 +32,13 @@ namespace HK.Bright2.GameSystems
                     _this.ObserveActor(x.Actor);
                 })
                 .AddTo(this);
+
+            Broker.Global.Receive<RequestSpawnMoney>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.CreateGimmick(x.Owner, x.SpawnPosition, x.Amount);
+                })
+                .AddTo(this);
         }
 
         private void ObserveActor(Actor actor)
@@ -39,12 +46,12 @@ namespace HK.Bright2.GameSystems
             actor.Broker.Receive<Died>()
                 .SubscribeWithState2(this, actor, (x, _this, a) =>
                 {
-                    _this.CreateGimmick(a, a.StatusController.Money);
+                    _this.CreateGimmick(a, a.CachedTransform.position + _this.offset, a.StatusController.Money);
                 })
                 .AddTo(this);
         }
 
-        private void CreateGimmick(Actor actor, int money)
+        private void CreateGimmick(Actor actor, Vector3 position, int money)
         {
             int digit = 0;
             while(money > 0)
@@ -60,7 +67,7 @@ namespace HK.Bright2.GameSystems
                         Random.Range(0.0f, this.random.y),
                         Random.Range(-this.random.z, this.random.z)
                     );
-                    coin.transform.position = actor.CachedTransform.position + this.offset + random;
+                    coin.transform.position = position + random;
                     coin.transform.rotation = Quaternion.identity;
                     coin.Activate(actor);
                 }
