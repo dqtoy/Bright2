@@ -51945,7 +51945,7 @@ PrefabInstance:
     - target: {fileID: 6749042481166630230, guid: 199a40454d6614dd582b3347ed066f24,
         type: 3}
       propertyPath: m_Name
-      value: ChangeSceneToRight
+      value: ChangeStageToRight
       objectReference: {fileID: 0}
     - target: {fileID: 2355846650925795864, guid: 199a40454d6614dd582b3347ed066f24,
         type: 3}
