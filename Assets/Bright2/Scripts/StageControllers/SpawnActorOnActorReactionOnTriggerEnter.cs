@@ -22,12 +22,6 @@ namespace HK.Bright2.StageControllers
 
         private bool isSpawned = false;
 
-        [ContextMenu("Hoge")]
-        private void Hoge()
-        {
-
-        }
-
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
             if (this.isSpawned)
