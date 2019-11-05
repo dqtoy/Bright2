@@ -22,6 +22,12 @@ namespace HK.Bright2.StageControllers
 
         private bool isSpawned = false;
 
+        [ContextMenu("Hoge")]
+        private void Hoge()
+        {
+
+        }
+
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
             if (this.isSpawned)
@@ -35,23 +41,23 @@ namespace HK.Bright2.StageControllers
             }
 
             this.isSpawned = true;
-            this.SpawnRecursive(0);
+            this.SpawnRecursive(0, actor.StatusController.Direction);
         }
 
-        private void SpawnRecursive(int index)
+        private void SpawnRecursive(int index, Constants.Direction direction)
         {
             Assert.IsTrue(this.elementBundles.Count > index);
 
             var elementBundle = this.elementBundles[index];
             var element = elementBundle.Elements.Lottery();
-            var actor = element.Prefab.Spawn(element.SpawnPoint.position);
+            var actor = element.Prefab.Spawn(element.GetSpawnPoint(direction).position);
             ++index;
             if (this.elementBundles.Count > index)
             {
                 actor.Broker.Receive<Died>()
                     .SubscribeWithState2(this, index, (_, _this, i) =>
                     {
-                        _this.SpawnRecursive(i);
+                        _this.SpawnRecursive(i, direction);
                     })
                     .AddTo(actor);
             }
@@ -68,10 +74,19 @@ namespace HK.Bright2.StageControllers
             private int weight = default;
 
             [SerializeField]
-            private Transform spawnPoint = default;
-            public Transform SpawnPoint => this.spawnPoint;
+            private Transform rightSpawnPoint = default;
+
+            [SerializeField]
+            private Transform leftSpawnPoint = default;
 
             int IWeightLottery.Weight => this.weight;
+
+            public Transform GetSpawnPoint(Constants.Direction direction)
+            {
+                Assert.IsTrue(direction == Constants.Direction.Left || direction == Constants.Direction.Right);
+
+                return direction == Constants.Direction.Right ? this.rightSpawnPoint : this.leftSpawnPoint;
+            }
         }
         
         [Serializable]
