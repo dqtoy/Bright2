@@ -22,6 +22,26 @@ namespace HK.Bright2.StageControllers
 
         private bool isSpawned = false;
 
+#if UNITY_EDITOR
+        void OnDrawGizmos()
+        {
+            foreach(var elementBundle in this.elementBundles)
+            {
+                foreach(var e in elementBundle.Elements)
+                {
+                    if (e.RightSpawnPoint != null)
+                    {
+                        Gizmos.DrawIcon(e.RightSpawnPoint.position, "Enemy.0000", false);
+                    }
+                    if (e.LeftSpawnPoint != null)
+                    {
+                        Gizmos.DrawIcon(e.LeftSpawnPoint.position, "Enemy.0000", true);
+                    }
+                }
+            }
+        }
+#endif
+
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
             if (this.isSpawned)
@@ -69,9 +89,11 @@ namespace HK.Bright2.StageControllers
 
             [SerializeField]
             private Transform rightSpawnPoint = default;
+            public Transform RightSpawnPoint => this.rightSpawnPoint;
 
             [SerializeField]
             private Transform leftSpawnPoint = default;
+            public Transform LeftSpawnPoint => this.leftSpawnPoint;
 
             int IWeightLottery.Weight => this.weight;
 
