@@ -6,6 +6,10 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace HK.Bright2.GameSystems
 {
     /// <summary>
@@ -16,16 +20,13 @@ namespace HK.Bright2.GameSystems
         [SerializeField]
         private Stage prefab = default;
 
-        [SerializeField]
-        private Vector2 initialPlayerPosition = default;
-
         void Awake()
         {
             Broker.Global.Receive<SpawnedActor>()
                 .Where(x => x.Actor.CompareTag(Tags.Name.Player))
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    x.Actor.Movement.Warp(_this.initialPlayerPosition);
+                    x.Actor.Movement.Warp(_this.prefab.StartPoint.position);
                 })
                 .AddTo(this);
         }
@@ -34,5 +35,13 @@ namespace HK.Bright2.GameSystems
         {
             Broker.Global.Publish(RequestChangeStage.Get(this.prefab));
         }
+
+#if UNITY_EDITOR
+        public void SetPrefab(Stage prefab)
+        {
+            this.prefab = prefab;
+            EditorUtility.SetDirty(this);
+        }
+#endif
     }
 }
