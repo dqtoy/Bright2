@@ -1,4 +1,5 @@
-﻿using HK.Bright2.GameSystems.Messages;
+﻿using HK.Bright2.ActorControllers;
+using HK.Bright2.GameSystems.Messages;
 using HK.Framework.EventSystems;
 using HK.Framework.Text;
 using UniRx;
@@ -16,10 +17,10 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
         [SerializeField]
         private SequenceGameEventElement nextElement = default;
 
-        public override void Invoke(ISequenceGameEvent owner)
+        public override void Invoke(ISequenceGameEvent owner, Actor invoker)
         {
             Broker.Global.Publish(RequestHideTalk.Get());
-            owner.Next(this.nextElement);
+            owner.Next(this.nextElement, invoker);
         }
     }
 }

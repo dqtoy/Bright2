@@ -11,24 +11,23 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
     /// <summary>
     /// 会話をするシーケンスゲームイベント
     /// </summary>
-    [CreateAssetMenu(menuName = "Bright2/SequenceGameEvent/Element/Talk")]
-    public sealed class Talk : SequenceGameEventElement
+    [CreateAssetMenu(menuName = "Bright2/SequenceGameEvent/Element/ChangeWeaponSequenceFromUserInput")]
+    public sealed class ChangeWeaponSequenceFromUserInput : SequenceGameEventElement
     {
-        [SerializeField]
-        private StringAsset.Finder message = default;
-
         [SerializeField]
         private SequenceGameEventElement nextElement = default;
 
         public override void Invoke(ISequenceGameEvent owner, Actor invoker)
         {
-            Broker.Global.Publish(RequestShowTalk.Get(this.message.Get));
-            Broker.Global.Receive<EndTalk>()
+            Broker.Global.Publish(RequestChangeWeaponSequenceFromUserInput.Get(invoker));
+
+            Broker.Global.Receive<EndChangeWeaponSequenceFromUserInput>()
                 .Take(1)
                 .SubscribeWithState3(this, owner, invoker, (_, _this, _owner, _invoker) =>
                 {
                     _owner.Next(_this.nextElement, _invoker);
-                });
+                })
+                .AddTo(invoker);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.GameSystems.SequenceGameEvents
@@ -9,7 +10,7 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
     [CreateAssetMenu(menuName = "Bright2/SequenceGameEvent/Element/Complete")]
     public sealed class Complete : SequenceGameEventElement
     {
-        public override void Invoke(ISequenceGameEvent owner)
+        public override void Invoke(ISequenceGameEvent owner, Actor invoker)
         {
             owner.Complete();
         }

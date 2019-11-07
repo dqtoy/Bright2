@@ -18,12 +18,12 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
         void IGameEvent.Invoke(Actor invokedActor)
         {
             Broker.Global.Publish(StartSequenceGameEvent.Get());
-            this.entryPointEvent.Invoke(this);
+            this.entryPointEvent.Invoke(this, invokedActor);
         }
 
-        void ISequenceGameEvent.Next(ISequenceGameEventElement nextEvent)
+        void ISequenceGameEvent.Next(ISequenceGameEventElement nextEvent, Actor invoker)
         {
-            nextEvent.Invoke(this);
+            nextEvent.Invoke(this, invoker);
         }
 
         void ISequenceGameEvent.Complete()

@@ -36,15 +36,22 @@ namespace HK.Bright2.GameSystems
                 .TakeUntil(Broker.Global.Receive<HideGridUI>())
                 .SubscribeWithState2(this, actor, (x, _this, _actor) =>
                 {
-                    _this.possessionWeaponIndex = x.Index;
-                    _this.ObserveBeginControlUserInputEquippedWeaponUI(_actor);
-                    Broker.Global.Publish(RequestControlUserInputEquippedWeaponUI.Get());
+                    _this.BeginControlUserInputEquippedWeaponUI(_actor, x.Index);
+                })
+                .AddTo(this);
+
+            Broker.Global.Receive<HideGridUI>()
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    Broker.Global.Publish(EndChangeWeaponSequenceFromUserInput.Get());
                 })
                 .AddTo(this);
         }
 
-        private void ObserveBeginControlUserInputEquippedWeaponUI(Actor actor)
+        private void BeginControlUserInputEquippedWeaponUI(Actor actor, int possessionWeaponIndex)
         {
+            this.possessionWeaponIndex = possessionWeaponIndex;
             Broker.Global.Receive<BeginControlUserInputEquippedWeaponUI>()
                 .TakeUntil(Broker.Global.Receive<EndControlUserInputEquippedWeaponUI>())
                 .SubscribeWithState2(this, actor, (x, _this, _actor) =>
@@ -52,6 +59,7 @@ namespace HK.Bright2.GameSystems
                     _this.ObserveSelectEquippedWeaponIndex(_actor, x.Controller);
                 })
                 .AddTo(this);
+            Broker.Global.Publish(RequestControlUserInputEquippedWeaponUI.Get());
         }
 
         private void ObserveSelectEquippedWeaponIndex(Actor actor, EquippedWeaponUIController uiController)

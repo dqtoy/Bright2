@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.GameSystems.SequenceGameEvents
@@ -11,6 +12,6 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
         /// <summary>
         /// イベントの実行
         /// </summary>
-        void Invoke(ISequenceGameEvent owner);
+        void Invoke(ISequenceGameEvent owner, Actor invoker);
     }
 }
