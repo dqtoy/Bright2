@@ -13,10 +13,15 @@ namespace HK.Bright2.UIControllers
     public sealed class TalkUIController : MonoBehaviour
     {
         [SerializeField]
+        private CanvasGroup canvasGroup = default;
+
+        [SerializeField]
         private TextMeshProUGUI message = default;
 
         void Awake()
         {
+            this.canvasGroup.alpha = 0.0f;
+
             Broker.Global.Receive<RequestTalk>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
@@ -27,6 +32,7 @@ namespace HK.Bright2.UIControllers
 
         private void SetMessage(string message)
         {
+            this.canvasGroup.alpha = 1.0f;
             this.message.text = message;
         }
     }

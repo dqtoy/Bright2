@@ -243,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2964949849092750764}
   - component: {fileID: 2439267086941321404}
+  - component: {fileID: 1113726945538116381}
   - component: {fileID: 5508804823782300635}
   m_Layer: 5
   m_Name: TalkUI
@@ -292,6 +293,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &1113726945538116381
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8458335187998701292}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &5508804823782300635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,4 +317,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0498b734a87ec47459f715398b49df74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 1113726945538116381}
   message: {fileID: 866102770202961274}
