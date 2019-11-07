@@ -9,8 +9,8 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
     public interface ISequenceGameEvent : IGameEvent
     {
         /// <summary>
-        /// イベントの要素リスト
+        /// 次のイベントへ進む
         /// </summary>
-        ISequenceGameEventElement[] Elements { get; }
+        void Next(ISequenceGameEventElement nextEvent);
     }
 }

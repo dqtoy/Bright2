@@ -8,5 +8,9 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
     /// </summary>
     public interface ISequenceGameEventElement
     {
+        /// <summary>
+        /// イベントの実行
+        /// </summary>
+        void Invoke(ISequenceGameEvent owner);
     }
 }
