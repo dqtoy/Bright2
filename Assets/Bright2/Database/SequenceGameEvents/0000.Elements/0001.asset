@@ -16,3 +16,4 @@ MonoBehaviour:
     target: {fileID: 11400000, guid: 3e31ff6a02fc94c3bb484ce2d3a55c72, type: 2}
     value: "\u3069\u3046\u3082\u3053\u3093\u306B\u3061\u306F\uFF01"
     guid: a77c26d4-a45e-4a37-a8ae-d73842249a47
+  nextElement: {fileID: 11400000, guid: 3d831ad16c5fe427994c9bd65b443c71, type: 2}

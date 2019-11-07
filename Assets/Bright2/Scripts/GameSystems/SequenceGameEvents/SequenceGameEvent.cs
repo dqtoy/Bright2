@@ -1,4 +1,6 @@
 ﻿using HK.Bright2.ActorControllers;
+using HK.Bright2.GameSystems.Messages;
+using HK.Framework.EventSystems;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -15,12 +17,18 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
 
         void IGameEvent.Invoke(Actor invokedActor)
         {
+            Broker.Global.Publish(StartSequenceGameEvent.Get());
             this.entryPointEvent.Invoke(this);
         }
 
         void ISequenceGameEvent.Next(ISequenceGameEventElement nextEvent)
         {
-            throw new System.NotImplementedException();
+            nextEvent.Invoke(this);
+        }
+
+        void ISequenceGameEvent.Complete()
+        {
+            Broker.Global.Publish(EndSequenceGameEvent.Get());
         }
     }
 }

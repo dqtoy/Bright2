@@ -1,6 +1,7 @@
 ﻿using HK.Bright2.GameSystems.Messages;
 using HK.Framework.EventSystems;
 using HK.Framework.Text;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -15,9 +16,18 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
         [SerializeField]
         private StringAsset.Finder message = default;
 
+        [SerializeField]
+        private SequenceGameEventElement nextElement = default;
+
         public override void Invoke(ISequenceGameEvent owner)
         {
-            Broker.Global.Publish(RequestTalk.Get(this.message.Get));
+            Broker.Global.Publish(RequestShowTalk.Get(this.message.Get));
+            Broker.Global.Receive<EndTalk>()
+                .Take(1)
+                .SubscribeWithState2(this, owner, (_, _this, _owner) =>
+                {
+                    _owner.Next(_this.nextElement);
+                });
         }
     }
 }

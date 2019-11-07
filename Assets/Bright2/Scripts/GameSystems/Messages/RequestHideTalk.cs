@@ -5,10 +5,9 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.GameSystems.Messages
 {
     /// <summary>
-    /// 会話のリクエストを行うメッセージ
+    /// 会話UIの非表示のリクエストを行うメッセージ
     /// </summary>
-    public sealed class RequestTalk : Message<RequestTalk, string>
+    public sealed class RequestHideTalk : Message<RequestHideTalk>
     {
-        public string Message => this.param1;
     }
 }

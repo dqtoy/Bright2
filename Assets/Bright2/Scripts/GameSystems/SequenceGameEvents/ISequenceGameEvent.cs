@@ -12,5 +12,10 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
         /// 次のイベントへ進む
         /// </summary>
         void Next(ISequenceGameEventElement nextEvent);
+
+        /// <summary>
+        /// ゲームイベントを完了する
+        /// </summary>
+        void Complete();
     }
 }

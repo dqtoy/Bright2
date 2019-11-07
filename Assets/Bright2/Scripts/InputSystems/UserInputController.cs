@@ -42,11 +42,22 @@ namespace HK.Bright2.InputSystems
             this.PushController<BeginControlUserInputEquippedWeaponUI>(x => x.Controller);
             this.PopController<EndControlUserInputEquippedWeaponUI>(x => x.Controller);
 
+            this.PushController<StartSequenceGameEvent>(_ => NoneInput.Default);
+            this.PopController<EndSequenceGameEvent>(_ => NoneInput.Default);
+
+            this.PushController<StartTalk>(x => x.TalkUIController);
+            this.PopController<EndTalk>(x => x.TalkUIController);
+
             this.UpdateAsObservable()
                 .Where(_ => this.controllers.Count > 0)
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.controllers.Peek().UpdateInput();
+
+                    if(Input.GetKeyDown(KeyCode.U))
+                    {
+                        this.PrintControllers();
+                    }
                 });
         }
 
@@ -70,6 +81,16 @@ namespace HK.Bright2.InputSystems
                     _this.controllers.Pop();
                 })
                 .AddTo(this);
+        }
+
+        private void PrintControllers()
+        {
+            Debug.Log("Begin IControllableUserInput =====");
+            foreach(var i in this.controllers)
+            {
+                Debug.Log($"{i}");
+            }
+            Debug.Log("End IControllableUserInput   =====");
         }
     }
 }
