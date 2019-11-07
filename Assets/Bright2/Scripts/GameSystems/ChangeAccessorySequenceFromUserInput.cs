@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems.Messages;
 using HK.Bright2.UIControllers;
@@ -16,6 +17,8 @@ namespace HK.Bright2.GameSystems
     public sealed class ChangeAccessorySequenceFromUserInput : MonoBehaviour
     {
         private int possessionAccessoryIndex;
+
+        private IDisposable publishEndMessage = null;
 
         void Awake()
         {
@@ -46,8 +49,22 @@ namespace HK.Bright2.GameSystems
                 .SubscribeWithState2(this, actor, (x, _this, _actor) =>
                 {
                     _this.possessionAccessoryIndex = x.Index;
+
+                    // インデックスが決定したため終了処理は解放する
+                    _this.publishEndMessage.Dispose();
+                    _this.publishEndMessage = null;
+                    
                     Broker.Global.Publish(RequestHideGridUI.Get());
                     _this.StartChangeEquippedAccessory(_actor);
+                })
+                .AddTo(this);
+
+            this.publishEndMessage = Broker.Global.Receive<HideGridUI>()
+                .Take(1)
+                .TakeUntil(Broker.Global.Receive<DecidedGridIndex>())
+                .Subscribe(_ =>
+                {
+                    Broker.Global.Publish(EndChangeAccessorySequenceFromUserInput.Get());
                 })
                 .AddTo(this);
         }

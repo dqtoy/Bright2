@@ -9,19 +9,19 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.GameSystems.SequenceGameEvents
 {
     /// <summary>
-    /// 装備している武器を切り替えるシーケンスゲームイベント
+    /// 装備しているアクセサリーを切り替えるシーケンスゲームイベント
     /// </summary>
-    [CreateAssetMenu(menuName = "Bright2/SequenceGameEvent/Element/ChangeWeaponSequenceFromUserInput")]
-    public sealed class ChangeWeaponSequenceFromUserInput : SequenceGameEventElement
+    [CreateAssetMenu(menuName = "Bright2/SequenceGameEvent/Element/ChangeAccessorySequenceFromUserInput")]
+    public sealed class ChangeAccessorySequenceFromUserInput : SequenceGameEventElement
     {
         [SerializeField]
         private SequenceGameEventElement nextElement = default;
 
         public override void Invoke(ISequenceGameEvent owner, Actor invoker)
         {
-            Broker.Global.Publish(RequestChangeWeaponSequenceFromUserInput.Get(invoker));
+            Broker.Global.Publish(RequestChangeAccessorySequenceFromUserInput.Get(invoker));
 
-            Broker.Global.Receive<EndChangeWeaponSequenceFromUserInput>()
+            Broker.Global.Receive<EndChangeAccessorySequenceFromUserInput>()
                 .Take(1)
                 .SubscribeWithState3(this, owner, invoker, (_, _this, _owner, _invoker) =>
                 {
