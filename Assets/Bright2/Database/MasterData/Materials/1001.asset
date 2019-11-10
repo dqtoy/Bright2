@@ -17,3 +17,4 @@ MonoBehaviour:
     value: "\u30B9\u30E9\u30A4\u30E0\u30B8\u30A7\u30EB"
     guid: 8af01344-5ee1-43dc-9946-c7a27523f2e6
   icon: {fileID: 21300000, guid: 55207e125c08547a095fd7929379374f, type: 3}
+  color: {r: 0.10849059, g: 0.7053246, b: 1, a: 1}
