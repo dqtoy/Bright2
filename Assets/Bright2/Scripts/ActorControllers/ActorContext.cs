@@ -96,6 +96,10 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private List<DropAccessory> accessories = default;
             public List<DropAccessory> Accessories => this.accessories;
+
+            [SerializeField]
+            private List<DropMaterial> materials = default;
+            public List<DropMaterial> Materials => this.materials;
         }
 
         [Serializable]

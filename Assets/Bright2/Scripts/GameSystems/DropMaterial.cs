@@ -10,7 +10,7 @@ namespace HK.Bright2
     /// 素材のドロップデータ
     /// </summary>
     [Serializable]
-    public sealed class DropMaterial : DropItem<DropMaterial>
+    public sealed class DropMaterial : DropItem<MaterialRecord>
     {
     }
 }
