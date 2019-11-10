@@ -78,38 +78,21 @@ namespace HK.Bright2.UIControllers
 
         void IControllableUserInput.UpdateInput()
         {
-            // if (Input.GetButtonDown(InputName.Left))
-            // {
-            //     this.index--;
-            //     this.scrollView.UpdateSelectIndex(this.index);
-            // }
-            // if (Input.GetButtonDown(InputName.Right))
-            // {
-            //     this.index++;
-            //     this.scrollView.UpdateSelectIndex(this.index);
-            // }
+            if (Input.GetButtonDown(InputName.Left))
+            {
+                this.SubIndex((int)(1 / this.scrollView.CellInterval));
+            }
+            if (Input.GetButtonDown(InputName.Right))
+            {
+                this.AddIndex((int)(1 / this.scrollView.CellInterval));
+            }
             if (Input.GetButtonDown(InputName.Up))
             {
-                this.index = Mathf.Max(this.index - 1, 0);
-                this.scrollView.UpdateSelectIndex(this.index);
-
-                if(this.headIndex > this.index)
-                {
-                    this.headIndex = this.index;
-                    this.scrollView.Scroller.JumpTo(this.headIndex);
-                }
+                this.SubIndex(1);
             }
             if (Input.GetButtonDown(InputName.Down))
             {
-                this.index = Mathf.Min(this.index + 1, this.items.Count - 1);
-                this.scrollView.UpdateSelectIndex(this.index);
-                
-                var diffIndex = this.index - this.headIndex;
-                if(diffIndex * this.scrollView.CellInterval > 1.0f)
-                {
-                    this.headIndex++;
-                    this.scrollView.Scroller.JumpTo(this.headIndex);
-                }
+                this.AddIndex(1);
             }
             if(Input.GetButtonDown(InputName.Decide))
             {
@@ -118,6 +101,31 @@ namespace HK.Bright2.UIControllers
             if(Input.GetButtonDown(InputName.Cancel))
             {
                 Broker.Global.Publish(HideListUI.Get(this));
+            }
+        }
+
+        private void SubIndex(int value)
+        {
+            this.index = Mathf.Max(this.index - value, 0);
+            this.scrollView.UpdateSelectIndex(this.index);
+
+            if (this.headIndex > this.index)
+            {
+                this.headIndex = this.index;
+                this.scrollView.Scroller.JumpTo(this.headIndex);
+            }
+        }
+
+        private void AddIndex(int value)
+        {
+            this.index = Mathf.Min(this.index + value, this.items.Count - 1);
+            this.scrollView.UpdateSelectIndex(this.index);
+
+            var diffIndex = this.index - this.headIndex;
+            if (diffIndex * this.scrollView.CellInterval > 1.0f)
+            {
+                this.headIndex += value;
+                this.scrollView.Scroller.JumpTo(this.headIndex);
             }
         }
    }
