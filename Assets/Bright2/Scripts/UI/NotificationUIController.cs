@@ -63,6 +63,14 @@ namespace HK.Bright2.UIControllers
                 .AddTo(this)
                 .AddTo(this.owner);
 
+            this.owner.Broker.Receive<AcquiredMaterial>()
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.CreateElement(x.MaterialRecord.Icon, x.MaterialRecord.MaterialName);
+                })
+                .AddTo(this)
+                .AddTo(this.owner);
+
             this.owner.Broker.Receive<AcquiredMoney>()
                 .SubscribeWithState(this, (x, _this) =>
                 {

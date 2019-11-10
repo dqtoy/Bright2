@@ -272,6 +272,7 @@ namespace HK.Bright2.ActorControllers
             }
 
             instance.Add(amount);
+            this.owner.Broker.Publish(AcquiredMaterial.Get(materialRecord));
         }
 
         private void RegisterUpdateUnderWaterSecondsStream()
