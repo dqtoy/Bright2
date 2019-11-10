@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b099940ad7a9f4a9e8b935ca3f081cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8491219769089868142, guid: d7375d8ae97e44c4eab684202bf56c38, type: 3}
+  prefab: {fileID: 8491219769089868142, guid: ad04b6da6cb5e44f0bbcc7bea58b1212, type: 3}
 --- !u!114 &628932147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2073,6 +2073,16 @@ PrefabInstance:
     - target: {fileID: 9083673100570487111, guid: e91408c7ed4b44cf3906291ea2ca7795,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004199313123824949, guid: e91408c7ed4b44cf3906291ea2ca7795,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004199313123824949, guid: e91408c7ed4b44cf3906291ea2ca7795,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

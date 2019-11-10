@@ -15,6 +15,9 @@ namespace HK.Bright2.DebugSystems
     /// </summary>
     public sealed class GameDebugInput : MonoBehaviour
     {
+        [SerializeField]
+        private string[] choicesMessages = default;
+
         private Actor actor;
 
         void Awake()
@@ -38,6 +41,11 @@ namespace HK.Bright2.DebugSystems
             if (Input.GetKeyDown(KeyCode.W))
             {
                 Broker.Global.Publish(RequestChangeAccessorySequenceFromUserInput.Get(this.actor));
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Broker.Global.Publish(RequestShowChoicesUI.Get(this.choicesMessages));
             }
 
             this.InputOnCtrlKey();
