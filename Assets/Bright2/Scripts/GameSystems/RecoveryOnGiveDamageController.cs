@@ -33,7 +33,7 @@ namespace HK.Bright2.GameSystems
                     var damageResult = Calculator.GetRecoveryFromDamage(x.Result.Attacker, x.Result.Damage, x.Result.Attacker.StatusController.AccessoryEffect.RecoveryOnGiveDamage);
                     x.Result.Attacker.StatusController.TakeDamage(damageResult);
                 })
-                .AddTo(this);
+                .AddTo(actor);
         }
     }
 }
