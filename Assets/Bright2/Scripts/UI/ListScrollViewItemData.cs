@@ -8,9 +8,9 @@ namespace HK.Bright2.UIControllers
     /// </summary>
     public sealed class ListScrollViewItemData
     {
-        public IIconHolder Item { get; }
+        public IViewableList Item { get; }
 
-        public ListScrollViewItemData(IIconHolder item)
+        public ListScrollViewItemData(IViewableList item)
         {
             this.Item = item;
         }

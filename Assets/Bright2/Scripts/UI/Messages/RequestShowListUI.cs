@@ -11,8 +11,8 @@ namespace HK.Bright2.UIControllers.Messages
     /// <summary>
     /// リストUIの表示をリクエストするメッセージ
     /// </summary>
-    public sealed class RequestShowListUI : Message<RequestShowListUI, IEnumerable<IIconHolder>>
+    public sealed class RequestShowListUI : Message<RequestShowListUI, IEnumerable<IViewableList>>
     {
-        public IEnumerable<IIconHolder> Items => this.param1;
+        public IEnumerable<IViewableList> Items => this.param1;
     }
 }

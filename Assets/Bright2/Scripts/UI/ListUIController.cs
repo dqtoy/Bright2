@@ -22,7 +22,7 @@ namespace HK.Bright2.UIControllers
 
         private int index = 0;
 
-        private IReadOnlyList<IIconHolder> items;
+        private IReadOnlyList<IViewableList> items;
 
         void Awake()
         {
@@ -53,7 +53,7 @@ namespace HK.Bright2.UIControllers
                 .AddTo(this);
         }
 
-        private List<ListScrollViewItemData> CreateItems(IReadOnlyList<IIconHolder> icons)
+        private List<ListScrollViewItemData> CreateItems(IReadOnlyList<IViewableList> icons)
         {
             this.items = icons;
             var result = new List<ListScrollViewItemData>();
