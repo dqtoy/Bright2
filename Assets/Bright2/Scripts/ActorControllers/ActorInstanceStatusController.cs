@@ -4,6 +4,7 @@ using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
 using HK.Bright2.Extensions;
 using HK.Bright2.GameSystems;
+using HK.Bright2.MaterialControllers;
 using HK.Bright2.StageControllers.Messages;
 using HK.Bright2.WeaponControllers;
 using UniRx;

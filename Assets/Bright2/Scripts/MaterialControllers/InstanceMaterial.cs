@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace HK.Bright2
+namespace HK.Bright2.MaterialControllers
 {
     /// <summary>
     /// 素材のインスタンスデータ
