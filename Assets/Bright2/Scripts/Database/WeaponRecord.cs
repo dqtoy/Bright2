@@ -1,6 +1,7 @@
 ﻿using System;
 using HK.Bright2.GameSystems;
 using HK.Bright2.GimmickControllers;
+using HK.Bright2.UIControllers;
 using HK.Framework.Text;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -11,7 +12,7 @@ namespace HK.Bright2.Database
     /// 武器マスターデータのレコード
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/MasterData/Weapon/Record")]
-    public sealed class WeaponRecord : MasterDataRecord, IMasterDataRecordId, IIconHolder
+    public sealed class WeaponRecord : MasterDataRecord, IMasterDataRecordId, IIconHolder, INameHolder, IViewableList
     {
         public string Id => this.name;
 
@@ -63,5 +64,7 @@ namespace HK.Bright2.Database
         [SerializeField]
         private int itemModifierLimit = default;
         public int ItemModifierLimit => this.itemModifierLimit;
+
+        string INameHolder.Name => this.WeaponName;
     }
 }

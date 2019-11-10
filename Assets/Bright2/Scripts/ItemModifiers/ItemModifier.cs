@@ -1,5 +1,6 @@
 ﻿using HK.Bright2.GameSystems;
 using HK.Bright2.MaterialControllers;
+using HK.Framework.Text;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -14,7 +15,11 @@ namespace HK.Bright2.ItemModifiers
         [SerializeField]
         private Sprite icon = default;
         public Sprite Icon => this.icon;
-        
+
+        [SerializeField]
+        private StringAsset.Finder itemModifierName = default;
+        public string ItemModifierName => this.itemModifierName.Format(this.Amount);
+
         [SerializeField]
         private Constants.ItemModifierType type = default;
         public Constants.ItemModifierType Type => this.type;
