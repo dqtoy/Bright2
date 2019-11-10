@@ -13,6 +13,12 @@ namespace HK.Bright2.UIControllers
         [SerializeField]
         private TextMeshProUGUI message = default;
 
+        [SerializeField]
+        private Color selectedColor = default;
+
+        [SerializeField]
+        private Color unselectedColor = default;
+
         private static readonly ObjectPoolBundle<ChoicesUIElement> pools = new ObjectPoolBundle<ChoicesUIElement>();
 
         private ObjectPool<ChoicesUIElement> pool;
@@ -34,6 +40,11 @@ namespace HK.Bright2.UIControllers
         public void Setup(string message)
         {
             this.message.text = message;
+        }
+
+        public void SetColor(bool selected)
+        {
+            this.message.color = selected ? this.selectedColor : this.unselectedColor;
         }
     }
 }

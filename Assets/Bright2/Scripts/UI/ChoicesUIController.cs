@@ -21,6 +21,8 @@ namespace HK.Bright2.UIControllers
         [SerializeField]
         private CanvasGroup canvasGroup = default;
 
+        private int currentIndex = 0;
+
         private readonly List<ChoicesUIElement> elements = new List<ChoicesUIElement>();
 
         void Awake()
@@ -28,6 +30,7 @@ namespace HK.Bright2.UIControllers
             Broker.Global.Receive<RequestShowChoicesUI>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
+                    _this.currentIndex = 0;
                     _this.Setup(x.Messages);
                 })
                 .AddTo(this);
@@ -37,12 +40,14 @@ namespace HK.Bright2.UIControllers
 
         private void Setup(string[] messages)
         {
-            foreach(var m in messages)
+            for (var i = 0; i < messages.Length; i++)
             {
+                var message = messages[i];
                 var element = this.elementPrefab.Rent();
                 element.transform.SetParent(this.elementParent, false);
                 element.transform.SetAsLastSibling();
-                element.Setup(m);
+                element.Setup(message);
+                element.SetColor(this.currentIndex == i);
             }
 
             this.canvasGroup.alpha = 1.0f;
