@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraman: {fileID: 1262815811}
+  masterData: {fileID: 11400000, guid: 6df4aea6d60034e1dacdb25b440e3210, type: 2}
 --- !u!114 &628932144
 MonoBehaviour:
   m_ObjectHideFlags: 0

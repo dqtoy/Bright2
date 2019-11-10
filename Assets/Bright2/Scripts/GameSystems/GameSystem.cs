@@ -1,5 +1,6 @@
 ﻿using HK.Bright2.ActorControllers;
 using HK.Bright2.CameraControllers;
+using HK.Bright2.Database;
 using HK.Bright2.StageControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -17,6 +18,10 @@ namespace HK.Bright2.GameSystems
         [SerializeField]
         private Cameraman cameraman = default;
         public Cameraman Cameraman => this.cameraman;
+
+        [SerializeField]
+        private MasterData masterData = default;
+        public MasterData MasterData => this.masterData;
 
         public ActorManager ActorManager { get; private set; }
 
