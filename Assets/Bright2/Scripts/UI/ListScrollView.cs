@@ -12,11 +12,19 @@ namespace HK.Bright2.UIControllers
     {
         [SerializeField]
         private Scroller scroller = default;
+        public Scroller Scroller => this.scroller;
 
         [SerializeField]
         private GameObject cellPrefab = default;
 
         protected override GameObject CellPrefab => this.cellPrefab;
+
+        public float CellInterval => this.cellInterval;
+
+        void Start()
+        {
+            this.scroller.OnValueChanged(base.UpdatePosition);
+        }
 
         public void UpdateData(IList<ListScrollViewItemData> items)
         {

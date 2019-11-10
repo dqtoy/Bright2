@@ -20,6 +20,11 @@ namespace HK.Bright2.UIControllers
         [SerializeField]
         private ListScrollView scrollView = default;
 
+        /// <summary>
+        /// リストに表示されている先頭のインデックス
+        /// </summary>
+        private int headIndex = 0;
+
         private int index = 0;
 
         private IReadOnlyList<IViewableList> items;
@@ -73,25 +78,38 @@ namespace HK.Bright2.UIControllers
 
         void IControllableUserInput.UpdateInput()
         {
-            if (Input.GetButtonDown(InputName.Left))
-            {
-                this.index--;
-                this.scrollView.UpdateSelectIndex(this.index);
-            }
-            if (Input.GetButtonDown(InputName.Right))
-            {
-                this.index++;
-                this.scrollView.UpdateSelectIndex(this.index);
-            }
+            // if (Input.GetButtonDown(InputName.Left))
+            // {
+            //     this.index--;
+            //     this.scrollView.UpdateSelectIndex(this.index);
+            // }
+            // if (Input.GetButtonDown(InputName.Right))
+            // {
+            //     this.index++;
+            //     this.scrollView.UpdateSelectIndex(this.index);
+            // }
             if (Input.GetButtonDown(InputName.Up))
             {
-                this.index--;
+                this.index = Mathf.Max(this.index - 1, 0);
                 this.scrollView.UpdateSelectIndex(this.index);
+
+                if(this.headIndex > this.index)
+                {
+                    this.headIndex = this.index;
+                    this.scrollView.Scroller.JumpTo(this.headIndex);
+                }
             }
             if (Input.GetButtonDown(InputName.Down))
             {
-                this.index++;
+                this.index = Mathf.Min(this.index + 1, this.items.Count - 1);
                 this.scrollView.UpdateSelectIndex(this.index);
+                
+                var diffIndex = this.index - this.headIndex;
+                if(diffIndex * this.scrollView.CellInterval > 1.0f)
+                {
+                    this.headIndex++;
+                    this.scrollView.Scroller.JumpTo(this.headIndex);
+                }
             }
             if(Input.GetButtonDown(InputName.Decide))
             {

@@ -51,6 +51,9 @@ namespace HK.Bright2.InputSystems
             this.PushController<ShowChoicesUI>(x => x.Controller);
             this.PopController<HideChoicesUI>(x => x.Controller);
 
+            this.PushController<ShowListUI>(x => x.Controller);
+            this.PopController<HideListUI>(x => x.Controller);
+
             this.UpdateAsObservable()
                 .Where(_ => this.controllers.Count > 0)
                 .SubscribeWithState(this, (_, _this) =>
