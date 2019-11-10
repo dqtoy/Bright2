@@ -43,14 +43,14 @@ namespace HK.Bright2.UIControllers
                 })
                 .AddTo(this);
 
-            Broker.Global.Receive<RequestHideGridUI>()
+            Broker.Global.Receive<RequestHideListUI>()
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     Broker.Global.Publish(HideListUI.Get(_this));
                 })
                 .AddTo(this);
 
-            Broker.Global.Receive<HideGridUI>()
+            Broker.Global.Receive<HideListUI>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.canvasGroup.alpha = 0.0f;
