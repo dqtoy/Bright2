@@ -85,12 +85,12 @@ namespace HK.Bright2.UIControllers
         {
             if (Input.GetButtonDown(InputName.Up))
             {
-                this.AddIndex(1);
+                this.AddIndex(-1);
                 this.SetColor();
             }
             if (Input.GetButtonDown(InputName.Down))
             {
-                this.AddIndex(-1);
+                this.AddIndex(1);
                 this.SetColor();
             }
             if(Input.GetButtonDown(InputName.Decide))
