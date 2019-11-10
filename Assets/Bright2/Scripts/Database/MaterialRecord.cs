@@ -11,7 +11,7 @@ namespace HK.Bright2.Database
     /// 素材マスターデータのレコード
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/MasterData/Material/Record")]
-    public sealed class MaterialRecord : ScriptableObject, IMasterDataRecordId, IIconHolder
+    public sealed class MaterialRecord : MasterDataRecord, IMasterDataRecordId, IIconHolder
     {
         public string Id => this.name;
 

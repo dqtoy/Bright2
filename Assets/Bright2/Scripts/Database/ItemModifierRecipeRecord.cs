@@ -13,7 +13,7 @@ namespace HK.Bright2.Database
     /// アイテム修飾のレシピマスターデータのレコード
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/MasterData/ItemModifierRecipe/Record")]
-    public sealed class ItemModifierRecipeRecord : ScriptableObject, IMasterDataRecordId, IIconHolder
+    public sealed class ItemModifierRecipeRecord : MasterDataRecord, IMasterDataRecordId, IIconHolder
     {
         public string Id => this.name;
 

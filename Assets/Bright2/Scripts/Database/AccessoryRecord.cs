@@ -13,7 +13,7 @@ namespace HK.Bright2.Database
     /// アクセサリーマスターデータのレコード
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/MasterData/Accessory/Record")]
-    public sealed class AccessoryRecord : ScriptableObject, IMasterDataRecordId, IIconHolder
+    public sealed class AccessoryRecord : MasterDataRecord, IMasterDataRecordId, IIconHolder
     {
         public string Id => this.name;
 

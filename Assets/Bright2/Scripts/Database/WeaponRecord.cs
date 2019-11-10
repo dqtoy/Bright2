@@ -11,7 +11,7 @@ namespace HK.Bright2.Database
     /// 武器マスターデータのレコード
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/MasterData/Weapon/Record")]
-    public sealed class WeaponRecord : ScriptableObject, IMasterDataRecordId, IIconHolder
+    public sealed class WeaponRecord : MasterDataRecord, IMasterDataRecordId, IIconHolder
     {
         public string Id => this.name;
 
