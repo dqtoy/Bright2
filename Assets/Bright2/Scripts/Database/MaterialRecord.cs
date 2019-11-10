@@ -18,9 +18,13 @@ namespace HK.Bright2.Database
         [SerializeField]
         private StringAsset.Finder materialName = default;
         public string MaterialName => this.materialName.Get;
-        
+
         [SerializeField]
         private Sprite icon = default;
         public Sprite Icon => this.icon;
+
+        [SerializeField]
+        private Color color = default;
+        public Color Color => this.color;
     }
 }

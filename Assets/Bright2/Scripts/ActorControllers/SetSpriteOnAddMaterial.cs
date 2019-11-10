@@ -15,6 +15,7 @@ namespace HK.Bright2.ActorControllers
         public void Setup(MaterialRecord materialRecord)
         {
             this.controlledRenderer.sprite = materialRecord.Icon;
+            this.controlledRenderer.color = materialRecord.Color;
         }
     }
 }

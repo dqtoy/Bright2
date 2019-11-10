@@ -46,11 +46,17 @@ namespace HK.Bright2.UIControllers
 
         public void Setup(Sprite sprite, string message)
         {
+            this.Setup(sprite, message, Color.white);
+        }
+
+        public void Setup(Sprite sprite, string message, Color color)
+        {
             this.currentVisibleSeconds = 0.0f;
             this.image.sprite = sprite;
             this.message.text = message;
             this.IsVisible = true;
             this.currentVisibleSeconds = 0.0f;
+            this.image.color = color;
         }
 
         public NotificationUIElement Rent()

@@ -66,7 +66,7 @@ namespace HK.Bright2.UIControllers
             this.owner.Broker.Receive<AcquiredMaterial>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    _this.CreateElement(x.MaterialRecord.Icon, x.MaterialRecord.MaterialName);
+                    _this.CreateElement(x.MaterialRecord.Icon, x.MaterialRecord.MaterialName, x.MaterialRecord.Color);
                 })
                 .AddTo(this)
                 .AddTo(this.owner);
@@ -82,8 +82,13 @@ namespace HK.Bright2.UIControllers
 
         private NotificationUIElement CreateElement(Sprite sprite, string message)
         {
+            return this.CreateElement(sprite, message, Color.white);
+        }
+
+        private NotificationUIElement CreateElement(Sprite sprite, string message, Color color)
+        {
             var element = this.element.Rent();
-            element.Setup(sprite, message);
+            element.Setup(sprite, message, color);
             element.transform.SetParent(this.viewport, false);
             element.transform.SetAsFirstSibling();
 
