@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 5130010745901667466}
   - component: {fileID: 1077233051533380410}
   - component: {fileID: 7130203696078052160}
+  - component: {fileID: 2158740011670334669}
   - component: {fileID: 2482635780119607787}
   m_Layer: 5
   m_Name: List
@@ -205,7 +206,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -221,6 +222,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2158740011670334669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061667869429325962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b1a23ae1704b7da96a404d851fd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 7130203696078052160}
+  scrollView: {fileID: 2482635780119607787}
 --- !u!114 &2482635780119607787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellInterval: 0.2
-  scrollOffset: 0.5
+  scrollOffset: 0
   loop: 0
   cellContainer: {fileID: 2004418051480165557}
   scroller: {fileID: 2885378248147527562}

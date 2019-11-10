@@ -48,6 +48,11 @@ namespace HK.Bright2.DebugSystems
                 Broker.Global.Publish(RequestShowChoicesUI.Get(this.choicesMessages));
             }
 
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                Broker.Global.Publish(RequestShowListUI.Get(this.actor.StatusController.PossessionAccessories));
+            }
+
             this.InputOnCtrlKey();
         }
 
