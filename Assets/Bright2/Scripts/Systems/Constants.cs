@@ -111,6 +111,24 @@ namespace HK.Bright2
             Summon,
         }
 
+        /// <summary>
+        /// アイテム修飾のタイプ
+        /// </summary>
+        public enum ItemModifierType
+        {
+            HitPointUpFixed,
+            HitPointUpRate,
+            GiveDamageUpFixed,
+            GiveDamageUpRate,
+            TakeDamageDownFixed,
+            TakeDamageDownRate,
+            CriticalUpRate,
+            DropMoneyUpRate,
+            DropWeaponAndAccessoryRate,
+            DropMaterialRate,
+            CoolTimeDownAndAttackSpeedUpRate,
+        }
+
         public enum FadeType
         {
             ToRight,
