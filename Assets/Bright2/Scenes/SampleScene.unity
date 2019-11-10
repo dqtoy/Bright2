@@ -409,6 +409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c0cd9804786414ca8ffc6507c96bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  choicesMessages:
+  - "\u306F\u3044"
+  - "\u3044\u3044\u3048"
 --- !u!114 &1047912454
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -96,8 +96,8 @@ namespace HK.Bright2.UIControllers
             if(Input.GetButtonDown(InputName.Decide))
             {
                 this.Hide();
-                Broker.Global.Publish(DecideChoicesIndex.Get(this.currentIndex));
                 Broker.Global.Publish(HideChoicesUI.Get(this));
+                Broker.Global.Publish(DecideChoicesIndex.Get(this.currentIndex));
             }
         }
     }

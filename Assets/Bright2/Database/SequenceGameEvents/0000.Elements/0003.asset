@@ -9,7 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ec033b7f1274b6eb1e4ab5d5c4bbeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 36dad50f4a22447c5b52a2d27118db2c, type: 3}
   m_Name: 0003
   m_EditorClassIdentifier: 
-  nextElement: {fileID: 11400000, guid: 55462f7b5d90b49158c19b08292aae9c, type: 2}
+  elements:
+  - message:
+      target: {fileID: 11400000, guid: ffc2ea077ec874909a71b3467b17abeb, type: 2}
+      value: "\u6B66\u5668\u3092\u5909\u66F4"
+      guid: 3093369c-b430-4417-98fa-8c07f250abb7
+    nextSequence: {fileID: 11400000, guid: 455b2b4eee29d4cc884a9774eee56011, type: 2}
+  - message:
+      target: {fileID: 11400000, guid: ffc2ea077ec874909a71b3467b17abeb, type: 2}
+      value: "\u30A2\u30AF\u30BB\u30B5\u30EA\u30FC\u3092\u5909\u66F4"
+      guid: 41e5da23-87f9-4bf9-aefc-207f5cf67e3d
+    nextSequence: {fileID: 11400000, guid: bc902503e23b241ba8a69f85866023e9, type: 2}

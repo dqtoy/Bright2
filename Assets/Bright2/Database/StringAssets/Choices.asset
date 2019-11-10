@@ -10,18 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c932cb5455f464b288e33eb7fa54f213, type: 3}
-  m_Name: Talk
+  m_Name: Choices
   m_EditorClassIdentifier: 
   database:
   - value:
-      ja: "\u3088\u3046\uFF01\u5143\u6C17\u3057\u3066\u308B\u304B\uFF01\uFF1F"
+      ja: "\u6B66\u5668\u3092\u5909\u66F4"
       en: 
-    guid: a77c26d4-a45e-4a37-a8ae-d73842249a47
+    guid: 3093369c-b430-4417-98fa-8c07f250abb7
   - value:
-      ja: "\u4ECA\u65E5\u306F\u4F55\u3057\u306B\u6765\u305F\u3093\u3060\u3044\uFF1F"
+      ja: "\u30A2\u30AF\u30BB\u30B5\u30EA\u30FC\u3092\u5909\u66F4"
       en: 
-    guid: b88e160b-918a-4bd9-a240-ff4d8ee95969
-  - value:
-      ja: "\u307E\u305F\u306A\u30FC\uFF01"
-      en: 
-    guid: 4dc7b9ee-0392-47c8-aeb0-df6edff6f20b
+    guid: 41e5da23-87f9-4bf9-aefc-207f5cf67e3d
