@@ -13,7 +13,7 @@ namespace HK.Bright2.MaterialControllers
     public sealed class NeedMaterials
     {
         [SerializeField]
-        private Element[] elements => default;
+        private Element[] elements = default;
         public Element[] Elements => this.elements;
 
         public bool IsEnough(ActorInstanceStatus status)
@@ -35,7 +35,7 @@ namespace HK.Bright2.MaterialControllers
         }
 
         [Serializable]
-        public class Element
+        public sealed class Element
         {
             [SerializeField]
             private MaterialRecord materialRecord = default;
