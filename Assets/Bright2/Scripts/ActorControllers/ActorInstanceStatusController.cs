@@ -261,6 +261,19 @@ namespace HK.Bright2.ActorControllers
             }
         }
 
+        public void AddMaterial(MaterialRecord materialRecord, int amount)
+        {
+            this.status.PossessionMaterials = this.status.PossessionMaterials ?? new Dictionary<MaterialRecord, InstanceMaterial>();
+            var instance = default(InstanceMaterial);
+            if(!this.status.PossessionMaterials.TryGetValue(materialRecord, out instance))
+            {
+                instance = new InstanceMaterial(materialRecord);
+                this.status.PossessionMaterials.Add(materialRecord, instance);
+            }
+
+            instance.Add(amount);
+        }
+
         private void RegisterUpdateUnderWaterSecondsStream()
         {
             this.owner.UpdateAsObservable()
