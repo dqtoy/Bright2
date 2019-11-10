@@ -56,5 +56,12 @@ namespace HK.Bright2.Database
         [SerializeField]
         private Sprite icon = default;
         public Sprite Icon => this.icon;
+
+        /// <summary>
+        /// アイテム修飾をアタッチ出来る制限数
+        /// </summary>
+        [SerializeField]
+        private int itemModifierLimit = default;
+        public int ItemModifierLimit => this.itemModifierLimit;
     }
 }
