@@ -124,7 +124,7 @@ namespace HK.Bright2.UIControllers
             var diffIndex = this.index - this.headIndex;
             if (diffIndex * this.scrollView.CellInterval > 1.0f)
             {
-                this.headIndex += value;
+                this.headIndex = this.index - (int)(1 / this.scrollView.CellInterval);
                 this.scrollView.Scroller.JumpTo(this.headIndex);
             }
         }
