@@ -53,19 +53,19 @@ namespace HK.Bright2.UIControllers
                 .AddTo(this);
         }
 
-        private List<ListScrollViewItemData> CreateItems(IReadOnlyList<IViewableList> icons)
+        private List<ListScrollViewItemData> CreateItems(IReadOnlyList<IViewableList> items)
         {
-            this.items = icons;
+            this.items = items;
             var result = new List<ListScrollViewItemData>();
 
-            if(icons == null)
+            if(items == null)
             {
                 return result;
             }
 
-            foreach(var i in icons)
+            for (var i = 0; i < items.Count; i++)
             {
-                result.Add(new ListScrollViewItemData(i));
+                result.Add(new ListScrollViewItemData(i, items[i]));
             }
 
             return result;
