@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc938247925f842cebafb1a9ff2c273e, type: 3}
-  m_Name: GiveDamageUpRate_5
+  m_Name: TakeDamageDownRate_15
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 5692d9f10a3ab43bc9eded080112ead9, type: 3}
   itemModifierName:
     target: {fileID: 11400000, guid: de87abfb8265f41cdaeaa10951b0eff4, type: 2}
-    value: "\u4E0E\u30C0\u30E1\u30FC\u30B8{0}\uFF05\u30A2\u30C3\u30D7"
-    guid: abde4512-3a22-4ab4-9a74-354569aae7b5
-  type: 3
-  amount: 5
+    value: "\u88AB\u30C0\u30E1\u30FC\u30B8{0}\uFF05\u30C0\u30A6\u30F3"
+    guid: be6eb105-406f-4c03-b284-9d5c18837394
+  type: 6
+  amount: 15

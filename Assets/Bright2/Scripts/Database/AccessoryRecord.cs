@@ -28,10 +28,6 @@ namespace HK.Bright2.Database
         public Sprite Icon => this.icon;
 
         [SerializeField]
-        private List<AccessoryEffect> effects = default;
-        public List<AccessoryEffect> Effects => this.effects;
-
-        [SerializeField]
         private List<ItemModifier> modifiers = default;
         public List<ItemModifier> Modifiers => this.modifiers;
 

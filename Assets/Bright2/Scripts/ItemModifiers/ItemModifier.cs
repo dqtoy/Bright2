@@ -31,7 +31,7 @@ namespace HK.Bright2.ItemModifiers
 
         public void Give(ActorInstanceStatus.ItemEffectParameter parameter)
         {
-            throw new System.NotImplementedException();
+            parameter.Add(this.type, this.amount);
         }
     }
 }

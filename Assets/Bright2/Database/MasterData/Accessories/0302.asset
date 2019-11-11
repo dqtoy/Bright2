@@ -17,5 +17,5 @@ MonoBehaviour:
     value: "\u7D14\u6B63\u9769\u306E\u30B0\u30ED\u30FC\u30D6"
     guid: 6a14f306-6141-4914-9aea-a6a0405dcc94
   icon: {fileID: 21300000, guid: 9f24131299e0c4840abc060e0bd25227, type: 3}
-  effects:
-  - {fileID: 11400000, guid: a0f2f5cc464734bab8b8b8b43bc34e32, type: 2}
+  modifiers:
+  - {fileID: 11400000, guid: e8f8829c42bc94f6f9b587a5357b8875, type: 2}

@@ -264,9 +264,9 @@ namespace HK.Bright2.ActorControllers
                 }
 
                 var accessoryRecord = this.status.PossessionAccessories[i];
-                foreach(var e in accessoryRecord.Effects)
+                foreach(var m in accessoryRecord.Modifiers)
                 {
-                    e.Give(this.status.AccessoryEffect);
+                    m.Give(this.status.AccessoryEffect);
                 }
             }
         }
