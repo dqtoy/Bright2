@@ -30,7 +30,7 @@ namespace HK.Bright2.WeaponControllers
                     {
                         if(_this.coolTimeSeconds.Value < _this.InstanceWeapon.WeaponRecord.CoolTimeSeconds)
                         {
-                            _this.coolTimeSeconds.Value += Time.deltaTime * (1.0f + _this.owner.StatusController.AccessoryEffect.FireSpeedUp);
+                            _this.coolTimeSeconds.Value += Time.deltaTime * (1.0f + _this.owner.StatusController.AccessoryEffect.Get(Constants.ItemModifierType.FireSpeedUpRate));
                         }
                     }
                 });

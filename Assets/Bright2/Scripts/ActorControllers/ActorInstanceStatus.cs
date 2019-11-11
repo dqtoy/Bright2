@@ -131,38 +131,28 @@ namespace HK.Bright2.ActorControllers
         [Serializable]
         public class ItemEffectParameter
         {
-            /// <summary>
-            /// 与えるダメージの上昇倍率
-            /// </summary>
-            public float DamageUp;
-
-            /// <summary>
-            /// 受けるダメージの減少倍率
-            /// </summary>
-            public float DamageDown;
-
-            /// <summary>
-            /// 攻撃速度の上昇倍率
-            /// </summary>
-            public float FireSpeedUp;
-
-            /// <summary>
-            /// 近接武器による与えるダメージの上昇倍率
-            /// </summary>
-            public float DamageUpMeleeOnly;
-
-            /// <summary>
-            /// 与えたダメージから回復を行う割合
-            /// </summary>
-            public float RecoveryOnGiveDamage;
+            private readonly Dictionary<Constants.ItemModifierType, float> parameters = new Dictionary<Constants.ItemModifierType, float>();
 
             public void Reset()
             {
-                this.DamageUp = 0.0f;
-                this.DamageDown = 0.0f;
-                this.FireSpeedUp = 0.0f;
-                this.DamageUpMeleeOnly = 0.0f;
-                this.RecoveryOnGiveDamage = 0.0f;
+                this.parameters.Clear();
+            }
+
+            public void Add(Constants.ItemModifierType type, float value)
+            {
+                if (!this.parameters.ContainsKey(type))
+                {
+                    this.parameters.Add(type, value);
+                }
+                else
+                {
+                    this.parameters[type] += value;
+                }
+            }
+
+            public float Get(Constants.ItemModifierType type)
+            {
+                return this.parameters.ContainsKey(type) ? this.parameters[type] : 0.0f;
             }
         }
     }

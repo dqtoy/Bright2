@@ -15,7 +15,6 @@ namespace HK.Bright2.AccessoryControllers
 
         public override void Give(ActorInstanceStatus.ItemEffectParameter parameter)
         {
-            parameter.RecoveryOnGiveDamage += this.rate;
         }
     }
 }

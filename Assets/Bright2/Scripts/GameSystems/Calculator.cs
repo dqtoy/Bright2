@@ -21,15 +21,15 @@ namespace HK.Bright2.GameSystems
             var damage = giveDamage.DamagePower;
 
             // アクセサリーの効果分ダメージが上昇する
-            var damageUpRate = attacker.StatusController.AccessoryEffect.DamageUp;
+            var damageUpRate = attacker.StatusController.AccessoryEffect.Get(Constants.ItemModifierType.GiveDamageUpRate);
             if(giveDamage.WeaponType == Constants.WeaponType.Melee)
             {
-                damageUpRate += attacker.StatusController.AccessoryEffect.DamageUpMeleeOnly;
+                damageUpRate += attacker.StatusController.AccessoryEffect.Get(Constants.ItemModifierType.GiveDamageUpRateMeleeOnly);
             }
             var damageUp = Mathf.FloorToInt(damage * damageUpRate);
 
             // アクセサリーの効果分ダメージが減少する
-            var damageDown = Mathf.FloorToInt(damage * target.StatusController.AccessoryEffect.DamageDown);
+            var damageDown = Mathf.FloorToInt(damage * target.StatusController.AccessoryEffect.Get(Constants.ItemModifierType.TakeDamageDownRate));
 
             damage = damage + damageUp - damageDown;
 

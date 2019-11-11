@@ -120,13 +120,19 @@ namespace HK.Bright2
             HitPointUpRate,
             GiveDamageUpFixed,
             GiveDamageUpRate,
+            GiveDamageUpRateMeleeOnly,
             TakeDamageDownFixed,
             TakeDamageDownRate,
             CriticalUpRate,
             DropMoneyUpRate,
             DropWeaponAndAccessoryRate,
             DropMaterialRate,
-            CoolTimeDownAndAttackSpeedUpRate,
+            CoolTimeDownRate,
+            FireSpeedUpRate,
+            CoolTimeDownAndFireSpeedUpRate,
+            WeaponDamageUpFixed,
+            WeaponDamageUpRate,
+            RecoveryOnGiveDamage,
         }
 
         public enum FadeType
