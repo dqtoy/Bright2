@@ -39,7 +39,8 @@ namespace HK.Bright2.GameSystems
             damage = damage + damageUp - damageDown;
 
             // クリティカルヒットの場合はダメージが上昇
-            var isCritical = giveDamage.CriticalRate.Lottery();
+            var criticalRate = giveDamage.CriticalRate + attackerItemModifierEffect.GetPercent(Constants.ItemModifierType.CriticalUpRate);
+            var isCritical = criticalRate.Lottery();
             if(isCritical)
             {
                 damage = Mathf.FloorToInt(damage * 1.5f);
