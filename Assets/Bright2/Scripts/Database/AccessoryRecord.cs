@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using HK.Bright2.AccessoryControllers;
+﻿using System.Collections.Generic;
 using HK.Bright2.GameSystems;
-using HK.Bright2.GimmickControllers;
 using HK.Bright2.ItemModifiers;
 using HK.Bright2.UIControllers;
 using HK.Framework.Text;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace HK.Bright2.Database
 {
