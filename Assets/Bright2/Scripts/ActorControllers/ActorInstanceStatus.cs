@@ -150,9 +150,14 @@ namespace HK.Bright2.ActorControllers
                 }
             }
 
-            public float Get(Constants.ItemModifierType type)
+            public int Get(Constants.ItemModifierType type)
             {
-                return this.parameters.ContainsKey(type) ? this.parameters[type] : 0.0f;
+                return this.parameters.ContainsKey(type) ? this.parameters[type] : 0;
+            }
+
+            public float GetPercent(Constants.ItemModifierType type)
+            {
+                return this.parameters.ContainsKey(type) ? (this.parameters[type] / 100.0f) : 0.0f;
             }
         }
     }

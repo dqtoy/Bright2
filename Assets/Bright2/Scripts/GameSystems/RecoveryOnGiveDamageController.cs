@@ -26,11 +26,11 @@ namespace HK.Bright2.GameSystems
         private void ObserveActor(Actor actor)
         {
             actor.Broker.Receive<GivedDamage>()
-                .Where(x => x.Result.Attacker.StatusController.AccessoryEffect.Get(Constants.ItemModifierType.RecoveryOnGiveDamage) > 0.0f)
+                .Where(x => x.Result.Attacker.StatusController.AccessoryEffect.Get(Constants.ItemModifierType.RecoveryOnGiveDamage) > 0)
                 .Where(x => x.Result.Damage > 0)
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    var damageResult = Calculator.GetRecoveryFromDamage(x.Result.Attacker, x.Result.Damage, x.Result.Attacker.StatusController.AccessoryEffect.Get(Constants.ItemModifierType.RecoveryOnGiveDamage));
+                    var damageResult = Calculator.GetRecoveryFromDamage(x.Result.Attacker, x.Result.Damage, x.Result.Attacker.StatusController.AccessoryEffect.GetPercent(Constants.ItemModifierType.RecoveryOnGiveDamage));
                     x.Result.Attacker.StatusController.TakeDamage(damageResult);
                 })
                 .AddTo(actor);
