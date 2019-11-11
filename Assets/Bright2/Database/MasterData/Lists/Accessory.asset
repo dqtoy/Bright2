@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Accessory
   m_EditorClassIdentifier: 
   records:
+  - {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd, type: 2}
   - {fileID: 11400000, guid: 42987be5e797b41648255f3edb8e7b78, type: 2}
   - {fileID: 11400000, guid: bce97a502aba24b21b0c5f9771444e98, type: 2}
   - {fileID: 11400000, guid: a25dea503bb8d4606b6b0d82e178315d, type: 2}
