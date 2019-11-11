@@ -16,9 +16,10 @@ MonoBehaviour:
     target: {fileID: 11400000, guid: 544fb535d4b5d44e1b9a701b5c3511ec, type: 2}
     value: "\u6728\u306E\u68D2"
     guid: d7938af2-82b2-426b-b418-631a12bfd96f
-  gimmick: {fileID: 4760945173984106893, guid: 51cfa08c5ab4247aa8265b1030812cf4, type: 3}
+  gimmick: {fileID: 3931262568683313117, guid: 925f04a3fddcc41f784f9efef1ab1f7a, type: 3}
   nextStateDelaySeconds: 0.3
   coolTimeSeconds: 0.3
   moveSpeedAttenuationRate: 0.5
   canAutoAttack: 1
   icon: {fileID: 21300000, guid: 73625e67d55edd348b16e2ea4fee45ae, type: 3}
+  itemModifierLimit: 3

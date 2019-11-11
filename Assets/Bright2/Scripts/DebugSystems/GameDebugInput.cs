@@ -50,7 +50,7 @@ namespace HK.Bright2.DebugSystems
 
             if(Input.GetKeyDown(KeyCode.R))
             {
-                Broker.Global.Publish(RequestShowListUI.Get(this.actor.StatusController.PossessionAccessories));
+                Broker.Global.Publish(RequestAttachItemModifierToWeaponFromUserInput.Get(this.actor));
             }
 
             this.InputOnCtrlKey();

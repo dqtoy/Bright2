@@ -11,7 +11,7 @@ namespace HK.Bright2.Database
     {
         [SerializeField]
         private List<E> records = default;
-        public IReadOnlyList<E> Records => this.records;
+        public List<E> Records => this.records;
 
 #if UNITY_EDITOR
         public List<E> EditableList => this.records;

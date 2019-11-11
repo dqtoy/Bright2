@@ -10,7 +10,7 @@ namespace HK.Bright2.ItemModifiers
     /// アイテムに何かしらの効果を付与するクラス
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/ItemModifiers/ItemModifier")]
-    public sealed class ItemModifier : ScriptableObject, IIconHolder
+    public sealed class ItemModifier : ScriptableObject, IItemModifier, IIconHolder
     {
         [SerializeField]
         private Sprite icon = default;

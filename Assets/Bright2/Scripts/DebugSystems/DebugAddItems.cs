@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.Database;
+using HK.Bright2.GameSystems;
 using HK.Bright2.GameSystems.Messages;
 using HK.Framework.EventSystems;
 using UniRx;
@@ -41,6 +42,11 @@ namespace HK.Bright2.DebugSystems
                     for (var i = 0; i < _this.equippedAccessories.Count; i++)
                     {
                         x.Actor.StatusController.ChangeEquippedAccessory(i, _this.equippedAccessories[i]);
+                    }
+
+                    foreach(var m in GameSystem.Instance.MasterData.Material.Records)
+                    {
+                        x.Actor.StatusController.AddMaterial(m, 99);
                     }
                 })
                 .AddTo(this);

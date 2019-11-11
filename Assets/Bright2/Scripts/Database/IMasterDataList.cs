@@ -9,6 +9,6 @@ namespace HK.Bright2.Database
     /// </summary>
     public interface IMasterDataList<E> where E : IMasterDataRecord
     {
-        IReadOnlyList<E> Records { get; }
+        List<E> Records { get; }
     }
 }

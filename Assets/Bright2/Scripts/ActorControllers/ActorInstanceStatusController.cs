@@ -51,6 +51,15 @@ namespace HK.Bright2.ActorControllers
 
         public ActorInstanceStatus.AccessoryEffectParameter AccessoryEffect => this.status.AccessoryEffect;
 
+        public IReadOnlyDictionary<MaterialRecord, InstanceMaterial> PossessionMaterials
+        {
+            get
+            {
+                this.status.PossessionMaterials = this.status.PossessionMaterials ?? new Dictionary<MaterialRecord, InstanceMaterial>();
+                return this.status.PossessionMaterials;
+            }
+        }
+
         public ActorInstanceStatusController(Actor owner, ActorContext context)
         {
             this.owner = owner;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.Database;
 using UnityEngine;
@@ -16,9 +17,8 @@ namespace HK.Bright2.MaterialControllers
         private Element[] elements = default;
         public Element[] Elements => this.elements;
 
-        public bool IsEnough(ActorInstanceStatus status)
+        public bool IsEnough(IReadOnlyDictionary<MaterialRecord, InstanceMaterial> possessionMaterials)
         {
-            var possessionMaterials = status.PossessionMaterials;
             foreach(var e in this.elements)
             {
                 if(!possessionMaterials.ContainsKey(e.MaterialRecord))
@@ -32,6 +32,22 @@ namespace HK.Bright2.MaterialControllers
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// リストなどのUIに表示可能か返す
+        /// </summary>
+        public bool IsViewableList(IReadOnlyDictionary<MaterialRecord, InstanceMaterial> possessionMaterials)
+        {
+            foreach(var e in this.elements)
+            {
+                if(possessionMaterials.ContainsKey(e.MaterialRecord))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         [Serializable]
