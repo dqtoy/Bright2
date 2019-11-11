@@ -16,20 +16,20 @@ namespace HK.Bright2.GameSystems
         public static DamageResult GetDamageOnActor(IGiveDamage giveDamage, Actor target, Vector2 generationSource)
         {
             var attacker = giveDamage.Owner;
-            var attackerAccessoryEffect = attacker.StatusController.AccessoryEffect;
-            var targetAccessoryEffect = target.StatusController.AccessoryEffect;
+            var attackerAccessoryEffect = attacker.StatusController.ItemModifierEffect;
+            var targetAccessoryEffect = target.StatusController.ItemModifierEffect;
             var damage = giveDamage.DamagePower;
 
             // アクセサリーの効果分ダメージが上昇する
-            var damageUpRate = attacker.StatusController.AccessoryEffect.GetPercent(Constants.ItemModifierType.GiveDamageUpRate);
+            var damageUpRate = attacker.StatusController.ItemModifierEffect.GetPercent(Constants.ItemModifierType.GiveDamageUpRate);
             if(giveDamage.WeaponType == Constants.WeaponType.Melee)
             {
-                damageUpRate += attacker.StatusController.AccessoryEffect.GetPercent(Constants.ItemModifierType.GiveDamageUpRateMeleeOnly);
+                damageUpRate += attacker.StatusController.ItemModifierEffect.GetPercent(Constants.ItemModifierType.GiveDamageUpRateMeleeOnly);
             }
             var damageUp = Mathf.FloorToInt(damage * damageUpRate);
 
             // アクセサリーの効果分ダメージが減少する
-            var damageDown = Mathf.FloorToInt(damage * target.StatusController.AccessoryEffect.GetPercent(Constants.ItemModifierType.TakeDamageDownRate));
+            var damageDown = Mathf.FloorToInt(damage * target.StatusController.ItemModifierEffect.GetPercent(Constants.ItemModifierType.TakeDamageDownRate));
 
             damage = damage + damageUp - damageDown;
 

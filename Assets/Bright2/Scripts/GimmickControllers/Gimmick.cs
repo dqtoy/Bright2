@@ -67,7 +67,7 @@ namespace HK.Bright2.GimmickControllers
             this.Direction = owner.StatusController.Direction;
             foreach (var a in this.affectedSpeedUps)
             {
-                a.Affected(owner.StatusController.AccessoryEffect.Get(Constants.ItemModifierType.FireSpeedUpRate));
+                a.Affected(owner.StatusController.ItemModifierEffect.Get(Constants.ItemModifierType.FireSpeedUpRate));
             }
 
             this.decotators = this.decotators ?? this.GetComponentsInChildren<IGimmickDecorator>();
