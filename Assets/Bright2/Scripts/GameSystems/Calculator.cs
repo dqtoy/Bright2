@@ -31,7 +31,10 @@ namespace HK.Bright2.GameSystems
                 attackerItemModifierEffect.Get(Constants.ItemModifierType.GiveDamageUpFixed);
 
             // アクセサリーの効果分ダメージが減少する
-            var damageDown = Mathf.FloorToInt(damage * targetItemModifierEffect.GetPercent(Constants.ItemModifierType.TakeDamageDownRate));
+            var damageDownRate = targetItemModifierEffect.GetPercent(Constants.ItemModifierType.TakeDamageDownRate);
+            var damageDown =
+                Mathf.FloorToInt(damage * damageDownRate) +
+                targetItemModifierEffect.Get(Constants.ItemModifierType.TakeDamageDownFixed);
 
             damage = damage + damageUp - damageDown;
 
