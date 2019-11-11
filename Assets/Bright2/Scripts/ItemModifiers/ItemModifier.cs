@@ -1,4 +1,5 @@
-﻿using HK.Bright2.GameSystems;
+﻿using HK.Bright2.ActorControllers;
+using HK.Bright2.GameSystems;
 using HK.Bright2.MaterialControllers;
 using HK.Framework.Text;
 using UnityEngine;
@@ -27,5 +28,10 @@ namespace HK.Bright2.ItemModifiers
         [SerializeField]
         private float amount = default;
         public float Amount => this.amount;
+
+        public void Give(ActorInstanceStatus.ItemEffectParameter parameter)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

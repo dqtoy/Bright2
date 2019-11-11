@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HK.Bright2.ActorControllers;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ItemModifiers
@@ -8,5 +9,6 @@ namespace HK.Bright2.ItemModifiers
     /// </summary>
     public interface IItemModifier
     {
+        void Give(ActorInstanceStatus.ItemEffectParameter parameter);
     }
 }
