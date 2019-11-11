@@ -24,7 +24,7 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
             var messages = this.elements.Select(x => x.message.Get).ToArray();
             Broker.Global.Publish(RequestShowChoicesUI.Get(messages));
 
-            Broker.Global.Receive<DecideChoicesIndex>()
+            Broker.Global.Receive<DecidedChoicesIndex>()
                 .Take(1)
                 .SubscribeWithState3(this, owner, invoker, (x, _this, _owner, _invoker) =>
                 {

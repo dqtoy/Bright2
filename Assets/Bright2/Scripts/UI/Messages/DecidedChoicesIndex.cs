@@ -7,7 +7,7 @@ namespace HK.Bright2.UIControllers.Messages
     /// <summary>
     /// 選択肢が決定した際のメッセージ
     /// </summary>
-    public sealed class DecideChoicesIndex : Message<DecideChoicesIndex, int>
+    public sealed class DecidedChoicesIndex : Message<DecidedChoicesIndex, int>
     {
         public int Index => this.param1;
     }
