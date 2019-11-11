@@ -49,7 +49,7 @@ namespace HK.Bright2.ActorControllers
 
         public IReadOnlyList<AccessoryRecord> PossessionAccessories => this.status.PossessionAccessories;
 
-        public ActorInstanceStatus.AccessoryEffectParameter AccessoryEffect => this.status.AccessoryEffect;
+        public ActorInstanceStatus.ItemEffectParameter AccessoryEffect => this.status.AccessoryEffect;
 
         public IReadOnlyDictionary<MaterialRecord, InstanceMaterial> PossessionMaterials
         {

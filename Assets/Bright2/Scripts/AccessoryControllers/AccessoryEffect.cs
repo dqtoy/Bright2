@@ -9,6 +9,6 @@ namespace HK.Bright2.AccessoryControllers
     /// </summary>
     public abstract class AccessoryEffect : ScriptableObject, IAccessoryEffect
     {
-        public abstract void Give(ActorInstanceStatus.AccessoryEffectParameter parameter);
+        public abstract void Give(ActorInstanceStatus.ItemEffectParameter parameter);
     }
 }

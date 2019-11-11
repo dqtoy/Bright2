@@ -13,7 +13,7 @@ namespace HK.Bright2.AccessoryControllers
         [SerializeField][Range(0.0f, 1.0f)]
         private float rate = default;
 
-        public override void Give(ActorInstanceStatus.AccessoryEffectParameter parameter)
+        public override void Give(ActorInstanceStatus.ItemEffectParameter parameter)
         {
             parameter.FireSpeedUp += this.rate;
         }

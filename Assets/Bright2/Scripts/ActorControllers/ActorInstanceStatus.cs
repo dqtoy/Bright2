@@ -83,7 +83,7 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// アクセサリー効果
         /// </summary>
-        public AccessoryEffectParameter AccessoryEffect { get; } = new AccessoryEffectParameter();
+        public ItemEffectParameter AccessoryEffect { get; } = new ItemEffectParameter();
 
         /// <summary>
         /// 所持している素材リスト
@@ -126,10 +126,10 @@ namespace HK.Bright2.ActorControllers
         }
 
         /// <summary>
-        /// アクセサリー効果
+        /// アイテムによるパラメータ変化をまとめるクラス
         /// </summary>
         [Serializable]
-        public class AccessoryEffectParameter
+        public class ItemEffectParameter
         {
             /// <summary>
             /// 与えるダメージの上昇倍率

@@ -12,6 +12,6 @@ namespace HK.Bright2.AccessoryControllers
         /// <summary>
         /// 効果を付与する
         /// </summary>
-        void Give(ActorInstanceStatus.AccessoryEffectParameter parameter);
+        void Give(ActorInstanceStatus.ItemEffectParameter parameter);
     }
 }
