@@ -26,8 +26,8 @@ namespace HK.Bright2.ItemModifiers
         public Constants.ItemModifierType Type => this.type;
 
         [SerializeField]
-        private float amount = default;
-        public float Amount => this.amount;
+        private int amount = default;
+        public int Amount => this.amount;
 
         public void Give(ActorInstanceStatus.ItemEffectParameter parameter)
         {

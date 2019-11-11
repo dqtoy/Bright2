@@ -131,14 +131,14 @@ namespace HK.Bright2.ActorControllers
         [Serializable]
         public class ItemEffectParameter
         {
-            private readonly Dictionary<Constants.ItemModifierType, float> parameters = new Dictionary<Constants.ItemModifierType, float>();
+            private readonly Dictionary<Constants.ItemModifierType, int> parameters = new Dictionary<Constants.ItemModifierType, int>();
 
             public void Reset()
             {
                 this.parameters.Clear();
             }
 
-            public void Add(Constants.ItemModifierType type, float value)
+            public void Add(Constants.ItemModifierType type, int value)
             {
                 if (!this.parameters.ContainsKey(type))
                 {

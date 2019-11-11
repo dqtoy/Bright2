@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using HK.Bright2.AccessoryControllers;
 using HK.Bright2.GameSystems;
 using HK.Bright2.GimmickControllers;
+using HK.Bright2.ItemModifiers;
 using HK.Bright2.UIControllers;
 using HK.Framework.Text;
 using UnityEngine;
@@ -29,6 +30,10 @@ namespace HK.Bright2.Database
         [SerializeField]
         private List<AccessoryEffect> effects = default;
         public List<AccessoryEffect> Effects => this.effects;
+
+        [SerializeField]
+        private List<ItemModifier> modifiers = default;
+        public List<ItemModifier> Modifiers => this.modifiers;
 
         string INameHolder.Name => this.AccessoryName;
     }

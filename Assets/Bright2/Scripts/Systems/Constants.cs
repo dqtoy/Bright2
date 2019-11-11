@@ -129,7 +129,6 @@ namespace HK.Bright2
             DropMaterialRate,
             CoolTimeDownRate,
             FireSpeedUpRate,
-            CoolTimeDownAndFireSpeedUpRate,
             WeaponDamageUpFixed,
             WeaponDamageUpRate,
             RecoveryOnGiveDamage,

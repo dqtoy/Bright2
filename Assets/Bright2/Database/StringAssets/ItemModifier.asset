@@ -17,3 +17,59 @@ MonoBehaviour:
       ja: "HP{0}\u30A2\u30C3\u30D7"
       en: 
     guid: 0d044e3c-b1a9-4247-adad-97a8de9d21cf
+  - value:
+      ja: "HP{0}\uFF05\u30A2\u30C3\u30D7"
+      en: 
+    guid: d138ba17-e4af-4bdb-ab71-644baa2af53e
+  - value:
+      ja: "\u4E0E\u30C0\u30E1\u30FC\u30B8{0}\u30A2\u30C3\u30D7"
+      en: 
+    guid: 8a5d5d42-c696-450b-8e2b-f2f2751d5528
+  - value:
+      ja: "\u4E0E\u30C0\u30E1\u30FC\u30B8{0}\uFF05\u30A2\u30C3\u30D7"
+      en: 
+    guid: abde4512-3a22-4ab4-9a74-354569aae7b5
+  - value:
+      ja: "\u8FD1\u63A5\u6B66\u5668\u306E\u4E0E\u30C0\u30E1{0}\uFF05\u30A2\u30C3\u30D7"
+      en: 
+    guid: 1993c475-394b-4352-8374-ee40ef62cf15
+  - value:
+      ja: "\u88AB\u30C0\u30E1\u30FC\u30B8{0}\u30C0\u30A6\u30F3"
+      en: 
+    guid: 06170406-69cf-47d0-b2c6-b2915d9e6cb6
+  - value:
+      ja: "\u88AB\u30C0\u30E1\u30FC\u30B8{0}\uFF05\u30C0\u30A6\u30F3"
+      en: 
+    guid: be6eb105-406f-4c03-b284-9d5c18837394
+  - value:
+      ja: "\u30AF\u30EA\u30C6\u30A3\u30AB\u30EB\u7387{0}\uFF05\u30A2\u30C3\u30D7"
+      en: 
+    guid: f470dd8d-c9bf-4aff-825a-c76dc6b0d256
+  - value:
+      ja: "\u304A\u91D1\u30C9\u30ED\u30C3\u30D7\u91CF{0}\uFF05\u30A2\u30C3\u30D7"
+      en: 
+    guid: 99560457-f6e0-4ca4-adb0-3eb8308bb4be
+  - value:
+      ja: "\u30A2\u30A4\u30C6\u30E0\u30C9\u30ED\u30C3\u30D7\u78BA\u7387{0}\uFF05\u30A2\u30C3\u30D7"
+      en: 
+    guid: eb621fd2-4d91-46d1-b10e-b19bbf0e561c
+  - value:
+      ja: "\u7D20\u6750\u30C9\u30ED\u30C3\u30D7\u78BA\u7387{0}\uFF05\u30A2\u30C3\u30D7"
+      en: 
+    guid: f9450986-bc04-4a88-8e83-2c1b7adc7c7b
+  - value:
+      ja: "\u30AF\u30FC\u30EB\u30BF\u30A4\u30E0{0}\uFF05\u30C0\u30A6\u30F3"
+      en: 
+    guid: f7b6e3ae-321f-486f-a087-319e3a6cbb21
+  - value:
+      ja: "\u653B\u6483\u901F\u5EA6{0}\uFF05\u30A2\u30C3\u30D7"
+      en: 
+    guid: 31c28ae3-52b3-417c-bb21-b527721853a9
+  - value:
+      ja: "\u3053\u306E\u6B66\u5668\u306E\u4E0E\u30C0\u30E1{0}\u30A2\u30C3\u30D7"
+      en: 
+    guid: 3d1694a5-68d8-4cd5-b030-14593bf3ac6c
+  - value:
+      ja: "\u3053\u306E\u6B66\u5668\u306E\u4E0E\u30C0\u30E1{0}\uFF05\u30A2\u30C3\u30D7"
+      en: 
+    guid: 0acf3d2f-66b5-42c4-9afb-e9dd2198895b
