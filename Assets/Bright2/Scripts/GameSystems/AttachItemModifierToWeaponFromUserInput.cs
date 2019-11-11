@@ -75,7 +75,7 @@ namespace HK.Bright2.GameSystems
 
                     // TODO: お金消費
 
-                    _this.selectWeapon.Modifiers.Add(item.ItemModifier);
+                    _actor.StatusController.AttachItemModifierToInstanceWeapon(_this.selectWeapon, item.ItemModifier);
                     Debug.Log("アタッチ完了");
 
                     // 修飾数が制限値になった場合は終了

@@ -4,6 +4,7 @@ using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
 using HK.Bright2.Extensions;
 using HK.Bright2.GameSystems;
+using HK.Bright2.ItemModifiers;
 using HK.Bright2.MaterialControllers;
 using HK.Bright2.StageControllers.Messages;
 using HK.Bright2.WeaponControllers;
@@ -49,7 +50,7 @@ namespace HK.Bright2.ActorControllers
 
         public IReadOnlyList<AccessoryRecord> PossessionAccessories => this.status.PossessionAccessories;
 
-        public ActorInstanceStatus.ItemEffectParameter AccessoryEffect => this.status.AccessoryEffect;
+        public ActorInstanceStatus.ItemModifierEffectParameter AccessoryEffect => this.status.ItemModifierEffect;
 
         public IReadOnlyDictionary<MaterialRecord, InstanceMaterial> PossessionMaterials
         {
@@ -130,6 +131,8 @@ namespace HK.Bright2.ActorControllers
 
             this.status.EquippedWeapons[index].Change(instanceWeapon);
             this.owner.Broker.Publish(ChangedEquippedWeapon.Get(index));
+
+            this.ResetItemModifierParameter();
         }
 
         public void SetDirection(Constants.Direction direction)
@@ -255,20 +258,7 @@ namespace HK.Bright2.ActorControllers
                 this.status.EquippedAccessories[equippedAccessoryIndex] = possessionAccessoryIndex;
             }
 
-            this.status.AccessoryEffect.Reset();
-            foreach(var i in this.status.EquippedAccessories)
-            {
-                if(i == -1)
-                {
-                    continue;
-                }
-
-                var accessoryRecord = this.status.PossessionAccessories[i];
-                foreach(var m in accessoryRecord.Modifiers)
-                {
-                    m.Give(this.status.AccessoryEffect);
-                }
-            }
+            this.ResetItemModifierParameter();
         }
 
         public void AddMaterial(MaterialRecord materialRecord, int amount)
@@ -283,6 +273,14 @@ namespace HK.Bright2.ActorControllers
 
             instance.Add(amount);
             this.owner.Broker.Publish(AcquiredMaterial.Get(materialRecord));
+        }
+
+        public void AttachItemModifierToInstanceWeapon(InstanceWeapon instanceWeapon, IItemModifier itemModifier)
+        {
+            Assert.IsTrue(this.status.PossessionWeapons.Contains(instanceWeapon), "所持していない武器です");
+            instanceWeapon.Modifiers.Add(itemModifier);
+
+            this.ResetItemModifierParameter();
         }
 
         private void RegisterUpdateUnderWaterSecondsStream()
@@ -310,6 +308,38 @@ namespace HK.Bright2.ActorControllers
                     _this.TakeDamage(Calculator.GetDamageResultOnLackOfOxygen(_this.owner));
                 })
                 .AddTo(this.owner);
+        }
+
+        private void ResetItemModifierParameter()
+        {
+            this.status.ItemModifierEffect.Reset();
+
+            foreach(var w in this.status.EquippedWeapons)
+            {
+                if(w.InstanceWeapon == null)
+                {
+                    continue;
+                }
+
+                foreach(var i in w.InstanceWeapon.Modifiers)
+                {
+                    i.Give(this.status.ItemModifierEffect);
+                }
+            }
+
+            foreach (var i in this.status.EquippedAccessories)
+            {
+                if (i == -1)
+                {
+                    continue;
+                }
+
+                var accessoryRecord = this.status.PossessionAccessories[i];
+                foreach (var m in accessoryRecord.Modifiers)
+                {
+                    m.Give(this.status.ItemModifierEffect);
+                }
+            }
         }
     }
 }

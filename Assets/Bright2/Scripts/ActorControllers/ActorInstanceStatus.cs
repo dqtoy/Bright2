@@ -81,9 +81,9 @@ namespace HK.Bright2.ActorControllers
         public List<AccessoryRecord> PossessionAccessories { get; set; }
 
         /// <summary>
-        /// アクセサリー効果
+        /// アイテム修飾効果
         /// </summary>
-        public ItemEffectParameter AccessoryEffect { get; } = new ItemEffectParameter();
+        public ItemModifierEffectParameter ItemModifierEffect { get; } = new ItemModifierEffectParameter();
 
         /// <summary>
         /// 所持している素材リスト
@@ -129,7 +129,7 @@ namespace HK.Bright2.ActorControllers
         /// アイテムによるパラメータ変化をまとめるクラス
         /// </summary>
         [Serializable]
-        public class ItemEffectParameter
+        public class ItemModifierEffectParameter
         {
             private readonly Dictionary<Constants.ItemModifierType, int> parameters = new Dictionary<Constants.ItemModifierType, int>();
 

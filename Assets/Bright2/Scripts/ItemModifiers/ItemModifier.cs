@@ -29,7 +29,7 @@ namespace HK.Bright2.ItemModifiers
         private int amount = default;
         public int Amount => this.amount;
 
-        public void Give(ActorInstanceStatus.ItemEffectParameter parameter)
+        public void Give(ActorInstanceStatus.ItemModifierEffectParameter parameter)
         {
             parameter.Add(this.type, this.amount);
         }
