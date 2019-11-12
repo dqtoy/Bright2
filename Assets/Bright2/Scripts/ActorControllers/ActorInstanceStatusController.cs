@@ -340,6 +340,16 @@ namespace HK.Bright2.ActorControllers
                     m.Give(this.status.ItemModifierEffect);
                 }
             }
+
+            var hitPoint = this.context.BasicStatus.HitPoint;
+            this.status.HitPointMax.Value =
+                hitPoint +
+                Mathf.FloorToInt(hitPoint * this.ItemModifierEffect.GetPercent(Constants.ItemModifierType.HitPointUpRate)) +
+                this.ItemModifierEffect.Get(Constants.ItemModifierType.HitPointUpFixed);
+            if(this.status.HitPoint.Value > this.status.HitPointMax.Value)
+            {
+                this.status.HitPoint.Value = this.status.HitPointMax.Value;
+            }
         }
     }
 }
