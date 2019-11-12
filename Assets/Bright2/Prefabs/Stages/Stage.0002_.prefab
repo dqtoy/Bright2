@@ -1744,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: 1929582527093305865, guid: 5d6fe39413e7a42cbb3e9741de3dbd79,
         type: 3}
       propertyPath: m_Name
-      value: Stage.0002
+      value: Stage.0002_
       objectReference: {fileID: 0}
     - target: {fileID: 7812829178199910331, guid: 5d6fe39413e7a42cbb3e9741de3dbd79,
         type: 3}
@@ -1885,7 +1885,7 @@ PrefabInstance:
         type: 3}
       propertyPath: prefab
       value: 
-      objectReference: {fileID: 8491219769089868142, guid: 359f367d0f6dd493da5d4dc9e96450e7,
+      objectReference: {fileID: 8491219769089868142, guid: bcaeba8c47db4444baf0b752e578fd16,
         type: 3}
     - target: {fileID: 2093156365157048981, guid: 89a7a197ba58640d39e7b3a13d68cb11,
         type: 3}
