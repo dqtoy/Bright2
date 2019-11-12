@@ -21,5 +21,10 @@ namespace HK.Bright2.GameSystems
         IEnumerable<T> GetDropData(Actor actor);
 
         void Setup(Gimmick gimmick, E dropData);
+
+        /// <summary>
+        /// アイテムをドロップするか抽選を行う
+        /// </summary>
+        bool Lottery(T dropItem, Actor attacker);
     }
 }

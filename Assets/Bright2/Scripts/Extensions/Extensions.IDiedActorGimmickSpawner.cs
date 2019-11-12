@@ -33,7 +33,7 @@ namespace HK.Bright2.Extensions
                 {
                     foreach (var d in _this.GetDropData(a))
                     {
-                        if (!d.Lottery())
+                        if (!_this.Lottery(d, x.Attacker))
                         {
                             continue;
                         }

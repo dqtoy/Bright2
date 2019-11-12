@@ -13,9 +13,9 @@ namespace HK.Bright2.Extensions
         /// <summary>
         /// 抽選を行う
         /// </summary>
-        public static bool Lottery(this ILottery self)
+        public static bool Lottery(this ILottery self, float addRate = 0.0f)
         {
-            return self.WinningRate.Lottery();
+            return (self.WinningRate + (self.WinningRate * addRate)).Lottery();
         }
     }
 }

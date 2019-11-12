@@ -54,5 +54,10 @@ namespace HK.Bright2.GameSystems
                 i.Setup(dropData);
             }
         }
+
+        bool IDiedActorGimmickSpawner<DropAccessory, AccessoryRecord>.Lottery(DropAccessory dropItem, Actor attacker)
+        {
+            return dropItem.Lottery(attacker.StatusController.ItemModifierEffect.GetPercent(Constants.ItemModifierType.DropWeaponAndAccessoryRate));
+        }
     }
 }

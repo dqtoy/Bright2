@@ -13,7 +13,7 @@ namespace HK.Bright2.Extensions
         /// </summary>
         public static bool Lottery(this float self)
         {
-            Assert.IsTrue(self >= 0.0f && self <= 1.0f);
+            Assert.IsTrue(self >= 0.0f);
             return self >= Random.value;
         }
     }
