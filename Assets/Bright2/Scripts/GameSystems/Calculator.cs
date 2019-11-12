@@ -30,6 +30,27 @@ namespace HK.Bright2.GameSystems
                 Mathf.FloorToInt(damage * damageUpRate) +
                 attackerItemModifierEffect.Get(Constants.ItemModifierType.GiveDamageUpFixed);
 
+            // 攻撃した武器に修飾がある場合はダメージが上昇する
+            var instanceWeapon = giveDamage.InstanceWeapon;
+            if(instanceWeapon != null)
+            {
+                var rateValue = 0.0f;
+                var fixedValue = 0;
+                foreach(var i in instanceWeapon.Modifiers)
+                {
+                    if(i.Type == Constants.ItemModifierType.WeaponDamageUpRate)
+                    {
+                        rateValue += i.Amount / 100.0f;
+                    }
+                    if(i.Type == Constants.ItemModifierType.WeaponDamageUpFixed)
+                    {
+                        fixedValue += i.Amount;
+                    }
+                }
+
+                damageUp += Mathf.FloorToInt(damage * rateValue) + fixedValue;
+            }
+
             // アクセサリーの効果分ダメージが減少する
             var damageDownRate = targetItemModifierEffect.GetPercent(Constants.ItemModifierType.TakeDamageDownRate);
             var damageDown =
@@ -136,7 +157,7 @@ namespace HK.Bright2.GameSystems
             {
                 return money;
             }
-            
+
             var dropRate = attacker.StatusController.ItemModifierEffect.GetPercent(Constants.ItemModifierType.DropMoneyUpRate);
             if(dropRate <= 0.0f)
             {

@@ -549,6 +549,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
+      propertyPath: possessionWeapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
+        type: 3}
       propertyPath: possessionWeapons.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac,
@@ -624,6 +629,12 @@ PrefabInstance:
       propertyPath: possessionAccessories.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd,
+        type: 2}
+    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
+        type: 3}
+      propertyPath: possessionWeapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440e0dcec61524c838c3c17f3645b397, type: 3}

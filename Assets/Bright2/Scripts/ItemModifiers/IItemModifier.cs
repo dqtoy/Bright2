@@ -9,6 +9,10 @@ namespace HK.Bright2.ItemModifiers
     /// </summary>
     public interface IItemModifier
     {
+        Constants.ItemModifierType Type { get; }
+
+        int Amount { get; }
+        
         void Give(ActorInstanceStatus.ItemModifierEffectParameter parameter);
     }
 }
