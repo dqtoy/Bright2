@@ -30,7 +30,7 @@ namespace HK.Bright2.WeaponControllers
                     {
                         if(_this.coolTimeSeconds.Value < _this.InstanceWeapon.WeaponRecord.CoolTimeSeconds)
                         {
-                            _this.coolTimeSeconds.Value += Time.deltaTime * (1.0f + _this.owner.StatusController.ItemModifierEffect.Get(Constants.ItemModifierType.FireSpeedUpRate));
+                            _this.coolTimeSeconds.Value += Time.deltaTime;
                         }
                     }
                 });
@@ -67,7 +67,21 @@ namespace HK.Bright2.WeaponControllers
                     return 1.0f;
                 }
 
-                return Mathf.Clamp01(this.coolTimeSeconds.Value / this.InstanceWeapon.WeaponRecord.CoolTimeSeconds);
+                return Mathf.Clamp01(this.coolTimeSeconds.Value / this.CoolTimeMax);
+            }
+        }
+
+        private float CoolTimeMax
+        {
+            get
+            {
+                if(this.InstanceWeapon == null)
+                {
+                    return 0.0f;
+                }
+
+                var coolTime = this.InstanceWeapon.WeaponRecord.CoolTimeSeconds;
+                return coolTime - (coolTime * this.owner.StatusController.ItemModifierEffect.GetPercent(Constants.ItemModifierType.CoolTimeDownRate));
             }
         }
 

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc938247925f842cebafb1a9ff2c273e, type: 3}
-  m_Name: DropEquipmentUpRate_10
+  m_Name: FireSpeedUpRate_15
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 5692d9f10a3ab43bc9eded080112ead9, type: 3}
   itemModifierName:
     target: {fileID: 11400000, guid: de87abfb8265f41cdaeaa10951b0eff4, type: 2}
-    value: "\u30A2\u30A4\u30C6\u30E0\u30C9\u30ED\u30C3\u30D7\u78BA\u7387{0}\uFF05\u30A2\u30C3\u30D7"
-    guid: eb621fd2-4d91-46d1-b10e-b19bbf0e561c
-  type: 9
-  amount: 10
+    value: "\u653B\u6483\u901F\u5EA6{0}\uFF05\u30A2\u30C3\u30D7"
+    guid: 31c28ae3-52b3-417c-bb21-b527721853a9
+  type: 12
+  amount: 15
