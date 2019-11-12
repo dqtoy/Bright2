@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5547bfeffef54c7b893aa92c463686f, type: 3}
-  m_Name: WeaponDamageUpFixed_10_0
+  m_Name: WeaponDamageUpRate_10_0
   m_EditorClassIdentifier: 
-  itemModifier: {fileID: 11400000, guid: aae646a319a374ee6a40be546c8a3a2f, type: 2}
+  itemModifier: {fileID: 11400000, guid: b7e27dd60297247bd84bcd26b27bbd6c, type: 2}
   needMaterials:
     elements:
     - materialRecord: {fileID: 11400000, guid: 6f0b3cd60ef224b68b638924cbd0e091, type: 2}

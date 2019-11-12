@@ -121,7 +121,7 @@ namespace HK.Bright2.ActorControllers
                     return true;
                 }
 
-                return this.JumpCount < this.context.BasicStatus.LimitJumpCount;
+                return this.JumpCount < (this.context.BasicStatus.LimitJumpCount + this.ItemModifierEffect.Get(Constants.ItemModifierType.AddJumpCount));
             }
         }
 

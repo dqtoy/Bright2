@@ -132,6 +132,7 @@ namespace HK.Bright2
             WeaponDamageUpFixed,
             WeaponDamageUpRate,
             RecoveryOnGiveDamage,
+            AddJumpCount,
         }
 
         public enum FadeType
