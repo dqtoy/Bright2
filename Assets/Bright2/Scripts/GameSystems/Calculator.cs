@@ -129,5 +129,24 @@ namespace HK.Bright2.GameSystems
 
             return result;
         }
+
+        public static int GetMoney(Actor attacker, int money)
+        {
+            if(attacker == null)
+            {
+                return money;
+            }
+            
+            var dropRate = attacker.StatusController.ItemModifierEffect.GetPercent(Constants.ItemModifierType.DropMoneyUpRate);
+            if(dropRate <= 0.0f)
+            {
+                return money;
+            }
+
+            var addMoney = Mathf.FloorToInt(money * dropRate);
+            addMoney = Mathf.Max(addMoney, 1);
+
+            return money + addMoney;
+        }
     }
 }

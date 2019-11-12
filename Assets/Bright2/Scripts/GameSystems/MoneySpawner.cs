@@ -36,7 +36,7 @@ namespace HK.Bright2.GameSystems
             Broker.Global.Receive<RequestSpawnMoney>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    _this.CreateGimmick(x.Owner, x.SpawnPosition, x.Amount);
+                    _this.CreateGimmick(x.Owner, x.SpawnPosition, Calculator.GetMoney(x.Owner, x.Amount));
                 })
                 .AddTo(this);
         }
@@ -46,7 +46,7 @@ namespace HK.Bright2.GameSystems
             actor.Broker.Receive<Died>()
                 .SubscribeWithState2(this, actor, (x, _this, a) =>
                 {
-                    _this.CreateGimmick(a, a.CachedTransform.position + _this.offset, a.StatusController.Money);
+                    _this.CreateGimmick(a, a.CachedTransform.position + _this.offset, Calculator.GetMoney(x.Attacker, a.StatusController.Money));
                 })
                 .AddTo(this);
         }
