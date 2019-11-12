@@ -2,6 +2,7 @@
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems.GiveDamageActorAdditionalEffects;
 using HK.Bright2.GimmickControllers;
+using HK.Bright2.WeaponControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -85,6 +86,8 @@ namespace HK.Bright2.GameSystems
         public abstract GameObject Root { get; }
 
         public abstract Vector2 KnockbackDirection { get; }
+
+        InstanceWeapon IGiveDamage.InstanceWeapon { get; set; }
 
         private float fireSpeedUpRate;
 

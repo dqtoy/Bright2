@@ -1,5 +1,6 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Extensions;
+using HK.Bright2.GameSystems;
 using HK.Bright2.WeaponControllers;
 using UniRx;
 using UniRx.Triggers;
@@ -93,6 +94,10 @@ namespace HK.Bright2.ActorControllers.States
             gimmick.transform.position = parent.position;
             gimmick.transform.rotation = parent.rotation;
             gimmick.Activate(this.owner);
+            foreach(var giveDamage in gimmick.GetComponentsInChildren<IGiveDamage>())
+            {
+                giveDamage.InstanceWeapon = equippedWeapon.InstanceWeapon;
+            }
             equippedWeapon.ResetCoolTime();
         }
     }

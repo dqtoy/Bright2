@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems.GiveDamageActorAdditionalEffects;
+using HK.Bright2.WeaponControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -79,6 +80,14 @@ namespace HK.Bright2.GameSystems
         /// <c>-1</c>の場合は無限に貫通する
         /// </remarks>
         int CurrentPenetrationCount { get; set; }
+
+        /// <summary>
+        /// ダメージを与える<see cref="InstanceWeapon"/>
+        /// </summary>
+        /// <remarks>
+        /// 装備していない場合は<c>null</c>が入ります
+        /// </remarks>
+        InstanceWeapon InstanceWeapon { get; set; }
 
         /// <summary>
         /// 攻撃が当たった際の追加効果
