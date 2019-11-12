@@ -62,7 +62,7 @@ namespace HK.Bright2.ActorControllers.States
             this.owner.UpdateAsObservable()
                 .SubscribeWithState3(this, weaponRecord, equippedWeapon, (_, _this, _weaponRecord, _equippedWeapon) =>
                 {
-                    _this.nextStateDelaySeconds += Time.deltaTime * (1.0f + _this.owner.StatusController.ItemModifierEffect.Get(Constants.ItemModifierType.FireSpeedUpRate));
+                    _this.nextStateDelaySeconds += Time.deltaTime * (1.0f + _this.owner.StatusController.ItemModifierEffect.GetPercent(Constants.ItemModifierType.FireSpeedUpRate));
                     if (_this.nextStateDelaySeconds >= _weaponRecord.NextStateDelaySeconds)
                     {
                         if(this.canNextFire)
