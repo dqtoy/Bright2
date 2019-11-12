@@ -160,7 +160,7 @@ namespace HK.Bright2.ActorControllers
             // 死亡したら通知する
             if(this.status.HitPoint.Value <= 0)
             {
-                this.owner.Broker.Publish(Died.Get());
+                this.owner.Broker.Publish(Died.Get(damageResult.Attacker));
             }
         }
 
