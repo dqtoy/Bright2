@@ -126,7 +126,7 @@ namespace HK.Bright2
             CriticalUpRate,
             DropMoneyUpRate,
             DropEquipmentUpRate,
-            DropMaterialRate,
+            DropMaterialUpRate,
             CoolTimeDownRate,
             FireSpeedUpRate,
             WeaponDamageUpFixed,
