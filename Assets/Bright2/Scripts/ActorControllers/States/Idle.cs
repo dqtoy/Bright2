@@ -45,14 +45,20 @@ namespace HK.Bright2.ActorControllers.States
                 })
                 .AddTo(this.events);
 
+            if(this.owner.StatusController.IsDash)
+            {
+                this.owner.Broker.Receive<Messages.Idle>()
+                    .Take(1)
+                    .SubscribeWithState(this, (_, _this) =>
+                    {
+                        _this.owner.StatusController.EndDash();
+                    })
+                    .AddTo(this.events);
+            }
+            
             this.ReceiveRequestFireOnChangeAttackState();
             this.ReceiveRequestInvokeGameEventOnInvokeGameEvent();
             this.ReceiveRequestFallOneWayPlatforms();
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
         }
     }
 }

@@ -52,6 +52,8 @@ namespace HK.Bright2.ActorControllers
 
         public ActorInstanceStatus.ItemModifierEffectParameter ItemModifierEffect => this.status.ItemModifierEffect;
 
+        public float MoveSpeed => this.context.BasicStatus.MoveSpeed * this.status.MoveSpeedRate;
+
         public IReadOnlyDictionary<MaterialRecord, InstanceMaterial> PossessionMaterials
         {
             get
@@ -122,6 +124,14 @@ namespace HK.Bright2.ActorControllers
                 }
 
                 return this.JumpCount < (this.context.BasicStatus.LimitJumpCount + this.ItemModifierEffect.Get(Constants.ItemModifierType.AddJumpCount));
+            }
+        }
+
+        public bool IsDash
+        {
+            get
+            {
+                return this.status.MoveSpeedRate > 1.0f;
             }
         }
 
@@ -281,6 +291,16 @@ namespace HK.Bright2.ActorControllers
             instanceWeapon.Modifiers.Add(itemModifier);
 
             this.ResetItemModifierParameter();
+        }
+
+        public void StartDash()
+        {
+            this.status.MoveSpeedRate = 2.0f;
+        }
+
+        public void EndDash()
+        {
+            this.status.MoveSpeedRate = 1.0f;
         }
 
         private void RegisterUpdateUnderWaterSecondsStream()

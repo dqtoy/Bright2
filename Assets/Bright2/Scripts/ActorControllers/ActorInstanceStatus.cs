@@ -53,6 +53,11 @@ namespace HK.Bright2.ActorControllers
         public float EnterUnderWaterSeconds { get; set; }
 
         /// <summary>
+        /// 移動速度の倍率
+        /// </summary>
+        public float MoveSpeedRate { get; set; } = 1.0f;
+
+        /// <summary>
         /// 水中にいるか返す
         /// </summary>
         public bool IsEnterUnderWater => this.EnterUnderWaterSeconds > 0.0f;
@@ -158,6 +163,11 @@ namespace HK.Bright2.ActorControllers
             public float GetPercent(Constants.ItemModifierType type)
             {
                 return this.parameters.ContainsKey(type) ? (this.parameters[type] / 100.0f) : 0.0f;
+            }
+
+            public bool Contains(Constants.ItemModifierType type)
+            {
+                return this.parameters.ContainsKey(type);
             }
         }
     }

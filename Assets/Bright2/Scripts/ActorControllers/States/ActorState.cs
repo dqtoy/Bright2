@@ -42,7 +42,7 @@ namespace HK.Bright2.ActorControllers.States
             this.context = context;
         }
 
-        public virtual void Exit()
+        public virtual void Exit(ActorState.Name nextState)
         {
             this.events.Clear();
         }

@@ -133,6 +133,7 @@ namespace HK.Bright2
             WeaponDamageUpRate,
             RecoveryOnGiveDamage,
             AddJumpCount,
+            Dash,
         }
 
         public enum FadeType
@@ -175,5 +176,13 @@ namespace HK.Bright2
         /// フレームレート
         /// </summary>
         public const int TargetFrameRate = 60;
+
+        /// <summary>
+        /// ダッシュを受け付ける時間
+        /// </summary>
+        /// <remarks>
+        /// この秒数までに走るステートへ2回遷移した場合にダッシュします
+        /// </remarks>
+        public const float DashReceptionTime = 0.2f;
     }
 }

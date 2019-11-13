@@ -15,6 +15,6 @@ namespace HK.Bright2.ActorControllers.States
 
         void Enter(IActorStateContext context);
 
-        void Exit();
+        void Exit(ActorState.Name nextState);
     }
 }

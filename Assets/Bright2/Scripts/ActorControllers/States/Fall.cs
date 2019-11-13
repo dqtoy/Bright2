@@ -21,7 +21,7 @@ namespace HK.Bright2.ActorControllers.States
 
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Fall);
 
-            this.ReceiveRequestMoveOnMove(this.owner.Context.BasicStatus.MoveSpeed);
+            this.ReceiveRequestMoveOnMove(this.owner.StatusController.MoveSpeed);
             
             this.owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
