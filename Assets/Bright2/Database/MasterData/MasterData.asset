@@ -16,3 +16,4 @@ MonoBehaviour:
   accessory: {fileID: 11400000, guid: 507dddf0016c04d398c36d6104d7fc39, type: 2}
   material: {fileID: 11400000, guid: 38803ba05910347c4af1fc0b3b414e95, type: 2}
   itemModifierRecipe: {fileID: 11400000, guid: 5b56233ded6694712a8a7690993657fd, type: 2}
+  weaponRecipeList: {fileID: 11400000, guid: 8679392759f7f480585a340221fd515e, type: 2}
