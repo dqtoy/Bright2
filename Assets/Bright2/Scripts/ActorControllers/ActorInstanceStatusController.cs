@@ -42,8 +42,6 @@ namespace HK.Bright2.ActorControllers
 
         public Constants.Direction Direction => this.status.Direction;
 
-        public int Money => this.status.Money;
-
         public IGameEvent GameEvent => this.status.GameEvent;
 
         public IReadOnlyList<InstanceWeapon> PossessionWeapons => this.status.PossessionWeapons;
@@ -172,12 +170,6 @@ namespace HK.Bright2.ActorControllers
             {
                 this.owner.Broker.Publish(Died.Get(damageResult.Attacker));
             }
-        }
-
-        public void AddMoney(int value)
-        {
-            this.status.Money += value;
-            this.owner.Broker.Publish(AcquiredMoney.Get(value));
         }
 
         public void AddWeapon(WeaponRecord weapon)

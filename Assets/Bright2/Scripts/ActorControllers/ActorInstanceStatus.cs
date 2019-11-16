@@ -33,11 +33,6 @@ namespace HK.Bright2.ActorControllers
         public Constants.Direction Direction { get; set; }
 
         /// <summary>
-        /// 所持金
-        /// </summary>
-        public int Money { get; set; }
-
-        /// <summary>
         /// 所持している武器
         /// </summary>
         public List<InstanceWeapon> PossessionWeapons { get; set; }
@@ -121,7 +116,6 @@ namespace HK.Bright2.ActorControllers
         {
             this.HitPoint = new ReactiveProperty<int>(context.BasicStatus.HitPoint);
             this.HitPointMax = new ReactiveProperty<int>(this.HitPoint.Value);
-            this.Money = context.BasicStatus.Money;
 
             this.EquippedWeapons = new List<EquippedWeapon>();
             for (var i = 0; i < Constants.EquippedWeaponMax; i++)

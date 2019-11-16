@@ -35,6 +35,8 @@ namespace HK.Bright2.ActorControllers
 
         public AbnormalConditionController AbnormalConditionController { get; private set; }
 
+        public Inventory Inventory { get; private set; }
+
         public readonly IMessageBroker Broker = new MessageBroker();
 
         IMessageBroker IBroker.Broker => this.Broker;
@@ -64,6 +66,8 @@ namespace HK.Bright2.ActorControllers
             this.EffectController = new ActorEffectController(this);
 
             this.AbnormalConditionController = new AbnormalConditionController(this);
+
+            this.Inventory = new Inventory(this, this.context);
         }
     }
 }
