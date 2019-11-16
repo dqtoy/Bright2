@@ -20,8 +20,8 @@ namespace HK.Bright2.Database
         public WeaponRecord WeaponRecord => this.weaponRecord;
 
         [SerializeField]
-        private NeedItems needMaterials = default;
-        public NeedItems NeedMaterials => this.needMaterials;
+        private NeedItems needItems = default;
+        public NeedItems NeedItems => this.needItems;
 
         string INameHolder.Name => this.weaponRecord.WeaponName;
     }

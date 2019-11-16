@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: 0101_0
   m_EditorClassIdentifier: 
   weaponRecord: {fileID: 0}
-  needMaterials:
+  needItems:
     elements:
-    - materialRecord: {fileID: 11400000, guid: 6f0b3cd60ef224b68b638924cbd0e091, type: 2}
+    - masterDataRecord: {fileID: 11400000, guid: 6f0b3cd60ef224b68b638924cbd0e091,
+        type: 2}
       amount: 1
