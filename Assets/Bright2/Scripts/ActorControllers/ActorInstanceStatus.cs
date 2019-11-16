@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using HK.Bright2.Database;
 using HK.Bright2.GameSystems;
-using HK.Bright2.MaterialControllers;
-using HK.Bright2.WeaponControllers;
+using HK.Bright2.ItemControllers;
 using UniRx;
 
 namespace HK.Bright2.ActorControllers

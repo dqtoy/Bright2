@@ -6,7 +6,7 @@ using HK.Bright2.UIControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace HK.Bright2.WeaponControllers
+namespace HK.Bright2.ItemControllers
 {
     /// <summary>
     /// 武器のインスタンスデータ

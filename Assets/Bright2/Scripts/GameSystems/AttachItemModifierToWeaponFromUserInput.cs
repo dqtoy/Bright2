@@ -1,13 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems.Messages;
+using HK.Bright2.ItemControllers;
 using HK.Bright2.UIControllers.Messages;
-using HK.Bright2.WeaponControllers;
 using HK.Framework.EventSystems;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace HK.Bright2.GameSystems
 {

@@ -1,11 +1,10 @@
 ﻿using HK.Bright2.ActorControllers;
 using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.GameSystems.Messages;
-using HK.Bright2.WeaponControllers;
+using HK.Bright2.ItemControllers;
 using HK.Framework.EventSystems;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 namespace HK.Bright2.UIControllers

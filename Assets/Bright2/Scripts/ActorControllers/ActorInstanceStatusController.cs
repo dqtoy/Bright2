@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
-using HK.Bright2.Extensions;
 using HK.Bright2.GameSystems;
+using HK.Bright2.ItemControllers;
 using HK.Bright2.ItemModifiers;
-using HK.Bright2.MaterialControllers;
 using HK.Bright2.StageControllers.Messages;
-using HK.Bright2.WeaponControllers;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;

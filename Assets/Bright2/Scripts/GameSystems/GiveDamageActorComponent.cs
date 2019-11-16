@@ -2,9 +2,8 @@
 using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems.GiveDamageActorAdditionalEffects;
 using HK.Bright2.GimmickControllers;
-using HK.Bright2.WeaponControllers;
+using HK.Bright2.ItemControllers;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace HK.Bright2.GameSystems
 {
