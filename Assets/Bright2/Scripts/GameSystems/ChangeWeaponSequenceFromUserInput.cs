@@ -29,7 +29,7 @@ namespace HK.Bright2.GameSystems
 
         private void StartSequence(Actor actor)
         {
-            var items = actor.StatusController.PossessionWeapons.Select(x => x.WeaponRecord);
+            var items = actor.StatusController.Inventory.Weapons.Select(x => x.WeaponRecord);
             Broker.Global.Publish(RequestShowGridUI.Get(items));
 
             Broker.Global.Receive<DecidedGridIndex>()
@@ -68,7 +68,7 @@ namespace HK.Bright2.GameSystems
                 .TakeUntil(Broker.Global.Receive<EndControlUserInputEquippedWeaponUI>())
                 .SubscribeWithState3(this, actor, uiController, (x, _this, _actor, _uiController) =>
                 {
-                    var instanceWeapon = _actor.StatusController.PossessionWeapons[_this.possessionWeaponIndex];
+                    var instanceWeapon = _actor.StatusController.Inventory.Weapons[_this.possessionWeaponIndex];
                     _actor.StatusController.ChangeEquippedWeapon(x.Index, instanceWeapon);
                     Broker.Global.Publish(EndControlUserInputEquippedWeaponUI.Get(_uiController));
                 })

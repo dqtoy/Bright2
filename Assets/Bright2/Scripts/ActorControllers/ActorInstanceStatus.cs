@@ -33,11 +33,6 @@ namespace HK.Bright2.ActorControllers
         public Constants.Direction Direction { get; set; }
 
         /// <summary>
-        /// 所持している武器
-        /// </summary>
-        public List<InstanceWeapon> PossessionWeapons { get; set; }
-
-        /// <summary>
         /// 実行可能なゲームイベント
         /// </summary>
         public IGameEvent GameEvent { get; set; }

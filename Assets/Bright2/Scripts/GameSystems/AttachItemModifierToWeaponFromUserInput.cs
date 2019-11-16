@@ -37,13 +37,13 @@ namespace HK.Bright2.GameSystems
 
         private void StartSelectInstanceWeapon(Actor actor)
         {
-            Broker.Global.Publish(RequestShowGridUI.Get(actor.StatusController.PossessionWeapons));
+            Broker.Global.Publish(RequestShowGridUI.Get(actor.StatusController.Inventory.Weapons));
 
             Broker.Global.Receive<DecidedGridIndex>()
                 .TakeUntil(Broker.Global.Receive<HideGridUI>())
                 .SubscribeWithState2(this, actor, (x, _this, _actor) =>
                 {
-                    var instanceWeapon = _actor.StatusController.PossessionWeapons[x.Index];
+                    var instanceWeapon = _actor.StatusController.Inventory.Weapons[x.Index];
                     if (instanceWeapon.WeaponRecord.ItemModifierLimit <= instanceWeapon.Modifiers.Count)
                     {
                         Debug.Log("制限を超えたので装着できない");

@@ -44,7 +44,15 @@ namespace HK.Bright2.ActorControllers
         public void AddMoney(int value)
         {
             this.Money += value;
-            this.owner.Broker.Publish(AcquiredMoney.Get(value));
+        }
+
+        public InstanceWeapon AddWeapon(WeaponRecord weaponRecord)
+        {
+            this.Weapons = this.Weapons ?? new List<InstanceWeapon>();
+            var instanceWeapon = new InstanceWeapon(weaponRecord);
+            this.Weapons.Add(instanceWeapon);
+
+            return instanceWeapon;
         }
     }
 }

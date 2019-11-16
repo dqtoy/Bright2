@@ -26,6 +26,8 @@ namespace HK.Bright2.ActorControllers
 
         private readonly Actor owner;
 
+        public Inventory Inventory { get; private set; }
+
         private IDisposable lackOfOxygenDamageStream;
 
         public IReactiveProperty<int> HitPoint => this.status.HitPoint;
@@ -43,8 +45,6 @@ namespace HK.Bright2.ActorControllers
         public Constants.Direction Direction => this.status.Direction;
 
         public IGameEvent GameEvent => this.status.GameEvent;
-
-        public IReadOnlyList<InstanceWeapon> PossessionWeapons => this.status.PossessionWeapons;
 
         public IReadOnlyList<AccessoryRecord> PossessionAccessories => this.status.PossessionAccessories;
 
@@ -67,6 +67,7 @@ namespace HK.Bright2.ActorControllers
             this.context = context;
             this.status = new ActorInstanceStatus(owner, context);
             this.status.Direction = Constants.Direction.Right;
+            this.Inventory = new Inventory(owner, context);
 
             this.status.EquippedAccessories = new int[Constants.EquippedAccessoryMax];
             for (var i = 0; i < this.status.EquippedAccessories.Length; i++)
@@ -135,7 +136,7 @@ namespace HK.Bright2.ActorControllers
 
         public void ChangeEquippedWeapon(int index, InstanceWeapon instanceWeapon)
         {
-            Assert.IsTrue(this.status.PossessionWeapons.Contains(instanceWeapon), $"所持していない武器を装備しようとしました");
+            Assert.IsTrue(this.Inventory.Weapons.Contains(instanceWeapon), $"所持していない武器を装備しようとしました");
 
             this.status.EquippedWeapons[index].Change(instanceWeapon);
             this.owner.Broker.Publish(ChangedEquippedWeapon.Get(index));
@@ -172,11 +173,15 @@ namespace HK.Bright2.ActorControllers
             }
         }
 
-        public void AddWeapon(WeaponRecord weapon)
+        public void AddMoney(int value)
         {
-            this.status.PossessionWeapons = this.status.PossessionWeapons ?? new List<InstanceWeapon>();
-            var instanceWeapon = new InstanceWeapon(weapon);
-            this.status.PossessionWeapons.Add(instanceWeapon);
+            this.Inventory.AddMoney(value);
+            this.owner.Broker.Publish(AcquiredMoney.Get(value));
+        }
+
+        public void AddWeapon(WeaponRecord weaponRecord)
+        {
+            var instanceWeapon = this.Inventory.AddWeapon(weaponRecord);
 
             // 装備していない箇所があったら自動的に装備する
             for (var i = 0; i < this.status.EquippedWeapons.Count; i++)
@@ -279,7 +284,7 @@ namespace HK.Bright2.ActorControllers
 
         public void AttachItemModifierToInstanceWeapon(InstanceWeapon instanceWeapon, IItemModifier itemModifier)
         {
-            Assert.IsTrue(this.status.PossessionWeapons.Contains(instanceWeapon), "所持していない武器です");
+            Assert.IsTrue(this.Inventory.Weapons.Contains(instanceWeapon), "所持していない武器です");
             instanceWeapon.Modifiers.Add(itemModifier);
 
             this.ResetItemModifierParameter();

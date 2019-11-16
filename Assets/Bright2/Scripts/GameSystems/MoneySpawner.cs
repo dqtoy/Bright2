@@ -46,7 +46,7 @@ namespace HK.Bright2.GameSystems
             actor.Broker.Receive<Died>()
                 .SubscribeWithState2(this, actor, (x, _this, a) =>
                 {
-                    _this.CreateGimmick(a, a.CachedTransform.position + _this.offset, Calculator.GetMoney(x.Attacker, a.Inventory.Money));
+                    _this.CreateGimmick(a, a.CachedTransform.position + _this.offset, Calculator.GetMoney(x.Attacker, a.StatusController.Inventory.Money));
                 })
                 .AddTo(this);
         }
