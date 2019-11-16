@@ -168,6 +168,7 @@ namespace HK.Bright2.ItemControllers
                     {
                         for (var i = 0; i < this.accessories.Count; i++)
                         {
+                            // 装備していないアクセサリーを探して消費する
                             if(this.accessories[i] == record && i != equippedAccessoryRecordIndex)
                             {
                                 this.accessories.RemoveAt(i);
@@ -176,6 +177,10 @@ namespace HK.Bright2.ItemControllers
                             }
                         }
                     }
+                }
+                else if(record is MaterialRecord)
+                {
+                    this.materials[(record as MaterialRecord)].Add(-element.Amount);
                 }
             }
         }
