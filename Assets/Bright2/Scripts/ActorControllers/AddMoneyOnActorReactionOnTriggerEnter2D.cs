@@ -23,7 +23,7 @@ namespace HK.Bright2.ActorControllers
                 return;
             }
 
-            actor.StatusController.Inventory.AddMoney(this.money);
+            actor.StatusController.AddMoney(this.money);
         }
     }
 }
