@@ -19,6 +19,9 @@ MonoBehaviour:
     - masterDataRecord: {fileID: 11400000, guid: 6f0b3cd60ef224b68b638924cbd0e091,
         type: 2}
       amount: 1
+    - masterDataRecord: {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd,
+        type: 2}
+      amount: 1
     - masterDataRecord: {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd,
         type: 2}
       amount: 1

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.Database;
+using HK.Bright2.Extensions;
 using HK.Bright2.GameSystems.Messages;
 using HK.Bright2.ItemControllers;
 using HK.Bright2.UIControllers.Messages;
@@ -16,7 +17,7 @@ namespace HK.Bright2.GameSystems
     /// <summary>
     /// ユーザー入力によって武器に<see cref="ItemModifier"/>を装着するクラス
     /// </summary>
-    public sealed class AttachItemModifierToWeaponFromUserInput : MonoBehaviour
+    public sealed class AttachItemModifierToWeaponFromUserInput : MonoBehaviour, ISelectConsumeInstanceWeapons
     {
         private Actor actor;
 
@@ -24,16 +25,6 @@ namespace HK.Bright2.GameSystems
         /// アイテム修飾を装着する武器
         /// </summary>
         private InstanceWeapon selectWeapon = null;
-
-        /// <summary>
-        /// アイテム修飾で必要な武器のレコード
-        /// </summary>
-        private List<WeaponRecord> needWeaponRecords = null;
-
-        /// <summary>
-        /// アイテム修飾を装着する際に消費する武器
-        /// </summary>
-        private readonly List<InstanceWeapon> selectConsumeInstanceWeapons = new List<InstanceWeapon>();
 
         void Awake()
         {
@@ -48,8 +39,6 @@ namespace HK.Bright2.GameSystems
         private void StartSequence(Actor actor)
         {
             this.selectWeapon = null;
-            this.needWeaponRecords = null;
-            this.selectConsumeInstanceWeapons.Clear();
 
             this.StartSelectInstanceWeapon(actor);
         }
@@ -91,17 +80,29 @@ namespace HK.Bright2.GameSystems
                 // 武器の消費が必要なら選択開始
                 if (item.NeedItems.IsNeedWeapon)
                 {
-                    this.needWeaponRecords = item.NeedItems.GetNeedWeaponRecords();
                     Broker.Global.Publish(RequestHideListUI.Get(null));
-                    this.StartSelectConsumeInstanceWeapon(actor, this.GetTargetWeaponRecord(), item);
+                    this.StartSelectConsumeInstanceWeapon(actor, item, (selectConsumeInstanceWeapons) =>
+                    {
+                        this.Attach(actor, item, selectConsumeInstanceWeapons);
+
+                        if (this.CanAttach)
+                        {
+                            this.StartSelectItemModifier(actor);
+                        }
+                        else
+                        {
+                            this.StartSelectInstanceWeapon(actor);
+                        }
+                    }, () =>
+                    {
+                        Broker.Global.Publish(RequestHideGridUI.Get());
+                        this.StartSelectItemModifier(actor);
+                    });
                 }
                 else
                 {
-                    this.Attach(actor, item);
+                    this.Attach(actor, item, null);
                 }
-
-                // TODO: お金消費
-
 
                 // 修飾数が制限値になった場合は終了
                 if (!this.CanAttach)
@@ -118,73 +119,9 @@ namespace HK.Bright2.GameSystems
             }));
         }
 
-        private void StartSelectConsumeInstanceWeapon(Actor actor, WeaponRecord targetWeaponRecord, ItemModifierRecipeRecord record)
+        private void Attach(Actor actor, ItemModifierRecipeRecord record, List<InstanceWeapon> selectConsumeInstanceWeapons)
         {
-            Assert.IsNotNull(targetWeaponRecord, $"対象となる{typeof(WeaponRecord)}がありません");
-
-            // 所持している武器から対象となる武器を抽出
-            var targetInstanceWeapons = actor.StatusController.Inventory.Weapons
-                .Where(x => x.WeaponRecord == targetWeaponRecord)
-                .ToList();
-
-            Broker.Global.Publish(RequestShowGridUI.Get(targetInstanceWeapons, i =>
-            {
-                this.selectConsumeInstanceWeapons.Add(targetInstanceWeapons[i]);
-
-                Broker.Global.Publish(RequestHideGridUI.Get());
-
-                var nextTargetWeaponRecord = this.GetTargetWeaponRecord();
-                if (nextTargetWeaponRecord == null)
-                {
-                    this.Attach(actor, record);
-
-                    if (this.CanAttach)
-                    {
-                        this.selectConsumeInstanceWeapons.Clear();
-                        this.StartSelectItemModifier(actor);
-                    }
-                    else
-                    {
-                        this.StartSelectInstanceWeapon(actor);
-                    }
-                }
-                else
-                {
-                    this.StartSelectConsumeInstanceWeapon(actor, nextTargetWeaponRecord, record);
-                }
-            }, () =>
-            {
-                Broker.Global.Publish(RequestHideGridUI.Get());
-                this.StartSelectItemModifier(actor);
-            }));
-        }
-
-        private WeaponRecord GetTargetWeaponRecord()
-        {
-            foreach (var w in this.needWeaponRecords)
-            {
-                var isTarget = true;
-                foreach (var i in this.selectConsumeInstanceWeapons)
-                {
-                    if (w == i.WeaponRecord)
-                    {
-                        isTarget = false;
-                        break;
-                    }
-                }
-
-                if(isTarget)
-                {
-                    return w;
-                }
-            }
-
-            return null;
-        }
-
-        private void Attach(Actor actor, ItemModifierRecipeRecord record)
-        {
-            actor.StatusController.Inventory.Consume(record.NeedItems, this.selectConsumeInstanceWeapons, record.Money);
+            actor.StatusController.Inventory.Consume(record.NeedItems, selectConsumeInstanceWeapons, record.Money);
             actor.StatusController.AttachItemModifierToInstanceWeapon(this.selectWeapon, record.ItemModifier);
             Debug.Log("アタッチ完了");
         }
