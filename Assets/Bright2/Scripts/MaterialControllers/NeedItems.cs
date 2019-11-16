@@ -37,7 +37,7 @@ namespace HK.Bright2.MaterialControllers
         {
             foreach(var e in this.elements)
             {
-                if(inventory.IsEnough(e.MasterDataRecord, e.Amount))
+                if(inventory.Contains(e.MasterDataRecord))
                 {
                     return true;
                 }

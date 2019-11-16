@@ -108,5 +108,32 @@ namespace HK.Bright2.ActorControllers
             Assert.IsTrue(false, "未定義の動作です");
             return false;
         }
+
+        public bool Contains(MasterDataRecord masterDataRecord)
+        {
+            if (masterDataRecord is WeaponRecord)
+            {
+                foreach (var w in this.weapons)
+                {
+                    if(w.WeaponRecord == masterDataRecord)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+            if (masterDataRecord is AccessoryRecord)
+            {
+                return this.accessories.Contains(masterDataRecord as AccessoryRecord);
+            }
+            if (masterDataRecord is MaterialRecord)
+            {
+                return this.materials.ContainsKey(masterDataRecord as MaterialRecord);
+            }
+
+            Assert.IsTrue(false, "未定義の動作です");
+            return false;
+        }
     }
 }
