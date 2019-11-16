@@ -40,7 +40,7 @@ namespace HK.Bright2.GameSystems
         /// </summary>
         private void StartSelectPossessionAccessoryIndex(Actor actor)
         {
-            var items = actor.StatusController.PossessionAccessories;
+            var items = actor.StatusController.Inventory.Accessories;
             Broker.Global.Publish(RequestShowGridUI.Get(items));
 
             Broker.Global.Receive<DecidedGridIndex>()

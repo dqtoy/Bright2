@@ -68,14 +68,9 @@ namespace HK.Bright2.ActorControllers
         /// 装備中のアクセサリーのインデックスリスト
         /// </summary>
         /// <remarks>
-        /// <see cref="PossessionAccessories"/>の添字と紐付いています
+        /// <see cref="Inventory.Accessories"/>の添字と紐付いています
         /// </remarks>
         public int[] EquippedAccessories { get; set; }
-
-        /// <summary>
-        /// 所持しているアクセサリー
-        /// </summary>
-        public List<AccessoryRecord> PossessionAccessories { get; set; }
 
         /// <summary>
         /// アイテム修飾効果
@@ -102,7 +97,7 @@ namespace HK.Bright2.ActorControllers
                         continue;
                     }
 
-                    result[i] = this.PossessionAccessories[this.EquippedAccessories[i]];
+                    result[i] = this.Inventory.Accessories[this.EquippedAccessories[i]];
                 }
 
                 return result;

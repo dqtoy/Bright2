@@ -46,8 +46,6 @@ namespace HK.Bright2.ActorControllers
 
         public IGameEvent GameEvent => this.status.GameEvent;
 
-        public IReadOnlyList<AccessoryRecord> PossessionAccessories => this.status.PossessionAccessories;
-
         public ActorInstanceStatus.ItemModifierEffectParameter ItemModifierEffect => this.status.ItemModifierEffect;
 
         public float MoveSpeed => this.context.BasicStatus.MoveSpeed * this.status.MoveSpeedRate;
@@ -242,7 +240,7 @@ namespace HK.Bright2.ActorControllers
         public void ChangeEquippedAccessory(int equippedAccessoryIndex, int possessionAccessoryIndex)
         {
             Assert.IsTrue(equippedAccessoryIndex >= 0 && equippedAccessoryIndex < Constants.EquippedAccessoryMax);
-            Assert.IsTrue(possessionAccessoryIndex >= 0 && possessionAccessoryIndex < this.status.PossessionAccessories.Count);
+            Assert.IsTrue(possessionAccessoryIndex >= 0 && possessionAccessoryIndex < this.Inventory.Accessories.Count);
 
             // 同じものを装備しようとした場合は外す
             if(this.status.EquippedAccessories[equippedAccessoryIndex] == possessionAccessoryIndex)
@@ -349,7 +347,7 @@ namespace HK.Bright2.ActorControllers
                     continue;
                 }
 
-                var accessoryRecord = this.status.PossessionAccessories[i];
+                var accessoryRecord = this.Inventory.Accessories[i];
                 foreach (var m in accessoryRecord.Modifiers)
                 {
                     m.Give(this.status.ItemModifierEffect);
