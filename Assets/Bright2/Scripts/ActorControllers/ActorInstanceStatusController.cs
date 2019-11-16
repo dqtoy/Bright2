@@ -197,6 +197,12 @@ namespace HK.Bright2.ActorControllers
             this.owner.Broker.Publish(AcquiredWeapon.Get(instanceWeapon));
         }
 
+        public void AddAccessory(AccessoryRecord accessoryRecord)
+        {
+            this.Inventory.AddAccessory(accessoryRecord);
+            this.owner.Broker.Publish(AcquiredAccessory.Get(accessoryRecord));
+        }
+
         public void SetGameEvent(IGameEvent gameEvent)
         {
             this.status.GameEvent = gameEvent;
@@ -232,13 +238,6 @@ namespace HK.Bright2.ActorControllers
             }
 
             return this.status.InfinityStatuses[instanceId].IsInfinity;
-        }
-
-        public void AddAccessory(AccessoryRecord accessoryRecord)
-        {
-            this.status.PossessionAccessories = this.status.PossessionAccessories ?? new List<AccessoryRecord>();
-            this.status.PossessionAccessories.Add(accessoryRecord);
-            this.owner.Broker.Publish(AcquiredAccessory.Get(accessoryRecord));
         }
 
         public void ChangeEquippedAccessory(int equippedAccessoryIndex, int possessionAccessoryIndex)

@@ -54,5 +54,11 @@ namespace HK.Bright2.ActorControllers
 
             return instanceWeapon;
         }
+
+        public void AddAccessory(AccessoryRecord accessoryRecord)
+        {
+            this.Accessories = this.Accessories ?? new List<AccessoryRecord>();
+            this.Accessories.Add(accessoryRecord);
+        }
     }
 }
