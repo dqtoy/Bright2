@@ -65,7 +65,7 @@ namespace HK.Bright2.GameSystems
                 .SubscribeWithState3(this, actor, items, (x, _this, _actor, _items) =>
                 {
                     var item = _items[x.Index];
-                    if (!item.NeedMaterials.IsEnough(_actor.StatusController.Inventory))
+                    if (!item.NeedItems.IsEnough(_actor.StatusController.Inventory))
                     {
                         Debug.Log("素材が足りない");
                         return;

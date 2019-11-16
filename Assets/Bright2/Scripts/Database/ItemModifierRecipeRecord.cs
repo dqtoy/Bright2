@@ -20,8 +20,8 @@ namespace HK.Bright2.Database
         public ItemModifier ItemModifier => this.itemModifier;
 
         [SerializeField]
-        private NeedItems needMaterials = default;
-        public NeedItems NeedMaterials => this.needMaterials;
+        private NeedItems needItems = default;
+        public NeedItems NeedItems => this.needItems;
 
         string INameHolder.Name => this.itemModifier.ItemModifierName;
     }

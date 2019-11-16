@@ -17,7 +17,7 @@ namespace HK.Bright2.Database
 
             foreach(var r in this.Records)
             {
-                if(!r.NeedMaterials.IsViewableList(inventory))
+                if(!r.NeedItems.IsViewableList(inventory))
                 {
                     continue;
                 }
