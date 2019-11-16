@@ -53,6 +53,11 @@ namespace HK.Bright2.DebugSystems
                 Broker.Global.Publish(RequestAttachItemModifierToWeaponFromUserInput.Get(this.actor));
             }
 
+            if(Input.GetKey(KeyCode.T))
+            {
+                Broker.Global.Publish(RequestSpawnMoney.Get(this.actor, 100, this.actor.CachedTransform.position + new Vector3(1.0f, 1.0f, 0.0f)));
+            }
+
             this.InputOnCtrlKey();
         }
 
