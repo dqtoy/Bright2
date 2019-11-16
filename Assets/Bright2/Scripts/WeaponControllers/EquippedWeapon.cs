@@ -38,8 +38,13 @@ namespace HK.Bright2.WeaponControllers
 
         public void Change(InstanceWeapon instanceWeapon)
         {
+            this.Change(instanceWeapon, instanceWeapon == null ? 0.0f : instanceWeapon.WeaponRecord.CoolTimeSeconds);
+        }
+
+        public void Change(InstanceWeapon instanceWeapon, float coolTimeSeconds)
+        {
             this.InstanceWeapon = instanceWeapon;
-            this.coolTimeSeconds.Value = instanceWeapon.WeaponRecord.CoolTimeSeconds;
+            this.coolTimeSeconds.Value = coolTimeSeconds;
         }
 
         public void ResetCoolTime()

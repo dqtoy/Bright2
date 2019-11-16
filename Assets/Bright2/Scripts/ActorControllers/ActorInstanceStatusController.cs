@@ -126,6 +126,20 @@ namespace HK.Bright2.ActorControllers
         {
             Assert.IsTrue(this.Inventory.Weapons.Contains(instanceWeapon), $"所持していない武器を装備しようとしました");
 
+            var tempEquippedWeapon = this.status.EquippedWeapons[index];
+
+            // すでに装備している箇所があったら外す
+            for (var i = 0; i < this.status.EquippedWeapons.Count; i++)
+            {
+                var e = this.status.EquippedWeapons[i];
+                if (e.InstanceWeapon == instanceWeapon)
+                {
+                    e.Change(tempEquippedWeapon.InstanceWeapon);
+                    this.owner.Broker.Publish(ChangedEquippedWeapon.Get(i));
+                    break;
+                }
+            }
+
             this.status.EquippedWeapons[index].Change(instanceWeapon);
             this.owner.Broker.Publish(ChangedEquippedWeapon.Get(index));
 
