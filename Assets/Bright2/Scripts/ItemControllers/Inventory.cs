@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using HK.Bright2.ActorControllers;
 using HK.Bright2.Database;
-using HK.Bright2.ItemControllers;
 using UnityEngine.Assertions;
 
-namespace HK.Bright2.ActorControllers
+namespace HK.Bright2.ItemControllers
 {
     /// <summary>
     /// 所持品を管理するクラス
