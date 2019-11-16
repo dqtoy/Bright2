@@ -21,6 +21,7 @@ namespace HK.Bright2.Database
 
         [SerializeField]
         private int money = default;
+        public int Money => this.money;
 
         [SerializeField]
         private NeedItems needItems = default;
