@@ -11,7 +11,7 @@ namespace HK.Bright2.MaterialControllers
     /// 必要な素材を持つクラス
     /// </summary>
     [Serializable]
-    public sealed class NeedMaterials
+    public sealed class NeedItems
     {
         [SerializeField]
         private Element[] elements = default;
