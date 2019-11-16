@@ -104,12 +104,10 @@ namespace HK.Bright2.UIControllers
             }
             if(Input.GetButtonDown(InputName.Decide))
             {
-                Broker.Global.Publish(DecidedListIndex.Get(this.index));
                 this.OnDecidedIndex?.Invoke(this.index);
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {
-                Broker.Global.Publish(HideListUI.Get(this, HideListUI.HidePatternType.FromUserInput));
                 this.OnCancelFromUserInput?.Invoke();
             }
         }

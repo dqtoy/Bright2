@@ -120,12 +120,11 @@ namespace HK.Bright2.UIControllers
             }
             if(Input.GetButtonDown(InputName.Decide))
             {
-                this.OnDecidedIndex(this.SelectIndex);
+                this.OnDecidedIndex?.Invoke(this.SelectIndex);
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {
-                this.OnCancelFromUserInput();
-                Broker.Global.Publish(HideGridUI.Get(this));
+                this.OnCancelFromUserInput?.Invoke();
             }
         }
 
