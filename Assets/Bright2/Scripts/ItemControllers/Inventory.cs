@@ -44,6 +44,7 @@ namespace HK.Bright2.ItemControllers
         public void AddMoney(int value)
         {
             this.Money += value;
+            Assert.IsTrue(this.Money >= 0);
         }
 
         public InstanceWeapon AddWeapon(WeaponRecord weaponRecord)
@@ -203,6 +204,8 @@ namespace HK.Bright2.ItemControllers
                     this.owner.StatusController.RemoveEquippedWeapon(equippedWeaponIndex);
                 }
             }
+
+            this.AddMoney(-money);
         }
 
         private int GetPossessionCount(MasterDataRecord masterDataRecord)
