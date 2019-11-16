@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
-using HK.Bright2.MaterialControllers;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace HK.Bright2.Database
 {

@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.Database;
 using UnityEngine;
-using UnityEngine.Assertions;
 
-namespace HK.Bright2.MaterialControllers
+namespace HK.Bright2.ItemControllers
 {
     /// <summary>
-    /// 必要な素材を持つクラス
+    /// 必要なアイテムを持つクラス
     /// </summary>
     [Serializable]
     public sealed class NeedItems

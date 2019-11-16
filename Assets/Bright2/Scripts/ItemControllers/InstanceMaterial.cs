@@ -1,8 +1,6 @@
 ﻿using HK.Bright2.Database;
-using UnityEngine;
-using UnityEngine.Assertions;
 
-namespace HK.Bright2.MaterialControllers
+namespace HK.Bright2.ItemControllers
 {
     /// <summary>
     /// 素材のインスタンスデータ

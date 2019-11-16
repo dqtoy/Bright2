@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using HK.Bright2.MaterialControllers;
-using UnityEngine;
-using UnityEngine.Assertions;
+﻿using UnityEngine;
 
 namespace HK.Bright2.Database
 {

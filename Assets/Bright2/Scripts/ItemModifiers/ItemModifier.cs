@@ -1,9 +1,7 @@
 ﻿using HK.Bright2.ActorControllers;
 using HK.Bright2.GameSystems;
-using HK.Bright2.MaterialControllers;
 using HK.Framework.Text;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace HK.Bright2.ItemModifiers
 {

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.Database;
 using HK.Bright2.ItemControllers;
-using HK.Bright2.MaterialControllers;
 using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers
