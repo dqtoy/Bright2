@@ -26,7 +26,7 @@ namespace HK.Bright2.ActorControllers
 
         private readonly Actor owner;
 
-        public Inventory Inventory { get; private set; }
+        public Inventory Inventory => this.status.Inventory;
 
         private IDisposable lackOfOxygenDamageStream;
 
@@ -67,7 +67,6 @@ namespace HK.Bright2.ActorControllers
             this.context = context;
             this.status = new ActorInstanceStatus(owner, context);
             this.status.Direction = Constants.Direction.Right;
-            this.Inventory = new Inventory(owner, context);
 
             this.status.EquippedAccessories = new int[Constants.EquippedAccessoryMax];
             for (var i = 0; i < this.status.EquippedAccessories.Length; i++)

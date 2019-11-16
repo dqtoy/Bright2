@@ -62,6 +62,8 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public readonly Dictionary<int, InfinityStatus> InfinityStatuses = new Dictionary<int, InfinityStatus>();
 
+        public Inventory Inventory { get; private set; }
+
         /// <summary>
         /// 装備中のアクセサリーのインデックスリスト
         /// </summary>
@@ -111,6 +113,7 @@ namespace HK.Bright2.ActorControllers
         {
             this.HitPoint = new ReactiveProperty<int>(context.BasicStatus.HitPoint);
             this.HitPointMax = new ReactiveProperty<int>(this.HitPoint.Value);
+            this.Inventory = new Inventory(owner, context);
 
             this.EquippedWeapons = new List<EquippedWeapon>();
             for (var i = 0; i < Constants.EquippedWeaponMax; i++)
