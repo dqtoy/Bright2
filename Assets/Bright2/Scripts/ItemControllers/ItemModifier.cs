@@ -3,7 +3,7 @@ using HK.Bright2.GameSystems;
 using HK.Framework.Text;
 using UnityEngine;
 
-namespace HK.Bright2.ItemModifiers
+namespace HK.Bright2.ItemControllers
 {
     /// <summary>
     /// アイテムに何かしらの効果を付与するクラス

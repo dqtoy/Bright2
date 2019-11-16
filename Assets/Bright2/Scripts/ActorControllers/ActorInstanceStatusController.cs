@@ -4,7 +4,6 @@ using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.Database;
 using HK.Bright2.GameSystems;
 using HK.Bright2.ItemControllers;
-using HK.Bright2.ItemModifiers;
 using HK.Bright2.StageControllers.Messages;
 using UniRx;
 using UniRx.Triggers;

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using HK.Bright2.GameSystems;
-using HK.Bright2.ItemModifiers;
+using HK.Bright2.ItemControllers;
 using HK.Bright2.UIControllers;
 using HK.Framework.Text;
 using UnityEngine;
