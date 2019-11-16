@@ -182,6 +182,26 @@ namespace HK.Bright2.ItemControllers
                 {
                     this.materials[(record as MaterialRecord)].Add(-element.Amount);
                 }
+                else if(record is WeaponRecord)
+                {
+                    // 何もしないけど次のAssertで引っかからないようにあえて書いておく
+                }
+                else
+                {
+                    Assert.IsTrue(false, $"{record.GetType()}は未定義の動作です");
+                }
+            }
+
+            foreach(var instanceWeapon in instanceWeapons)
+            {
+                this.weapons.Remove(instanceWeapon);
+
+                // 装備中の武器だった場合は何も装備しなくする
+                var equippedWeaponIndex = this.owner.StatusController.EquippedWeapons.FindIndex(m => m.InstanceWeapon == instanceWeapon);
+                if(equippedWeaponIndex != -1)
+                {
+                    this.owner.StatusController.RemoveEquippedWeapon(equippedWeaponIndex);
+                }
             }
         }
 

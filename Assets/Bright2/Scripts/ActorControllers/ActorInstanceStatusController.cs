@@ -121,7 +121,10 @@ namespace HK.Bright2.ActorControllers
 
         public void ChangeEquippedWeapon(int index, InstanceWeapon instanceWeapon)
         {
-            Assert.IsTrue(this.Inventory.Weapons.Contains(instanceWeapon), $"所持していない武器を装備しようとしました");
+            if(instanceWeapon != null)
+            {
+                Assert.IsTrue(this.Inventory.Weapons.Contains(instanceWeapon), $"所持していない武器を装備しようとしました");
+            }
 
             var tempEquippedWeapon = this.status.EquippedWeapons[index];
 
@@ -141,6 +144,12 @@ namespace HK.Bright2.ActorControllers
             this.owner.Broker.Publish(ChangedEquippedWeapon.Get(index));
 
             this.ResetItemModifierParameter();
+        }
+
+        public void RemoveEquippedWeapon(int index)
+        {
+            this.status.EquippedWeapons[index].Change(null);
+            this.owner.Broker.Publish(ChangedEquippedWeapon.Get(index));
         }
 
         public void SetDirection(Constants.Direction direction)
