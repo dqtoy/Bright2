@@ -94,34 +94,7 @@ namespace HK.Bright2.ItemControllers
 
         public bool IsEnough(MasterDataRecord masterDataRecord, int amount)
         {
-            var result = 0;
-
-            if(masterDataRecord is WeaponRecord)
-            {
-                foreach(var w in this.weapons)
-                {
-                    result += (w.WeaponRecord == masterDataRecord) ? 1 : 0;
-                }
-
-                return result >= amount;
-            }
-            if(masterDataRecord is AccessoryRecord)
-            {
-                foreach(var a in this.accessories)
-                {
-                    result += (a == masterDataRecord) ? 1 : 0;
-                }
-
-                return result >= amount;
-            }
-            if(masterDataRecord is MaterialRecord)
-            {
-                var materialRecord = masterDataRecord as MaterialRecord;
-                return this.Materials[materialRecord].Amount >= amount;
-            }
-
-            Assert.IsTrue(false, "未定義の動作です");
-            return false;
+            return this.GetPossessionCount(masterDataRecord) >= amount;
         }
 
         public bool Contains(MasterDataRecord masterDataRecord)
@@ -151,9 +124,92 @@ namespace HK.Bright2.ItemControllers
             return false;
         }
 
-        public void Consume(NeedItems needItems)
+        public void Consume(NeedItems needItems, List<InstanceWeapon> instanceWeapons, int money)
         {
-            
+            foreach(var element in needItems.Elements)
+            {
+                var record = element.MasterDataRecord;
+                if(record is AccessoryRecord)
+                {
+                    var possessionCount = this.GetPossessionCount(record);
+                    Assert.AreNotEqual(possessionCount, 0, "アクセサリーを所持していないのに消費しようとしました");
+                    var equippedAccessoryIndex = -1;
+                    var equippedAccessoryRecordIndex = -1;
+                    var equippedAccessories = this.owner.StatusController.EquippedAccessories;
+                    for (var i = 0; i < equippedAccessories.Count; i++)
+                    {
+                        if(equippedAccessories[i] < 0)
+                        {
+                            continue;
+                        }
+                        if (this.accessories[equippedAccessories[i]] == record)
+                        {
+                            equippedAccessoryIndex = i;
+                            equippedAccessoryRecordIndex = equippedAccessories[i];
+                            break;
+                        }
+                    }
+
+                    if(possessionCount == 1)
+                    {
+                        // 装備中のアクセサリーだった場合は外す
+                        if(equippedAccessoryIndex != -1)
+                        {
+                            this.owner.StatusController.ChangeEquippedAccessory(equippedAccessoryIndex, -1);
+                        }
+
+                        this.accessories.Remove(record as AccessoryRecord);
+                        if(equippedAccessoryRecordIndex != -1)
+                        {
+                            this.owner.StatusController.DecreaseEquippedAccessoryIndex(equippedAccessoryRecordIndex);
+                        }
+                    }
+                    else
+                    {
+                        for (var i = 0; i < this.accessories.Count; i++)
+                        {
+                            if(this.accessories[i] == record && i != equippedAccessoryRecordIndex)
+                            {
+                                this.accessories.RemoveAt(i);
+                                this.owner.StatusController.DecreaseEquippedAccessoryIndex(i);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private int GetPossessionCount(MasterDataRecord masterDataRecord)
+        {
+            var result = 0;
+
+            if (masterDataRecord is WeaponRecord)
+            {
+                foreach (var w in this.weapons)
+                {
+                    result += (w.WeaponRecord == masterDataRecord) ? 1 : 0;
+                }
+
+                return result;
+            }
+            if (masterDataRecord is AccessoryRecord)
+            {
+                foreach (var a in this.accessories)
+                {
+                    result += (a == masterDataRecord) ? 1 : 0;
+                }
+
+                return result;
+            }
+            if (masterDataRecord is MaterialRecord)
+            {
+                var materialRecord = masterDataRecord as MaterialRecord;
+                return this.Materials[materialRecord].Amount;
+            }
+
+            Assert.IsTrue(false, "未定義の動作です");
+            return 0;
         }
     }
 }

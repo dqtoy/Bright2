@@ -93,11 +93,11 @@ namespace HK.Bright2.GameSystems
                 {
                     this.needWeaponRecords = item.NeedItems.GetNeedWeaponRecords();
                     Broker.Global.Publish(RequestHideListUI.Get(null));
-                    this.StartSelectConsumeInstanceWeapon(actor, this.GetTargetWeaponRecord(), item.ItemModifier);
+                    this.StartSelectConsumeInstanceWeapon(actor, this.GetTargetWeaponRecord(), item);
                 }
                 else
                 {
-                    this.Attach(actor, item.ItemModifier);
+                    this.Attach(actor, item);
                 }
 
                 // TODO: お金消費
@@ -118,7 +118,7 @@ namespace HK.Bright2.GameSystems
             }));
         }
 
-        private void StartSelectConsumeInstanceWeapon(Actor actor, WeaponRecord targetWeaponRecord, ItemModifier itemModifier)
+        private void StartSelectConsumeInstanceWeapon(Actor actor, WeaponRecord targetWeaponRecord, ItemModifierRecipeRecord record)
         {
             Assert.IsNotNull(targetWeaponRecord, $"対象となる{typeof(WeaponRecord)}がありません");
 
@@ -136,7 +136,7 @@ namespace HK.Bright2.GameSystems
                 var nextTargetWeaponRecord = this.GetTargetWeaponRecord();
                 if (nextTargetWeaponRecord == null)
                 {
-                    this.Attach(actor, itemModifier);
+                    this.Attach(actor, record);
 
                     if (this.CanAttach)
                     {
@@ -150,7 +150,7 @@ namespace HK.Bright2.GameSystems
                 }
                 else
                 {
-                    this.StartSelectConsumeInstanceWeapon(actor, nextTargetWeaponRecord, itemModifier);
+                    this.StartSelectConsumeInstanceWeapon(actor, nextTargetWeaponRecord, record);
                 }
             }, () =>
             {
@@ -182,9 +182,10 @@ namespace HK.Bright2.GameSystems
             return null;
         }
 
-        private void Attach(Actor actor, ItemModifier itemModifier)
+        private void Attach(Actor actor, ItemModifierRecipeRecord record)
         {
-            actor.StatusController.AttachItemModifierToInstanceWeapon(this.selectWeapon, itemModifier);
+            actor.StatusController.Inventory.Consume(record.NeedItems, this.selectConsumeInstanceWeapons, record.Money);
+            actor.StatusController.AttachItemModifierToInstanceWeapon(this.selectWeapon, record.ItemModifier);
             Debug.Log("アタッチ完了");
         }
 

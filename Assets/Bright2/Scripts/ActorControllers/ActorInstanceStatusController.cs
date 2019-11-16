@@ -248,7 +248,7 @@ namespace HK.Bright2.ActorControllers
         public void ChangeEquippedAccessory(int equippedAccessoryIndex, int possessionAccessoryIndex)
         {
             Assert.IsTrue(equippedAccessoryIndex >= 0 && equippedAccessoryIndex < Constants.EquippedAccessoryMax);
-            Assert.IsTrue(possessionAccessoryIndex >= 0 && possessionAccessoryIndex < this.Inventory.Accessories.Count);
+            Assert.IsTrue(possessionAccessoryIndex < this.Inventory.Accessories.Count);
 
             // 同じものを装備しようとした場合は外す
             if(this.status.EquippedAccessories[equippedAccessoryIndex] == possessionAccessoryIndex)
@@ -270,6 +270,23 @@ namespace HK.Bright2.ActorControllers
             }
 
             this.ResetItemModifierParameter();
+        }
+
+        /// <summary>
+        /// 装備中のアクセサリーのインデックスを減算する
+        /// </summary>
+        /// <remarks>
+        /// 所持しているアクセサリーが消費された場合にインデックスがずれるため減算する必要があります
+        /// </remarks>
+        public void DecreaseEquippedAccessoryIndex(int removedPossessionAccessoryIndex)
+        {
+            for (var i = 0; i < this.status.EquippedAccessories.Length; i++)
+            {
+                if(this.status.EquippedAccessories[i] > removedPossessionAccessoryIndex)
+                {
+                    this.status.EquippedAccessories[i]--;
+                }
+            }
         }
 
         public void AttachItemModifierToInstanceWeapon(InstanceWeapon instanceWeapon, IItemModifier itemModifier)
