@@ -70,7 +70,7 @@ namespace HK.Bright2.GameSystems
                 this.StartSelectItemModifier(actor);
             }, () =>
             {
-
+                Broker.Global.Publish(RequestHideGridUI.Get());
             }));
         }
 
@@ -113,6 +113,7 @@ namespace HK.Bright2.GameSystems
                 }
             }, () =>
             {
+                Broker.Global.Publish(RequestHideListUI.Get(null));
                 this.StartSelectInstanceWeapon(actor);
             }));
         }
@@ -153,7 +154,8 @@ namespace HK.Bright2.GameSystems
                 }
             }, () =>
             {
-
+                Broker.Global.Publish(RequestHideGridUI.Get());
+                this.StartSelectItemModifier(actor);
             }));
         }
 
