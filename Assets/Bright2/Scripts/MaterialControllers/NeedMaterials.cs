@@ -17,15 +17,11 @@ namespace HK.Bright2.MaterialControllers
         private Element[] elements = default;
         public Element[] Elements => this.elements;
 
-        public bool IsEnough(IReadOnlyDictionary<MaterialRecord, InstanceMaterial> possessionMaterials)
+        public bool IsEnough(Inventory inventory)
         {
             foreach(var e in this.elements)
             {
-                if(!possessionMaterials.ContainsKey(e.MaterialRecord))
-                {
-                    return false;
-                }
-                if(possessionMaterials[e.MaterialRecord].Amount < e.Amount)
+                if(!inventory.IsEnough(e.MasterDataRecord, e.Amount))
                 {
                     return false;
                 }
@@ -37,11 +33,11 @@ namespace HK.Bright2.MaterialControllers
         /// <summary>
         /// リストなどのUIに表示可能か返す
         /// </summary>
-        public bool IsViewableList(IReadOnlyDictionary<MaterialRecord, InstanceMaterial> possessionMaterials)
+        public bool IsViewableList(Inventory inventory)
         {
             foreach(var e in this.elements)
             {
-                if(possessionMaterials.ContainsKey(e.MaterialRecord))
+                if(inventory.IsEnough(e.MasterDataRecord, e.Amount))
                 {
                     return true;
                 }
@@ -54,8 +50,8 @@ namespace HK.Bright2.MaterialControllers
         public sealed class Element
         {
             [SerializeField]
-            private MaterialRecord materialRecord = default;
-            public MaterialRecord MaterialRecord => this.materialRecord;
+            private MasterDataRecord masterDataRecord = default;
+            public MasterDataRecord MasterDataRecord => this.masterDataRecord;
 
             [SerializeField]
             private int amount = default;

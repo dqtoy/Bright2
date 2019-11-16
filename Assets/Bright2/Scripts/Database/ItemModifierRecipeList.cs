@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using HK.Bright2.ActorControllers;
 using HK.Bright2.MaterialControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -11,13 +12,13 @@ namespace HK.Bright2.Database
     [CreateAssetMenu(menuName = "Bright2/MasterData/ItemModifierRecipe/List")]
     public sealed class ItemModifierRecipeList : MasterDataList<ItemModifierRecipeRecord>
     {
-        public IReadOnlyList<ItemModifierRecipeRecord> GetViewableRecipes(IReadOnlyDictionary<MaterialRecord, InstanceMaterial> possessionMaterials)
+        public IReadOnlyList<ItemModifierRecipeRecord> GetViewableRecipes(Inventory inventory)
         {
             var result = new List<ItemModifierRecipeRecord>();
 
             foreach(var r in this.Records)
             {
-                if(!r.NeedMaterials.IsViewableList(possessionMaterials))
+                if(!r.NeedMaterials.IsViewableList(inventory))
                 {
                     continue;
                 }

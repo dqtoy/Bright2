@@ -15,5 +15,6 @@ MonoBehaviour:
   itemModifier: {fileID: 11400000, guid: aae646a319a374ee6a40be546c8a3a2f, type: 2}
   needMaterials:
     elements:
-    - materialRecord: {fileID: 11400000, guid: 6f0b3cd60ef224b68b638924cbd0e091, type: 2}
+    - masterDataRecord: {fileID: 11400000, guid: 6f0b3cd60ef224b68b638924cbd0e091,
+        type: 2}
       amount: 1

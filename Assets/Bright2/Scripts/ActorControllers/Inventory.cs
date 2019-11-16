@@ -76,5 +76,37 @@ namespace HK.Bright2.ActorControllers
 
             instance.Add(amount);
         }
+
+        public bool IsEnough(MasterDataRecord masterDataRecord, int amount)
+        {
+            var result = 0;
+
+            if(masterDataRecord is WeaponRecord)
+            {
+                foreach(var w in this.weapons)
+                {
+                    result += (w.WeaponRecord == masterDataRecord) ? 1 : 0;
+                }
+
+                return result >= amount;
+            }
+            if(masterDataRecord is AccessoryRecord)
+            {
+                foreach(var a in this.accessories)
+                {
+                    result += (a == masterDataRecord) ? 1 : 0;
+                }
+
+                return result >= amount;
+            }
+            if(masterDataRecord is MaterialRecord)
+            {
+                var materialRecord = masterDataRecord as MaterialRecord;
+                return this.Materials[materialRecord].Amount >= amount;
+            }
+
+            Assert.IsTrue(false, "未定義の動作です");
+            return false;
+        }
     }
 }
