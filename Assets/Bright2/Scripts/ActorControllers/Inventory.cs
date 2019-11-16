@@ -21,17 +21,20 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// 武器リスト
         /// </summary>
-        public List<InstanceWeapon> Weapons { get; private set; }
+        private List<InstanceWeapon> weapons;
+        public List<InstanceWeapon> Weapons => this.weapons = this.weapons ?? new List<InstanceWeapon>();
 
         /// <summary>
         /// アクセサリーリスト
         /// </summary>
-        public List<AccessoryRecord> Accessories { get; private set; }
+        private List<AccessoryRecord> accessories;
+        public List<AccessoryRecord> Accessories => this.accessories = this.accessories ?? new List<AccessoryRecord>();
 
         /// <summary>
         /// 素材リスト
         /// </summary>
-        public Dictionary<MaterialRecord, InstanceMaterial> Materials { get; private set; }
+        private Dictionary<MaterialRecord, InstanceMaterial> materials;
+        public Dictionary<MaterialRecord, InstanceMaterial> Materials => this.materials = this.materials ?? new Dictionary<MaterialRecord, InstanceMaterial>();
 
         private readonly Actor owner;
 
@@ -48,27 +51,27 @@ namespace HK.Bright2.ActorControllers
 
         public InstanceWeapon AddWeapon(WeaponRecord weaponRecord)
         {
-            this.Weapons = this.Weapons ?? new List<InstanceWeapon>();
+            this.weapons = this.weapons ?? new List<InstanceWeapon>();
             var instanceWeapon = new InstanceWeapon(weaponRecord);
-            this.Weapons.Add(instanceWeapon);
+            this.weapons.Add(instanceWeapon);
 
             return instanceWeapon;
         }
 
         public void AddAccessory(AccessoryRecord accessoryRecord)
         {
-            this.Accessories = this.Accessories ?? new List<AccessoryRecord>();
-            this.Accessories.Add(accessoryRecord);
+            this.accessories = this.accessories ?? new List<AccessoryRecord>();
+            this.accessories.Add(accessoryRecord);
         }
 
         public void AddMaterial(MaterialRecord materialRecord, int amount)
         {
-            this.Materials = this.Materials ?? new Dictionary<MaterialRecord, InstanceMaterial>();
+            this.materials = this.materials ?? new Dictionary<MaterialRecord, InstanceMaterial>();
             var instance = default(InstanceMaterial);
             if (!this.Materials.TryGetValue(materialRecord, out instance))
             {
                 instance = new InstanceMaterial(materialRecord);
-                this.Materials.Add(materialRecord, instance);
+                this.materials.Add(materialRecord, instance);
             }
 
             instance.Add(amount);
