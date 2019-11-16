@@ -29,17 +29,23 @@ namespace HK.Bright2.GameSystems
 
         private void StartSequence(Actor actor)
         {
-            var items = actor.StatusController.Inventory.Weapons.Select(x => x.WeaponRecord);
+            this.StartSelectInventoryWeapons(actor);
+        }
+
+        private void StartSelectInventoryWeapons(Actor actor)
+        {
+            var items = actor.StatusController.Inventory.Weapons;
             Broker.Global.Publish(RequestShowGridUI.Get(items, i =>
             {
-                this.BeginControlUserInputEquippedWeaponUI(actor, i);
+                this.StartChangeWeapon(actor, i);
             }, () =>
             {
+                Broker.Global.Publish(RequestHideGridUI.Get());
                 Broker.Global.Publish(EndChangeWeaponSequenceFromUserInput.Get());
             }));
         }
 
-        private void BeginControlUserInputEquippedWeaponUI(Actor actor, int possessionWeaponIndex)
+        private void StartChangeWeapon(Actor actor, int possessionWeaponIndex)
         {
             this.possessionWeaponIndex = possessionWeaponIndex;
             Broker.Global.Receive<BeginControlUserInputEquippedWeaponUI>()
