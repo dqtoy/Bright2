@@ -77,11 +77,6 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public ItemModifierEffectParameter ItemModifierEffect { get; } = new ItemModifierEffectParameter();
 
-        /// <summary>
-        /// 所持している素材リスト
-        /// </summary>
-        public Dictionary<MaterialRecord, InstanceMaterial> PossessionMaterials { get; set; }
-
         public IReadOnlyList<IIconHolder> EquippedAccessoryIcons
         {
             get

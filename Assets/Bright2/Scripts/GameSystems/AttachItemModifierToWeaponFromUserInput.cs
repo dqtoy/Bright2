@@ -59,7 +59,7 @@ namespace HK.Bright2.GameSystems
 
         private void StartSelectItemModifier(Actor actor)
         {
-            var items = GameSystem.Instance.MasterData.ItemModifierRecipe.GetViewableRecipes(actor.StatusController.PossessionMaterials);
+            var items = GameSystem.Instance.MasterData.ItemModifierRecipe.GetViewableRecipes(actor.StatusController.Inventory.Materials);
             Broker.Global.Publish(RequestShowListUI.Get(items));
 
             Broker.Global.Receive<DecidedListIndex>()
@@ -67,7 +67,7 @@ namespace HK.Bright2.GameSystems
                 .SubscribeWithState3(this, actor, items, (x, _this, _actor, _items) =>
                 {
                     var item = _items[x.Index];
-                    if (!item.NeedMaterials.IsEnough(_actor.StatusController.PossessionMaterials))
+                    if (!item.NeedMaterials.IsEnough(_actor.StatusController.Inventory.Materials))
                     {
                         Debug.Log("素材が足りない");
                         return;

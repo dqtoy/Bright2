@@ -60,5 +60,18 @@ namespace HK.Bright2.ActorControllers
             this.Accessories = this.Accessories ?? new List<AccessoryRecord>();
             this.Accessories.Add(accessoryRecord);
         }
+
+        public void AddMaterial(MaterialRecord materialRecord, int amount)
+        {
+            this.Materials = this.Materials ?? new Dictionary<MaterialRecord, InstanceMaterial>();
+            var instance = default(InstanceMaterial);
+            if (!this.Materials.TryGetValue(materialRecord, out instance))
+            {
+                instance = new InstanceMaterial(materialRecord);
+                this.Materials.Add(materialRecord, instance);
+            }
+
+            instance.Add(amount);
+        }
     }
 }

@@ -50,15 +50,6 @@ namespace HK.Bright2.ActorControllers
 
         public float MoveSpeed => this.context.BasicStatus.MoveSpeed * this.status.MoveSpeedRate;
 
-        public IReadOnlyDictionary<MaterialRecord, InstanceMaterial> PossessionMaterials
-        {
-            get
-            {
-                this.status.PossessionMaterials = this.status.PossessionMaterials ?? new Dictionary<MaterialRecord, InstanceMaterial>();
-                return this.status.PossessionMaterials;
-            }
-        }
-
         public ActorInstanceStatusController(Actor owner, ActorContext context)
         {
             this.owner = owner;
@@ -200,6 +191,12 @@ namespace HK.Bright2.ActorControllers
             this.owner.Broker.Publish(AcquiredAccessory.Get(accessoryRecord));
         }
 
+        public void AddMaterial(MaterialRecord materialRecord, int amount)
+        {
+            this.Inventory.AddMaterial(materialRecord, amount);
+            this.owner.Broker.Publish(AcquiredMaterial.Get(materialRecord));
+        }
+
         public void SetGameEvent(IGameEvent gameEvent)
         {
             this.status.GameEvent = gameEvent;
@@ -262,20 +259,6 @@ namespace HK.Bright2.ActorControllers
             }
 
             this.ResetItemModifierParameter();
-        }
-
-        public void AddMaterial(MaterialRecord materialRecord, int amount)
-        {
-            this.status.PossessionMaterials = this.status.PossessionMaterials ?? new Dictionary<MaterialRecord, InstanceMaterial>();
-            var instance = default(InstanceMaterial);
-            if(!this.status.PossessionMaterials.TryGetValue(materialRecord, out instance))
-            {
-                instance = new InstanceMaterial(materialRecord);
-                this.status.PossessionMaterials.Add(materialRecord, instance);
-            }
-
-            instance.Add(amount);
-            this.owner.Broker.Publish(AcquiredMaterial.Get(materialRecord));
         }
 
         public void AttachItemModifierToInstanceWeapon(InstanceWeapon instanceWeapon, IItemModifier itemModifier)
