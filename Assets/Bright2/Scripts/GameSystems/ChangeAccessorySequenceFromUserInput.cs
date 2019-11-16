@@ -18,8 +18,6 @@ namespace HK.Bright2.GameSystems
     {
         private int possessionAccessoryIndex;
 
-        private IDisposable publishEndMessage = null;
-
         void Awake()
         {
             Broker.Global.Receive<RequestChangeAccessorySequenceFromUserInput>()
@@ -49,6 +47,7 @@ namespace HK.Bright2.GameSystems
                 this.StartChangeEquippedAccessory(actor);
             }, () =>
             {
+                Broker.Global.Publish(RequestHideGridUI.Get());
                 Broker.Global.Publish(EndChangeAccessorySequenceFromUserInput.Get());
             }));
         }
@@ -60,8 +59,10 @@ namespace HK.Bright2.GameSystems
             {
                 actor.StatusController.ChangeEquippedAccessory(i, this.possessionAccessoryIndex);
                 Broker.Global.Publish(RequestHideGridUI.Get());
+                this.StartSelectPossessionAccessoryIndex(actor);
             }, () =>
             {
+                Broker.Global.Publish(RequestHideGridUI.Get());
                 this.StartSelectPossessionAccessoryIndex(actor);
             }));
         }
