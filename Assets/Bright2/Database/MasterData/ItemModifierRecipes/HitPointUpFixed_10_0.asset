@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: HitPointUpFixed_10_0
   m_EditorClassIdentifier: 
   itemModifier: {fileID: 11400000, guid: fe5e9c1a3820d4f30a39ed490e42a826, type: 2}
+  money: 0
   needItems:
     elements:
     - masterDataRecord: {fileID: 11400000, guid: 6f0b3cd60ef224b68b638924cbd0e091,
+        type: 2}
+      amount: 1
+    - masterDataRecord: {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd,
         type: 2}
       amount: 1

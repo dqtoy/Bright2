@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using HK.Bright2.ActorControllers;
 using HK.Bright2.Database;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace HK.Bright2.ItemControllers
 {
@@ -42,6 +44,40 @@ namespace HK.Bright2.ItemControllers
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// 必要なアイテムの中に武器が存在するか返す
+        /// </summary>
+        public bool IsNeedWeapon
+        {
+            get
+            {
+                foreach(var e in this.elements)
+                {
+                    if(e.MasterDataRecord is WeaponRecord)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        }
+
+        public List<WeaponRecord> GetNeedWeaponRecords()
+        {
+            Assert.IsTrue(this.IsNeedWeapon);
+            var result = new List<WeaponRecord>();
+            foreach (var e in this.elements)
+            {
+                if (e.MasterDataRecord is WeaponRecord)
+                {
+                    result.Add(e.MasterDataRecord as WeaponRecord);
+                }
+            }
+
+            return result;
         }
 
         [Serializable]

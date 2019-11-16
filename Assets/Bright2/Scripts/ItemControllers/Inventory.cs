@@ -74,6 +74,24 @@ namespace HK.Bright2.ItemControllers
             instance.Add(amount);
         }
 
+        public bool IsEnough(int money)
+        {
+            return this.Money >= money;
+        }
+
+        public bool IsEnough(NeedItems needItems)
+        {
+            foreach(var n in needItems.Elements)
+            {
+                if(!this.IsEnough(n.MasterDataRecord, n.Amount))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public bool IsEnough(MasterDataRecord masterDataRecord, int amount)
         {
             var result = 0;
@@ -131,6 +149,11 @@ namespace HK.Bright2.ItemControllers
 
             Assert.IsTrue(false, "未定義の動作です");
             return false;
+        }
+
+        public void Consume(NeedItems needItems)
+        {
+            
         }
     }
 }

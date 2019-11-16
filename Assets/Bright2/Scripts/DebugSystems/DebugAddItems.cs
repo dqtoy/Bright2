@@ -46,7 +46,7 @@ namespace HK.Bright2.DebugSystems
 
                     foreach(var m in GameSystem.Instance.MasterData.Material.Records)
                     {
-                        x.Actor.StatusController.AddMaterial(m, 99);
+                        x.Actor.StatusController.AddMaterial(m, 2);
                     }
                 })
                 .AddTo(this);

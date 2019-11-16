@@ -33,6 +33,7 @@ namespace HK.Bright2.UIControllers
             Broker.Global.Receive<RequestShowGridUI>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
+                    Debug.Log("?");
                     _this.horizontalIndex = 0;
                     _this.verticalIndex = 0;
                     _this.canvasGroup.alpha = 1.0f;

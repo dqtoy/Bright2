@@ -44,9 +44,10 @@ namespace HK.Bright2.UIControllers
                 .AddTo(this);
 
             Broker.Global.Receive<RequestHideListUI>()
-                .SubscribeWithState(this, (_, _this) =>
+                .SubscribeWithState(this, (x, _this) =>
                 {
-                    Broker.Global.Publish(HideListUI.Get(_this));
+                    Broker.Global.Publish(HideListUI.Get(_this, HideListUI.HidePatternType.FromRequest));
+                    x.OnHide?.Invoke();
                 })
                 .AddTo(this);
 
@@ -100,7 +101,7 @@ namespace HK.Bright2.UIControllers
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {
-                Broker.Global.Publish(HideListUI.Get(this));
+                Broker.Global.Publish(HideListUI.Get(this, HideListUI.HidePatternType.FromUserInput));
             }
         }
 
