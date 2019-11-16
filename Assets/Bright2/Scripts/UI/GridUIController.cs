@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HK.Bright2.GameSystems;
 using HK.Bright2.InputSystems;
@@ -26,6 +27,10 @@ namespace HK.Bright2.UIControllers
 
         private IReadOnlyList<IIconHolder> items;
 
+        private Action<int> OnDecidedIndex;
+
+        private Action OnCancelFromUserInput;
+
         void Awake()
         {
             this.canvasGroup.alpha = 0.0f;
@@ -33,11 +38,12 @@ namespace HK.Bright2.UIControllers
             Broker.Global.Receive<RequestShowGridUI>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    Debug.Log("?");
                     _this.horizontalIndex = 0;
                     _this.verticalIndex = 0;
                     _this.canvasGroup.alpha = 1.0f;
                     _this.scrollView.UpdateData(_this.CreateItems(x.Items.ToList()));
+                    _this.OnDecidedIndex = x.OnDecidedIndex;
+                    _this.OnCancelFromUserInput = x.OnCancelFromUserInput;
                     Broker.Global.Publish(ShowGridUI.Get(_this));
                 })
                 .AddTo(this);
@@ -114,10 +120,11 @@ namespace HK.Bright2.UIControllers
             }
             if(Input.GetButtonDown(InputName.Decide))
             {
-                Broker.Global.Publish(DecidedGridIndex.Get(this.SelectIndex));
+                this.OnDecidedIndex(this.SelectIndex);
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {
+                this.OnCancelFromUserInput();
                 Broker.Global.Publish(HideGridUI.Get(this));
             }
         }

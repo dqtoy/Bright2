@@ -56,78 +56,65 @@ namespace HK.Bright2.GameSystems
 
         private void StartSelectInstanceWeapon(Actor actor)
         {
-            Broker.Global.Publish(RequestShowGridUI.Get(actor.StatusController.Inventory.Weapons));
-
-            Broker.Global.Receive<DecidedGridIndex>()
-                .TakeUntil(Broker.Global.Receive<HideGridUI>())
-                .SubscribeWithState2(this, actor, (x, _this, _actor) =>
+            Broker.Global.Publish(RequestShowGridUI.Get(actor.StatusController.Inventory.Weapons, i =>
+            {
+                var instanceWeapon = actor.StatusController.Inventory.Weapons[i];
+                if (instanceWeapon.WeaponRecord.ItemModifierLimit <= instanceWeapon.Modifiers.Count)
                 {
-                    var instanceWeapon = _actor.StatusController.Inventory.Weapons[x.Index];
-                    if (instanceWeapon.WeaponRecord.ItemModifierLimit <= instanceWeapon.Modifiers.Count)
-                    {
-                        Debug.Log("制限を超えたので装着できない");
-                        return;
-                    }
+                    Debug.Log("制限を超えたので装着できない");
+                    return;
+                }
 
-                    _this.selectWeapon = instanceWeapon;
-                    Broker.Global.Publish(RequestHideGridUI.Get());
-                    _this.StartSelectItemModifier(_actor);
-                })
-                .AddTo(this);
+                this.selectWeapon = instanceWeapon;
+                Broker.Global.Publish(RequestHideGridUI.Get());
+                this.StartSelectItemModifier(actor);
+            }, () =>
+            {
+
+            }));
         }
 
         private void StartSelectItemModifier(Actor actor)
         {
             var items = GameSystem.Instance.MasterData.ItemModifierRecipe.GetViewableRecipes(actor.StatusController.Inventory);
-            Broker.Global.Publish(RequestShowListUI.Get(items));
+            Broker.Global.Publish(RequestShowListUI.Get(items, i =>
+            {
+                var inventory = actor.StatusController.Inventory;
 
-            Broker.Global.Receive<DecidedListIndex>()
-                .TakeUntil(Broker.Global.Receive<HideListUI>())
-                .SubscribeWithState3(this, actor, items, (x, _this, _actor, _items) =>
+                var item = items[i];
+                if (!inventory.IsEnough(item.NeedItems))
                 {
-                    var inventory = _actor.StatusController.Inventory;
+                    Debug.Log("素材が足りない");
+                    return;
+                }
 
-                    var item = _items[x.Index];
-                    if (!inventory.IsEnough(item.NeedItems))
-                    {
-                        Debug.Log("素材が足りない");
-                        return;
-                    }
-
-                    // 武器の消費が必要なら選択開始
-                    if(item.NeedItems.IsNeedWeapon)
-                    {
-                        this.needWeaponRecords = item.NeedItems.GetNeedWeaponRecords();
-                        Broker.Global.Publish(RequestHideListUI.Get(null));
-                        this.StartSelectConsumeInstanceWeapon(_actor, this.GetTargetWeaponRecord(), item.ItemModifier);
-                    }
-                    else
-                    {
-                        this.Attach(_actor, item.ItemModifier);
-                    }
-
-                    // TODO: お金消費
-
-
-                    // 修飾数が制限値になった場合は終了
-                    if(!_this.CanAttach)
-                    {
-                        Broker.Global.Publish(RequestHideListUI.Get(() =>
-                        {
-                            _this.StartSelectInstanceWeapon(_actor);
-                        }));
-                    }
-                })
-                .AddTo(this);
-
-            Broker.Global.Receive<HideListUI>()
-                .Where(x => x.HidePattern == HideListUI.HidePatternType.FromUserInput)
-                .Take(1)
-                .SubscribeWithState2(this, actor, (_, _this, _actor) =>
+                // 武器の消費が必要なら選択開始
+                if (item.NeedItems.IsNeedWeapon)
                 {
-                    _this.StartSelectInstanceWeapon(_actor);
-                })
-                .AddTo(this);
+                    this.needWeaponRecords = item.NeedItems.GetNeedWeaponRecords();
+                    Broker.Global.Publish(RequestHideListUI.Get(null));
+                    this.StartSelectConsumeInstanceWeapon(actor, this.GetTargetWeaponRecord(), item.ItemModifier);
+                }
+                else
+                {
+                    this.Attach(actor, item.ItemModifier);
+                }
+
+                // TODO: お金消費
+
+
+                // 修飾数が制限値になった場合は終了
+                if (!this.CanAttach)
+                {
+                    Broker.Global.Publish(RequestHideListUI.Get(() =>
+                    {
+                        this.StartSelectInstanceWeapon(actor);
+                    }));
+                }
+            }, () =>
+            {
+                this.StartSelectInstanceWeapon(actor);
+            }));
         }
 
         private void StartSelectConsumeInstanceWeapon(Actor actor, WeaponRecord targetWeaponRecord, ItemModifier itemModifier)
@@ -139,48 +126,35 @@ namespace HK.Bright2.GameSystems
                 .Where(x => x.WeaponRecord == targetWeaponRecord)
                 .ToList();
 
-            Broker.Global.Publish(RequestShowGridUI.Get(targetInstanceWeapons));
+            Broker.Global.Publish(RequestShowGridUI.Get(targetInstanceWeapons, i =>
+            {
+                this.selectConsumeInstanceWeapons.Add(targetInstanceWeapons[i]);
 
-            var tuple = new Tuple<AttachItemModifierToWeaponFromUserInput, List<InstanceWeapon>, Actor, ItemModifier>(
-                this,
-                targetInstanceWeapons,
-                actor,
-                itemModifier
-                );
-            Broker.Global.Receive<DecidedGridIndex>()
-                .TakeUntil(Broker.Global.Receive<RequestHideGridUI>())
-                .SubscribeWithState(tuple, (x, t) =>
+                Broker.Global.Publish(RequestHideGridUI.Get());
+
+                var nextTargetWeaponRecord = this.GetTargetWeaponRecord();
+                if (nextTargetWeaponRecord == null)
                 {
-                    var _this = tuple.Item1;
-                    var _targets = tuple.Item2;
-                    var _actor = tuple.Item3;
-                    var _itemModifier = tuple.Item4;
+                    this.Attach(actor, itemModifier);
 
-                    _this.selectConsumeInstanceWeapons.Add(_targets[x.Index]);
-
-                    Broker.Global.Publish(RequestHideGridUI.Get());
-
-                    var nextTargetWeaponRecord = _this.GetTargetWeaponRecord();
-                    if(nextTargetWeaponRecord == null)
+                    if (this.CanAttach)
                     {
-                        _this.Attach(_actor, _itemModifier);
-
-                        if(_this.CanAttach)
-                        {
-                            _this.selectConsumeInstanceWeapons.Clear();
-                            _this.StartSelectItemModifier(_actor);
-                        }
-                        else
-                        {
-                            _this.StartSelectInstanceWeapon(_actor);
-                        }
+                        this.selectConsumeInstanceWeapons.Clear();
+                        this.StartSelectItemModifier(actor);
                     }
                     else
                     {
-                        _this.StartSelectConsumeInstanceWeapon(_actor, nextTargetWeaponRecord, _itemModifier);
+                        this.StartSelectInstanceWeapon(actor);
                     }
-                })
-                .AddTo(this);
+                }
+                else
+                {
+                    this.StartSelectConsumeInstanceWeapon(actor, nextTargetWeaponRecord, itemModifier);
+                }
+            }, () =>
+            {
+
+            }));
         }
 
         private WeaponRecord GetTargetWeaponRecord()

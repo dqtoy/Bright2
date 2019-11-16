@@ -30,23 +30,13 @@ namespace HK.Bright2.GameSystems
         private void StartSequence(Actor actor)
         {
             var items = actor.StatusController.Inventory.Weapons.Select(x => x.WeaponRecord);
-            Broker.Global.Publish(RequestShowGridUI.Get(items));
-
-            Broker.Global.Receive<DecidedGridIndex>()
-                .TakeUntil(Broker.Global.Receive<HideGridUI>())
-                .SubscribeWithState2(this, actor, (x, _this, _actor) =>
-                {
-                    _this.BeginControlUserInputEquippedWeaponUI(_actor, x.Index);
-                })
-                .AddTo(this);
-
-            Broker.Global.Receive<HideGridUI>()
-                .Take(1)
-                .Subscribe(_ =>
-                {
-                    Broker.Global.Publish(EndChangeWeaponSequenceFromUserInput.Get());
-                })
-                .AddTo(this);
+            Broker.Global.Publish(RequestShowGridUI.Get(items, i =>
+            {
+                this.BeginControlUserInputEquippedWeaponUI(actor, i);
+            }, () =>
+            {
+                Broker.Global.Publish(EndChangeWeaponSequenceFromUserInput.Get());
+            }));
         }
 
         private void BeginControlUserInputEquippedWeaponUI(Actor actor, int possessionWeaponIndex)

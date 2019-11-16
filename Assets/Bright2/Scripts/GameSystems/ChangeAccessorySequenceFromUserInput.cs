@@ -41,56 +41,29 @@ namespace HK.Bright2.GameSystems
         private void StartSelectPossessionAccessoryIndex(Actor actor)
         {
             var items = actor.StatusController.Inventory.Accessories;
-            Broker.Global.Publish(RequestShowGridUI.Get(items));
+            Broker.Global.Publish(RequestShowGridUI.Get(items, i =>
+            {
+                this.possessionAccessoryIndex = i;
 
-            Broker.Global.Receive<DecidedGridIndex>()
-                .Take(1)
-                .TakeUntil(Broker.Global.Receive<HideGridUI>())
-                .SubscribeWithState2(this, actor, (x, _this, _actor) =>
-                {
-                    _this.possessionAccessoryIndex = x.Index;
-
-                    // インデックスが決定したため終了処理は解放する
-                    _this.publishEndMessage.Dispose();
-                    _this.publishEndMessage = null;
-                    
-                    Broker.Global.Publish(RequestHideGridUI.Get());
-                    _this.StartChangeEquippedAccessory(_actor);
-                })
-                .AddTo(this);
-
-            this.publishEndMessage = Broker.Global.Receive<HideGridUI>()
-                .Take(1)
-                .TakeUntil(Broker.Global.Receive<DecidedGridIndex>())
-                .Subscribe(_ =>
-                {
-                    Broker.Global.Publish(EndChangeAccessorySequenceFromUserInput.Get());
-                })
-                .AddTo(this);
+                Broker.Global.Publish(RequestHideGridUI.Get());
+                this.StartChangeEquippedAccessory(actor);
+            }, () =>
+            {
+                Broker.Global.Publish(EndChangeAccessorySequenceFromUserInput.Get());
+            }));
         }
 
         private void StartChangeEquippedAccessory(Actor actor)
         {
             var items = actor.StatusController.EquippedAccessoryIcons;
-            Broker.Global.Publish(RequestShowGridUI.Get(items));
-
-            Broker.Global.Receive<DecidedGridIndex>()
-                .Take(1)
-                .TakeUntil(Broker.Global.Receive<HideGridUI>())
-                .SubscribeWithState2(this, actor, (x, _this, _actor) =>
-                {
-                    _actor.StatusController.ChangeEquippedAccessory(x.Index, _this.possessionAccessoryIndex);
-                    Broker.Global.Publish(RequestHideGridUI.Get());
-                })
-                .AddTo(this);
-
-            Broker.Global.Receive<HideGridUI>()
-                .Take(1)
-                .SubscribeWithState2(this, actor, (x, _this, _actor) =>
-                {
-                    _this.StartSelectPossessionAccessoryIndex(_actor);
-                })
-                .AddTo(this);
+            Broker.Global.Publish(RequestShowGridUI.Get(items, i =>
+            {
+                actor.StatusController.ChangeEquippedAccessory(i, this.possessionAccessoryIndex);
+                Broker.Global.Publish(RequestHideGridUI.Get());
+            }, () =>
+            {
+                this.StartSelectPossessionAccessoryIndex(actor);
+            }));
         }
     }
 }

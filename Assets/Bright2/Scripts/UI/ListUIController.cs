@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HK.Bright2.GameSystems;
 using HK.Bright2.InputSystems;
@@ -29,6 +30,10 @@ namespace HK.Bright2.UIControllers
 
         private IReadOnlyList<IViewableList> items;
 
+        private Action<int> OnDecidedIndex;
+
+        private Action OnCancelFromUserInput;
+
         void Awake()
         {
             this.canvasGroup.alpha = 0.0f;
@@ -39,6 +44,8 @@ namespace HK.Bright2.UIControllers
                     _this.index = 0;
                     _this.canvasGroup.alpha = 1.0f;
                     _this.scrollView.UpdateData(_this.CreateItems(x.Items.ToList()));
+                    _this.OnDecidedIndex = x.OnDecidedIndex;
+                    _this.OnCancelFromUserInput = x.OnCancelFromUserInput;
                     Broker.Global.Publish(ShowListUI.Get(_this));
                 })
                 .AddTo(this);
@@ -98,10 +105,12 @@ namespace HK.Bright2.UIControllers
             if(Input.GetButtonDown(InputName.Decide))
             {
                 Broker.Global.Publish(DecidedListIndex.Get(this.index));
+                this.OnDecidedIndex?.Invoke(this.index);
             }
             if(Input.GetButtonDown(InputName.Cancel))
             {
                 Broker.Global.Publish(HideListUI.Get(this, HideListUI.HidePatternType.FromUserInput));
+                this.OnCancelFromUserInput?.Invoke();
             }
         }
 
