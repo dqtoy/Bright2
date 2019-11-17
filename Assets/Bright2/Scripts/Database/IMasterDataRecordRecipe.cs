@@ -7,7 +7,7 @@ namespace HK.Bright2.Database
     /// <summary>
     /// 何かしらのアイテムを生成するレシピを持つマスターデータ
     /// </summary>
-    public interface IMasterDataRecordRecipe
+    public interface IMasterDataRecordRecipe : IMasterDataRecord
     {
         /// <summary>
         /// 必要なアイテム
