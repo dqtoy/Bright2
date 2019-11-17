@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a9d28c5a61e4824b4a35b2f00f9518, type: 3}
   m_Name: 0101_0
   m_EditorClassIdentifier: 
-  weaponRecord: {fileID: 0}
+  weaponRecord: {fileID: 11400000, guid: 0d64a193777554bb5a6a1ee5e25abf25, type: 2}
   needItems:
     elements:
     - masterDataRecord: {fileID: 11400000, guid: 6f0b3cd60ef224b68b638924cbd0e091,
