@@ -545,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
       propertyPath: possessionAccessories.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
@@ -562,31 +562,31 @@ PrefabInstance:
         type: 3}
       propertyPath: possessionAccessories.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 42987be5e797b41648255f3edb8e7b78,
+      objectReference: {fileID: 11400000, guid: bce97a502aba24b21b0c5f9771444e98,
         type: 2}
     - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
       propertyPath: possessionAccessories.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: bce97a502aba24b21b0c5f9771444e98,
+      objectReference: {fileID: 11400000, guid: a25dea503bb8d4606b6b0d82e178315d,
         type: 2}
     - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
       propertyPath: possessionAccessories.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: a25dea503bb8d4606b6b0d82e178315d,
+      objectReference: {fileID: 11400000, guid: fbb2bb771fd294cb4ba08195d25ba659,
         type: 2}
     - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
       propertyPath: possessionAccessories.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: fbb2bb771fd294cb4ba08195d25ba659,
+      objectReference: {fileID: 11400000, guid: f02e0c51ca0a54372b6fc4d4a8cfcb69,
         type: 2}
     - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
       propertyPath: possessionAccessories.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: f02e0c51ca0a54372b6fc4d4a8cfcb69,
+      objectReference: {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd,
         type: 2}
     - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
@@ -628,13 +628,25 @@ PrefabInstance:
         type: 3}
       propertyPath: possessionAccessories.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd,
+      objectReference: {fileID: 11400000, guid: 42987be5e797b41648255f3edb8e7b78,
         type: 2}
     - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
       propertyPath: possessionWeapons.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd,
+        type: 2}
+    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
+        type: 3}
+      propertyPath: possessionAccessories.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd,
+        type: 2}
+    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
+        type: 3}
+      propertyPath: possessionAccessories.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440e0dcec61524c838c3c17f3645b397, type: 3}
