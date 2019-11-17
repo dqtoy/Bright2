@@ -26,6 +26,10 @@ namespace HK.Bright2.Database
         public WeaponRecord WeaponRecord => this.weaponRecord;
 
         [SerializeField]
+        private int money = default;
+        public int Money => this.money;
+
+        [SerializeField]
         private NeedItems needItems = default;
         public NeedItems NeedItems => this.needItems;
 

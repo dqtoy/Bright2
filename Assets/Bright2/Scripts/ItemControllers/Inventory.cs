@@ -193,15 +193,18 @@ namespace HK.Bright2.ItemControllers
                 }
             }
 
-            foreach(var instanceWeapon in instanceWeapons)
+            if(instanceWeapons != null)
             {
-                this.weapons.Remove(instanceWeapon);
-
-                // 装備中の武器だった場合は何も装備しなくする
-                var equippedWeaponIndex = this.owner.StatusController.EquippedWeapons.FindIndex(m => m.InstanceWeapon == instanceWeapon);
-                if(equippedWeaponIndex != -1)
+                foreach (var instanceWeapon in instanceWeapons)
                 {
-                    this.owner.StatusController.RemoveEquippedWeapon(equippedWeaponIndex);
+                    this.weapons.Remove(instanceWeapon);
+
+                    // 装備中の武器だった場合は何も装備しなくする
+                    var equippedWeaponIndex = this.owner.StatusController.EquippedWeapons.FindIndex(m => m.InstanceWeapon == instanceWeapon);
+                    if (equippedWeaponIndex != -1)
+                    {
+                        this.owner.StatusController.RemoveEquippedWeapon(equippedWeaponIndex);
+                    }
                 }
             }
 
