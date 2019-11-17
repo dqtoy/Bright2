@@ -20,17 +20,16 @@ namespace HK.Bright2.Extensions
         public static void StartSelectConsumeInstanceWeapon(
             this ISelectConsumeInstanceWeapons self,
             Actor actor,
-            ItemModifierRecipeRecord itemModifierRecipeRecord,
+            NeedItems needItems,
             Action<List<InstanceWeapon>> OnCompleteSelect,
             Action OnCancel
             )
         {
-            var targetWeaponRecords = itemModifierRecipeRecord.NeedItems.GetNeedWeaponRecords();
+            var targetWeaponRecords = needItems.GetNeedWeaponRecords();
             var selectConsumeInstanceWeapons = new List<InstanceWeapon>();
             var targetWeaponRecord = GetTargetWeaponRecord(targetWeaponRecords, selectConsumeInstanceWeapons);
             self.InternalStartSelectConsumeInstanceWeapon(
                 actor,
-                itemModifierRecipeRecord,
                 targetWeaponRecord,
                 targetWeaponRecords,
                 selectConsumeInstanceWeapons,
@@ -42,7 +41,6 @@ namespace HK.Bright2.Extensions
         private static void InternalStartSelectConsumeInstanceWeapon(
             this ISelectConsumeInstanceWeapons self,
             Actor actor,
-            ItemModifierRecipeRecord itemModifierRecipeRecord,
             WeaponRecord targetWeaponRecord,
             List<WeaponRecord> targetWeaponRecords,
             List<InstanceWeapon> selectConsumeInstanceWeapons,
@@ -74,7 +72,6 @@ namespace HK.Bright2.Extensions
                 {
                     self.InternalStartSelectConsumeInstanceWeapon(
                         actor,
-                        itemModifierRecipeRecord,
                         nextTargetWeaponRecord,
                         targetWeaponRecords,
                         selectConsumeInstanceWeapons,

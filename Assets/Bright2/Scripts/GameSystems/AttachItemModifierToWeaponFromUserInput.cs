@@ -36,6 +36,9 @@ namespace HK.Bright2.GameSystems
                 .AddTo(this);
         }
 
+        /// <summary>
+        /// シーケンスを開始する
+        /// </summary>
         private void StartSequence(Actor actor)
         {
             this.selectWeapon = null;
@@ -43,6 +46,9 @@ namespace HK.Bright2.GameSystems
             this.StartSelectInstanceWeapon(actor);
         }
 
+        /// <summary>
+        /// アイテム修飾を装着する武器の選択を開始する
+        /// </summary>
         private void StartSelectInstanceWeapon(Actor actor)
         {
             Broker.Global.Publish(RequestShowGridUI.Get(actor.StatusController.Inventory.Weapons, i =>
@@ -63,6 +69,9 @@ namespace HK.Bright2.GameSystems
             }));
         }
 
+        /// <summary>
+        /// アイテム修飾の選択を開始する
+        /// </summary>
         private void StartSelectItemModifier(Actor actor)
         {
             var items = GameSystem.Instance.MasterData.ItemModifierRecipe.GetViewableRecipes(actor.StatusController.Inventory);
@@ -81,7 +90,7 @@ namespace HK.Bright2.GameSystems
                 if (item.NeedItems.IsNeedWeapon)
                 {
                     Broker.Global.Publish(RequestHideListUI.Get(null));
-                    this.StartSelectConsumeInstanceWeapon(actor, item, (selectConsumeInstanceWeapons) =>
+                    this.StartSelectConsumeInstanceWeapon(actor, item.NeedItems, (selectConsumeInstanceWeapons) =>
                     {
                         this.Attach(actor, item, selectConsumeInstanceWeapons);
 
@@ -119,6 +128,9 @@ namespace HK.Bright2.GameSystems
             }));
         }
 
+        /// <summary>
+        /// 選択した武器にアイテム修飾を装着する
+        /// </summary>
         private void Attach(Actor actor, ItemModifierRecipeRecord record, List<InstanceWeapon> selectConsumeInstanceWeapons)
         {
             actor.StatusController.Inventory.Consume(record.NeedItems, selectConsumeInstanceWeapons, record.Money);
@@ -126,6 +138,9 @@ namespace HK.Bright2.GameSystems
             Debug.Log("アタッチ完了");
         }
 
+        /// <summary>
+        /// 装着可能か返す
+        /// </summary>
         private bool CanAttach
         {
             get
