@@ -86,6 +86,12 @@ namespace HK.Bright2.GameSystems
                     return;
                 }
 
+                if(!inventory.IsEnough(item.Money))
+                {
+                    Debug.Log("お金が足りない");
+                    return;
+                }
+
                 // 武器の消費が必要なら選択開始
                 if (item.NeedItems.IsNeedWeapon)
                 {
