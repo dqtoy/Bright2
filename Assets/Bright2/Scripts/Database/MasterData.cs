@@ -26,7 +26,7 @@ namespace HK.Bright2.Database
         public ItemModifierRecipeList ItemModifierRecipe => this.itemModifierRecipe;
 
         [SerializeField]
-        private WeaponRecipeList weaponRecipeList = default;
-        public WeaponRecipeList WeaponRecipeList => this.weaponRecipeList;
+        private WeaponRecipeList weaponRecipe = default;
+        public WeaponRecipeList WeaponRecipe => this.weaponRecipe;
     }
 }
