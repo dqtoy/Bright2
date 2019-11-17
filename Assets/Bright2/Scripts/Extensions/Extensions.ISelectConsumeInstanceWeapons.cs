@@ -17,6 +17,9 @@ namespace HK.Bright2.Extensions
     /// </summary>
     public static partial class Extensions
     {
+        /// <summary>
+        /// 消費する武器の選択を開始する
+        /// </summary>
         public static void StartSelectConsumeInstanceWeapon(
             this ISelectConsumeInstanceWeapons self,
             Actor actor,
@@ -28,7 +31,7 @@ namespace HK.Bright2.Extensions
             var targetWeaponRecords = needItems.GetNeedWeaponRecords();
             var selectConsumeInstanceWeapons = new List<InstanceWeapon>();
             var targetWeaponRecord = GetTargetWeaponRecord(targetWeaponRecords, selectConsumeInstanceWeapons);
-            self.InternalStartSelectConsumeInstanceWeapon(
+            self.StartSelectConsumeInstanceWeaponRecursive(
                 actor,
                 targetWeaponRecord,
                 targetWeaponRecords,
@@ -38,7 +41,10 @@ namespace HK.Bright2.Extensions
             );
         }
 
-        private static void InternalStartSelectConsumeInstanceWeapon(
+        /// <summary>
+        /// 必要な武器を選択し終えるまで選択を再帰的に行う
+        /// </summary>
+        private static void StartSelectConsumeInstanceWeaponRecursive(
             this ISelectConsumeInstanceWeapons self,
             Actor actor,
             WeaponRecord targetWeaponRecord,
@@ -70,7 +76,7 @@ namespace HK.Bright2.Extensions
                 }
                 else
                 {
-                    self.InternalStartSelectConsumeInstanceWeapon(
+                    self.StartSelectConsumeInstanceWeaponRecursive(
                         actor,
                         nextTargetWeaponRecord,
                         targetWeaponRecords,
@@ -85,6 +91,9 @@ namespace HK.Bright2.Extensions
             }));
         }
 
+        /// <summary>
+        /// 必要な武器のレコードを返す
+        /// </summary>
         private static WeaponRecord GetTargetWeaponRecord(List<WeaponRecord> targetWeaponRecords, List<InstanceWeapon> selectConsumeInstanceWeapons)
         {
             foreach (var w in targetWeaponRecords)
