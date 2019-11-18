@@ -19,7 +19,7 @@ namespace HK.Bright2.GameSystems
 
         void Awake()
         {
-            Broker.Global.Receive<RequestChangeWeaponUserInput>()
+            Broker.Global.Receive<ChangeWeaponUserInputMessages.Request>()
                 .SubscribeWithState(this, (x, _this) =>
                 {
                     _this.StartSequence(x.Actor);
@@ -41,7 +41,7 @@ namespace HK.Bright2.GameSystems
             }, () =>
             {
                 Broker.Global.Publish(RequestHideGridUI.Get());
-                Broker.Global.Publish(EndChangeWeaponUserInput.Get());
+                Broker.Global.Publish(ChangeWeaponUserInputMessages.End.Get());
             }));
         }
 

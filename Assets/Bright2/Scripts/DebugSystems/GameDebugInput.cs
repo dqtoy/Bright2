@@ -35,7 +35,7 @@ namespace HK.Bright2.DebugSystems
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                Broker.Global.Publish(RequestChangeWeaponUserInput.Get(this.actor));
+                Broker.Global.Publish(ChangeWeaponUserInputMessages.Request.Get(this.actor));
             }
 
             if (Input.GetKeyDown(KeyCode.W))
