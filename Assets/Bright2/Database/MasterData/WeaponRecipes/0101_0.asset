@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: 0101_0
   m_EditorClassIdentifier: 
   weaponRecord: {fileID: 11400000, guid: 0d64a193777554bb5a6a1ee5e25abf25, type: 2}
+  money: 0
   needItems:
     elements:
-    - masterDataRecord: {fileID: 11400000, guid: 6f0b3cd60ef224b68b638924cbd0e091,
+    - masterDataRecord: {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd,
         type: 2}
       amount: 1
