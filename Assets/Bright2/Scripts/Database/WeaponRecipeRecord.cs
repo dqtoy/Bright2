@@ -6,7 +6,7 @@ using UnityEngine;
 namespace HK.Bright2.Database
 {
     /// <summary>
-    /// アイテム修飾のレシピマスターデータのレコード
+    /// 武器のレシピマスターデータのレコード
     /// </summary>
     [CreateAssetMenu(menuName = "Bright2/MasterData/WeaponRecipe/Record")]
     public sealed class WeaponRecipeRecord :
