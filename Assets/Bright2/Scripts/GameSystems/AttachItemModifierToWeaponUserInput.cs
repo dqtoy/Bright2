@@ -17,7 +17,7 @@ namespace HK.Bright2.GameSystems
     /// <summary>
     /// ユーザー入力によって武器に<see cref="ItemModifier"/>を装着するクラス
     /// </summary>
-    public sealed class AttachItemModifierToWeaponFromUserInput : MonoBehaviour, ISelectConsumeInstanceWeapons
+    public sealed class AttachItemModifierToWeaponUserInput : MonoBehaviour, ISelectConsumeInstanceWeapons
     {
         private Actor actor;
 
