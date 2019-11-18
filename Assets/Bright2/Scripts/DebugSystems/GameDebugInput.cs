@@ -40,7 +40,7 @@ namespace HK.Bright2.DebugSystems
 
             if (Input.GetKeyDown(KeyCode.W))
             {
-                Broker.Global.Publish(RequestChangeAccessorySequenceFromUserInput.Get(this.actor));
+                Broker.Global.Publish(ChangeAccessoryUserInputMessages.Request.Get(this.actor));
             }
 
             if (Input.GetKeyDown(KeyCode.E))
