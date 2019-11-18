@@ -58,9 +58,14 @@ namespace HK.Bright2.DebugSystems
                 Broker.Global.Publish(RequestSpawnMoney.Get(this.actor, 100, this.actor.CachedTransform.position + new Vector3(1.0f, 1.0f, 0.0f)));
             }
 
-            if(Input.GetKeyDown(KeyCode.Y))
+            if (Input.GetKeyDown(KeyCode.Y))
             {
                 Broker.Global.Publish(CreateWeaponUserInputMessages.Request.Get(this.actor));
+            }
+
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                Broker.Global.Publish(CreateAccessoryUserInputMessages.Request.Get(this.actor));
             }
 
             this.InputOnCtrlKey();
