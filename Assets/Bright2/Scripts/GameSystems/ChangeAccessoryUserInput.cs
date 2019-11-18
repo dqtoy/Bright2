@@ -14,7 +14,7 @@ namespace HK.Bright2.GameSystems
     /// <summary>
     /// ユーザーの入力によって<see cref="Actor"/>の装備中のアクセサリーを切り替えるシーケンスを制御するクラス
     /// </summary>
-    public sealed class ChangeAccessorySequenceFromUserInput : MonoBehaviour
+    public sealed class ChangeAccessoryUserInput : MonoBehaviour
     {
         private int possessionAccessoryIndex;
 

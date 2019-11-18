@@ -11,8 +11,8 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
     /// <summary>
     /// 装備しているアクセサリーを切り替えるシーケンスゲームイベント
     /// </summary>
-    [CreateAssetMenu(menuName = "Bright2/SequenceGameEvent/Element/ChangeAccessorySequenceFromUserInput")]
-    public sealed class ChangeAccessorySequenceFromUserInput : SequenceGameEventElement
+    [CreateAssetMenu(menuName = "Bright2/SequenceGameEvent/Element/ChangeAccessoryUserInput")]
+    public sealed class ChangeAccessoryUserInput : SequenceGameEventElement
     {
         [SerializeField]
         private SequenceGameEventElement nextElement = default;
