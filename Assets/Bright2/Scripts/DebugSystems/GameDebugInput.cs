@@ -50,7 +50,7 @@ namespace HK.Bright2.DebugSystems
 
             if(Input.GetKeyDown(KeyCode.R))
             {
-                Broker.Global.Publish(RequestAttachItemModifierToWeaponFromUserInput.Get(this.actor));
+                Broker.Global.Publish(AttachItemModifierToWeaponUserInputMessages.Request.Get(this.actor));
             }
 
             if(Input.GetKey(KeyCode.T))
