@@ -60,7 +60,7 @@ namespace HK.Bright2.DebugSystems
 
             if(Input.GetKeyDown(KeyCode.Y))
             {
-                Broker.Global.Publish(RequestCreateWeaponUserInput.Get(this.actor));
+                Broker.Global.Publish(CreateWeaponUserInputMessages.Request.Get(this.actor));
             }
 
             this.InputOnCtrlKey();
