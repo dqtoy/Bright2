@@ -19,9 +19,9 @@ namespace HK.Bright2.GameSystems.SequenceGameEvents
 
         public override void Invoke(ISequenceGameEvent owner, Actor invoker)
         {
-            Broker.Global.Publish(RequestChangeWeaponSequenceFromUserInput.Get(invoker));
+            Broker.Global.Publish(RequestChangeWeaponUserInput.Get(invoker));
 
-            Broker.Global.Receive<EndChangeWeaponSequenceFromUserInput>()
+            Broker.Global.Receive<EndChangeWeaponUserInput>()
                 .Take(1)
                 .SubscribeWithState3(this, owner, invoker, (_, _this, _owner, _invoker) =>
                 {

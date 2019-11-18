@@ -8,7 +8,7 @@ namespace HK.Bright2.GameSystems.Messages
     /// <summary>
     /// ユーザーの入力によって武器を切り替えるシーケンスをリクエストするメッセージ
     /// </summary>
-    public sealed class RequestChangeWeaponSequenceFromUserInput : Message<RequestChangeWeaponSequenceFromUserInput, Actor>
+    public sealed class RequestChangeWeaponUserInput : Message<RequestChangeWeaponUserInput, Actor>
     {
         /// <summary>
         /// 武器を切り替えたい<see cref="Actor"/>
