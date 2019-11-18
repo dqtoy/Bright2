@@ -13,7 +13,7 @@ namespace HK.Bright2.GameSystems
     /// <summary>
     /// ユーザーの入力によって<see cref="Actor"/>の装備中の武器を切り替えるシーケンスを制御するクラス
     /// </summary>
-    public sealed class ChangeWeaponSequenceFromUserInput : MonoBehaviour
+    public sealed class ChangeWeaponUserInput : MonoBehaviour
     {
         private int possessionWeaponIndex;
 
