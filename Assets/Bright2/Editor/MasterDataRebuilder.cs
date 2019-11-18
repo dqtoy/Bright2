@@ -19,6 +19,7 @@ namespace HK.Bright2.Editor
             ResetList<MaterialList, MaterialRecord>("Assets/Bright2/Database/MasterData/Lists/Material.asset", "Assets/Bright2/Database/MasterData/Materials");
             ResetList<ItemModifierRecipeList, ItemModifierRecipeRecord>("Assets/Bright2/Database/MasterData/Lists/ItemModifierRecipe.asset", "Assets/Bright2/Database/MasterData/ItemModifierRecipes");
             ResetList<WeaponRecipeList, WeaponRecipeRecord>("Assets/Bright2/Database/MasterData/Lists/WeaponRecipe.asset", "Assets/Bright2/Database/MasterData/WeaponRecipes");
+            ResetList<AccessoryRecipeList, AccessoryRecipeRecord>("Assets/Bright2/Database/MasterData/Lists/AccessoryRecipe.asset", "Assets/Bright2/Database/MasterData/AccessoryRecipes");
         }
 
         private static void ResetList<L, E>(string listPath, string recordsPath)
