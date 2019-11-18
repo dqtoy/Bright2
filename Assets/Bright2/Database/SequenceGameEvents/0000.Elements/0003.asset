@@ -30,6 +30,11 @@ MonoBehaviour:
     nextSequence: {fileID: 11400000, guid: 685e2273d0a1d44e0a1dfbd51683283f, type: 2}
   - message:
       target: {fileID: 11400000, guid: ffc2ea077ec874909a71b3467b17abeb, type: 2}
+      value: "\u30A2\u30AF\u30BB\u30B5\u30EA\u30FC\u3092\u4F5C\u6210"
+      guid: 9d388940-dc6f-4862-9d9e-4c3d838b72a4
+    nextSequence: {fileID: 11400000, guid: 37b0df278dc824b4995c8f966403d5fd, type: 2}
+  - message:
+      target: {fileID: 11400000, guid: ffc2ea077ec874909a71b3467b17abeb, type: 2}
       value: "\u7279\u306B\u7528\u306F\u306A\u3044"
       guid: d9f5b525-ba93-47ef-97a4-07a5d82d3161
     nextSequence: {fileID: 11400000, guid: 3a2165801d70745b2b10256a58cf6593, type: 2}

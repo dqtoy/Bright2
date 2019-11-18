@@ -26,6 +26,10 @@ MonoBehaviour:
       en: 
     guid: 6887fa68-bc12-48a8-8545-c67eeb4ec278
   - value:
+      ja: "\u30A2\u30AF\u30BB\u30B5\u30EA\u30FC\u3092\u4F5C\u6210"
+      en: 
+    guid: 9d388940-dc6f-4862-9d9e-4c3d838b72a4
+  - value:
       ja: "\u7279\u306B\u7528\u306F\u306A\u3044"
       en: 
     guid: d9f5b525-ba93-47ef-97a4-07a5d82d3161
