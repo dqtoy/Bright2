@@ -44,8 +44,10 @@ namespace HK.Bright2.Extensions
 
             var effect = self.EffectPrefab.Rent();
             effect.transform.position = generationSource;
+
+            var selfPosition = self.transform.position;
             var targetPosition = target.CachedTransform.position;
-            var direction = (new Vector2(targetPosition.x, targetPosition.y) - generationSource).GetHorizontalDirection();
+            var direction = (new Vector2(targetPosition.x, targetPosition.y) - new Vector2(selfPosition.x, selfPosition.y)).GetHorizontalDirection();
             foreach(var i in effect.GetComponentsInChildren<ISyncDirection>())
             {
                 i.Sync(direction);
