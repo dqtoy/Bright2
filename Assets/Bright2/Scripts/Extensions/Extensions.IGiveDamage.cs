@@ -41,6 +41,9 @@ namespace HK.Bright2.Extensions
             target.Movement.SetGravity(self.KnockbackDirection * self.KnockbackPower);
             target.StatusController.AddInfinityStatus(self.GiveDamageObject, self.InfinitySeconds);
 
+            var effect = self.EffectPrefab.Rent();
+            effect.transform.position = generationSource;
+
             self.CurrentPenetrationCount--;
 
             foreach(var a in self.AdditionalEffects)

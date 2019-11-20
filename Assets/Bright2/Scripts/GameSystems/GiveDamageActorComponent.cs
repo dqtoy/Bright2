@@ -43,6 +43,12 @@ namespace HK.Bright2.GameSystems
         [SerializeField]
         protected int penetrationCount = default;
 
+        /// <summary>
+        /// 攻撃が当たった際に生成するエフェクト
+        /// </summary>
+        [SerializeField]
+        private PoolableEffect effectPrefab = default;
+
         [SerializeField]
         private List<GiveDamageActorAdditionalEffect> additionalEffects = default;
 
@@ -77,6 +83,8 @@ namespace HK.Bright2.GameSystems
         }
 
         List<GiveDamageActorAdditionalEffect> IGiveDamage.AdditionalEffects => this.additionalEffects;
+
+        PoolableEffect IGiveDamage.EffectPrefab => this.effectPrefab;
 
         public abstract Actor Owner { get; }
 
