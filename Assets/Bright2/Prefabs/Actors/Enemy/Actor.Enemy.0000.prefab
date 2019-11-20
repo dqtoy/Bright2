@@ -37,6 +37,8 @@ MonoBehaviour:
   - Player
   controlledCollider: {fileID: 1908292255887170411}
   penetrationCount: -1
+  effectPrefab: {fileID: 4643271828095609800, guid: 18bc25df30fbe455395abb697a051d25,
+    type: 3}
   additionalEffects: []
 --- !u!1001 &5603399944185990776
 PrefabInstance:

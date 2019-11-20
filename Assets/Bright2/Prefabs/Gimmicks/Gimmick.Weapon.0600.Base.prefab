@@ -127,6 +127,8 @@ MonoBehaviour:
   - Enemy
   controlledCollider: {fileID: 563017635811150891}
   penetrationCount: 1
+  effectPrefab: {fileID: 4643271828095609800, guid: d2d1e49b0f4a94421833d56ddc777017,
+    type: 3}
   additionalEffects:
   - {fileID: 11400000, guid: f3b13d7dde0f34d32ac36e193517b1f2, type: 2}
 --- !u!1 &8968304843107480440
