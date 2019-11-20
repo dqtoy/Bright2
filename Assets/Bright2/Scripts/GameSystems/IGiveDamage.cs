@@ -92,5 +92,10 @@ namespace HK.Bright2.GameSystems
         /// 攻撃が当たった際の追加効果
         /// </summary>
         List<GiveDamageActorAdditionalEffect> AdditionalEffects { get; }
+
+        /// <summary>
+        /// 攻撃が当たった際に生成するエフェクトプレハブ
+        /// </summary>
+        PoolableEffect EffectPrefab { get; }
     }
 }
