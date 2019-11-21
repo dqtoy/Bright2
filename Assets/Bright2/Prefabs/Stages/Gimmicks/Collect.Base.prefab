@@ -261,6 +261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Effect.Collect.Highlight.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 3169324758168399728, guid: 0bce73547dee04c85bb1c60ecb35f0c6,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6565778084321516332, guid: 0bce73547dee04c85bb1c60ecb35f0c6,
         type: 3}
       propertyPath: m_LocalPosition.x

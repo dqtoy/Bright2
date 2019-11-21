@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 8096085265903158744, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
       propertyPath: m_Name
-      value: Collect.Stone.0000
+      value: Collect.Coral.0000
       objectReference: {fileID: 0}
     - target: {fileID: 2996190707339962182, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
@@ -70,13 +70,13 @@ PrefabInstance:
     - target: {fileID: 2279793455462128264, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.161
+      value: 0.477
       objectReference: {fileID: 0}
     - target: {fileID: 7506082496306514495, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b6927dd1c5c1b41e08043409819aa263,
+      objectReference: {fileID: 21300000, guid: 6105203f76e924cba8934ba6a2d8a307,
         type: 3}
     - target: {fileID: 7506082496306514495, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
@@ -86,17 +86,17 @@ PrefabInstance:
     - target: {fileID: 7506082496306514495, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.6415094
+      value: 0.65141124
       objectReference: {fileID: 0}
     - target: {fileID: 7506082496306514495, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.6415094
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7506082496306514495, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.6415094
+      value: 0.8113208
       objectReference: {fileID: 0}
     - target: {fileID: 7506082496306514495, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
