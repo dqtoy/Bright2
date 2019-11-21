@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &107445044938372084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5885814979598519366}
+  m_Layer: 12
+  m_Name: Tween (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5885814979598519366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107445044938372084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2996190707339962182}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1361314090014520620
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +44,7 @@ GameObject:
   m_Layer: 13
   m_Name: Particle System
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5628,7 +5658,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -14344,7 +14374,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2996190707339962182}
   - component: {fileID: 4154878969760879206}
+  - component: {fileID: 7072227934744679939}
   - component: {fileID: 6521748790209023769}
+  - component: {fileID: 2844561012442771184}
   m_Layer: 12
   m_Name: Treasure
   m_TagString: Untagged
@@ -14364,6 +14396,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7062131857066918256}
+  - {fileID: 7524806982499125098}
+  - {fileID: 5885814979598519366}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14393,6 +14427,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!320 &7072227934744679939
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096085265903158744}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: d371ba161e2ef4abc9ec1fbee7a75a72, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 8804159115939635818, guid: d371ba161e2ef4abc9ec1fbee7a75a72, type: 2}
+    value: {fileID: 7062131857066918256}
+  - key: {fileID: 1191850693593542225, guid: d371ba161e2ef4abc9ec1fbee7a75a72, type: 2}
+    value: {fileID: 4473699461293630384}
+  - key: {fileID: 7743794169528701517, guid: d371ba161e2ef4abc9ec1fbee7a75a72, type: 2}
+    value: {fileID: 8096085265903158744}
+  m_ExposedReferences:
+    m_References:
+    - 1881e2d4798a840919feac1a7b8ddd0c: {fileID: 1361314090014520620}
+    - 6651196edbaa54422ae3641c935f3476: {fileID: 7524806982499125098}
+    - f93dadfb0a51d4841ad119dbc3b73362: {fileID: 5885814979598519366}
 --- !u!114 &6521748790209023769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14407,13 +14467,69 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeTags:
   - Player
-  effectRoot: {fileID: 7062131857066918256}
+  playableDirector: {fileID: 7072227934744679939}
   spawnPoint: {fileID: 7062131857066918256}
-  effectEndValueRelative: {x: 0, y: 2, z: 0}
-  effectDuration: 1
-  effectEase: 15
-  openEffect: {fileID: 4473699461293630384}
-  openEffectDelaySeconds: 0.5
   weapons: []
   accessories: []
   money: 0
+--- !u!114 &2844561012442771184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096085265903158744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 71674364797f84025915b5f7f38a5bd3, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6521748790209023769}
+          m_MethodName: OnCompleteEffect
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+--- !u!1 &8922918299611807292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7524806982499125098}
+  m_Layer: 12
+  m_Name: Tween (0)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7524806982499125098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922918299611807292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2996190707339962182}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

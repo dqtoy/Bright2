@@ -9,6 +9,7 @@ using UnityEngine.Assertions;
 using DG.Tweening;
 using UniRx;
 using System;
+using UnityEngine.Playables;
 
 namespace HK.Bright2.StageControllers
 {
@@ -21,25 +22,10 @@ namespace HK.Bright2.StageControllers
         private List<string> includeTags = default;
 
         [SerializeField]
-        private Transform effectRoot = default;
+        private PlayableDirector playableDirector = default;
 
         [SerializeField]
         private Transform spawnPoint = default;
-
-        [SerializeField]
-        private Vector3 effectEndValueRelative = default;
-
-        [SerializeField]
-        private float effectDuration = default;
-
-        [SerializeField]
-        private Ease effectEase = default;
-
-        [SerializeField]
-        private GameObject openEffect = default;
-
-        [SerializeField]
-        private float openEffectDelaySeconds = default;
 
         [SerializeField]
         private List<WeaponRecord> weapons = default;
@@ -49,6 +35,8 @@ namespace HK.Bright2.StageControllers
 
         [SerializeField]
         private int money = default;
+
+        private Actor invokedActor;
 
         void IActorReactionOnTriggerEnter2D.Do(Actor actor)
         {
@@ -73,42 +61,40 @@ namespace HK.Bright2.StageControllers
 
         void IGameEvent.Invoke(Actor invokedActor)
         {
-            this.StartEffect(invokedActor);
+            this.invokedActor = invokedActor;
+            this.StartEffect();
         }
 
-        private void StartEffect(Actor invokedActor)
-        {
-            this.effectRoot.DOLocalMove(this.effectRoot.localPosition + this.effectEndValueRelative, this.effectDuration)
-                .SetEase(this.effectEase)
-                .OnComplete(() => this.CompleteEffect(invokedActor));
-
-            Observable.Timer(TimeSpan.FromSeconds(this.openEffectDelaySeconds))
-                .SubscribeWithState(this, (_, _this) =>
-                {
-                    _this.openEffect.SetActive(true);
-                })
-                .AddTo(this);
-        }
-
-        private void CompleteEffect(Actor invokedActor)
+        /// <summary>
+        /// エフェクトの再生が完了した際の処理
+        /// </summary>
+        /// <remarks>
+        /// <see cref="SignalReceiver"/>により実行されます
+        /// </remarks>
+        public void OnCompleteEffect()
         {
             foreach (var w in this.weapons)
             {
                 Broker.Global.Publish(RequestSpawnWeapon.Get(invokedActor, w, this.spawnPoint.position));
             }
 
-            foreach(var a in this.accessories)
+            foreach (var a in this.accessories)
             {
                 Broker.Global.Publish(RequestSpawnAccessory.Get(invokedActor, a, this.spawnPoint.position));
             }
 
-            if(this.money > 0)
+            if (this.money > 0)
             {
                 Broker.Global.Publish(RequestSpawnMoney.Get(invokedActor, this.money, this.spawnPoint.position));
             }
 
             Destroy(this.gameObject);
             invokedActor.StatusController.SetGameEvent(null);
+        }
+
+        private void StartEffect()
+        {
+            this.playableDirector.Play();
         }
     }
 }
