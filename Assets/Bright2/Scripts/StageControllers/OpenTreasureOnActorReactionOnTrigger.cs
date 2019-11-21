@@ -34,6 +34,9 @@ namespace HK.Bright2.StageControllers
         private List<AccessoryRecord> accessories = default;
 
         [SerializeField]
+        private List<MaterialRecord> materials = default;
+
+        [SerializeField]
         private int money = default;
 
         private Actor invokedActor;
@@ -81,6 +84,11 @@ namespace HK.Bright2.StageControllers
             foreach (var a in this.accessories)
             {
                 Broker.Global.Publish(RequestSpawnAccessory.Get(invokedActor, a, this.spawnPoint.position));
+            }
+
+            foreach(var m in this.materials)
+            {
+                Broker.Global.Publish(RequestSpawnMaterial.Get(invokedActor, m, this.spawnPoint.position));
             }
 
             if (this.money > 0)

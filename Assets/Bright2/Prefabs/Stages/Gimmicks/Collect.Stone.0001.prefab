@@ -4977,6 +4977,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 5739553652495848589}
   weapons: []
   accessories: []
+  materials: []
   money: 0
 --- !u!114 &2844561012442771184
 MonoBehaviour:
