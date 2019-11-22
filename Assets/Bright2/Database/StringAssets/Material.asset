@@ -21,3 +21,11 @@ MonoBehaviour:
       ja: "\u30B9\u30E9\u30A4\u30E0\u30B8\u30A7\u30EB"
       en: 
     guid: 8af01344-5ee1-43dc-9946-c7a27523f2e6
+  - value:
+      ja: "\u9244\u9271\u77F3"
+      en: 
+    guid: 369590b5-079b-4636-bbcb-dc2f674ac278
+  - value:
+      ja: "\u6728\u6750"
+      en: 
+    guid: 8d342d19-6afc-43cb-83b7-af287c235821

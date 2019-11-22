@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8813f471b99e94377a0fac34feb34843, type: 3}
-  m_Name: 1001
+  m_Name: 0301
   m_EditorClassIdentifier: 
   materialName:
     target: {fileID: 11400000, guid: 94bed1e4580534c77b87b5e2204889a2, type: 2}
-    value: "\u30B9\u30E9\u30A4\u30E0\u30B8\u30A7\u30EB"
-    guid: 8af01344-5ee1-43dc-9946-c7a27523f2e6
+    value: "\u6728\u6750"
+    guid: 8d342d19-6afc-43cb-83b7-af287c235821
   icon: {fileID: 21300000, guid: 55207e125c08547a095fd7929379374f, type: 3}
-  color: {r: 0.10849059, g: 0.7053246, b: 1, a: 1}
+  color: {r: 0.7264151, g: 0.49969313, b: 0, a: 1}
