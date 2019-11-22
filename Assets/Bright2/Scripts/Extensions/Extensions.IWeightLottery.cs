@@ -25,7 +25,7 @@ namespace HK.Bright2.Extensions
             var minWeight = 0;
             foreach(var i in list)
             {
-                if(minWeight >= weight && weight < (minWeight + i.Weight))
+                if(minWeight <= weight && weight < (minWeight + i.Weight))
                 {
                     return i;
                 }
