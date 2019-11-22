@@ -22,9 +22,21 @@ MonoBehaviour:
       en: 
     guid: 8af01344-5ee1-43dc-9946-c7a27523f2e6
   - value:
+      ja: 
+      en: 
+    guid: b882d99e-e8ce-4c08-8b31-69844c4325ad
+  - value:
       ja: "\u9244\u9271\u77F3"
       en: 
     guid: 369590b5-079b-4636-bbcb-dc2f674ac278
+  - value:
+      ja: "\u30DF\u30B9\u30EA\u30EB\u9271\u77F3"
+      en: 
+    guid: 9d9e6030-ea6f-4c13-8e61-2f31243c299f
+  - value:
+      ja: 
+      en: 
+    guid: d318d1c5-3a1b-4223-9732-cc7e39607953
   - value:
       ja: "\u6728\u6750"
       en: 

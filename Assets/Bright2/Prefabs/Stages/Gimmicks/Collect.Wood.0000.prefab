@@ -12,6 +12,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collect.Wood.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[1].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 59986f352b469a648a9856b04204cc95,
+        type: 2}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 59986f352b469a648a9856b04204cc95,
+        type: 2}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[1].items.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 59986f352b469a648a9856b04204cc95,
+        type: 2}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[1].items.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2996190707339962182, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
       propertyPath: m_LocalPosition.x

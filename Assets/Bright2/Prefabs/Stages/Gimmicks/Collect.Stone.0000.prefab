@@ -12,6 +12,92 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collect.Stone.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[1].items.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[2].items.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: acf2b81a87840764cab21580430cc9d6,
+        type: 2}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 32d501ecbdcae8d41a8d9e75af9919fc,
+        type: 2}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.data[0].weight
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[0].items.Array.data[1].weight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[1].items.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: acf2b81a87840764cab21580430cc9d6,
+        type: 2}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[1].items.Array.data[0].weight
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[1].items.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 32d501ecbdcae8d41a8d9e75af9919fc,
+        type: 2}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[1].items.Array.data[1].weight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[2].items.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: acf2b81a87840764cab21580430cc9d6,
+        type: 2}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[2].items.Array.data[0].weight
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[2].items.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 32d501ecbdcae8d41a8d9e75af9919fc,
+        type: 2}
+    - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: materials.Array.data[2].items.Array.data[1].weight
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2996190707339962182, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
       propertyPath: m_LocalPosition.x
