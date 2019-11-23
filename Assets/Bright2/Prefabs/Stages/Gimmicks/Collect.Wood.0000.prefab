@@ -12,6 +12,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collect.Wood.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 8096085265903158744, guid: 57f69843bb84642ed9f723e1b04164da,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 6521748790209023769, guid: 57f69843bb84642ed9f723e1b04164da,
         type: 3}
       propertyPath: materials.Array.size
