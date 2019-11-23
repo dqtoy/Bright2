@@ -43,7 +43,7 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// Yの重力の最大値
         /// </summary>
-        private const float GravityYMax = -16.0f;
+        private const float GravityYMax = -26.0f;
 
         public bool IgnoreOneWayPlatformsThisFrame
         {
