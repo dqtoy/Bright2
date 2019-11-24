@@ -234,18 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5132196eed35245e19ff2cf8ff123795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlledTransform: {fileID: 3702472882505496169}
-  boxCollider2D: {fileID: 8267512877853937779}
-  raycastIncludeLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  shrinkHorizontalRaycastBoxSize: {x: 0.05, y: 0.5}
-  snapGroundCheckThreshold: 0
-  snapGroundDistance: 0.3
-  snapGroundOffsetOrigin: {x: 0, y: -0.2}
-  snapGroundOffsetSize: {x: 0, y: -0.4}
-  gravity: {x: 0, y: -28}
-  ignoreHorizontalHeight: 0.3
+  gravity: {x: 0, y: -40}
 --- !u!114 &1155398558062161361
 MonoBehaviour:
   m_ObjectHideFlags: 0
