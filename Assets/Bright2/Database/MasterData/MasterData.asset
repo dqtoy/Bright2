@@ -18,3 +18,4 @@ MonoBehaviour:
   itemModifierRecipe: {fileID: 11400000, guid: 5b56233ded6694712a8a7690993657fd, type: 2}
   weaponRecipe: {fileID: 11400000, guid: 8679392759f7f480585a340221fd515e, type: 2}
   accessoryRecipe: {fileID: 11400000, guid: f76687c933b944d329595b32a25de5ef, type: 2}
+  importantItemList: {fileID: 11400000, guid: 969ec48e337e040bf8f350f36c84a545, type: 2}

@@ -32,5 +32,9 @@ namespace HK.Bright2.Database
         [SerializeField]
         private AccessoryRecipeList accessoryRecipe = default;
         public AccessoryRecipeList AccessoryRecipe => this.accessoryRecipe;
+
+        [SerializeField]
+        private ImportantItemList importantItemList = default;
+        public ImportantItemList ImportantItemList => this.importantItemList;
     }
 }
