@@ -33,6 +33,12 @@ namespace HK.Bright2.ItemControllers
         private Dictionary<MaterialRecord, InstanceMaterial> materials;
         public Dictionary<MaterialRecord, InstanceMaterial> Materials => this.materials = this.materials ?? new Dictionary<MaterialRecord, InstanceMaterial>();
 
+        /// <summary>
+        /// 大事なアイテムリスト
+        /// </summary>
+        private List<ImportantItemRecord> importantItems;
+        public List<ImportantItemRecord> ImportantItems => this.importantItems = this.importantItems ?? new List<ImportantItemRecord>();
+
         private readonly Actor owner;
 
         public Inventory(Actor owner, ActorContext context)
@@ -73,6 +79,12 @@ namespace HK.Bright2.ItemControllers
             }
 
             instance.Add(amount);
+        }
+
+        public void AddImportantItem(ImportantItemRecord importantItemRecord)
+        {
+            this.importantItems = this.importantItems ?? new List<ImportantItemRecord>();
+            this.importantItems.Add(importantItemRecord);
         }
 
         public bool IsEnough(int money)

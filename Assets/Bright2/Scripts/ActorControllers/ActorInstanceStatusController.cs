@@ -217,6 +217,12 @@ namespace HK.Bright2.ActorControllers
             this.owner.Broker.Publish(AcquiredMaterial.Get(materialRecord));
         }
 
+        public void AddImportantItem(ImportantItemRecord importantItemRecord)
+        {
+            this.Inventory.AddImportantItem(importantItemRecord);
+            this.owner.Broker.Publish(AcquiredImportantItem.Get(importantItemRecord));
+        }
+
         public void SetGameEvent(IGameEvent gameEvent)
         {
             this.status.GameEvent = gameEvent;

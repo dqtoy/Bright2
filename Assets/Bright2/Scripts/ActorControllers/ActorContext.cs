@@ -100,6 +100,10 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private List<DropMaterial> materials = default;
             public List<DropMaterial> Materials => this.materials;
+
+            [SerializeField]
+            private List<DropImportantItem> importantItems = default;
+            public List<DropImportantItem> ImportantItems => this.importantItems;
         }
 
         [Serializable]
