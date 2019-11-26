@@ -221,6 +221,7 @@ namespace HK.Bright2.ActorControllers
         {
             this.Inventory.AddImportantItem(importantItemRecord);
             this.owner.Broker.Publish(AcquiredImportantItem.Get(importantItemRecord));
+            this.ResetItemModifierParameter();
         }
 
         public void SetGameEvent(IGameEvent gameEvent)
@@ -375,6 +376,14 @@ namespace HK.Bright2.ActorControllers
 
                 var accessoryRecord = this.Inventory.Accessories[i];
                 foreach (var m in accessoryRecord.Modifiers)
+                {
+                    m.Give(this.status.ItemModifierEffect);
+                }
+            }
+
+            foreach(var i in this.Inventory.ImportantItems)
+            {
+                foreach(var m in i.Modifiers)
                 {
                     m.Give(this.status.ItemModifierEffect);
                 }
