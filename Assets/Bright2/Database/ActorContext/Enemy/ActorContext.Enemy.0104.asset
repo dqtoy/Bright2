@@ -34,6 +34,10 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 7761bd7de4eaa4cee9a4790ca37e6863, type: 2}
       winningRate: 0.02
     accessories: []
+    materials:
+    - item: {fileID: 11400000, guid: 2456feabeceb5e84fb324919656ec4e6, type: 2}
+      winningRate: 0.3
+    importantItems: []
   effects:
     spawned: {fileID: 7094458136404933650, guid: 1cb655879a96148e78fe509daa5b4d00,
       type: 3}

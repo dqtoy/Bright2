@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: ImportantItem
   m_EditorClassIdentifier: 
   records:
+  - {fileID: 11400000, guid: 82777393e3a969745a344c8992d6ce10, type: 2}
+  - {fileID: 11400000, guid: efb4cbb6cffae3b44a38f8d45d55b5ac, type: 2}
   - {fileID: 11400000, guid: 895e6351a84214d7eaa1068c520ea253, type: 2}
