@@ -61,11 +61,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
         {
             var direction = owner.StatusController.Direction;
             var diff = this.target.CachedTransform.position.x - owner.CachedTransform.position.x;
-            if(direction == Constants.Direction.Left && diff > 0.0f)
-            {
-                return true;
-            }
-            if(direction == Constants.Direction.Right && diff < 0.0f)
+            if((direction == Constants.Direction.Left && diff > 0.0f) || (direction == Constants.Direction.Right && diff < 0.0f))
             {
                 return true;
             }
