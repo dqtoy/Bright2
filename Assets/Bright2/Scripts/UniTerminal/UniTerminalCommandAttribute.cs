@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HK.Bright2.UniTerminal
 {
@@ -8,8 +9,11 @@ namespace HK.Bright2.UniTerminal
     [AttributeUsage(AttributeTargets.Method, AllowMultiple=false)]
     public sealed class UniTerminalCommandAttribute : Attribute
     {
-        public UniTerminalCommandAttribute()
+        public readonly List<string> CustomCommandNames;
+
+        public UniTerminalCommandAttribute(params string[] customCommandNames)
         {
+            this.CustomCommandNames = new List<string>(customCommandNames);
         }
     }
 }

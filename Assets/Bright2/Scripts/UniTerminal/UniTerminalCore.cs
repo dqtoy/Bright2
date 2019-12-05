@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -10,6 +11,8 @@ namespace HK.Bright2.UniTerminal
     /// </summary>
     public sealed class UniTerminalCore
     {
+        private static readonly Dictionary<string, MethodInfo> commands = new Dictionary<string, MethodInfo>();
+        
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Setup()
         {
@@ -19,13 +22,13 @@ namespace HK.Bright2.UniTerminal
             {
                 foreach(var m in t.GetMethods())
                 {
-                    var attributes = Attribute.GetCustomAttributes(m, typeof(UniTerminalCommandAttribute));
-                    if(attributes.Length > 0)
+                    var attribute = Attribute.GetCustomAttribute(m, typeof(UniTerminalCommandAttribute)) as UniTerminalCommandAttribute;
+                    if(attribute != null)
                     {
-                        Debug.Log(m.Name);
-                        foreach(var parameter in m.GetParameters())
+                        commands.Add(m.Name, m);
+                        foreach(var customCommandName in attribute.CustomCommandNames)
                         {
-                            Debug.Log(parameter.Name);
+                            commands.Add(customCommandName, m);
                         }
                     }
                 }

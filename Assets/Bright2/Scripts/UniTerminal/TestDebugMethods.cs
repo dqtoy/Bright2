@@ -8,7 +8,7 @@ namespace HK.Bright2.UniTerminal
     /// </summary>
     public static class TestDebugMethods
     {
-        [UniTerminalCommand]
+        [UniTerminalCommand("tm")]
         public static int TestMethod(int hoge, float fuga, string message)
         {
             Debug.Log("Test Method");
