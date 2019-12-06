@@ -4,9 +4,9 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.ActorControllers.AIControllers
 {
     /// <summary>
-    /// AIのインターフェイス
+    /// 1個単位のAIのインターフェイス
     /// </summary>
-    public interface IAI
+    public interface IAIElement
     {
         void Enter(Actor actor);
 
