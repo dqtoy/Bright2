@@ -40,8 +40,8 @@ namespace HK.Bright2.ActorControllers.AIControllers
             public string Name => this.name;
 
             [SerializeField]
-            private ScriptableAI ai = default;
-            public ScriptableAI AI
+            private ScriptableAIElement ai = default;
+            public ScriptableAIElement AI
             {
                 get
                 {
@@ -51,7 +51,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
                 }
             }
 
-            private ScriptableAI aiInstance;
+            private ScriptableAIElement aiInstance;
         }
     }
 }

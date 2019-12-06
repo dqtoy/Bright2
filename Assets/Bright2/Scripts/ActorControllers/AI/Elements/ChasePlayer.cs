@@ -12,7 +12,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
     /// プレイヤーを追いかけるだけのAI
     /// </summary>
     [CreateAssetMenu(fileName = "ChasePlayer", menuName = "Bright2/AI/ChasePlayer")]
-    public sealed class ChasePlayer : ScriptableAI
+    public sealed class ChasePlayer : ScriptableAIElement
     {
         [SerializeField]
         private float changeDirectionDelay = default;

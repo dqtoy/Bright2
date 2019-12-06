@@ -5,9 +5,9 @@ using UnityEngine.Assertions;
 namespace HK.Bright2.ActorControllers.AIControllers
 {
     /// <summary>
-    /// <see cref="ScriptableObject"/>で作成可能なAI
+    /// <see cref="ScriptableObject"/>で作成可能な<see cref="IAIElement"/>
     /// </summary>
-    public abstract class ScriptableAI : ScriptableObject, IAIElement
+    public abstract class ScriptableAIElement : ScriptableObject, IAIElement
     {
         protected readonly CompositeDisposable events = new CompositeDisposable();
         
