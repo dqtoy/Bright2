@@ -26,20 +26,32 @@ namespace HK.Bright2.ActorControllers.AIControllers
             this.ChangeAI(this.aiBundle.EntryPointName);
         }
 
+        void OnDestroy()
+        {
+            this.ExitAI();
+        }
+
         public void ChangeAI(string name)
         {
-            if(this.currentElements != null)
-            {
-                foreach (var element in this.currentElements)
-                {
-                    element.Exit();
-                }
-            }
+            this.ExitAI();
 
             this.currentElements = this.GetAIElements(name);
             foreach (var element in this.currentElements)
             {
                 element.Enter(this.owner, this);
+            }
+        }
+
+        private void ExitAI()
+        {
+            if (this.currentElements == null)
+            {
+                return;
+            }
+
+            foreach (var element in this.currentElements)
+            {
+                element.Exit();
             }
         }
 
