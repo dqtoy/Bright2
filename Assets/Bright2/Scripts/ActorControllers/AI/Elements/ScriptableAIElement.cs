@@ -19,7 +19,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
 
         protected readonly CompositeDisposable events = new CompositeDisposable();
         
-        public virtual void Enter(Actor owner)
+        public virtual void Enter(Actor owner, AIObserver ownerAI)
         {
             if(this.instanceConditions == null)
             {

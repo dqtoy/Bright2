@@ -32,9 +32,9 @@ namespace HK.Bright2.ActorControllers.AIControllers
 
         private float changeDirectionDuration = 0.0f;
 
-        public override void Enter(Actor owner)
+        public override void Enter(Actor owner, AIObserver ownerAI)
         {
-            base.Enter(owner);
+            base.Enter(owner, ownerAI);
 
             this.target = GameSystem.Instance.ActorManager.GetRandomPlayer();
             this.currentDirection = this.GetTargetDirection(owner);

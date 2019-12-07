@@ -8,7 +8,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
     /// </summary>
     public interface IAIElement
     {
-        void Enter(Actor actor);
+        void Enter(Actor owner, AIObserver ownerAI);
 
         void Exit();
     }

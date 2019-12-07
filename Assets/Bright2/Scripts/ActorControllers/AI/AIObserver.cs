@@ -23,12 +23,23 @@ namespace HK.Bright2.ActorControllers.AIControllers
             this.owner = this.GetComponent<Actor>();
             Assert.IsNotNull(this.owner);
 
-            var initialElement = this.aiBundle.Get(this.aiBundle.EntryPointName);
+            this.ChangeAI(this.aiBundle.EntryPointName);
+        }
 
-            this.currentElements = this.GetAIElements(this.aiBundle.EntryPointName);
-            foreach (var ai in this.currentElements)
+        public void ChangeAI(string name)
+        {
+            if(this.currentElements != null)
             {
-                ai.Enter(this.owner);
+                foreach (var element in this.currentElements)
+                {
+                    element.Exit();
+                }
+            }
+
+            this.currentElements = this.GetAIElements(name);
+            foreach (var element in this.currentElements)
+            {
+                element.Enter(this.owner, this);
             }
         }
 

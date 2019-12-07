@@ -5,19 +5,22 @@ using UnityEngine;
 namespace HK.Bright2.ActorControllers.AIControllers
 {
     /// <summary>
-    /// ジャンプするAI
+    /// AIを切り替えるAI
     /// </summary>
-    [CreateAssetMenu(fileName = "Jump", menuName = "Bright2/AI/Elements/Jump")]
-    public sealed class Jump : ScriptableAIElement
+    [CreateAssetMenu(fileName = "ChangeAI", menuName = "Bright2/AI/Elements/ChangeAI")]
+    public sealed class ChangeAI : ScriptableAIElement
     {
+        [SerializeField]
+        private string nextAIName = default;
+
         public override void Enter(Actor owner, AIObserver ownerAI)
         {
             base.Enter(owner, ownerAI);
-
+            
             this.GetObserver(owner)
                 .SubscribeWithState2(this, owner, (_, _this, _owner) =>
                 {
-                    _owner.Broker.Publish(RequestJump.Get());
+                    ownerAI.ChangeAI(this.nextAIName);
                 })
                 .AddTo(this.events);
         }

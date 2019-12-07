@@ -18,3 +18,8 @@ MonoBehaviour:
     aiElements:
     - {fileID: 11400000, guid: 36ecb7c014cbd402ba5157b784f7062a, type: 2}
     - {fileID: 11400000, guid: 898818cbe3275466488ffbd2bb296bcf, type: 2}
+    - {fileID: 11400000, guid: ede8c33eb557b4b52b5153d050cb6427, type: 2}
+  - name: Escape
+    aiElements:
+    - {fileID: 11400000, guid: a1dc3307523224c6b9f33fdfebe292fa, type: 2}
+    - {fileID: 11400000, guid: b327e91ed60f74391bbf69a8ecbf48d5, type: 2}

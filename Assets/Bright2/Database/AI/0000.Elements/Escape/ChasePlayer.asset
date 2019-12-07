@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions: []
   isChase: 0
-  changeDirectionDelay: 0.5
+  changeDirectionDelay: 0
