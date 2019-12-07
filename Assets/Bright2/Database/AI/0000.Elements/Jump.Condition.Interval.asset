@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7b06ef3bd9724d589091b5f371c2553, type: 3}
-  m_Name: Jump
+  m_Script: {fileID: 11500000, guid: 16ea64a2fd05f43b890601926d3158f8, type: 3}
+  m_Name: Jump.Condition.Interval
   m_EditorClassIdentifier: 
-  conditions:
-  - {fileID: 11400000, guid: 31d451e2518be40198d70242e773eae5, type: 2}
+  seconds: 3

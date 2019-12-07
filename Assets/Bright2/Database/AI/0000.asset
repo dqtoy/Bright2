@@ -17,3 +17,4 @@ MonoBehaviour:
   - name: Default
     aiElements:
     - {fileID: 11400000, guid: 36ecb7c014cbd402ba5157b784f7062a, type: 2}
+    - {fileID: 11400000, guid: 898818cbe3275466488ffbd2bb296bcf, type: 2}
