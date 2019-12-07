@@ -22,9 +22,14 @@ namespace HK.Bright2.GameSystems
         float CriticalRate { get; }
 
         /// <summary>
-        /// ノックバック
+        /// ノックバックの力
         /// </summary>
         float KnockbackPower { get; }
+
+        /// <summary>
+        /// ノックバック制限値
+        /// </summary>
+        float KnockbackLimit { get; }
 
         /// <summary>
         /// 攻撃が当たった際に相手に付与する無敵時間

@@ -128,7 +128,7 @@ namespace HK.Bright2.GameSystems
         {
             if(power <= resistance)
             {
-                return Vector2.zero;
+                return direction.normalized;
             }
 
             var finalPower = Mathf.Min(Mathf.Pow(power - resistance, 0.95f), limit);

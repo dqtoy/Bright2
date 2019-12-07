@@ -47,6 +47,8 @@ namespace HK.Bright2.ActorControllers
 
         public float MoveSpeed => this.context.BasicStatus.MoveSpeed * this.status.MoveSpeedRate;
 
+        public float KnockbackResistance => this.context.BasicStatus.KnockbackResistance;
+
         public ActorInstanceStatusController(Actor owner, ActorContext context)
         {
             this.owner = owner;

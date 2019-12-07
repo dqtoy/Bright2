@@ -84,6 +84,13 @@ namespace HK.Bright2.ActorControllers
             [SerializeField]
             private int money = default;
             public int Money => this.money;
+
+            [SerializeField]
+            private float knockbackResistance = default;
+            /// <summary>
+            /// ノックバック抵抗値
+            /// </summary>
+            public float KnockbackResistance => this.knockbackResistance;
         }
 
         [Serializable]

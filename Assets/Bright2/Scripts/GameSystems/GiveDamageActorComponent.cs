@@ -22,6 +22,9 @@ namespace HK.Bright2.GameSystems
         [SerializeField]
         private float knockbackPower = default;
 
+        [SerializeField]
+        private float knockbackLimit = default;
+
         /// <summary>
         /// 攻撃が当たった際に相手に付与する無敵時間
         /// </summary>
@@ -59,6 +62,8 @@ namespace HK.Bright2.GameSystems
         float IGiveDamage.CriticalRate => this.criticalRate;
 
         float IGiveDamage.KnockbackPower => this.knockbackPower;
+
+        float IGiveDamage.KnockbackLimit => this.knockbackLimit;
 
         float IGiveDamage.InfinitySeconds => Calculator.GetFireSpeedUp(this.infinitySeconds, this.fireSpeedUpRate);
 
