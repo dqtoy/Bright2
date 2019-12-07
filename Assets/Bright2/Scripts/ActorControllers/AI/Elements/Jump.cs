@@ -1,10 +1,6 @@
 ﻿using HK.Bright2.ActorControllers.Messages;
-using HK.Bright2.Extensions;
-using HK.Bright2.GameSystems;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace HK.Bright2.ActorControllers.AIControllers
 {
@@ -16,7 +12,9 @@ namespace HK.Bright2.ActorControllers.AIControllers
     {
         public override void Enter(Actor owner)
         {
-            owner.UpdateAsObservable()
+            base.Enter(owner);
+            
+            this.GetObserver(owner)
                 .SubscribeWithState2(this, owner, (_, _this, _owner) =>
                 {
                     _owner.Broker.Publish(RequestJump.Get());

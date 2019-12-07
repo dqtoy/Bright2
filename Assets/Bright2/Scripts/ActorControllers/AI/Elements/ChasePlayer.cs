@@ -25,6 +25,8 @@ namespace HK.Bright2.ActorControllers.AIControllers
 
         public override void Enter(Actor owner)
         {
+            base.Enter(owner);
+            
             this.target = GameSystem.Instance.ActorManager.GetRandomPlayer();
             this.currentDirection = this.GetTargetDirection(owner);
 
