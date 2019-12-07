@@ -11,7 +11,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
     /// <summary>
     /// プレイヤーを追いかけるだけのAI
     /// </summary>
-    [CreateAssetMenu(fileName = "ChasePlayer", menuName = "Bright2/AI/ChasePlayer")]
+    [CreateAssetMenu(fileName = "ChasePlayer", menuName = "Bright2/AI/Elements/ChasePlayer")]
     public sealed class ChasePlayer : ScriptableAIElement
     {
         [SerializeField]
