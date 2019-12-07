@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2788880184631333120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604060335621717360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27644981094d84276aaaf099140527bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiBundle: {fileID: 11400000, guid: 7e639f609c9564c0a8779ff3f84f9df6, type: 2}
 --- !u!114 &1971644892467239870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24,19 +37,6 @@ MonoBehaviour:
   effectPrefab: {fileID: 4643271828095609800, guid: 18bc25df30fbe455395abb697a051d25,
     type: 3}
   additionalEffects: []
---- !u!114 &2788880184631333120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6604060335621717360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27644981094d84276aaaf099140527bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiBundle: {fileID: 11400000, guid: 84753c15f035e4cdb84644aa6d5ef738, type: 2}
 --- !u!1001 &1488795469197606809
 PrefabInstance:
   m_ObjectHideFlags: 0
