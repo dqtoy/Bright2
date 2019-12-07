@@ -26,11 +26,11 @@ namespace HK.Bright2.ActorControllers.AIControllers
         public override void Enter(Actor owner)
         {
             base.Enter(owner);
-            
+
             this.target = GameSystem.Instance.ActorManager.GetRandomPlayer();
             this.currentDirection = this.GetTargetDirection(owner);
 
-            owner.UpdateAsObservable()
+            this.GetObserver(owner)
                 .SubscribeWithState2(this, owner, (_, _this, _owner) =>
                 {
                     var horizontal = _this.target.CachedTransform.position.x - _owner.CachedTransform.position.x;
