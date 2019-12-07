@@ -8,7 +8,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
     /// <summary>
     /// 一定間隔で条件を満たす<see cref="ScriptableAICondition"/>
     /// </summary>
-    [CreateAssetMenu(fileName = "Interval", menuName = "Bright2/AI/Conditions/Interval")]
+    [CreateAssetMenu(fileName = "Condition.Interval.asset", menuName = "Bright2/AI/Conditions/Interval")]
     public sealed class Interval : ScriptableAICondition
     {
         [SerializeField]

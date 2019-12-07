@@ -9,7 +9,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
     /// <summary>
     /// ダメージを受けたら条件を満たす<see cref="ScriptableAICondition"/>
     /// </summary>
-    [CreateAssetMenu(fileName = "TakeDamage", menuName = "Bright2/AI/Conditions/TakeDamage")]
+    [CreateAssetMenu(fileName = "Condition.TakeDamage.asset", menuName = "Bright2/AI/Conditions/TakeDamage")]
     public sealed class TakeDamage : ScriptableAICondition
     {
         public override IObservable<Unit> Satisfy(Actor owner)
