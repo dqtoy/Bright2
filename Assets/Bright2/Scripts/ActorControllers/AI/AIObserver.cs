@@ -11,12 +11,9 @@ namespace HK.Bright2.ActorControllers.AIControllers
     public sealed class AIObserver : MonoBehaviour
     {
         [SerializeField]
-        private List<Element> elements = default;
+        private AIBundle aiBundle = default;
 
-        [SerializeField]
-        private string initialAIName = default;
-
-        private Element currentElement = default;
+        private AIBundle.Element currentElement = default;
 
         private Actor owner;
 
@@ -25,33 +22,13 @@ namespace HK.Bright2.ActorControllers.AIControllers
             this.owner = this.GetComponent<Actor>();
             Assert.IsNotNull(this.owner);
 
-            var initialElement = this.elements.Find(m => m.Name == this.initialAIName);
-            Assert.IsNotNull(initialElement, $"{this.initialAIName} に紐づくAIがありませんでした");
+            var initialElement = this.aiBundle.Get(this.aiBundle.EntryPointName);
 
             this.currentElement = initialElement;
-            this.currentElement.AI.Enter(this.owner);
-        }
-
-        [Serializable]
-        public class Element
-        {
-            [SerializeField]
-            private string name = default;
-            public string Name => this.name;
-
-            [SerializeField]
-            private ScriptableAIElement ai = default;
-            public ScriptableAIElement AI
+            foreach (var ai in this.currentElement.AIElements)
             {
-                get
-                {
-                    this.aiInstance = this.aiInstance ?? UnityEngine.Object.Instantiate(this.ai);
-
-                    return this.aiInstance;
-                }
+                ai.Enter(this.owner);
             }
-
-            private ScriptableAIElement aiInstance;
         }
     }
 }
