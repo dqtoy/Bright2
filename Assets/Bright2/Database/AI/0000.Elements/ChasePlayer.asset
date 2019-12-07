@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd7249fcf96d4f9f8f627b4dbd63bb0, type: 3}
   m_Name: ChasePlayer
   m_EditorClassIdentifier: 
+  conditions: []
+  isChase: 0
   changeDirectionDelay: 0.5
