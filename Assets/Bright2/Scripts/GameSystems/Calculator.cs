@@ -122,6 +122,21 @@ namespace HK.Bright2.GameSystems
         }
 
         /// <summary>
+        /// ノックバック量を返す
+        /// </summary>
+        public static Vector2 GetKnockbackPower(Vector2 direction, float power, float resistance, float limit)
+        {
+            if(power <= resistance)
+            {
+                return Vector2.zero;
+            }
+
+            var finalPower = Mathf.Min(Mathf.Pow(power - resistance, 0.95f), limit);
+
+            return direction.normalized * finalPower;
+        }
+
+        /// <summary>
         /// 与えたダメージ値から回復量を返す
         /// </summary>
         public static DamageResult GetRecoveryFromDamage(Actor target, int damage, float recoveryRate)
