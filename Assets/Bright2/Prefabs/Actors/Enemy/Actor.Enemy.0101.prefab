@@ -36,7 +36,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27644981094d84276aaaf099140527bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiBundle: {fileID: 11400000, guid: 84753c15f035e4cdb84644aa6d5ef738, type: 2}
+  aiBundle: {fileID: 11400000, guid: c5aa2283191114058830fc2d4f5df049, type: 2}
 --- !u!1001 &5603399944185990776
 PrefabInstance:
   m_ObjectHideFlags: 0
