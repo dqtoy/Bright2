@@ -120,7 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePower: 4
   criticalRate: 0
-  knockbackPower: 1
+  knockbackPower: 2
+  knockbackLimit: 1
   infinitySeconds: 0.1
   weaponType: 3
   includeTags:

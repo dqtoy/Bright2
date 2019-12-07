@@ -124,6 +124,7 @@ MonoBehaviour:
   damagePower: 5
   criticalRate: 0
   knockbackPower: 2
+  knockbackLimit: 1
   infinitySeconds: 0.1
   weaponType: 0
   includeTags:
