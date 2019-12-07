@@ -89,6 +89,9 @@ namespace HK.Bright2.GameSystems
             );
         }
 
+        /// <summary>
+        /// 酸欠ダメージを返す
+        /// </summary>
         public static DamageResult GetDamageResultOnLackOfOxygen(Actor target)
         {
             var damage = Mathf.FloorToInt(target.StatusController.HitPointMax.Value * Constants.LackOfOxygenDamageRate);
@@ -102,6 +105,9 @@ namespace HK.Bright2.GameSystems
             );
         }
 
+        /// <summary>
+        /// 毒ダメージを返す
+        /// </summary>
         public static DamageResult GetDamageResultOnPoison(Actor target, ActorContext.AbnormalConditionParameters.PoisonParameter poisonContext, int damageSplitCount)
         {
             var damage = Mathf.FloorToInt((poisonContext.DamageRate * target.StatusController.HitPointMax.Value) / damageSplitCount);
@@ -115,6 +121,9 @@ namespace HK.Bright2.GameSystems
             );
         }
 
+        /// <summary>
+        /// 与えたダメージ値から回復量を返す
+        /// </summary>
         public static DamageResult GetRecoveryFromDamage(Actor target, int damage, float recoveryRate)
         {
             var recoveryValue = Mathf.FloorToInt((float)damage * recoveryRate);
@@ -151,6 +160,9 @@ namespace HK.Bright2.GameSystems
             return result;
         }
 
+        /// <summary>
+        /// お金を返す
+        /// </summary>
         public static int GetMoney(Actor attacker, int money)
         {
             if(attacker == null)
