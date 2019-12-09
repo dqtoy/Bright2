@@ -75,6 +75,8 @@ namespace HK.Bright2.ActorControllers
         /// </summary>
         public ItemModifierEffectParameter ItemModifierEffect { get; } = new ItemModifierEffectParameter();
 
+        public readonly ActorPrefs Prefs = new ActorPrefs();
+
         public IReadOnlyList<IIconHolder> EquippedAccessoryIcons
         {
             get

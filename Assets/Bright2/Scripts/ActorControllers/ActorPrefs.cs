@@ -27,6 +27,21 @@ namespace HK.Bright2.ActorControllers
             }
         }
 
+        public void SetAsFlag(string key)
+        {
+            if(this.Dictionary.ContainsKey(key))
+            {
+                return;
+            }
+
+            this.Dictionary.Add(key, "");
+        }
+
+        public void Remove(string key)
+        {
+            this.Dictionary.Remove(key);
+        }
+
         public bool ContainsKey(string key)
         {
             return this.Dictionary.ContainsKey(key);
