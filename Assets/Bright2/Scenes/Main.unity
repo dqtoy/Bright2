@@ -461,112 +461,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionWeapons.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionWeapons.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 608f50ece5eab427090f11aaa66659ac,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: bce97a502aba24b21b0c5f9771444e98,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: a25dea503bb8d4606b6b0d82e178315d,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: fbb2bb771fd294cb4ba08195d25ba659,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: f02e0c51ca0a54372b6fc4d4a8cfcb69,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: cbaadbfc6257f42d2aab24cca3ccc7bf,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: 69848d98173794b7c9ed083bfa5a2477,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff3014bce53b43ba9cb74ecc8113578,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[9]
-      value: 
-      objectReference: {fileID: 11400000, guid: 990ae379287b549d58539535e4868c33,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[10]
-      value: 
-      objectReference: {fileID: 11400000, guid: 3d56680cfb6354ea6b57263de722414c,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: b65a88e1faa154c739c06bace732fa03,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 42987be5e797b41648255f3edb8e7b78,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionWeapons.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6d36963cca4764207ada79cc6564afdd,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[12]
-      value: 
-      objectReference: {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd,
-        type: 2}
-    - target: {fileID: 197133185129617348, guid: 440e0dcec61524c838c3c17f3645b397,
-        type: 3}
-      propertyPath: possessionAccessories.Array.data[13]
-      value: 
-      objectReference: {fileID: 11400000, guid: f8249ba9cb15742098e03da3a0710abd,
-        type: 2}
     - target: {fileID: 197133185549519340, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -636,7 +530,7 @@ PrefabInstance:
         type: 3}
       propertyPath: prefab
       value: 
-      objectReference: {fileID: 8491219769089868142, guid: bcaeba8c47db4444baf0b752e578fd16,
+      objectReference: {fileID: 8491219769089868142, guid: d4cbdc13d907443babea85df9fc995b9,
         type: 3}
     - target: {fileID: 197133185549519351, guid: 440e0dcec61524c838c3c17f3645b397,
         type: 3}
