@@ -71,6 +71,14 @@ namespace HK.Bright2.ActorControllers
         public int[] EquippedAccessories { get; set; }
 
         /// <summary>
+        /// 外部から受け付けた<see cref="IItemModifier"/>のリスト
+        /// </summary>
+        /// <remarks>
+        /// 敵の一時的なステータス変更で利用しています
+        /// </remarks>
+        public readonly List<IItemModifier> OtherItemModifiers = new List<IItemModifier>();
+
+        /// <summary>
         /// アイテム修飾効果
         /// </summary>
         public ItemModifierEffectParameter ItemModifierEffect { get; } = new ItemModifierEffectParameter();

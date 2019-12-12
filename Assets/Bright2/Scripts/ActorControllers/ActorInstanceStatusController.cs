@@ -325,6 +325,18 @@ namespace HK.Bright2.ActorControllers
             this.status.MoveSpeedRate = 1.0f;
         }
 
+        public void AddOtherItemModifier(IItemModifier itemModifier)
+        {
+            this.status.OtherItemModifiers.Add(itemModifier);
+            this.ResetItemModifierParameter();
+        }
+
+        public void RemoveOtherItemModifier(IItemModifier itemModifier)
+        {
+            this.status.OtherItemModifiers.Remove(itemModifier);
+            this.ResetItemModifierParameter();
+        }
+
         private void RegisterUpdateUnderWaterSecondsStream()
         {
             this.owner.UpdateAsObservable()
@@ -389,6 +401,11 @@ namespace HK.Bright2.ActorControllers
                 {
                     m.Give(this.status.ItemModifierEffect);
                 }
+            }
+
+            foreach (var i in this.status.OtherItemModifiers)
+            {
+                i.Give(this.status.ItemModifierEffect);
             }
 
             var hitPoint = this.context.BasicStatus.HitPoint;
