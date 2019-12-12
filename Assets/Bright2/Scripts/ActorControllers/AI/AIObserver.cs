@@ -51,7 +51,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
 
             foreach (var element in this.currentElements)
             {
-                element.Exit();
+                element.Exit(this.owner, this);
             }
         }
 

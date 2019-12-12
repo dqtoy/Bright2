@@ -32,7 +32,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
             }
         }
 
-        public virtual void Exit()
+        public virtual void Exit(Actor owner, AIObserver ownerAI)
         {
             this.events.Clear();
         }

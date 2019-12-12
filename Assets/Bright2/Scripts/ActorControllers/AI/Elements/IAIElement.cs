@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.Assertions;
-
-namespace HK.Bright2.ActorControllers.AIControllers
+﻿namespace HK.Bright2.ActorControllers.AIControllers
 {
     /// <summary>
     /// 1個単位のAIのインターフェイス
@@ -10,6 +7,6 @@ namespace HK.Bright2.ActorControllers.AIControllers
     {
         void Enter(Actor owner, AIObserver ownerAI);
 
-        void Exit();
+        void Exit(Actor owner, AIObserver ownerAI);
     }
 }

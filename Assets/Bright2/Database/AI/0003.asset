@@ -21,3 +21,4 @@ MonoBehaviour:
   - name: Defense
     aiElements:
     - {fileID: 11400000, guid: c2ed5e6fc7a964785ae54a92a88d83d8, type: 2}
+    - {fileID: 11400000, guid: 282bc9ee0d2ec4b489bd21a894829c41, type: 2}
