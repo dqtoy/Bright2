@@ -12,6 +12,11 @@ namespace HK.Bright2.ActorControllers.AIControllers
         [SerializeField]
         private AIBundle aiBundle = default;
 
+        /// <summary>
+        /// 追いかけている<see cref="Actor"/>
+        /// </summary>
+        public Actor ChaseTarget { get; set; }
+
         private IReadOnlyList<ScriptableAIElement> currentElements = default;
 
         private Actor owner;

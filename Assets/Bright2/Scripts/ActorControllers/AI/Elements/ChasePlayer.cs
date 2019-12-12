@@ -26,8 +26,6 @@ namespace HK.Bright2.ActorControllers.AIControllers
         [SerializeField]
         private float changeDirectionDelay = default;
 
-        private Actor target;
-
         private Constants.Direction currentDirection;
 
         private float changeDirectionDuration = 0.0f;
@@ -36,15 +34,15 @@ namespace HK.Bright2.ActorControllers.AIControllers
         {
             base.Enter(owner, ownerAI);
 
-            this.target = GameSystem.Instance.ActorManager.GetRandomPlayer();
-            this.currentDirection = this.GetTargetDirection(owner);
+            ownerAI.ChaseTarget = GameSystem.Instance.ActorManager.GetRandomPlayer();
+            this.currentDirection = this.GetTargetDirection(owner, ownerAI);
 
             this.GetObserver(owner)
-                .SubscribeWithState2(this, owner, (_, _this, _owner) =>
+                .SubscribeWithState3(this, owner, ownerAI, (_, _this, _owner, _ownerAI) =>
                 {
                     _owner.Broker.Publish(RequestMove.Get(_this.currentDirection.ToVector2()));
 
-                    if(_this.IsReverse(_owner))
+                    if(_this.IsReverse(_owner, _ownerAI))
                     {
                         _this.changeDirectionDuration += Time.deltaTime;
                     }
@@ -56,15 +54,15 @@ namespace HK.Bright2.ActorControllers.AIControllers
                     if(_this.changeDirectionDuration > _this.changeDirectionDelay)
                     {
                         _this.changeDirectionDuration = 0.0f;
-                        _this.currentDirection = _this.GetTargetDirection(_owner);
+                        _this.currentDirection = _this.GetTargetDirection(_owner, _ownerAI);
                     }
                 })
                 .AddTo(this.events);
         }
 
-        private Constants.Direction GetTargetDirection(Actor owner)
+        private Constants.Direction GetTargetDirection(Actor owner, ActorAIController ownerAI)
         {
-            var result = new Vector2(this.target.CachedTransform.position.x - owner.CachedTransform.position.x, 0.0f).GetHorizontalDirection();
+            var result = new Vector2(ownerAI.ChaseTarget.CachedTransform.position.x - owner.CachedTransform.position.x, 0.0f).GetHorizontalDirection();
             if(!this.isChase)
             {
                 result = result.ToReverse();
@@ -73,7 +71,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
             return result;
         }
 
-        private bool IsReverse(Actor owner)
+        private bool IsReverse(Actor owner, ActorAIController ownerAI)
         {
             var direction = owner.StatusController.Direction;
             if(!this.isChase)
@@ -81,7 +79,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
                 direction = direction.ToReverse();
             }
             
-            var diff = this.target.CachedTransform.position.x - owner.CachedTransform.position.x;
+            var diff = ownerAI.ChaseTarget.CachedTransform.position.x - owner.CachedTransform.position.x;
             if((direction == Constants.Direction.Left && diff > 0.0f) || (direction == Constants.Direction.Right && diff < 0.0f))
             {
                 return true;
