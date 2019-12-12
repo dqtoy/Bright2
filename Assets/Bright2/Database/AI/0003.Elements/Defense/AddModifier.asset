@@ -17,3 +17,4 @@ MonoBehaviour:
   removeOnExit: 1
   itemModifiers:
   - {fileID: 11400000, guid: 9b36a6f6cb3f746c0a10d5dcfa3a9a9d, type: 2}
+  - {fileID: 11400000, guid: 99b3c191731224dd4b8d93d725a2c1e3, type: 2}
