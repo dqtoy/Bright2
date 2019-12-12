@@ -28,6 +28,7 @@ MonoBehaviour:
   damagePower: 7
   criticalRate: 0
   knockbackPower: 10
+  knockbackLimit: 10
   infinitySeconds: 0.5
   weaponType: 0
   includeTags:
