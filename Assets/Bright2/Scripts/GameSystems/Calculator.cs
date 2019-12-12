@@ -124,8 +124,10 @@ namespace HK.Bright2.GameSystems
         /// <summary>
         /// ノックバック量を返す
         /// </summary>
-        public static Vector2 GetKnockbackPower(Vector2 direction, float power, float resistance, float limit)
+        public static Vector2 GetKnockbackPower(Actor target, Vector2 direction, float power, float resistance, float limit)
         {
+            var modifier = target.StatusController.ItemModifierEffect.Get(Constants.ItemModifierType.AddKnockbackResistanceFixed);
+            resistance += modifier;
             if(power <= resistance)
             {
                 return direction.normalized;

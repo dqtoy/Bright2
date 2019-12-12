@@ -134,6 +134,7 @@ namespace HK.Bright2
             RecoveryOnGiveDamage,
             AddJumpCount,
             Dash,
+            AddKnockbackResistanceFixed,
         }
 
         public enum FadeType

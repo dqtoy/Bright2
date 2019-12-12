@@ -39,7 +39,7 @@ namespace HK.Bright2.Extensions
             var damageResult = Calculator.GetDamageOnActor(self, target, generationSource);
 
             target.StatusController.TakeDamage(damageResult);
-            target.Movement.SetGravity(Calculator.GetKnockbackPower(self.KnockbackDirection, self.KnockbackPower, target.StatusController.KnockbackResistance, self.KnockbackLimit));
+            target.Movement.SetGravity(Calculator.GetKnockbackPower(target, self.KnockbackDirection, self.KnockbackPower, target.StatusController.KnockbackResistance, self.KnockbackLimit));
             target.StatusController.AddInfinityStatus(self.GiveDamageObject, self.InfinitySeconds);
 
             var effect = self.EffectPrefab.Rent();
