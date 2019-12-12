@@ -317,10 +317,20 @@ namespace HK.Bright2.ActorControllers
 
         public void StartDash()
         {
-            this.status.MoveSpeedRate = 2.0f;
+            this.SetMoveSpeedRate(2.0f);
         }
 
         public void EndDash()
+        {
+            this.ResetMoveSpeedRate();
+        }
+
+        public void SetMoveSpeedRate(float value)
+        {
+            this.status.MoveSpeedRate = value;
+        }
+
+        public void ResetMoveSpeedRate()
         {
             this.status.MoveSpeedRate = 1.0f;
         }
