@@ -5,8 +5,8 @@
     /// </summary>
     public interface IAIElement
     {
-        void Enter(Actor owner, AIObserver ownerAI);
+        void Enter(Actor owner, ActorAIController ownerAI);
 
-        void Exit(Actor owner, AIObserver ownerAI);
+        void Exit(Actor owner, ActorAIController ownerAI);
     }
 }

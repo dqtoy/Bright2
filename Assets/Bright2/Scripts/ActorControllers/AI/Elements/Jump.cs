@@ -10,7 +10,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
     [CreateAssetMenu(fileName = "Jump", menuName = "Bright2/AI/Elements/Jump")]
     public sealed class Jump : ScriptableAIElement
     {
-        public override void Enter(Actor owner, AIObserver ownerAI)
+        public override void Enter(Actor owner, ActorAIController ownerAI)
         {
             base.Enter(owner, ownerAI);
 

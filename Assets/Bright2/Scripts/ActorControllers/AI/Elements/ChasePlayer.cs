@@ -32,7 +32,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
 
         private float changeDirectionDuration = 0.0f;
 
-        public override void Enter(Actor owner, AIObserver ownerAI)
+        public override void Enter(Actor owner, ActorAIController ownerAI)
         {
             base.Enter(owner, ownerAI);
 

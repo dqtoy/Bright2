@@ -20,7 +20,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
 
         private int addCount = 0;
 
-        public override void Enter(Actor owner, AIObserver ownerAI)
+        public override void Enter(Actor owner, ActorAIController ownerAI)
         {
             base.Enter(owner, ownerAI);
 
@@ -39,7 +39,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
                 .AddTo(this.events);
         }
 
-        public override void Exit(Actor owner, AIObserver ownerAI)
+        public override void Exit(Actor owner, ActorAIController ownerAI)
         {
             base.Exit(owner, ownerAI);
             if(this.removeOnExit)

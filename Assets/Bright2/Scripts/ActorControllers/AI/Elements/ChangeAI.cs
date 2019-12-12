@@ -13,7 +13,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
         [SerializeField]
         private string nextAIName = default;
 
-        public override void Enter(Actor owner, AIObserver ownerAI)
+        public override void Enter(Actor owner, ActorAIController ownerAI)
         {
             base.Enter(owner, ownerAI);
             

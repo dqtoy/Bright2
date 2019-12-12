@@ -19,7 +19,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
 
         protected readonly CompositeDisposable events = new CompositeDisposable();
         
-        public virtual void Enter(Actor owner, AIObserver ownerAI)
+        public virtual void Enter(Actor owner, ActorAIController ownerAI)
         {
             if(this.instanceConditions == null)
             {
@@ -32,7 +32,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
             }
         }
 
-        public virtual void Exit(Actor owner, AIObserver ownerAI)
+        public virtual void Exit(Actor owner, ActorAIController ownerAI)
         {
             this.events.Clear();
         }
