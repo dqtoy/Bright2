@@ -10,6 +10,6 @@ namespace HK.Bright2.ActorControllers.AIControllers
     /// </summary>
     public abstract class ScriptableAICondition : ScriptableObject, IAICondition
     {
-        public abstract IObservable<Unit> Satisfy(Actor owner);
+        public abstract IObservable<Unit> Satisfy(Actor owner, ActorAIController ownerAI);
     }
 }

@@ -12,7 +12,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
     [CreateAssetMenu(fileName = "Condition.TakeDamage.asset", menuName = "Bright2/AI/Conditions/TakeDamage")]
     public sealed class TakeDamage : ScriptableAICondition
     {
-        public override IObservable<Unit> Satisfy(Actor owner)
+        public override IObservable<Unit> Satisfy(Actor owner, ActorAIController ownerAI)
         {
             return owner.Broker.Receive<TakedDamage>().AsUnitObservable();
         }

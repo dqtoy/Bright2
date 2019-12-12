@@ -11,7 +11,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
     [CreateAssetMenu(fileName = "Condition.Once.asset", menuName = "Bright2/AI/Conditions/Once")]
     public sealed class Once : ScriptableAICondition
     {
-        public override IObservable<Unit> Satisfy(Actor owner)
+        public override IObservable<Unit> Satisfy(Actor owner, ActorAIController ownerAI)
         {
             return owner.UpdateAsObservable().Take(1);
         }

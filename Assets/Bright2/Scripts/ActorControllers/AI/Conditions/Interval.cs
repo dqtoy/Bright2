@@ -14,7 +14,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
         [SerializeField]
         private float seconds = default;
         
-        public override IObservable<Unit> Satisfy(Actor owner)
+        public override IObservable<Unit> Satisfy(Actor owner, ActorAIController ownerAI)
         {
             return Observable.Interval(TimeSpan.FromSeconds(this.seconds)).AsUnitObservable();
         }

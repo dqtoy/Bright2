@@ -27,7 +27,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
                 foreach (var condition in this.conditions)
                 {
                     var instance = UnityEngine.Object.Instantiate(condition);
-                    this.instanceConditions.Add(instance.Satisfy(owner));
+                    this.instanceConditions.Add(instance.Satisfy(owner, ownerAI));
                 }
             }
         }
