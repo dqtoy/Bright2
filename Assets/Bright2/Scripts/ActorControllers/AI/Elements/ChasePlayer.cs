@@ -26,6 +26,9 @@ namespace HK.Bright2.ActorControllers.AIControllers
         [SerializeField]
         private float changeDirectionDelay = default;
 
+        [SerializeField]
+        private float moveSpeedRate = 1.0f;
+
         private Constants.Direction currentDirection;
 
         private float changeDirectionDuration = 0.0f;
@@ -40,6 +43,7 @@ namespace HK.Bright2.ActorControllers.AIControllers
             this.GetObserver(owner)
                 .SubscribeWithState3(this, owner, ownerAI, (_, _this, _owner, _ownerAI) =>
                 {
+                    _owner.StatusController.SetMoveSpeedRate(_this.moveSpeedRate);
                     _owner.Broker.Publish(RequestMove.Get(_this.currentDirection.ToVector2()));
 
                     if(_this.IsReverse(_owner, _ownerAI))

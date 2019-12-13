@@ -17,6 +17,8 @@ namespace HK.Bright2.ActorControllers.AIControllers
         /// </summary>
         public Actor ChaseTarget { get; set; }
 
+        private string currentAIName;
+
         private IReadOnlyList<ScriptableAIElement> currentElements = default;
 
         private Actor owner;
@@ -39,6 +41,8 @@ namespace HK.Bright2.ActorControllers.AIControllers
         public void ChangeAI(string name)
         {
             this.ExitAI();
+
+            this.currentAIName = name;
 
             this.currentElements = this.GetAIElements(name);
             foreach (var element in this.currentElements)

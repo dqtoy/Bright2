@@ -22,7 +22,7 @@ namespace HK.Bright2.ActorControllers.States
             this.owner.AnimationController.StartSequence(this.owner.Context.AnimationSequences.Jump);
             this.InvokeJump();
 
-            this.ReceiveRequestMoveOnMove(this.owner.StatusController.MoveSpeed);
+            this.ReceiveRequestMoveOnMove(() => this.owner.StatusController.MoveSpeed);
 
             this.ReceiveRequestJumpOnJump();
 

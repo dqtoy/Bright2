@@ -81,7 +81,7 @@ namespace HK.Bright2.ActorControllers.States
 
             var moveSpeed = this.owner.Context.BasicStatus.MoveSpeed;
             moveSpeed -= moveSpeed * weaponRecord.MoveSpeedAttenuationRate;
-            this.ReceiveRequestMoveOnMove(moveSpeed);
+            this.ReceiveRequestMoveOnMove(() => moveSpeed);
             this.ReceiveRequestJumpOnJump();
             this.ReceiveRequestFallOneWayPlatforms();
         }

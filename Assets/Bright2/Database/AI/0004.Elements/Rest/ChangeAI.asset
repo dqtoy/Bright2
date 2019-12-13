@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ChangeAI
   m_EditorClassIdentifier: 
   conditions:
-  - {fileID: 11400000, guid: bc2ee8b80dfd34cbc835223036acfb55, type: 2}
+  - {fileID: 11400000, guid: 60cb25dc40df1443a923373753cf6926, type: 2}
   nextAIName: Default

@@ -25,3 +25,4 @@ MonoBehaviour:
     aiElements:
     - {fileID: 11400000, guid: a11554985b9bd4aa797cfd1f722e5a91, type: 2}
     - {fileID: 11400000, guid: 0d0272cf183884b19b1042fc2d44ba1d, type: 2}
+    - {fileID: 11400000, guid: e3a4f1138d18149c8b85e3ad37c1a7d9, type: 2}

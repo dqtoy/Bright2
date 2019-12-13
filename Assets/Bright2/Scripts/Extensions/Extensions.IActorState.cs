@@ -16,12 +16,12 @@ namespace HK.Bright2.Extensions
         /// <summary>
         /// <see cref="RequestMove"/>メッセージを受信して移動を行う
         /// </summary>
-        public static IDisposable ReceiveRequestMoveOnMove(this IActorState self, float moveSpeed)
+        public static IDisposable ReceiveRequestMoveOnMove(this IActorState self, Func<float> moveSpeedSelector)
         {
             return self.Owner.Broker.Receive<RequestMove>()
                 .SubscribeWithState(self, (x, _this) =>
                 {
-                    _this.AddMove(x.Direction, moveSpeed);
+                    _this.AddMove(x.Direction, moveSpeedSelector);
                 })
                 .AddTo(self.Events);
         }
@@ -29,8 +29,9 @@ namespace HK.Bright2.Extensions
         /// <summary>
         /// <see cref="Actor"/>を移動させる
         /// </summary>
-        public static void AddMove(this IActorState self, Vector2 direction, float moveSpeed)
+        public static void AddMove(this IActorState self, Vector2 direction, Func<float> moveSpeedSelector)
         {
+            var moveSpeed = moveSpeedSelector();
             var velocity = Vector2.zero;
             velocity.x = direction.x > 0.0f ? moveSpeed : -moveSpeed;
 
