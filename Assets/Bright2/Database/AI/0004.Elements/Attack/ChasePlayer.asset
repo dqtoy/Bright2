@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c00030fc24efd4d50a62e9c5a0bb5048, type: 2}
   isChase: 1
   changeDirectionDelay: 10
-  moveSpeedRate: 3
+  moveSpeedRate: 4

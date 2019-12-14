@@ -16,6 +16,17 @@ namespace HK.Bright2.ActorControllers.AIControllers
         public string EntryPointName => this.entryPointName;
 
         [SerializeField]
+        private List<ScriptableAIElement> anyAIElements = default;
+
+        /// <summary>
+        /// 全ての状況下で実行される<see cref="ScriptableAIElement"/>
+        /// </summary>
+        /// <remarks>
+        /// 常に実行されるので<see cref="IAIElement.Exit(Actor, ActorAIController)"/>は死亡時のみ実行されるので注意が必要です
+        /// </remarks>
+        public IReadOnlyList<ScriptableAIElement> AnyAIElements => this.anyAIElements;
+
+        [SerializeField]
         private List<Element> elements = default;
 
         public Element Get(string name)

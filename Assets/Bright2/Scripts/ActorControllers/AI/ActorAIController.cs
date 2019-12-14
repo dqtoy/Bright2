@@ -19,6 +19,8 @@ namespace HK.Bright2.ActorControllers.AIControllers
 
         private string currentAIName;
 
+        private IReadOnlyList<ScriptableAIElement> anyAIElements = default;
+
         private IReadOnlyList<ScriptableAIElement> currentElements = default;
 
         private Actor owner;
@@ -30,11 +32,21 @@ namespace HK.Bright2.ActorControllers.AIControllers
             this.owner = this.GetComponent<Actor>();
             Assert.IsNotNull(this.owner);
 
+            this.anyAIElements = this.CreateInstanceAIElements(this.aiBundle.AnyAIElements);
+            foreach (var ai in this.anyAIElements)
+            {
+                ai.Enter(this.owner, this);
+            }
+
             this.ChangeAI(this.aiBundle.EntryPointName);
         }
 
         void OnDestroy()
         {
+            foreach (var ai in this.anyAIElements)
+            {
+                ai.Exit(this.owner, this);
+            }
             this.ExitAI();
         }
 
@@ -72,14 +84,21 @@ namespace HK.Bright2.ActorControllers.AIControllers
             }
 
             var aiElements = this.aiBundle.Get(name).AIElements;
-            var instance = new List<ScriptableAIElement>(aiElements.Count);
-            foreach (var aiElement in aiElements)
-            {
-                instance.Add(Object.Instantiate(aiElement));
-            }
+            var instance = CreateInstanceAIElements(aiElements);
             this.cachedAIElements.Add(name, instance);
 
             return instance;
+        }
+
+        private List<ScriptableAIElement> CreateInstanceAIElements(IReadOnlyList<ScriptableAIElement> aiElements)
+        {
+            var result = new List<ScriptableAIElement>(aiElements.Count);
+            foreach (var aiElement in aiElements)
+            {
+                result.Add(Object.Instantiate(aiElement));
+            }
+
+            return result;
         }
     }
 }

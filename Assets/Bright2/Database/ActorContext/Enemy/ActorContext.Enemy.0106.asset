@@ -22,7 +22,7 @@ MonoBehaviour:
   basicStatus:
     hitPoint: 34
     moveSpeed: 2.6
-    jumpPower: 8
+    jumpPower: 9
     limitJumpCount: 1
     money: 21
     knockbackResistance: 2

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 0004
   m_EditorClassIdentifier: 
   entryPointName: Default
+  anyAIElements: []
   elements:
   - name: Default
     aiElements:
