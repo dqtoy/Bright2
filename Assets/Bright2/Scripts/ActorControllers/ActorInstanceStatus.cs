@@ -53,7 +53,18 @@ namespace HK.Bright2.ActorControllers
         /// <summary>
         /// 酸欠中であるか返す
         /// </summary>
-        public bool IsLackOfOxygen => this.EnterUnderWaterSeconds >= Constants.LackOfOxygenSeconds;
+        public bool IsLackOfOxygen
+        {
+            get
+            {
+                if(this.ItemModifierEffect.Contains(Constants.ItemModifierType.InfiniteOxygen))
+                {
+                    return false;
+                }
+                
+                return this.EnterUnderWaterSeconds >= Constants.LackOfOxygenSeconds;
+            }
+        }
 
         /// <summary>
         /// 無敵ステータス

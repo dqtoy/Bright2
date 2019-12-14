@@ -135,6 +135,7 @@ namespace HK.Bright2
             AddJumpCount,
             Dash,
             AddKnockbackResistanceFixed,
+            InfiniteOxygen,
         }
 
         public enum FadeType

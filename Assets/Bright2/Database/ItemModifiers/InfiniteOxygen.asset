@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc938247925f842cebafb1a9ff2c273e, type: 3}
+  m_Name: InfiniteOxygen
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 5692d9f10a3ab43bc9eded080112ead9, type: 3}
+  itemModifierName:
+    target: {fileID: 11400000, guid: de87abfb8265f41cdaeaa10951b0eff4, type: 2}
+    value: "\u9178\u6B20\u306B\u306A\u3089\u306A\u3044"
+    guid: a2fcc0eb-7039-49e0-a32b-30a4ffbc8354
+  type: 19
+  amount: 1
