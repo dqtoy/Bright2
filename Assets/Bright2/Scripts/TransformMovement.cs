@@ -115,7 +115,6 @@ namespace HK.Bright2.ActorControllers
                 .SubscribeWithState(this, (_, _this) =>
                 {
                     _this.isEnterUnderWater = true;
-                    Debug.Log("Enter Underwater");
                 })
                 .AddTo(this);
 
