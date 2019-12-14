@@ -25,7 +25,7 @@ MonoBehaviour:
     jumpPower: 9
     limitJumpCount: 1
     money: 21
-    knockbackResistance: 2
+    knockbackResistance: 90
     itemModifiers:
     - {fileID: 11400000, guid: 33fb770dc9aec4dadbfaa98c050823cb, type: 2}
   dropItems:
