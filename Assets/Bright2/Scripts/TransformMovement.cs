@@ -1,4 +1,5 @@
-﻿using HK.Bright2.ActorControllers.Messages;
+﻿using System.Collections.Generic;
+using HK.Bright2.ActorControllers.Messages;
 using HK.Bright2.StageControllers.Messages;
 using Prime31;
 using UniRx;
@@ -24,6 +25,13 @@ namespace HK.Bright2.ActorControllers
         private Vector2 velocityByGravity;
 
         private CharacterController2D characterController;
+
+        /// <summary>
+        /// 現在適用される重力値
+        /// </summary>
+        private Vector2 currentGravity;
+
+        private readonly Stack<Vector2> gravities = new Stack<Vector2>();
 
         /// <summary>
         /// 麻痺中であるか
@@ -67,6 +75,7 @@ namespace HK.Bright2.ActorControllers
 
         void Awake()
         {
+            this.PushGravity(this.gravity);
             this.controlledTransform = this.transform;
             this.brokableObject = this.GetComponent<IBroker>();
 
@@ -136,7 +145,6 @@ namespace HK.Bright2.ActorControllers
 
             if(!oldIsGrouded && isGrounded)
             {
-                this.gravity.x = 0.0f;
                 this.velocityByGravity.x = 0.0f;
             }
 
@@ -208,11 +216,22 @@ namespace HK.Bright2.ActorControllers
             this.controlledTransform.position = position;
         }
 
+        public void PushGravity(Vector2 gravity)
+        {
+            this.currentGravity = gravity;
+            this.gravities.Push(gravity);
+        }
 
+        public void PopGravity()
+        {
+            this.gravities.Pop();
+            Assert.AreNotEqual(this.gravities.Count, 0);
+            this.currentGravity = this.gravities.Peek();
+        }
 
         private void AddGravity()
         {
-            var gravity = this.gravity;
+            var gravity = this.currentGravity;
             if(this.isEnterUnderWater)
             {
                 gravity *= 0.5f;
