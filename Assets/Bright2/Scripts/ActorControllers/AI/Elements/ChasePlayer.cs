@@ -64,6 +64,12 @@ namespace HK.Bright2.ActorControllers.AIControllers
                 .AddTo(this.events);
         }
 
+        public override void Exit(Actor owner, ActorAIController ownerAI)
+        {
+            base.Exit(owner, ownerAI);
+            ownerAI.ChaseTarget = null;
+        }
+
         private Constants.Direction GetTargetDirection(Actor owner, ActorAIController ownerAI)
         {
             var result = new Vector2(ownerAI.ChaseTarget.CachedTransform.position.x - owner.CachedTransform.position.x, 0.0f).GetHorizontalDirection();

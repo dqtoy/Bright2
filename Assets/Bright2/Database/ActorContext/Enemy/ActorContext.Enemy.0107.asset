@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342be30bc72244c6eb1f555d8ea331a2, type: 3}
+  m_Name: ActorContext.Enemy.0107
+  m_EditorClassIdentifier: 
+  animationSequences:
+    idle: {fileID: 11400000, guid: 53462bfc440b541b88975009367bd4d7, type: 2}
+    run: {fileID: 11400000, guid: a51fe321c095f45049af6e5fb096b9b2, type: 2}
+    jump: {fileID: 11400000, guid: 388cc2ae443b1464db0a2d7f5618e139, type: 2}
+    fall: {fileID: 11400000, guid: e26e1d193e94d497d8e6b32b21dd0073, type: 2}
+    attack: {fileID: 11400000, guid: 8671e93dd35894a2bb9bc8e1e5a8f559, type: 2}
+    knockback: {fileID: 11400000, guid: 8a61119e0b4524549a4bfacff6844fda, type: 2}
+  basicStatus:
+    hitPoint: 34
+    moveSpeed: 2.6
+    jumpPower: 9
+    limitJumpCount: 1
+    money: 21
+    knockbackResistance: 2
+  dropItems:
+    weapons: []
+    accessories: []
+    materials: []
+    importantItems: []
+  effects:
+    spawned: {fileID: 7094458136404933650, guid: 1cb655879a96148e78fe509daa5b4d00,
+      type: 3}
+    takedDamage: {fileID: 4643271828095609800, guid: 85f1ea8a894ce4dab95f7869ae3bf07a,
+      type: 3}
+  abnormalCondition:
+    poison:
+      duration: 0
+      damageRate: 0
+    paralysis:
+      duration: 3
+    confuse:
+      duration: 3
+    fear:
+      duration: 3
+    deadlyPoison:
+      duration: 0
+      damageRate: 0
+    fireSpread:
+      duration: 7
+      damageRate: 0.2
