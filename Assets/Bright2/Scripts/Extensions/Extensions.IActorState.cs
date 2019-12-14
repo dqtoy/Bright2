@@ -33,7 +33,14 @@ namespace HK.Bright2.Extensions
         {
             var moveSpeed = moveSpeedSelector();
             var velocity = Vector2.zero;
-            velocity.x = direction.x > 0.0f ? moveSpeed : -moveSpeed;
+            if(direction.x != 0.0f)
+            {
+                velocity.x = direction.x > 0.0f ? moveSpeed : -moveSpeed;
+            }
+            if(direction.y != 0.0f)
+            {
+                velocity.y = direction.y > 0.0f ? moveSpeed : -moveSpeed;
+            }
 
             self.Owner.Movement.AddMove(velocity * Time.deltaTime);
         }
