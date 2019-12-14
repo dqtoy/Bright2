@@ -21,7 +21,7 @@ namespace HK.Bright2.ActorControllers
 
         private Vector2 velocity;
 
-        private Vector2 currentGravity;
+        private Vector2 velocityByGravity;
 
         private CharacterController2D characterController;
 
@@ -137,7 +137,7 @@ namespace HK.Bright2.ActorControllers
             if(!oldIsGrouded && isGrounded)
             {
                 this.gravity.x = 0.0f;
-                this.currentGravity.x = 0.0f;
+                this.velocityByGravity.x = 0.0f;
             }
 
             if(!isGrounded && this.velocity.y < 0.0f)
@@ -163,11 +163,11 @@ namespace HK.Bright2.ActorControllers
 
             if(isGrounded)
             {
-                this.currentGravity.y = 0.0f;
+                this.velocityByGravity.y = 0.0f;
             }
             if(this.characterController.collisionState.above)
             {
-                this.currentGravity.y = 0.0f;
+                this.velocityByGravity.y = 0.0f;
             }
 
             if(this.velocity.x == 0.0f)
@@ -198,15 +198,17 @@ namespace HK.Bright2.ActorControllers
 
         public void SetGravity(Vector2 gravity)
         {
-            this.currentGravity = gravity;
+            this.velocityByGravity = gravity;
         }
 
         public void Warp(Vector2 position)
         {
             this.velocity = Vector2.zero;
-            this.currentGravity = Vector2.zero;
+            this.velocityByGravity = Vector2.zero;
             this.controlledTransform.position = position;
         }
+
+
 
         private void AddGravity()
         {
@@ -216,9 +218,9 @@ namespace HK.Bright2.ActorControllers
                 gravity *= 0.5f;
             }
             
-            this.currentGravity += gravity * Time.deltaTime;
-            this.currentGravity.y = Mathf.Max(this.currentGravity.y, GravityYMax);
-            this.velocity += this.currentGravity * Time.deltaTime;
+            this.velocityByGravity += gravity * Time.deltaTime;
+            this.velocityByGravity.y = Mathf.Max(this.velocityByGravity.y, GravityYMax);
+            this.velocity += this.velocityByGravity * Time.deltaTime;
         }
 
         private void UnderWaterProccess()
