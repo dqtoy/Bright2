@@ -62,6 +62,11 @@ namespace HK.Bright2.ActorControllers
                 this.status.EquippedAccessories[i] = -1;
             }
 
+            foreach (var itemModifier in this.context.BasicStatus.ItemModifiers)
+            {
+                this.AddOtherItemModifier(itemModifier);
+            }
+
             owner.Broker.Receive<Landed>()
                 .SubscribeWithState(this, (_, _this) =>
                 {

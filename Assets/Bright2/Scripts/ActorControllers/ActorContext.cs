@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HK.Bright2.ItemControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -91,6 +92,10 @@ namespace HK.Bright2.ActorControllers
             /// ノックバック抵抗値
             /// </summary>
             public float KnockbackResistance => this.knockbackResistance;
+
+            [SerializeField]
+            private List<ItemModifier> itemModifiers = default;
+            public List<ItemModifier> ItemModifiers => this.itemModifiers;
         }
 
         [Serializable]
