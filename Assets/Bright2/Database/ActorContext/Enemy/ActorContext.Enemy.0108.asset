@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 342be30bc72244c6eb1f555d8ea331a2, type: 3}
-  m_Name: ActorContext.Player
+  m_Name: ActorContext.Enemy.0108
   m_EditorClassIdentifier: 
   animationSequences:
-    idle: {fileID: 11400000, guid: f8612d90025244c82a5096dcf97b0a5e, type: 2}
-    run: {fileID: 11400000, guid: b40ddf2ca289942b38199ffde81da980, type: 2}
-    jump: {fileID: 11400000, guid: 7536ebdd613c641e5b983b468f539735, type: 2}
-    fall: {fileID: 11400000, guid: 6b4eedb1ec0754dcfa6e97a0b343dc7a, type: 2}
-    attack: {fileID: 11400000, guid: 26dedd9dc7b3b4a8fbafca0aec73769a, type: 2}
-    knockback: {fileID: 11400000, guid: aa206482e4467469db497384ed782af2, type: 2}
+    idle: {fileID: 11400000, guid: 146480b885bc74ffa9387b629255435d, type: 2}
+    run: {fileID: 11400000, guid: 903576d356a1f45a4ad422a34fabc689, type: 2}
+    jump: {fileID: 11400000, guid: ab05267342b764a719bc365b31269109, type: 2}
+    fall: {fileID: 11400000, guid: 7907b8ea03536468880fe134eac460f1, type: 2}
+    attack: {fileID: 11400000, guid: cd809af7a92b8413cace187dac19d780, type: 2}
+    knockback: {fileID: 11400000, guid: ebaec8bee4db440c6be396e9877bb85e, type: 2}
   basicStatus:
-    hitPoint: 100
-    moveSpeed: 6
-    jumpPower: 18
-    limitJumpCount: 2
-    money: 0
-    knockbackResistance: 0
+    hitPoint: 34
+    moveSpeed: 2.6
+    jumpPower: 4
+    limitJumpCount: 1
+    money: 21
+    knockbackResistance: 90
     itemModifiers:
     - {fileID: 11400000, guid: 33fb770dc9aec4dadbfaa98c050823cb, type: 2}
   dropItems:
@@ -34,13 +34,14 @@ MonoBehaviour:
     materials: []
     importantItems: []
   effects:
-    spawned: {fileID: 0}
+    spawned: {fileID: 7094458136404933650, guid: 1cb655879a96148e78fe509daa5b4d00,
+      type: 3}
     takedDamage: {fileID: 4643271828095609800, guid: 85f1ea8a894ce4dab95f7869ae3bf07a,
       type: 3}
   abnormalCondition:
     poison:
-      duration: 5
-      damageRate: 0.1
+      duration: 0
+      damageRate: 0
     paralysis:
       duration: 3
     confuse:
@@ -48,8 +49,8 @@ MonoBehaviour:
     fear:
       duration: 3
     deadlyPoison:
-      duration: 10
-      damageRate: 0.25
+      duration: 0
+      damageRate: 0
     fireSpread:
       duration: 7
-      damageRate: 0.1
+      damageRate: 0.2

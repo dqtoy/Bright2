@@ -2304,7 +2304,7 @@ PrefabInstance:
         type: 3}
       propertyPath: elementBundles.Array.data[0].elements.Array.data[0].prefab
       value: 
-      objectReference: {fileID: 7550151298698405770, guid: d66e0e607f57c465096712215d3f9f27,
+      objectReference: {fileID: 7550151298698405770, guid: c0b772654ca844a0caf4007d9b7aaa24,
         type: 3}
     - target: {fileID: 6749042481166630230, guid: ddd367d0f75e84c0898206e71e8a1bc8,
         type: 3}
