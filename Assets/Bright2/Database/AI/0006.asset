@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed27c00d9731f4b6ab88eb5d2d837087, type: 3}
   m_Name: 0006
   m_EditorClassIdentifier: 
-  entryPointName: Default
+  entryPointName: Rest
   anyAIElements: []
   elements:
   - name: Default
