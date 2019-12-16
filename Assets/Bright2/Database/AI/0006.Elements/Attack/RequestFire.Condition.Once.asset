@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15dd0048517984192a6cc6a479e446ba, type: 3}
-  m_Name: ChangeAI
+  m_Script: {fileID: 11500000, guid: f502ad9c2445c48f58d7ba1c9ec6b8e3, type: 3}
+  m_Name: RequestFire.Condition.Once
   m_EditorClassIdentifier: 
-  conditions:
-  - {fileID: 11400000, guid: d3f903419dec041b4b4ae83681269ac3, type: 2}
-  nextAIName: Attack

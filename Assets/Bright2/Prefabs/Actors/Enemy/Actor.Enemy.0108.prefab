@@ -1,30 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1971644892467239870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6481509011888891768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d1644b235504a4b95573cdde6f5845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePower: 20
-  criticalRate: 0
-  knockbackPower: 10
-  knockbackLimit: 10
-  infinitySeconds: 0.5
-  weaponType: 0
-  includeTags:
-  - Player
-  controlledCollider: {fileID: 1908292255887170411}
-  penetrationCount: -1
-  effectPrefab: {fileID: 4643271828095609800, guid: 18bc25df30fbe455395abb697a051d25,
-    type: 3}
-  additionalEffects: []
 --- !u!114 &2788880184631333120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +26,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: {x: 0, y: -4}
+--- !u!114 &1971644892467239870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6481509011888891768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d1644b235504a4b95573cdde6f5845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePower: 20
+  criticalRate: 0
+  knockbackPower: 10
+  knockbackLimit: 10
+  infinitySeconds: 0.5
+  weaponType: 0
+  includeTags:
+  - Player
+  controlledCollider: {fileID: 1908292255887170411}
+  penetrationCount: -1
+  effectPrefab: {fileID: 4643271828095609800, guid: 18bc25df30fbe455395abb697a051d25,
+    type: 3}
+  additionalEffects: []
 --- !u!1001 &4252438964149198973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,6 +226,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1479848670, guid: 962ca94802f2149c7b071d3ab447c8f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479848670, guid: 962ca94802f2149c7b071d3ab447c8f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609504381, guid: 962ca94802f2149c7b071d3ab447c8f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609504381, guid: 962ca94802f2149c7b071d3ab447c8f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2095344786, guid: 962ca94802f2149c7b071d3ab447c8f5, type: 3}
       propertyPath: context
       value: 

@@ -23,3 +23,7 @@ MonoBehaviour:
   - name: Rest
     aiElements:
     - {fileID: 11400000, guid: 11dad0c5ffc1346b19914e2697cb18fa, type: 2}
+  - name: Attack
+    aiElements:
+    - {fileID: 11400000, guid: 1bb307fdee8814402b9532d6212b8c7f, type: 2}
+    - {fileID: 11400000, guid: 0916aa735edbc41bc8a5f90154447860, type: 2}
