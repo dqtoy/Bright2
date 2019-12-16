@@ -62,6 +62,11 @@ namespace HK.Bright2.ActorControllers
                 this.status.EquippedAccessories[i] = -1;
             }
 
+            foreach (var weaponRecord in this.context.BasicStatus.WeaponRecords)
+            {
+                this.AddWeapon(weaponRecord);
+            }
+
             foreach (var itemModifier in this.context.BasicStatus.ItemModifiers)
             {
                 this.AddOtherItemModifier(itemModifier);
