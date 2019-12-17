@@ -26,8 +26,8 @@ MonoBehaviour:
     limitJumpCount: 2
     money: 0
     knockbackResistance: 0
-    itemModifiers:
-    - {fileID: 11400000, guid: 33fb770dc9aec4dadbfaa98c050823cb, type: 2}
+    weaponRecords: []
+    itemModifiers: []
   dropItems:
     weapons: []
     accessories: []
