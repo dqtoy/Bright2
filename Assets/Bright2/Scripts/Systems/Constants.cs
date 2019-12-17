@@ -157,7 +157,7 @@ namespace HK.Bright2
         /// <summary>
         /// 酸欠になるまでの時間（秒）
         /// </summary>
-        public const float LackOfOxygenSeconds = 10.0f;
+        public const float LackOfOxygenSeconds = 30.0f;
 
         /// <summary>
         /// 酸欠によるダメージを受けるまでの時間（秒）
