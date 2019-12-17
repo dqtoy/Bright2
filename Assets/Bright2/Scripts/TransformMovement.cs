@@ -248,7 +248,7 @@ namespace HK.Bright2.ActorControllers
                 return;
             }
 
-            this.velocity *= 0.5f;
+            this.velocity *= 0.7f;
         }
     }
 }
